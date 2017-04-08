@@ -75,6 +75,7 @@ app.service('bookservice',function(){
         cover: "images/4.jpg",
          description:"In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
 		}]
+		
 })
 app.controller("BooksController",['bookservice',function(bookservice){
 
@@ -91,4 +92,23 @@ app.controller("BooksController",['bookservice',function(bookservice){
 	};
 
 }])
+app.controller("carousel",function(){
+	this.slides=[
+		{ id : 0,
+		image: "images/5.jpg",
+		caption: "Sale off 50%"	
+		},
+		{ id: 1,
+		image: "images/6.jpg",
+		caption: "Free Ship"	
+		},
+		{ id:2,
+		image: "images/7.jpg",
+		caption: "New Books"	
+		}];
+  	this.myInterval = 3000;
+  	
+  	this.activeSlide = 0;
+  			
+})
 
