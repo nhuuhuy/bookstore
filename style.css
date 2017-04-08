@@ -10,6 +10,9 @@ a, a:hover, a:focus{
 ul{
 	list-style: none;
 }
+.price{
+	color: #2BBBAD;
+}
 .col:not(:first-child,:last-child) {
   margin:7px;
 }
@@ -49,10 +52,15 @@ footer{
 .item .panel{
 	margin: 20px;
 }
+.heading{
+	padding: 10px
+}
+
+
+
 @media screen and (max-width: 768px){
 	.carousel-control{
 		display: none;
 	}
-
 
  }

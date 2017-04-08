@@ -43,10 +43,19 @@
 				<input type="text" class="form-control text-center" placeholder="Search here">
 			</div>	
 	</nav>
-	
-
-	<div class="container" ng-show="booksctrl.isSelectedTab('home')">
-		<div ng-controller="carousel as carousel">
+	<div class="container"
+	<div class="row ">
+		<div class="col-sm-3 sidenav hidden-xs"  ng-hide="booksctrl.isSelectedTab('admin')">
+				<div class="panel z-depth-2 ">
+					<div class="panel-heading unique-color white-text"><h5>Category</h5></div>
+					<div class="panel-body">
+					<ul class="nav nav-pills nav-stacked">
+  						<li role="presentation" ng-repeat="category in booksctrl.category" class="hoverable"  ng-click="booksctrl.selectTab('category')" ng-model="booksctrl.books.category"><a href="#">{{category.name}}</a></li>
+						</ul></div>
+				</div>	 	
+			</div>
+	<div class="col-sm-9" >
+		<!-- <div ng-controller="carousel as carousel" >
 		    <div uib-carousel active="carousel.active" interval="carousel.myInterval" no-wrap="carousel.noWrapSlides">
 		      <div uib-slide ng-repeat="slide in carousel.slides" index="slide.id">
 		        <img ng-src="{{slide.image}}" >
@@ -56,33 +65,21 @@
 		      </div>
 		    </div>
 		  </div>
-		<div class="row ">
-
-			<div class="col-sm-3 sidenav hidden-xs">
-				<div class="panel z-depth-2 ">
-					<div class="panel-heading unique-color white-text"><h4>Category</h4></div>
-					<div class="panel-body">
-					<ul class="nav nav-pills nav-stacked">
-  						<li role="presentation" ng-repeat="category in booksctrl.category" class="hoverable"  ng-click="booksctrl.selectTab('category')"><a href="#">{{category.name}}</a></li>
-						</ul></div>
-				</div>	 	
-
-						
-			</div>
-			<div class="col-sm-9">
-				<div class="col-sm-12 unique-color white-text z-depth-2">
-					<h4>New arrivals</h4>
+		 -->
+				
+				<div class="row" ng-show="booksctrl.isSelectedTab('home')">
+					<div class="heading unique-color white-text z-depth-2">
+					<h5>New arrivals</h5>
 				</div>
-				<div class="row">
-					<div class="col-md-4 col-sm-6 col-xs-12 box " ng-repeat="book in booksctrl.books| limitTo: 3" ng-click="booksctrl.selectTab($index)" >
+					<div class="col-md-4 col-sm-6  box " ng-repeat="book in booksctrl.books| limitTo: 3" ng-click="booksctrl.selectTab($index)" >
 				<div class="item panel panel-default">
 					<div class="panel-body">
 					<img ng-src="{{book.cover}}" alt="">
 				</div>
 				<div class="panel-footer">
-					<h4>
+					<h5>
 					<a href="" class="title">{{book.title | limitTo:20}}...</a>	
-					</h4>
+					</h5>
 					<p class="author">{{book.author}}</p>
 					<p class="price">{{book.price}}$</p>
 				</div>
@@ -91,20 +88,20 @@
 				<button class="btn btn-default pull-right" type="button" ng-click="booksctrl.selectTab('category')" ><i class="glyphicon glyphicon-chevron-right" ></i></button>
 				</div>
 				
-				
-				<div class="col-sm-12 unique-color white-text z-depth-2">
-					<h4>New seller</h4>
+				<div class="row" ng-show="booksctrl.isSelectedTab('home')">
+					<div class="heading unique-color white-text z-depth-2">
+					<h5>New seller</h5>
 				</div>
 
-				<div class="col-md-4 col-sm-6 col-xs-12 box " ng-repeat="book in booksctrl.books|limitTo: 3" ng-click="booksctrl.selectTab($index)">
+				<div class="col-md-4 col-sm-6  box " ng-repeat="book in booksctrl.books|limitTo: 3" ng-click="booksctrl.selectTab($index)">
 				<div class="item panel panel-default">
 					<div class="panel-body">
 					<img ng-src="{{book.cover}}" alt="">
 				</div>
 				<div class="panel-footer">
-					<h4>
+					<h5>
 					<a href="" class="title">{{book.title | limitTo:20}}...</a>	
-					</h4>
+					</h5>
 					<p class="author">{{book.author}}</p>
 					<p class="price">{{book.price}}$</p>
 				</div>	
@@ -112,40 +109,40 @@
 
 				</div>
 				<button class="btn btn-default pull-right" type="button" ng-click="booksctrl.selectTab('category')"><i class="glyphicon glyphicon-chevron-right" ></i></button>
-			</div>			
-		</div>
-		</div>
-		<div class="container" ng-show="booksctrl.isSelectedTab('category')">
-			<div class="row">
-			<nav class="navbar ">
-			    <ol class="breadcrumb">
-			        <li class="breadcrumb-item" ng-click="booksctrl.selectTab('home')"><a href="#">Home</a></li>
-			        <li class="breadcrumb-item active"><a href="#">category</a></li>
-				    </ol>
-			</nav>
-				<div class="col-sm-12">
-					<h4>All books</h4>
+						
 				</div>
-				<div class="col-sm-3" ng-repeat="book in booksctrl.books" ng-click="booksctrl.selectTab($index)">
-				<div class=" item panel panel-default">
-					<div class="panel-body">
-					<img ng-src="{{book.cover}}" alt="">
-				</div>
-				<div class="panel-footer">
-					<h4>
-					<a href="" class="title">{{book.title | limitTo:20}}...</a>	
-					</h4>
-					<p class="author">{{book.author}}</p>
-					<p class="price">{{book.price}}$</p>
-				</div>	
-				</div>
-				
-				</div>
-				</div>
-			</div>
-		</div>
-		<div class="container" ng-repeat="book in booksctrl.books" ng-show="booksctrl.isSelectedTab($index)" >
-			<div class="row">
+					<div class="row" ng-show="booksctrl.isSelectedTab('category')">
+			
+					<nav class="navbar ">
+					    <ol class="breadcrumb">
+					        <li class="breadcrumb-item" ng-click="booksctrl.selectTab('home')"><a href="#">Home</a></li>
+					        <li class="breadcrumb-item active"><a href="#">category</a></li>
+						    </ol>
+					</nav>
+						<div class="heading unique-color white-text z-depth-2">
+							<h5>All books</h5>
+						</div>
+					
+					
+						<div class="row">
+							<div class="col-sm-3" ng-repeat="book in booksctrl.books" ng-click="booksctrl.selectTab($index)">
+						<div class=" item panel panel-default">
+							<div class="panel-body">
+							<img ng-src="{{book.cover}}" alt="">
+						</div>
+						<div class="panel-footer">
+							<h5>
+							<a href="" class="title">{{book.title | limitTo:20}}...</a>	
+							</h5>
+							<p class="author">{{book.author}}</p>
+							<p class="price">{{book.price}}$</p>
+						</div>	
+						</div>
+						
+						</div>
+						</div>
+					</div>
+				<div class="row" ng-repeat="book in booksctrl.books" ng-show="booksctrl.isSelectedTab($index)">
 				<nav class="navbar ">
 				    <ol class="breadcrumb">
 				        <li class="breadcrumb-item" ng-click="booksctrl.selectTab('home')"><a href="#">Home</a></li>
@@ -159,23 +156,24 @@
 				</div>
 				</div>
 				<div class="col-sm-7">
-					<h4> {{book.title}}</h4>
+					<h5> {{book.title}}</h5>
 					<p>{{book.author}}</p>
-					<p>{{book.price}}$</p>
+					<p class="price">{{book.price}}$</p>
 					<p>Description</p>
 					<p>{{book.description}}</p>
-				</div>
-				<div>
-					
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12">
-					<h4>Related books</h4>
+					<div class="comment">
+						<label for="">Comment:</label>
+						<textarea class="form-control" rows="5"></textarea>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="container" ng-show="booksctrl.isSelectedTab('admin')">
+		</div>
+	
+		
+		</div>
+		
+		<div class="container" ng-show="booksctrl.isSelectedTab('admin')" >
 			<div class="md-form">
 				<form name="postForm " ng-submit=" " >
               <label for="inputTitle">Title:</label>
@@ -194,11 +192,10 @@
               <input class="form-control" type="file" id="uploadimg" ng-model="booksctrl.books.cover" id="inputCover" >
               <br>
                <label for="">Category</label>
-               <select class="form-control" name="categoryupdate" >
+               <select class="form-control" name="categoryUpdate" ng-model="booksctrl.books.category">
                	<option ng-repeat="category in booksctrl.category" value="{{category.name}}" ng-model="booksctrl.books.category">{{category.name}}</option>
                </select>
                <br>
-
          		<input class="btn btn-default" type="submit" value="Submit" />
               </select>
             </form>
@@ -210,7 +207,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-4">
-					<h4 class="title">Newsletter</h4>
+					<h5 class="title">Newsletter</h5>
 					<div class="form">
 					<div class="input-group" >
 			      	<input type="text" class="form-control" placeholder="Your email">
@@ -222,21 +219,21 @@
 			</div>
 				</div>
 				<div class="col-sm-4">
-					<h4 class="title">Recent </h4>
+					<h5 class="title">Recent </h5>
 				
 				  <div class="media-body">
-				    <h4 class="media-heading">Media heading</h4>
+				    <h5 class="media-heading">Media heading</h5>
 				    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at,...
 				  </div>	
 				  <br>
 				    <div class="media-body">
-				    <h4 class="media-heading">Media heading</h4>
+				    <h5 class="media-heading">Media heading</h5>
 				    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at,...
 				  </div>
 				</div>
 	
 				<div class="col-sm-4">
-					<h4 class="title">Contact</h4>
+					<h5 class="title">Contact</h5>
 					<ul>
 						<li>Address: 2411 Any Street. Any Town. United Kingdom.</li>
 						<li>Mail to: support@yourstore.com</li>
