@@ -5,6 +5,7 @@
 	<title>Book Store</title>
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	 <link rel="icon" href="demo_icon.gif" type="images/bookstoreLogo.png" sizes="16x16">
 	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -59,7 +60,7 @@
 
 			<div class="col-sm-3 sidenav hidden-xs">
 				<div class="panel z-depth-2 ">
-					<div class="panel-heading unique-color white-text"><h3>Category</h3></div>
+					<div class="panel-heading unique-color white-text"><h4>Category</h4></div>
 					<div class="panel-body">
 					<ul class="nav nav-pills nav-stacked">
   						<li role="presentation" ng-repeat="category in booksctrl.category" class="hoverable"  ng-click="booksctrl.selectTab('category')"><a href="#">{{category.name}}</a></li>
@@ -70,7 +71,7 @@
 			</div>
 			<div class="col-sm-9">
 				<div class="col-sm-12 unique-color white-text z-depth-2">
-					<h2>New arrivals</h2>
+					<h4>New arrivals</h4>
 				</div>
 				<div class="row">
 					<div class="col-md-4 col-sm-6 col-xs-12 box " ng-repeat="book in booksctrl.books| limitTo: 3" ng-click="booksctrl.selectTab($index)" >
@@ -92,7 +93,7 @@
 				
 				
 				<div class="col-sm-12 unique-color white-text z-depth-2">
-					<h2>New seller</h2>
+					<h4>New seller</h4>
 				</div>
 
 				<div class="col-md-4 col-sm-6 col-xs-12 box " ng-repeat="book in booksctrl.books|limitTo: 3" ng-click="booksctrl.selectTab($index)">
@@ -123,7 +124,7 @@
 				    </ol>
 			</nav>
 				<div class="col-sm-12">
-					<h3>All books</h3>
+					<h4>All books</h4>
 				</div>
 				<div class="col-sm-3" ng-repeat="book in booksctrl.books" ng-click="booksctrl.selectTab($index)">
 				<div class=" item panel panel-default">
@@ -158,16 +159,19 @@
 				</div>
 				</div>
 				<div class="col-sm-7">
-					<h3> {{book.title}}</h3>
+					<h4> {{book.title}}</h4>
 					<p>{{book.author}}</p>
 					<p>{{book.price}}$</p>
 					<p>Description</p>
 					<p>{{book.description}}</p>
 				</div>
+				<div>
+					
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12">
-					<h3>Related books</h3>
+					<h4>Related books</h4>
 				</div>
 			</div>
 		</div>
@@ -206,9 +210,8 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-4">
-					<h3 class="title">Newsletter</h3>
+					<h4 class="title">Newsletter</h4>
 					<div class="form">
-		
 					<div class="input-group" >
 			      	<input type="text" class="form-control" placeholder="Your email">
 			      	<div class="input-group-btn">
@@ -219,7 +222,7 @@
 			</div>
 				</div>
 				<div class="col-sm-4">
-					<h3 class="title">Recent </h3>
+					<h4 class="title">Recent </h4>
 				
 				  <div class="media-body">
 				    <h4 class="media-heading">Media heading</h4>
@@ -233,7 +236,7 @@
 				</div>
 	
 				<div class="col-sm-4">
-					<h3 class="title">Contact</h3>
+					<h4 class="title">Contact</h4>
 					<ul>
 						<li>Address: 2411 Any Street. Any Town. United Kingdom.</li>
 						<li>Mail to: support@yourstore.com</li>
