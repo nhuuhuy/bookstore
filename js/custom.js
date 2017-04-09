@@ -5,4 +5,9 @@ $(document).ready(function(){
 			$(this).addClass("active")
 		})
 	})
+	$(".search").click(function(){
+		$("#search").fadeToggle('slow')
+	})
+	
+
 })

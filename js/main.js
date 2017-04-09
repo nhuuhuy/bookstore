@@ -1,4 +1,30 @@
-var app = angular.module('BookApp',['ui.bootstrap']);
+var app = angular.module('BookApp',['ui.bootstrap','ngRoute']);
+
+app.config(function($routeProvider) {
+  $routeProvider
+  .when('/', {
+    templateUrl : 'pages/home.html',
+    controller  : 'BooksController'
+  })
+
+  .when('/category', {
+    templateUrl : 'pages/category.html',
+    controller  : 'CategoryController'
+  })
+
+  .when('/admin', {
+    templateUrl : 'pages/admin.html',
+    controller  : 'AdminController'
+  })
+  .when('/item', {
+    templateUrl : 'pages/item.html',
+    controller  : 'ItemController'
+  })
+  .otherwise({redirectTo: '/'});
+});
+
+
+
 app.service('bookservice',function(){
 	
 	this.category=[
@@ -9,13 +35,16 @@ app.service('bookservice',function(){
 		{id:5,name:"Mystery"},
 		{id:6,name:"Science fiction"}
 	]
+  
 	this.books =[{
 		id: 1,	
 		category: "Romance",
         author: "Kate Williams ",
         title: "Sayings of the Century ",
         price: 8.95,
+        rate:4,
         cover: "images/1.jpg",
+
         description:"In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
 		},
 		{id: 2,	
@@ -23,6 +52,7 @@ app.service('bookservice',function(){
         author: "Nigel Rees",
         title: "Sayings of the Century",
         price: 8.95,
+        rate:4,
         cover: "images/2.jpg",
         description:"In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
 		},
@@ -31,6 +61,7 @@ app.service('bookservice',function(){
         author: "Nigel Rees",
         title: "Sayings of the Century",
         price: 8.95,
+        rate:4,
         cover: "images/3.jpg",
         description:"In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
 		},
@@ -39,6 +70,7 @@ app.service('bookservice',function(){
         author: "Nigel Rees",
         title: "Sayings of the Century",
         price: 8.95,
+        rate:4,
         cover: "images/4.jpg",
          description:"In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
 		},
@@ -48,6 +80,7 @@ app.service('bookservice',function(){
         author: "Kate Williams ",
         title: "Sayings of the Century ",
         price: 8.95,
+        rate:4,
         cover: "images/1.jpg",
         description:"In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
 		},
@@ -56,6 +89,7 @@ app.service('bookservice',function(){
         author: "Nigel Rees",
         title: "Sayings of the Century",
         price: 8.95,
+        rate:4,
         cover: "images/2.jpg",
         description:"In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
 		},
@@ -64,6 +98,7 @@ app.service('bookservice',function(){
         author: "Nigel Rees",
         title: "Sayings of the Century",
         price: 8.95,
+        rate:4,
         cover: "images/3.jpg",
         description:"In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
 		},
@@ -72,6 +107,43 @@ app.service('bookservice',function(){
         author: "Nigel Rees",
         title: "Sayings of the Century",
         price: 9,
+        rate:4,
+        cover: "images/4.jpg",
+         description:"In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
+		},{
+		id: 9,	
+		category: "Romance",
+        author: "Kate Williams ",
+        title: "Sayings of the Century ",
+        price: 8.95,
+        rate:4,
+        cover: "images/1.jpg",
+        description:"In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
+		},
+		{id: 10,	
+		category: "Detective Story",
+        author: "Nigel Rees",
+        title: "Sayings of the Century",
+        price: 8.95,
+        rate:4,
+        cover: "images/2.jpg",
+        description:"In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
+		},
+		{id: 11,	
+		category: "Horror",
+        author: "Nigel Rees",
+        title: "Sayings of the Century",
+        price: 8.95,
+        rate:4,
+        cover: "images/3.jpg",
+        description:"In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
+		},
+		{id: 12,	
+		category: "Romance",
+        author: "Nigel Rees",
+        title: "Sayings of the Century",
+        price: 9,
+        rate:4,
         cover: "images/4.jpg",
          description:"In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
 		}]
@@ -82,14 +154,21 @@ app.controller("BooksController",['bookservice',function(bookservice){
 	var self = this;
 	self.books = bookservice.books;
 	self.category = bookservice.category;
-	self.tab ='home';
-	self.selectTab = function(setTab){
-		self.tab = setTab;
+  self.author=[
+    {id:1,name:"Kate Williams",image:"images/8.jpg"},
+    {id:2,name:"Nigel Rees",image:"images/8.jpg"},
+    {id:3,name:"Christian Louboutin",image:"images/8.jpg"},
+    {id:4,name:"Hennie Aucamp",image:"images/8.jpg"},
+    {id:5,name:"Jean Aue",image:"images/8.jpg"},
+  ]
+	// self.tab ='home';
+	// self.selectTab = function(setTab){
+	// 	self.tab = setTab;
 
-	};
-	self.isSelectedTab = function(checkTab){
-		return self.tab === checkTab
-	};
+	// };
+	// self.isSelectedTab = function(checkTab){
+	// 	return self.tab === checkTab
+	// };
 
 }])
 app.controller("carousel",function(){
@@ -111,4 +190,23 @@ app.controller("carousel",function(){
   	this.activeSlide = 0;
   			
 })
-
+app.controller('CategoryController',['bookservice',function(bookservice){
+		var self = this;
+	self.books = bookservice.books;
+	self.category = bookservice.category;
+		self.viewby = 10;
+		self.bigTotalItems = self.books.length;
+		self.currentPage = 4;
+  		self.itemsPerPage = self.viewby;
+  		self.maxSize = 10
+}])
+app.controller('AdminController',['bookservice',function(bookservice){
+	var self = this;
+	self.books = bookservice.books;
+	self.category = bookservice.category;
+}])
+app.controller('ItemController',['bookservice',function(bookservice){
+  var self = this;
+  self.books = bookservice.books;
+  self.category = bookservice.category;
+}])

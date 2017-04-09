@@ -1,5 +1,4 @@
-/* default */
-
+/*
 *{
 	font-family: 'Roboto', sans-serif;
 }
@@ -42,11 +41,12 @@ ul{
 .search {
 	margin-top:10px;
 }
-
 footer{
-	color:#fff;
+	padding-bottom:0;
 }
+
 .footer-copyright{
+	background-color: lightgray;
 	margin-top:20px;
 }
 .item .panel{
@@ -56,11 +56,138 @@ footer{
 	padding: 10px
 }
 
-
+.card {
+	margin:20px;
+	padding:10px;
+}
 
 @media screen and (max-width: 768px){
 	.carousel-control{
 		display: none;
 	}
 
+ }*/
+ a, a:hover, a:focus{
+	
+	text-decoration: none;
+}
+ footer ul>li{
+ 	display: block;
+ 	padding: 0px;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    display: block;
+
  }
+ .wrapper{
+ 	padding-bottom:0px;
+ }
+
+ .wrapper .main.main-raised{
+ 	background-color:#243238;
+ 	color: #fff;
+ 	margin:0px;
+ 	padding-top: 20px;
+ }
+ .footer-copyright{
+ 	border-top:solid 2px #999999;
+ 	padding: 10px;
+ }
+ 
+
+/*----------*/
+.navbar-brand img{
+	width: 50px;
+	margin-top: -10px;
+}
+.navbar{
+background-color:#243238;
+}
+#search{
+	display:none;
+}
+.form-group{
+	margin:0;
+}
+.dropdown-menu{
+	margin-top:10px;
+}
+.category:hover  .dropdown-menu{
+	display: block;
+
+}
+/*-----*/
+.panel .panel-heading , .heading{
+	background-color:#243238;
+	
+}
+.panel .panel-heading h5, .heading h5{
+	color: #FFF;
+}
+.heading{
+	padding: 10px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+.item {
+		text-align:center;
+
+	}
+.item img{
+	width:100%;
+	  transition: 2s;
+}
+.item .panel-footer{
+	background-color: #fff;
+}
+ .card {
+	margin-top:20px;
+	margin-bottom:20px;
+	padding:20px;
+	position:relative;
+	
+}
+.addBook .card-title{
+	margin-bottom: 20px;
+}
+.addBook label.control-label{
+	font-size: 14px;
+    line-height: 1.42857;
+}
+.price.ng-binding {
+    color: #2BBBAD;
+    font-weight: 500;
+}
+.hoverPanel{
+	 -webkit-transition: 2s; 
+	     transition: 2s;
+}
+.item:hover .hoverPanel{
+	display:block;
+
+}
+.media{
+	text-align:center;
+}
+@media screen and (max-width: 768px){
+	.carousel-control{
+		display: none;
+	}
+	#search{
+		display:inline;
+	}
+	.search{
+		display:inline;
+	}
+	.hoverPanel{
+	display:block;
+	}
+	.item .panel-body, .item .panel-footer {
+		display: inline-block;
+		border: none;
+		text-align:center;
+	}
+
+ }
+
