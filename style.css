@@ -134,10 +134,7 @@ background-color:#243238;
 		text-align:center;
 
 	}
-.item img{
-	width:100%;
-	  transition: 2s;
-}
+
 .item .panel-footer{
 	background-color: #fff;
 }
@@ -169,6 +166,15 @@ background-color:#243238;
 }
 .media{
 	text-align:center;
+}
+.imgCarousel{
+	width: initial;
+}
+.multi-item-carousel .carousel-indicators li{
+	display: none;
+}
+.carousel .carousel-control{
+	width: 10%;
 }
 @media screen and (max-width: 768px){
 	.carousel-control{
