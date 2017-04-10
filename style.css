@@ -110,10 +110,10 @@ background-color:#243238;
 .form-group{
 	margin:0;
 }
-.dropdown-menu{
-	margin-top:10px;
+.navbar .navbar-nav > li > .dropdown-menu{
+	margin-top:0px;
 }
-.category:hover  .dropdown-menu{
+.category:hover  .dropdown-menu,.category:focus .dropdown-menu,.dropdown-menu:focus  .dropdown-menu{
 	display: block;
 
 }
