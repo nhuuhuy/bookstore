@@ -47,10 +47,6 @@ footer ul>li {
     border-radius: 2px;
 }
 
-#search {
-    display: none;
-}
-
 .form-group {
     margin: 0;
 }
@@ -237,6 +233,37 @@ ul.dropdown-cart li .item-right button {
     margin-top: 14px;
 }
 
+.search {
+    position: relative;
+    left: 5px;
+}
+
+#search {
+    height: 42px;
+    color: #333
+}
+
+.star {
+    color: #fbc02d
+}
+
+.imgItem {
+    width: 75px
+}
+
+.reviews.card::after {
+    content: '';
+    position: absolute;
+    left: 42%;
+    top: 100%;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #e8e8e8;
+    clear: both;
+}
+
 @media screen and (min-width:768px) {
     .bookMenu.collapse {
         display: block!important
@@ -248,7 +275,7 @@ ul.dropdown-cart li .item-right button {
         display: none;
     }
     #search {
-        display: inline;
+        width: 70%
     }
     .search {
         display: inline!important;

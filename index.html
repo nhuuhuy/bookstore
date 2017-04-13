@@ -76,7 +76,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="wrap">
+                    <div class=" row wrap">
                         <div class="heading col-sm-12 ">
                             <h5>New arrivals</h5>
                         </div>
@@ -95,7 +95,7 @@
                                     <p class="price">{{book.price}}$</p>
 
                                     <button class="btn btn-danger btn-xs "><i class="fa fa-shopping-cart"></i> </button>
-                                    <button class="btn btn-default btn-fab btn-xs btn-fab-mini btn-round "><i class="fa fa-heart" ></i></button>
+                                    <button class="btn btn-default btn-xs "><i class="fa fa-heart" ></i></button>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +119,7 @@
                                     <p class="price">{{book.price}}$</p>
 
                                     <button class="btn btn-danger btn-xs "><i class="fa fa-shopping-cart"></i> </button>
-                                    <button class="btn btn-default btn-fab btn-xs btn-fab-mini btn-round "><i class="fa fa-heart" ></i></button>
+                                    <button class="btn btn-default btn-xs "><i class="fa fa-heart" ></i></button>
 
                                 </div>
                             </div>
@@ -147,7 +147,7 @@
                                                 <p class="price">{{slide.price}}$</p>
 
                                                 <button class="btn btn-danger btn-xs "><i class="fa fa-shopping-cart"></i> </button>
-                                                <button class="btn btn-default btn-fab btn-xs btn-fab-mini btn-round "><i class="fa fa-heart" ></i></button>
+                                                <button class="btn btn-default btn-xs "><i class="fa fa-heart" ></i></button>
 
                                             </div>
                                         </div>
@@ -214,7 +214,7 @@
                                     <p class="price">{{book.price}}$</p>
 
                                     <button class="btn btn-danger btn-xs "><i class="fa fa-shopping-cart"></i> </button>
-                                    <button class="btn btn-default btn-fab btn-xs btn-fab-mini btn-round "><i class="fa fa-heart" ></i></button>
+                                    <button class="btn btn-default btn-xs "><i class="fa fa-heart" ></i></button>
 
                                 </div>
                             </div>
@@ -229,42 +229,72 @@
     </script>
     <script type="text/ng-template" id="pages/admin.html">
         <div class="container" ng-controller="AdminController as adminctrl">
-            <div class="col-md-8 col-sm-offset-2 addBook">
-                <div class="card card-form">
-                    <div class="card-title">Add New Book</div>
-                    <form name="postForm " ng-submit=" ">
-                        <div class="form-group label-floating">
-                            <label class="control-label" for="inputTitle">Title:</label>
-                            <input class="form-control" type="text" ng-model="adiminctrl.books.title" id="inputTitle" />
-                        </div>
-                        <div class="form-group label-floating">
-                            <label class="control-label" for="inputAuthor">Author:</label>
-                            <input class="form-control" type="text" ng-model="adiminctrl.books.author" id="inputAuthor" />
-                        </div>
-                        <div class="form-group label-floating">
-                            <label class="control-label" for="inputDescription">Description</label>
-                            <textarea class="form-control" ng-model="adiminctrl.books.description" id="inputDescription"></textarea>
-                        </div>
-                        <div class="form-group label-floating">
-                            <label class="control-label" for="inputPrice">Price:</label>
-                            <input class="form-control" type="text" ng-model="adminctrl.books.price" id="inputPrice" />
-                        </div>
+            <div class="row">
+                <div class="col-sm-4">
 
-                        <div class="form-group col-sm-6">
-                            <label class="control-label" for="inputCover">Upload cover <i class="fa fa-camera "></i></label>
-                            <input type="file" id="uploadimg" ng-model="adiminctrl.books.cover" id="inputCover">
-                        </div>
-                        <div class="form-group col-sm-6">
-                            <label class="control-label" for="">Category</label>
-                            <select class="form-control" name="categoryUpdate" ng-model="adminctrl.books.category">
-		               	<option ng-repeat="category in adminctrl.category" value="{{category.name}}" ng-model="adminctrl.books.category">{{category.name}}</option>
-		               </select>
-                        </div>
-                        <input class="btn btn-danger" type="submit" value="Submit" />
-                    </form>
+                    <div class="card sidebar-nav">
+                        <h5><i class="glyphicon glyphicon-home"></i>
+                            <small><b>MANAGEMENT</b></small>
+                        </h5>
+                        <ul class="nav nav-pills nav-pills-danger nav-stacked">
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><a href="#">Add</a></li>
+                            <li><a href="#">Search</a></li>
+                        </ul>
+                        <h5><i class="glyphicon glyphicon-user"></i>
+                            <small><b>USERS</b></small>
+                        </h5>
+                        <ul class="nav nav-pills nav-pills-danger nav-stacked">
+                            <li><a href="#">List</a></li>
+                            <li><a href="#">Manage</a></li>
+                        </ul>
+                    </div>
+
 
                 </div>
+
+
+                <div class="col-sm-8 addBook">
+                    <div class="card card-form">
+                        <div class="card-title">Add New Book</div>
+                        <form name="postForm " ng-submit=" ">
+                            <div class="form-group label-floating">
+                                <label class="control-label" for="inputTitle">Title:</label>
+                                <input class="form-control" type="text" ng-model="adiminctrl.books.title" id="inputTitle" />
+                            </div>
+                            <div class="form-group label-floating">
+                                <label class="control-label" for="inputAuthor">Author:</label>
+                                <input class="form-control" type="text" ng-model="adiminctrl.books.author" id="inputAuthor" />
+                            </div>
+                            <div class="form-group label-floating">
+                                <label class="control-label" for="inputDescription">Description</label>
+                                <textarea class="form-control" ng-model="adiminctrl.books.description" id="inputDescription"></textarea>
+                            </div>
+                            <div class="form-group label-floating">
+                                <label class="control-label" for="inputPrice">Price:</label>
+                                <input class="form-control" type="text" ng-model="adminctrl.books.price" id="inputPrice" />
+                            </div>
+
+                            <div class="form-group col-sm-6">
+                                <label class="control-label" for="inputCover">Upload cover <i class="fa fa-camera "></i></label>
+                                <input type="file" id="uploadimg" ng-model="adiminctrl.books.cover" id="inputCover">
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label" for="">Category</label>
+                                <select class="form-control" name="categoryUpdate" ng-model="adminctrl.books.category">
+		               	<option ng-repeat="category in adminctrl.category" value="{{category.name}}" ng-model="adminctrl.books.category">{{category.name}}</option>
+		               </select>
+                            </div>
+                            <input class="btn btn-danger" type="submit" value="Submit" />
+                        </form>
+
+                    </div>
+                </div>
+
+
+
             </div>
+
 
         </div>
     </script>
@@ -290,7 +320,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-9">
+                <div class="col-sm-9 ">
                     <div ng-repeat="book in itemctrl.books| limitTo:1">
                         <!-- <div class="col-sm-5">
 					<div class="box-image">
@@ -326,9 +356,14 @@
                         </div>
 
                         <div class="col-sm-7">
+
                             <div class="card">
                                 <h3> <strong>{{book.title}}</strong></h3>
-
+                                <span class=" fa fa-star star"></span>
+                                <span class=" fa fa-star star"></span>
+                                <span class=" fa fa-star star"></span>
+                                <span class=" fa fa-star star"></span>
+                                <span class=" fa fa-star"></span>
                                 <p>Author: <i>{{book.author}}</i></p>
                                 <h5 class="price">{{book.price}}$</h5>
                                 <h5>Description</h5>
@@ -358,10 +393,45 @@
                             </div>
 
                         </div>
+                        <div class=" reviews card">
+                            <div class="media">
+                                <div class="col-sm-2">
+                                    <a href="#">
+                                        <img class="media-object" src="images/8.jpg" alt="...">
+                                    </a>
+                                </div>
+                                <div class="col-sm-10 text-left">
+                                    <h4 class="media-heading">Kate Williams</h4>
+                                    Lorem ipsum dolor sit amet.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="media">
+                                <div class="col-sm-2">
+                                    <a href="#">
+                                        <img class="media-object" src="images/8.jpg" alt="...">
+                                    </a>
+                                </div>
+                                <div class="col-sm-10 text-left">
+                                    <h4 class="media-heading">Kate Williams</h4>
+                                    Lorem ipsum dolor sit amet.
+                                </div>
+                            </div>
+                        </div>
                         <div class=" card comment">
-                            <label for="">Comment:</label>
-                            <textarea class="form-control" rows="3"></textarea>
-                            <input class="btn btn-danger" type="submit" value="Submit" />
+                            <label for="">Rate</label>
+                            <span class=" fa fa-star "></span>
+                            <span class=" fa fa-star"></span>
+                            <span class=" fa fa-star"></span>
+                            <span class=" fa fa-star"></span>
+                            <span class=" fa fa-star"></span>
+                            <div class="form-group">
+                                <label for="">Comment:</label>
+                                <textarea class="form-control" rows="3"></textarea>
+                                <input class="btn btn-danger" type="submit" value="Submit" />
+                            </div>
+
                         </div>
                         <div class="wrap">
                             <div class="heading col-sm-12 hidden-xs">
@@ -400,7 +470,7 @@
     </script>
     <script type="text/ng-template" id="pages/cart.html">
         <div class="container" ng-controller="cartcontroller">
-            <div class="row wrap">
+            <div class="row wrap ">
                 <div class="col-sm-12 heading">
                     <h5>Shopping Cart</h5>
                 </div>
@@ -408,34 +478,34 @@
                     <table class="table table-bordered table-hover text-center ">
                         <thead>
                             <tr>
-                                <th class="col-sm-3 hidden-xs"></th>
-                                <th class="col-sm-4">Product Name</th>
-                                <th class="col-sm-1">Unit Price</th>
-                                <th class="col-sm-2">Quantity</th>
-                                <th class="col-sm-1">Subtotal</th>
-                                <th class="col-sm-1"></th>
+                                <th class=""></th>
+                                <th class=" ">Product Name</th>
+                                <th class="">Unit Price</th>
+                                <th class="">Quantity</th>
+                                <th class="">Subtotal</th>
+                                <th class=""></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="col-sm-3 hidden-xs"><img src="images/1.jpg" alt="" class="img-responsive  hidden-xs" /></td>
-                                <td class="col-sm-4">
-                                    <h5>Sayings of the Century</h5>
+                                <td class="hidden-xs"><img src="images/1.jpg" alt="" class="imgItem  hidden-xs" /></td>
+                                <td class="">
+                                    <h6>Sayings of the Century</h6>
                                 </td>
-                                <td class="price col-sm-1">8.95$</td>
-                                <td class="col-sm-2"><input type="number" value="1" min="1" class="form-control"></td>
-                                <td class="price col-sm-1">8.95$</td>
-                                <td class="col-sm-1"><button class="btn btn-default"><i class="fa fa-trash-o"></i></button></td>
+                                <td class="price ">8.95$</td>
+                                <td class=""><input type="number" value="1" min="1" class="form-control"></td>
+                                <td class="price ">8.95$</td>
+                                <td class=""><button class="btn btn-default btn-xs"><i class="fa fa-trash-o"></i></button></td>
                             </tr>
                             <tr>
-                                <td class="col-sm-3 hidden-xs"><img src="images/1.jpg" alt="" class="img-responsive  hidden-xs" /></td>
-                                <td class="col-sm-4">
-                                    <h5>Sayings of the Century</h5>
+                                <td class=" hidden-xs"><img src="images/1.jpg" alt="" class="imgItem  hidden-xs" /></td>
+                                <td class="">
+                                    <h6>Sayings of the Century</h6>
                                 </td>
-                                <td class="price col-sm-1">8.95$</td>
-                                <td class="col-sm-2"><input type="number" value="1" min="1" class="form-control"></td>
-                                <td class="price col-sm-1">8.95$</td>
-                                <td class="col-sm-1"><button class="btn btn-default"><i class="fa fa-trash-o"></i></button></td>
+                                <td class="price">8.95$</td>
+                                <td class=""><input type="number" value="1" min="1" class="form-control"></td>
+                                <td class="price ">8.95$</td>
+                                <td class=""><button class="btn btn-default btn-xs"><i class="fa fa-trash-o"></i></button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -513,19 +583,19 @@
             <div class="bookMenu" class=" navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-left ">
                     <li class="active "><a href="#/">Home</a></li>
-                    <li class="category visible-sm visible-xs dropdown "><a href="#/category" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Category <i class="fa  fa-caret-down "></i >	</a>
+                    <li class="category visible-xs dropdown "><a href="#/category" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Category <i class="fa  fa-caret-down "></i >	</a>
                         <ul class="cate dropdown-menu dropdown-menu-danger">
-                            <li ng-repeat="category in booksctrl.category"><a href="">{{category.name}}</a>></li>
+                            <li ng-repeat="category in booksctrl.category"><a href="">{{category.name}}</a></li>
                         </ul>
                     </li>
                     <li class=" "><a href="#/admin">Admin</a></li>
-                    <li class="form-inline">
-                        <button class="btn btn-danger search "><span class="glyphicon glyphicon-search"></span></button>
-                    </li>
-                    <li><input id="search" type="text" class="form-control text-center" placeholder="Search here"></li>
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <button class="btn btn-danger search "><span class="glyphicon glyphicon-search"></span></button>
+                        <input id="search" type="text" placeholder="Search here">
+                    </li>
                     <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-shopping-cart fa-2x"></i><span >Your cart</span ><span class="qty">(2)</span><span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-cart" role="menu">
                             <li>
