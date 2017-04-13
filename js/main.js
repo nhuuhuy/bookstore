@@ -232,3 +232,6 @@ app.controller('ItemController', ['bookservice', function(bookservice) {
     self.books = bookservice.books;
     self.category = bookservice.category;
 }])
+app.controller('cartcontroller', ['bookservice', function(bookservice) {
+
+}])

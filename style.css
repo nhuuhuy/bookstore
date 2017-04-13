@@ -1,5 +1,5 @@
 body {
-    padding-top: 70px;
+    padding-top: 75px;
     min-width: 320px
 }
 
@@ -59,12 +59,6 @@ footer ul>li {
     margin-top: 0px;
 }
 
-.category:hover .dropdown-menu,
-.category:focus .dropdown-menu,
-.dropdown-menu:focus .dropdown-menu {
-    display: block;
-}
-
 
 /*-----*/
 
@@ -73,6 +67,7 @@ footer ul>li {
     background-color: #243238;
 }
 
+.panel .panel-heading h5 a,
 .panel .panel-heading h5,
 .heading h5 {
     color: #FFF;
@@ -96,7 +91,7 @@ footer ul>li {
     width: 100%;
 }
 
-.item .panel-footer {
+.panel-footer {
     background-color: #fff;
 }
 
@@ -116,7 +111,7 @@ footer ul>li {
     line-height: 1.42857;
 }
 
-.price.ng-binding {
+.price {
     color: #2BBBAD;
     font-weight: 500;
 }
@@ -162,7 +157,7 @@ footer ul>li {
 .wrap {
     background-color: #fff;
     display: inline-block;
-    width: 100%
+    width: 100%;
 }
 
 #gallery_01 img {
@@ -242,6 +237,12 @@ ul.dropdown-cart li .item-right button {
     margin-top: 14px;
 }
 
+@media screen and (min-width:768px) {
+    .bookMenu.collapse {
+        display: block!important
+    }
+}
+
 @media screen and (max-width: 768px) {
     .carousel-control {
         display: none;
@@ -250,7 +251,7 @@ ul.dropdown-cart li .item-right button {
         display: inline;
     }
     .search {
-        display: inline;
+        display: inline!important;
     }
     .hoverPanel {
         display: block;
@@ -276,6 +277,15 @@ ul.dropdown-cart li .item-right button {
     }
     .homeCarousel h1.ng-binding {
         font-size: 2.5em;
+    }
+    ul.dropdown-cart li .item-left img,
+    ul.dropdown-cart li .item-left span.item-info {
+        color: #FFF;
+    }
+    ul.dropdown-cart li .item:hover {
+        background-color: #243238;
+        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
     }
 }
 
