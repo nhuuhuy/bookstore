@@ -1,5 +1,5 @@
 body {
-    padding-top: 75px;
+    padding-top: 70px;
     min-width: 320px
 }
 
@@ -55,6 +55,11 @@ footer ul>li {
     margin-top: 0px;
 }
 
+li.category.dropdown:hover+.navbar .navbar-nav>li>.dropdown-menu,
+{
+    display: block;
+}
+
 
 /*-----*/
 
@@ -63,7 +68,6 @@ footer ul>li {
     background-color: #243238;
 }
 
-.panel .panel-heading h5 a,
 .panel .panel-heading h5,
 .heading h5 {
     color: #FFF;
@@ -87,7 +91,7 @@ footer ul>li {
     width: 100%;
 }
 
-.panel-footer {
+.item .panel-footer {
     background-color: #fff;
 }
 
@@ -107,7 +111,7 @@ footer ul>li {
     line-height: 1.42857;
 }
 
-.price {
+.price.ng-binding {
     color: #2BBBAD;
     font-weight: 500;
 }
@@ -153,7 +157,7 @@ footer ul>li {
 .wrap {
     background-color: #fff;
     display: inline-block;
-    width: 100%;
+    width: 100%
 }
 
 #gallery_01 img {
@@ -233,35 +237,8 @@ ul.dropdown-cart li .item-right button {
     margin-top: 14px;
 }
 
-.search {
-    position: relative;
-    left: 5px;
-}
-
-#search {
-    height: 42px;
-    color: #333
-}
-
 .star {
     color: #fbc02d
-}
-
-.imgItem {
-    width: 75px
-}
-
-.reviews.card::after {
-    content: '';
-    position: absolute;
-    left: 42%;
-    top: 100%;
-    width: 0;
-    height: 0;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 20px solid #e8e8e8;
-    clear: both;
 }
 
 @media screen and (min-width:768px) {
@@ -275,10 +252,10 @@ ul.dropdown-cart li .item-right button {
         display: none;
     }
     #search {
-        width: 70%
+        display: inline;
     }
     .search {
-        display: inline!important;
+        display: inline;
     }
     .hoverPanel {
         display: block;
@@ -304,15 +281,6 @@ ul.dropdown-cart li .item-right button {
     }
     .homeCarousel h1.ng-binding {
         font-size: 2.5em;
-    }
-    ul.dropdown-cart li .item-left img,
-    ul.dropdown-cart li .item-left span.item-info {
-        color: #FFF;
-    }
-    ul.dropdown-cart li .item:hover {
-        background-color: #243238;
-        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
     }
 }
 
