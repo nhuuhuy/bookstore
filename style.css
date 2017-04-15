@@ -1,5 +1,4 @@
 body {
-    padding-top: 70px;
     min-width: 320px
 }
 
@@ -49,6 +48,18 @@ footer ul>li {
 
 .form-group {
     margin: 0;
+}
+
+.navbar .navbar-nav>li>a {
+    padding-top: 10px;
+    padding-bottom: 10px
+}
+
+.navbar-fixed-top {
+    height: 50px;
+    padding-right: 5px;
+    box-shadow: none;
+    border-bottom: solid #999999 1px
 }
 
 .navbar .navbar-nav>li>.dropdown-menu {
@@ -241,13 +252,92 @@ ul.dropdown-cart li .item-right button {
     color: #fbc02d
 }
 
+.imgItem {
+    width: 75px
+}
+
+.reviews.card {
+    position: relative;
+    box-shadow: none
+}
+
+
+/*
+.shopCart,
+.like {
+    opacity: 1;
+}
+
+.item.panel.panel-default:hover .shopCart,
+.item.panel.panel-default:focus .shopCart,
+.item.panel.panel-default:focus .like,
+.item.panel.panel-default:hover .like {
+    animation: example 4s ease-in-out;
+}
+
+@keyframes example {
+    0% {
+        opacity: 0;
+        transform: translateY(-150px)
+    }
+    25% {
+        opacity: 0.5;
+        transform: translateY(75px)
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(10px)
+    }
+    100% {
+        transform: translateY(0px)
+    }
+}*/
+
+.reviews.card::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent;
+    border-bottom: 0;
+    bottom: -15px;
+    left: 22px;
+    border-top-color: #FFF;
+    border-width: 15px;
+}
+
+.search {
+    position: relative;
+    left: 10px;
+    height: 41px;
+    border: 1px solid white;
+    background-color: white!important;
+    margin-bottom: 0px;
+}
+
+.btnSearch {
+    position: relative;
+    top: -7px;
+    border-radius: 0px 3px 3px 0px
+}
+
 @media screen and (min-width:768px) {
     .bookMenu.collapse {
         display: block!important
     }
+    .header {
+        margin-top: 50px!important;
+    }
 }
 
 @media screen and (max-width: 768px) {
+    .header {
+        margin-top: 0px!important;
+    }
+    .navbar .navbar-brand {
+        padding: 3px 15px;
+    }
     .carousel-control {
         display: none;
     }
@@ -281,6 +371,9 @@ ul.dropdown-cart li .item-right button {
     }
     .homeCarousel h1.ng-binding {
         font-size: 2.5em;
+    }
+    .top-head {
+        display: none;
     }
 }
 

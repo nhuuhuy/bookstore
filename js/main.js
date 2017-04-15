@@ -24,6 +24,10 @@ app.config(function($routeProvider) {
             templateUrl: 'pages/cart.html',
             controller: 'cartcontroller'
         })
+        .when('/login', {
+            templateUrl: 'pages/login.html',
+            controller: 'LoginController'
+        })
         .otherwise({ redirectTo: '/' });
 });
 
@@ -235,3 +239,4 @@ app.controller('ItemController', ['bookservice', function(bookservice) {
 app.controller('cartcontroller', ['bookservice', function(bookservice) {
 
 }])
+app.controller('LoginController', function() {})
