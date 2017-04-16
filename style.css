@@ -50,6 +50,10 @@ footer ul>li {
     margin: 0;
 }
 
+.search {
+    padding: 4px
+}
+
 .navbar .navbar-nav>li>a {
     padding-top: 10px;
     padding-bottom: 10px
@@ -261,38 +265,6 @@ ul.dropdown-cart li .item-right button {
     box-shadow: none
 }
 
-
-/*
-.shopCart,
-.like {
-    opacity: 1;
-}
-
-.item.panel.panel-default:hover .shopCart,
-.item.panel.panel-default:focus .shopCart,
-.item.panel.panel-default:focus .like,
-.item.panel.panel-default:hover .like {
-    animation: example 4s ease-in-out;
-}
-
-@keyframes example {
-    0% {
-        opacity: 0;
-        transform: translateY(-150px)
-    }
-    25% {
-        opacity: 0.5;
-        transform: translateY(75px)
-    }
-    50% {
-        opacity: 1;
-        transform: translateY(10px)
-    }
-    100% {
-        transform: translateY(0px)
-    }
-}*/
-
 .reviews.card::after {
     content: "";
     position: absolute;
@@ -329,6 +301,34 @@ ul.dropdown-cart li .item-right button {
     .header {
         margin-top: 50px!important;
     }
+    .shopCart,
+    .like {
+        opacity: 0;
+    }
+    .item.panel.panel-default:hover .shopCart,
+    .item.panel.panel-default:focus .shopCart,
+    .item.panel.panel-default:focus .like,
+    .item.panel.panel-default:hover .like {
+        animation: example 4s ease-in-out forwards;
+    }
+    @keyframes example {
+        0% {
+            opacity: 0;
+            transform: translateY(150px)
+        }
+        25% {
+            opacity: 0.5;
+            transform: translateY(-20px)
+        }
+        50% {
+            opacity: 1;
+            transform: translateY(10px)
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0px)
+        }
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -338,13 +338,17 @@ ul.dropdown-cart li .item-right button {
     .navbar .navbar-brand {
         padding: 3px 15px;
     }
+    .groupSearch {
+        margin-top: 5px;
+        padding: 0px;
+    }
+    .groupSearch .input-group {
+        margin-left: -5px;
+    }
     .carousel-control {
         display: none;
     }
     #search {
-        display: inline;
-    }
-    .search {
         display: inline;
     }
     .hoverPanel {
@@ -384,5 +388,13 @@ ul.dropdown-cart li .item-right button {
     }
     .homeCarousel .carousel .carousel-caption {
         padding-bottom: 50px;
+    }
+    .table>thead>tr>th,
+    .table>tbody>tr>th,
+    .table>tfoot>tr>th,
+    .table>thead>tr>td,
+    .table>tbody>tr>td,
+    .table>tfoot>tr>td {
+        padding: 0px
     }
 }

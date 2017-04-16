@@ -61,11 +61,11 @@
                         <div class="col-md-3 col-sm-6  box " ng-repeat="book in booksctrl.books| limitTo: 4">
                             <div class="item panel panel-default">
                                 <div class="panel-body">
-                                    <a href="#/item"><img ng-src="{{book.cover}}" class="panelImage" alt=""></a>
+                                    <a href="#/item/{{booksctrl.books.indexOf(book)}}"><img ng-src="{{book.cover}}" class="panelImage" alt=""></a>
                                 </div>
                                 <div class="panel-footer">
                                     <h5>
-                                        <a href="#/item" class="title">{{book.title | limitTo:20}}...</a>
+                                        <a href="#/item/{{booksctrl.books.indexOf(book)}}" class="title">{{book.title | limitTo:20}}...</a>
                                     </h5>
                                     <p class="author">{{book.author}}</p>
 
@@ -86,11 +86,11 @@
                         <div class="col-md-3 col-sm-6  box " ng-repeat="book in booksctrl.books| limitTo: 4">
                             <div class="item panel panel-default">
                                 <div class="panel-body">
-                                    <a href="#/item"><img ng-src="{{book.cover}}" class="panelImage" alt=""></a>
+                                    <a href="#/item/{{booksctrl.books.indexOf(book)}}"><img ng-src="{{book.cover}}" class="panelImage" alt=""></a>
                                 </div>
                                 <div class="panel-footer">
                                     <h5>
-                                        <a href="#/item" class="title">{{book.title | limitTo:20}}...</a>
+                                        <a href="#/item/{{booksctrl.books.indexOf(book)}}" class="title">{{book.title | limitTo:20}}...</a>
                                     </h5>
                                     <p class="author">{{book.author}}</p>
                                     <p class="price">{{book.price}}$</p>
@@ -114,11 +114,11 @@
                                     <div class="col-xs-4 box">
                                         <div class="item panel panel-default">
                                             <div class="panel-body">
-                                                <a href="#/item"><img ng-src="{{slide.cover}}" alt="" class="imgCarousel"></a>
+                                                <a href="#/item/{{booksctrl.books.indexOf(book)}}"><img ng-src="{{slide.cover}}" alt="" class="imgCarousel"></a>
                                             </div>
                                             <div class="panel-footer">
                                                 <h5>
-                                                    <a href="#/item" class="title">{{slide.title | limitTo:20}}...</a>
+                                                    <a href="#/item/{{booksctrl.books.indexOf(book)}}" class="title">{{slide.title | limitTo:20}}...</a>
                                                 </h5>
 
                                                 <p class="price">{{slide.price}}$</p>
@@ -181,11 +181,11 @@
                         <div class="col-md-3 col-sm-6  box " ng-repeat="book in categoryctrl.books">
                             <div class="item panel panel-default">
                                 <div class="panel-body">
-                                    <a href="#/item"><img ng-src="{{book.cover}}" class="panelImage" alt=""></a>
+                                    <a href="#/item/{{booksctrl.books.indexOf(book)}}"><img ng-src="{{book.cover}}" class="panelImage" alt=""></a>
                                 </div>
                                 <div class="panel-footer">
                                     <h5>
-                                        <a href="#/item" class="title">{{book.title | limitTo:20}}...</a>
+                                        <a href="#/item/{{booksctrl.books.indexOf(book)}}" class="title">{{book.title | limitTo:20}}...</a>
                                     </h5>
                                     <p class="author">{{book.author}}</p>
                                     <p class="price">{{book.price}}$</p>
@@ -273,13 +273,13 @@
         </div>
     </script>
     <script type="text/ng-template" id="pages/item.html">
-        <div class="container" ng-controller="ItemController as itemctrl">
+        <div class="container" ng-controller="ItemController as itemctrl" ng-model="itemctrl.books">
             <div class="row">
                 <div class="col-sm-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#/home">Home</a></li>
                         <li class="breadcrumb-item"><a href="#/category">category</a></li>
-                        <li class="breadcrumb-item active">{{book.title}}</li>
+                        <li class="breadcrumb-item active">{{itemctrl.books[itemctrl.whichItem].title}}</li>
                     </ol>
                 </div>
                 <div class="col-sm-3 sidenav hidden-xs">
@@ -295,7 +295,7 @@
                     </div>
                 </div>
                 <div class="col-sm-9">
-                    <div ng-repeat="book in itemctrl.books| limitTo:1">
+                    <div>
                         <!-- <div class="col-sm-5">
 					<div class="box-image">
 						<img ng-src="{{book.cover}}" alt="">
@@ -305,7 +305,7 @@
                             <div class="box-image card">
                                 <!-- <img ng-src="{{book.cover}}" alt=""> -->
                                 <div class="col-xs-12">
-                                    <img id="img_01" src="images/1.jpg" data-zoom-image="images/1big.jpg" class="img-responsive" />
+                                    <img id="img_01" ng-src="{{itemctrl.books[itemctrl.whichItem].cover}}" data-zoom-image="{{itemctrl.books[itemctrl.whichItem].bigCover}}" class="img-responsive" />
                                 </div>
 
                                 <div class="col-xs-12 clearfix " id="gal1">
@@ -331,16 +331,16 @@
 
                         <div class="col-sm-7">
                             <div class="card">
-                                <h3> <strong>{{book.title}}</strong></h3>
+                                <h3> <strong>{{itemctrl.books[itemctrl.whichItem].title}}</strong></h3>
                                 <span class=" fa fa-star star"></span>
                                 <span class=" fa fa-star star"></span>
                                 <span class=" fa fa-star star"></span>
                                 <span class=" fa fa-star star"></span>
                                 <span class=" fa fa-star"></span>
-                                <p>Author: <i>{{book.author}}</i></p>
-                                <h5 class="price">{{book.price}}$</h5>
+                                <p>Author: <i>{{itemctrl.books[itemctrl.whichItem].author}}</i></p>
+                                <h5 class="price">{{itemctrl.books[itemctrl.whichItem].price}}$</h5>
                                 <h5>Description</h5>
-                                <p>{{book.description}}</p>
+                                <p>{{itemctrl.books[itemctrl.whichItem].description}}</p>
                                 <div class=" col-sm-12">
                                     <div class="form-group col-sm-6">
                                         <label for="">
@@ -434,11 +434,11 @@
                                     <div class="col-xs-4 box">
                                         <div class="item panel panel-default">
                                             <div class="panel-body text-center">
-                                                <a href="#/item"><img ng-src="{{slide.cover}}" alt="" class="img-responsive"></a>
+                                                <a href="#/item/{{booksctrl.books.indexOf(book)}}"><img ng-src="{{slide.cover}}" alt="" class="img-responsive"></a>
                                             </div>
                                             <div class="panel-footer">
                                                 <h5>
-                                                    <a href="#/item" class="title">{{slide.title | limitTo:20}}...</a>
+                                                    <a href="#/item/{{booksctrl.books.indexOf(book)}}" class="title">{{slide.title | limitTo:20}}...</a>
                                                 </h5>
 
                                                 <p class="price">{{slide.price}}$</p>

@@ -16,9 +16,11 @@ app.config(function($routeProvider) {
             templateUrl: 'pages/admin.html',
             controller: 'AdminController'
         })
-        .when('/item', {
+        .when('/item/:itemId', {
             templateUrl: 'pages/item.html',
-            controller: 'ItemController'
+            controller: 'ItemController',
+            controllerAs: 'itemctrl'
+
         })
         .when('/cart', {
             templateUrl: 'pages/cart.html',
@@ -52,6 +54,7 @@ app.service('bookservice', function() {
             price: 8.95,
             rate: 4,
             cover: "images/1.jpg",
+            bigCover: "images/1big.jpg",
 
             description: "In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
         },
@@ -63,6 +66,7 @@ app.service('bookservice', function() {
             price: 8.95,
             rate: 4,
             cover: "images/2.jpg",
+            bigCover: "images/2big.jpg",
             description: "In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
         },
         {
@@ -73,6 +77,7 @@ app.service('bookservice', function() {
             price: 8.95,
             rate: 4,
             cover: "images/3.jpg",
+            bigCover: "images/3big.jpg",
             description: "In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
         },
         {
@@ -83,6 +88,7 @@ app.service('bookservice', function() {
             price: 8.95,
             rate: 4,
             cover: "images/4.jpg",
+            bigCover: "images/4big.jpg",
             description: "In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
         },
         {
@@ -93,6 +99,7 @@ app.service('bookservice', function() {
             price: 8.95,
             rate: 4,
             cover: "images/1.jpg",
+            bigCover: "images/1big.jpg",
             description: "In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
         },
         {
@@ -103,6 +110,7 @@ app.service('bookservice', function() {
             price: 8.95,
             rate: 4,
             cover: "images/2.jpg",
+            bigCover: "images/2big.jpg",
             description: "In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
         },
         {
@@ -113,6 +121,7 @@ app.service('bookservice', function() {
             price: 8.95,
             rate: 4,
             cover: "images/3.jpg",
+            bigCover: "images/3big.jpg",
             description: "In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
         },
         {
@@ -123,6 +132,7 @@ app.service('bookservice', function() {
             price: 9,
             rate: 4,
             cover: "images/4.jpg",
+            bigCover: "images/4big.jpg",
             description: "In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
         }, {
             id: 8,
@@ -132,6 +142,7 @@ app.service('bookservice', function() {
             price: 8.95,
             rate: 4,
             cover: "images/1.jpg",
+            bigCover: "images/1big.jpg",
             description: "In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
         },
         {
@@ -142,6 +153,7 @@ app.service('bookservice', function() {
             price: 8.95,
             rate: 4,
             cover: "images/2.jpg",
+            bigCover: "images/2big.jpg",
             description: "In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
         },
         {
@@ -152,6 +164,7 @@ app.service('bookservice', function() {
             price: 8.95,
             rate: 4,
             cover: "images/3.jpg",
+            bigCover: "images/3big.jpg",
             description: "In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
         },
         {
@@ -231,10 +244,11 @@ app.controller('AdminController', ['bookservice', function(bookservice) {
     self.books = bookservice.books;
     self.category = bookservice.category;
 }])
-app.controller('ItemController', ['bookservice', function(bookservice) {
+app.controller('ItemController', ['bookservice', '$routeParams', function(bookservice, $routeParams) {
     var self = this;
     self.books = bookservice.books;
     self.category = bookservice.category;
+    self.whichItem = $routeParams.itemId
 }])
 app.controller('cartcontroller', ['bookservice', function(bookservice) {
 
