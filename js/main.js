@@ -175,6 +175,7 @@ app.service('bookservice', function() {
             price: 9,
             rate: 4,
             cover: "images/4.jpg",
+            bigCover: "images/4big.jpg",
             description: "In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
         }
     ]
@@ -248,7 +249,16 @@ app.controller('ItemController', ['bookservice', '$routeParams', function(bookse
     var self = this;
     self.books = bookservice.books;
     self.category = bookservice.category;
-    self.whichItem = $routeParams.itemId
+    self.whichItem = $routeParams.itemId;
+    self.rate = 0;
+    self.max = 5;
+    self.isReadonly = false;
+    self.hoveringOver = function(value) {
+        self.overStar = value;
+    };
+    self.ratingStates = [
+        { stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty' }
+    ]
 }])
 app.controller('cartcontroller', ['bookservice', function(bookservice) {
 
