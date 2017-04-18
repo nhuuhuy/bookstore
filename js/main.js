@@ -1,4 +1,4 @@
-var app = angular.module('BookApp', ['ui.bootstrap', 'ngRoute']);
+var app = angular.module('BookApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap']);
 
 app.config(function($routeProvider) {
     $routeProvider
@@ -227,7 +227,7 @@ app.controller("carousel", function() {
 })
 app.controller("MultiCarousel", ['bookservice', function(bookservice) {
     this.slides = bookservice.books;
-    this.myInterval = 3000;
+    this.myInterval = 4000;
     this.activeSlide = 1;
 }])
 app.controller('CategoryController', ['bookservice', function(bookservice) {
