@@ -47,4 +47,5 @@ jQuery(document).ready(function($) {
             dropdownMenu.parent().toggleClass("open");
         }
     });
+
 })

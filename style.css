@@ -168,6 +168,9 @@ li.category.dropdown:hover+.navbar .navbar-nav>li>.dropdown-menu,
     position: relative;
 }
 
+
+/* plugin css */
+
 #gal1 {
     margin-top: 20px;
     border-top: 1px solid lightgray;
@@ -182,6 +185,16 @@ li.category.dropdown:hover+.navbar .navbar-nav>li>.dropdown-menu,
 
 #gallery_01 img {
     border: 2px solid white;
+}
+
+.zoomWrapper {
+    height: 301px!important;
+    width: 213px!important;
+}
+
+.zoomWrapper img {
+    position: relative!important;
+    width: 100%!important
 }
 
 

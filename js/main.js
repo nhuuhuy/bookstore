@@ -19,7 +19,7 @@ app.config(function($routeProvider) {
         .when('/item/:itemId', {
             templateUrl: 'pages/item.html',
             controller: 'ItemController',
-            controllerAs: 'itemctrl'
+
 
         })
         .when('/cart', {
@@ -187,20 +187,12 @@ app.controller("BooksController", ['bookservice', function(bookservice) {
     self.books = bookservice.books;
     self.category = bookservice.category;
     self.author = [
-            { id: 1, name: "Kate Williams", image: "images/8.jpg" },
-            { id: 2, name: "Nigel Rees", image: "images/8.jpg" },
-            { id: 3, name: "Christian Louboutin", image: "images/8.jpg" },
-            { id: 4, name: "Hennie Aucamp", image: "images/8.jpg" },
-            { id: 5, name: "Jean Aue", image: "images/8.jpg" },
-        ]
-        // self.tab ='home';
-        // self.selectTab = function(setTab){
-        //  self.tab = setTab;
-
-    // };
-    // self.isSelectedTab = function(checkTab){
-    //  return self.tab === checkTab
-    // };
+        { id: 1, name: "Kate Williams", image: "images/8.jpg" },
+        { id: 2, name: "Nigel Rees", image: "images/8.jpg" },
+        { id: 3, name: "Christian Louboutin", image: "images/8.jpg" },
+        { id: 4, name: "Hennie Aucamp", image: "images/8.jpg" },
+        { id: 5, name: "Jean Aue", image: "images/8.jpg" },
+    ]
 
 }])
 app.controller("carousel", function() {
