@@ -51,56 +51,72 @@
     <nav class="navbar navbar-fixed-top top-head">
         <div class="container-fluid">
             <div class="row">
-                <ul class="nav navbar-nav navbar-right  hidden-xs ">
-                    <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-shopping-cart fa-2x"></i><span >Your cart</span ><span class="qty">(2)</span><span class="caret"></span></a>
-                        <ul class="dropdown-menu dropdown-cart" role="menu">
-                            <li>
-                                <span class="item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-9 col-md-offset-3 groupSearch hidden-sm hidden-xs">
+
+                            <div class="input-group">
+                                <input type="text" class="form-control search" placeholder="Search">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-danger btnSearch" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <ul class="nav navbar-nav navbar-right  hidden-xs col-md-3 pull right ">
+
+                        <li class="dropdown cart"><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-shopping-cart fa-2x"></i><span >Your cart</span ><span class="qty">(2)</span><span class="caret"></span></a>
+                            <ul class="dropdown-menu dropdown-cart" role="menu">
+                                <li>
+                                    <span class="item">
 		                    <span class="item-left">
 		                        <img src="images/1.jpg" alt="" />
 		                        <span class="item-info">
 		                            <span>Item name</span>
-                                <span>23$</span>
-                                </span>
-                                </span>
-                                <span class="item-right">
+                                    <span>23$</span>
+                                    </span>
+                                    </span>
+                                    <span class="item-right">
 		                        <button class="btn btn-xs btn-danger btn-fab btn-fab-mini btn-round pull-right">x</button>
 		                    </span>
-                                </span>
-                            </li>
-                            <li>
-                                <span class="item">
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="item">
 		                    <span class="item-left">
 		                        <img src="images/1.jpg" alt="" />
 		                        <span class="item-info">
 		                            <span>Item name</span>
-                                <span>23$</span>
-                                </span>
-                                </span>
-                                <span class="item-right">
+                                    <span>23$</span>
+                                    </span>
+                                    </span>
+                                    <span class="item-right">
 		                        <button class="btn btn-xs btn-danger btn-fab btn-fab-mini btn-round pull-right">x</button>
 		                    </span>
-                                </span>
-                            </li>
-                            <li class="divider"></li>
-                            <li><a class="text-center" href="#/cart">View Cart</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            <i class="fa fa-user fa-2x"></i><span>User</span>
-                        </a>
-                        <ul class=" dropdown-menu dropdown-menu-danger">
-                            <li><a href="">My Account</a></li>
-                            <li><a href="">My Wishlist  </a></li>
-                            <li><a href="">My Cart </a></li>
-                            <li><a href="">Checkout</a></li>
-                            <li><a href="#/login">Log In </a></li>
-                        </ul>
-                    </li>
+                                    </span>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a class="text-center" href="#/cart">View Cart</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown user">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <i class="fa fa-user fa-2x"></i><span>User</span>
+                            </a>
+                            <ul class=" dropdown-menu dropdown-menu-danger">
+                                <li><a href="">My Account</a></li>
+                                <li><a href="">My Wishlist  </a></li>
+                                <li><a href="">My Cart </a></li>
+                                <li><a href="">Checkout</a></li>
+                                <li><a href="#/login">Log In </a></li>
+                            </ul>
+                        </li>
 
 
-                </ul>
+                    </ul>
+                </div>
+
             </div>
         </div>
     </nav>
@@ -113,7 +129,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-                <a class="navbar-brand" href="#"><img src="images/bookstoreLogo.png" alt=""></a>
+                <a class="navbar-brand" href="#/"><img src="images/bookstoreLogo.png" alt=""></a>
             </div>
 
             <div class="bookMenu" class="collapse navbar-collapse visible-xs">
@@ -180,7 +196,7 @@
                 </ul>
 
             </div>
-            <div class="col-sm-6 col-md-3 pull-right groupSearch">
+            <div class="col-sm-6 col-md-3 pull-right groupSearch visible-sm visible-xs">
 
                 <div class="input-group">
                     <input type="text" class="form-control search" placeholder="Search">

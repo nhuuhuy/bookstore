@@ -17,6 +17,11 @@ footer ul>li {
     display: block;
 }
 
+.panel {
+    box-shadow: none;
+    border: 1px solid rgba(128, 128, 128, 0.24);
+}
+
 
 /*--- footer */
 
@@ -36,8 +41,15 @@ footer ul>li {
     padding: 10px;
 }
 
+h5 {
+    margin: 0px
+}
+
 
 /*----------*/
+
+
+/*--header--*/
 
 .navbar-brand img {
     width: 50px;
@@ -54,7 +66,7 @@ footer ul>li {
 }
 
 .search {
-    padding: 4px
+    padding: 8px
 }
 
 .navbar .navbar-nav>li>a {
@@ -101,7 +113,7 @@ ul.dropdown-cart li .item:after {
     height: 0;
 }
 
-ul.dropdown-cart li .item-left {
+ul.dropdown-cart li.item-left {
     float: left;
 }
 
@@ -162,8 +174,9 @@ ul.dropdown-cart li .item-right button {
     color: #FFF;
 }
 
-.heading {
-    padding: 10px;
+.heading,
+.panel-heading {
+    padding: 20px;
     margin-bottom: 5px;
     border-radius: 2px
 }
@@ -185,9 +198,20 @@ ul.dropdown-cart li .item-right button {
     font-size: 12px
 }
 
+.titlePanel {
+    height: 9ex;
+}
+
 .item .panel-footer {
     background-color: #fff;
 }
+
+.price {
+    margin: 0px
+}
+
+
+/*-----addbook---*/
 
 .card {
     margin-top: 20px;
@@ -276,13 +300,12 @@ a.zoom img {
     padding: 5px;
 }
 
-.panel {
-    box-shadow: none;
-    border: 1px solid rgba(128, 128, 128, 0.24);
+.box-image .card {
+    position: relative
 }
 
 .continue {
-    margin-bottom: 5px
+    margin: 15px
 }
 
 
@@ -325,18 +348,25 @@ a.zoom img {
     .header {
         margin-top: 50px!important;
     }
+    .navbar-nav>li.dropdown.cart,
+    .navbar-nav>li.dropdown.user {
+        float: right;
+    }
     .shopCart,
     .like {
         opacity: 0;
     }
     .item.panel.panel-default .panel-body {
         overflow: hidden;
-        height: 161px;
+        height: 200px;
         width: auto
     }
     .imagePanel {
-        width: 95px;
+        width: 120px;
         display: inline-block
+    }
+    .item .panel-footer {
+        padding: 0px 10px
     }
     .item.panel.panel-default:hover .imagePanel,
     .item.panel.panel-default:focus .imagePanel {
@@ -400,13 +430,10 @@ a.zoom img {
         padding: 0px;
     }
     .groupSearch .input-group {
-        margin-left: -5px;
+        margin-left: -15px;
     }
     .carousel-control {
         display: none;
-    }
-    #search {
-        display: inline;
     }
     .hoverPanel {
         display: block;

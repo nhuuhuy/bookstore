@@ -43,15 +43,18 @@
                                 </div>
                             </div>
                             <div class="panel-footer">
-                                <h5>
-                                    <a href="#/item/{{$index}}" class="title">{{book.title | limitTo:20}}...</a>
-                                </h5>
-                                <p class="author">{{book.author}}</p>
+                                <div class="titlePanel">
+                                    <h5>
+                                        <a href="#/item/{{$index}}" class="title">{{book.title | limitTo:20}}...</a>
+                                    </h5>
 
+                                </div>
                                 <p class="price">{{book.price}}$</p>
+                                <div class="btnHover">
+                                    <button class="btn btn-danger btn-xs shopCart"><i class="fa fa-shopping-cart"></i> </button>
+                                    <button class="btn btn-default  btn-xs like"><i class="fa fa-heart" ></i></button>
+                                </div>
 
-                                <button class="btn btn-danger btn-xs shopCart"><i class="fa fa-shopping-cart"></i> </button>
-                                <button class="btn btn-default  btn-xs like"><i class="fa fa-heart" ></i></button>
                             </div>
                         </div>
                     </div>

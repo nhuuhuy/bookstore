@@ -277,7 +277,7 @@ app.controller('LoginController', function() {
     };
 
 })
-app.directive('polldaddy', function() {
+app.directive('itemJs', function() {
     var injectScript = function(element) {
         var scriptTagJquery = angular.element(document.createElement('script'));
         scriptTagJquery.attr('charset', 'utf-8');
@@ -285,7 +285,7 @@ app.directive('polldaddy', function() {
         element.append(scriptTag);
         var scriptTag = angular.element(document.createElement('script'));
         scriptTag.attr('charset', 'utf-8');
-        scriptTag.attr('src', 'js/custom.js');
+        scriptTag.attr('src', 'js/item.js');
         element.append(scriptTag);
     };
 
