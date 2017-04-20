@@ -216,6 +216,7 @@ app.controller("carousel", function() {
 
     this.activeSlide = 0;
 
+
 })
 app.controller("MultiCarousel", ['bookservice', function(bookservice) {
     this.slides = bookservice.books;
@@ -236,6 +237,15 @@ app.controller('AdminController', ['bookservice', function(bookservice) {
     var self = this;
     self.books = bookservice.books;
     self.category = bookservice.category;
+    self.tab = 'addbook';
+    self.selectTab = function(setTab) {
+        self.tab = setTab;
+
+    };
+    self.isSelectedTab = function(checkTab) {
+        return self.tab === checkTab
+    };
+
 }])
 app.controller('ItemController', ['bookservice', '$routeParams', function(bookservice, $routeParams) {
     var self = this;
@@ -255,4 +265,15 @@ app.controller('ItemController', ['bookservice', '$routeParams', function(bookse
 app.controller('cartcontroller', ['bookservice', function(bookservice) {
 
 }])
-app.controller('LoginController', function() {})
+app.controller('LoginController', function() {
+    var self = this;
+    self.tab = 'login';
+    self.selectTab = function(setTab) {
+        self.tab = setTab;
+
+    };
+    self.isSelectedTab = function(checkTab) {
+        return self.tab === checkTab
+    };
+
+})

@@ -1,0 +1,184 @@
+<div ng-controller="ItemController as itemctrl" ng-model="itemctrl.books">
+    <div class="container">
+        <div class="row">
+            <div class="">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#/home">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#/category">category</a></li>
+                    <li class="breadcrumb-item active">{{itemctrl.books[itemctrl.whichItem].title}}</li>
+                </ol>
+            </div>
+            <div class="col-sm-3 sidenav hidden-xs">
+                <div class="panel ">
+                    <div class="panel-heading">
+                        <h5>Category</h5>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="nav nav-pills nav-pills-danger nav-stacked">
+                            <li role="presentation" ng-repeat="category in itemctrl.category"><a href="">{{category.name}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div>
+
+                    <div class="col-md-5 clearfix ">
+                        <div class="box-image card">
+
+                            <div class="img-zoom">
+                                <img id="img_01" ng-src="{{itemctrl.books[itemctrl.whichItem].cover}}" data-zoom-image="{{itemctrl.books[itemctrl.whichItem].bigCover}}" class="" />
+                            </div>
+
+                            <div class=" clearfix " id="gal1">
+                                <div class="col-xs-4 thumnail">
+                                    <a href="" data-image="images/2.jpg" data-zoom-image="images/2big.jpg">
+                                        <img id="img_02" src="images/2.jpg" class="img-responsive" />
+                                    </a>
+                                </div>
+                                <div class="col-xs-4 thumnail">
+
+                                    <a href="" data-image="images/3.jpg" data-zoom-image="images/3big.jpg">
+                                        <img id="img_03" src="images/3.jpg" class="img-responsive" />
+                                    </a>
+                                </div>
+                                <div class="col-xs-4 thumnail">
+                                    <a href="" data-image="images/1.jpg" data-zoom-image="images/1big.jpg">
+                                        <img id="img_03" src="images/1.jpg" class="img-responsive" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-7">
+                        <div class="card">
+                            <h3> <strong>{{itemctrl.books[itemctrl.whichItem].title}}</strong></h3>
+                            <span class=" glyphicon glyphicon-star"></span>
+                            <span class=" glyphicon glyphicon-star"></span>
+                            <span class=" glyphicon glyphicon-star"></span>
+                            <span class=" glyphicon glyphicon-star"></span>
+                            <span class=" glyphicon glyphicon-star-empty"></span>
+                            <p>Author: <i>{{itemctrl.books[itemctrl.whichItem].author}}</i></p>
+                            <h5 class="price">{{itemctrl.books[itemctrl.whichItem].price}}$</h5>
+                            <h5>Description</h5>
+                            <p>{{itemctrl.books[itemctrl.whichItem].description}}</p>
+                            <div class="">
+                                <div class="form-group col-sm-6">
+                                    <label for="">
+								Cover
+							</label>
+                                    <select class="form-control" name="" id="">
+									<option value="">Hardcover</option>
+									<option value="">Paperback</option>	
+							</select>
+                                </div>
+                                <div class=" form-group col-sm-6">
+
+                                    <label for="">
+							Qty
+							</label>
+                                    <input class="form-control" type="number" min="1">
+
+                                </div>
+                                <button class="btn btn-danger"><i class="fa fa-shopping-cart"></i> Add to cart</button>
+                                <button class="btn btn-default btn-fab btn-fab-mini btn-round pull-right "><i class="fa fa-heart" ></i></button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class=" reviews card">
+                        <div class="media">
+                            <div class="col-sm-2 text-center">
+                                <div class="avatar">
+                                    <a href="#">
+                                        <img class="" src="images/8.jpg" alt="...">
+                                    </a>
+                                </div>
+
+                                <p>January 29, 2016</p>
+                            </div>
+                            <div class="col-sm-10 text-left">
+                                <h4 class="media-heading">Kate Williams</h4>
+                                <span class=" glyphicon glyphicon-star"></span>
+                                <span class=" glyphicon glyphicon-star"></span>
+                                <span class=" glyphicon glyphicon-star"></span>
+                                <span class=" glyphicon glyphicon-star"></span>
+                                <span class=" glyphicon glyphicon-star-empty"></span>
+                                <p>Lorem ipsum dolor sit amet.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" reviews card">
+                        <div class="media">
+                            <div class="col-sm-2">
+                                <a href="#">
+                                    <img class="" src="images/8.jpg" alt="...">
+                                </a>
+                                <p>January 29, 2016</p>
+                            </div>
+                            <div class="col-sm-10 text-left">
+                                <h4 class="media-heading">Kate Williams</h4>
+                                <span class=" glyphicon glyphicon-star"></span>
+                                <span class=" glyphicon glyphicon-star"></span>
+                                <span class=" glyphicon glyphicon-star"></span>
+                                <span class=" glyphicon glyphicon-star"></span>
+                                <span class=" glyphicon glyphicon-star-empty"></span>
+                                <p>Lorem ipsum dolor sit amet.</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class=" card comment">
+                        <label for="">Rate</label>
+                        <span uib-rating ng-model="itemctrl.rate" max="itemctrl.max" read-only="itemctrl.isReadonly" on-hover="itemctrl.hoveringOver(value)"></span>
+                        <div class="form-group">
+                            <label for="">Comment:</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                            <input class="btn btn-danger" type="submit" value="Submit" />
+                        </div>
+
+                    </div>
+                </div>
+                <div class="wrap">
+                    <div class="heading  hidden-xs">
+                        <h5>Related Book </h5>
+                    </div>
+                    <div ng-controller="MultiCarousel as multicarousel " class="multi-item-carousel hidden-xs ">
+                        <div uib-carousel active="multicarousel.active" interval="multicarousel.myInterval">
+                            <div uib-slide ng-repeat="slide in multicarousel.slides" index="slide.id">
+                                <div class="col-xs-3 box">
+                                    <div class="item panel panel-default">
+                                        <div class="panel-body text-center">
+                                            <div class="imagePanel">
+                                                <a href="#/item/{{$index}}"><img ng-src="{{slide.cover}}" class="panelImage" alt=""></a>
+                                            </div>
+
+                                            <div class="description text-left">
+                                                <h6>Description</h6>
+                                                {{slide.description|limitTo:90}}<a href="#/item/{{$index}}">...</a>
+                                            </div>
+                                        </div>
+                                        <div class="panel-footer">
+                                            <h5>
+                                                <a href="#/item/{{$index}}" class="title">{{slide.title | limitTo:20}}...</a>
+                                            </h5>
+
+                                            <p class="price">{{slide.price}}$</p>
+
+                                            <button class="btn btn-danger btn-xs "><i class="fa fa-shopping-cart"></i> </button>
+                                            <button class="btn btn-default btn-xs "><i class="fa fa-heart" ></i></button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>

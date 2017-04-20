@@ -1,0 +1,96 @@
+<div ng-controller="cartcontroller">
+    <div class="container">
+        <div class="row wrap ">
+            <div class=" heading">
+                <h5>Shopping Cart</h5>
+            </div>
+            <div class="">
+                <table class="table table-bordered table-hover text-center ">
+                    <thead>
+                        <tr>
+                            <th class="hidden-xs"></th>
+                            <th class=" ">Product Name</th>
+                            <th class="">Unit Price</th>
+                            <th class="">Quantity</th>
+                            <th class="">Subtotal</th>
+                            <th class=""></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="hidden-xs">
+                                <div class="imgItem"><img src="images/1.jpg" alt="" class="img-responsive hidden-xs" /></div>
+                            </td>
+                            <td class="">
+                                <h6>Sayings of the Century</h6>
+                            </td>
+                            <td class="price ">8.95$</td>
+                            <td class=""><input type="number" value="1" min="1" class="form-control"></td>
+                            <td class="price ">8.95$</td>
+                            <td class=""><button class="btn btn-default btn-xs"><i class="fa fa-trash-o"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td class=" hidden-xs">
+                                <div class="imgItem"><img src="images/1.jpg" alt="" class="img-responsive hidden-xs" /></div>
+                            </td>
+                            <td class="">
+                                <h6>Sayings of the Century</h6>
+                            </td>
+                            <td class="price">8.95$</td>
+                            <td class=""><input type="number" value="1" min="1" class="form-control"></td>
+                            <td class="price ">8.95$</td>
+                            <td class=""><button class="btn btn-default btn-xs"><i class="fa fa-trash-o"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-4 col-sm-6">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h5>DISCOUNT CODES</h5>
+                    </div>
+                    <div class="panel-body">
+                        <label>Enter your coupon code if you have one.</label >
+                            <input type="text" class="form-control">
+                              <button class="btn btn-danger btn-xs">Apply Coupon</button>
+                        </div>
+            
+                          
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h5>SHIPPING</h5>
+                        </div>
+                        <div class="panel-body">
+                            <label class="control-label" for="">City/Province</label>
+                        <select class="form-control" name="">
+		               	        <option  value="" </option>
+		                    </select>
+                        <label class="control-label" for="">District</label>
+                        <select class="form-control" name="">
+		               	        <option  value="" </option>
+		                    </select>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h5>ORDER SUMMARY</h5>
+                    </div>
+                    <div class="panel-body">
+                        <h6>Grand total: <span class="price">17.9$</span></h6>
+                    </div>
+                    <div class="panel-footer">
+                        <button class="btn btn-danger btn-xs">Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/custom.js"></script>

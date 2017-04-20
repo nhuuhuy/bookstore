@@ -1,0 +1,91 @@
+<div ng-controller="AdminController as adminctrl">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+
+                <div class="card sidebar-nav">
+                    <h5><i class="glyphicon glyphicon-home"></i>
+                        <small><b>MANAGEMENT</b></small>
+                    </h5>
+                    <ul class="nav nav-pills nav-pills-danger nav-stacked">
+                        <li><a href="#">Home</a></li>
+                        <li class="active"><a href="" ng-click="adminctrl.selectTab('addbook')">Add</a></li>
+                        <li><a href="" ng-click="adminctrl.selectTab('list')">List</a></li>
+                        <li><a href="">Search</a></li>
+                    </ul>
+                    <h5><i class="glyphicon glyphicon-user"></i>
+                        <small><b>USERS</b></small>
+                    </h5>
+                    <ul class="nav nav-pills nav-pills-danger nav-stacked">
+                        <li><a href="#">List</a></li>
+                        <li><a href="#">Manage</a></li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+
+            <div class="col-sm-8 ">
+                <div class="card card-form ">
+                    <div class="addBook" ng-show="adminctrl.isSelectedTab('addbook')">
+                        <div class="card-title">Add New Book</div>
+                        <form name="postForm " ng-submit=" ">
+                            <div class="form-group label-floating">
+                                <label class="control-label" for="inputTitle">Title:</label>
+                                <input class="form-control" type="text" ng-model="adiminctrl.books.title" id="inputTitle" />
+                            </div>
+                            <div class="form-group label-floating">
+                                <label class="control-label" for="inputAuthor">Author:</label>
+                                <input class="form-control" type="text" ng-model="adiminctrl.books.author" id="inputAuthor" />
+                            </div>
+                            <div class="form-group label-floating">
+                                <label class="control-label" for="inputDescription">Description</label>
+                                <textarea class="form-control" ng-model="adiminctrl.books.description" id="inputDescription"></textarea>
+                            </div>
+                            <div class="form-group label-floating">
+                                <label class="control-label" for="inputPrice">Price:</label>
+                                <input class="form-control" type="text" ng-model="adminctrl.books.price" id="inputPrice" />
+                            </div>
+
+                            <div class="form-group col-sm-6">
+                                <label class="control-label" for="inputCover">Upload cover <i class="fa fa-camera "></i></label>
+                                <input type="file" id="uploadimg" ng-model="adiminctrl.books.cover" id="inputCover">
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label" for="">Category</label>
+                                <select class="form-control" name="categoryUpdate" ng-model="adminctrl.books.category">
+		               	<option ng-repeat="category in adminctrl.category" value="{{category.name}}" ng-model="adminctrl.books.category">{{category.name}}</option>
+		               </select>
+                            </div>
+                            <input class="btn btn-danger" type="submit" value="Submit" />
+                        </form>
+                    </div>
+
+                    <div class="list-books" ng-show="adminctrl.isSelectedTab('list')">
+                        <div class="card-title">Books</div>
+                        <table class="table table-bordered table-hover">
+                            <tr>
+                                <th class="col-xs-1">STT</th>
+                                <th class="col-xs-9">Title</th>
+                                <th class="col-xs-1"></th>
+                                <th class="col-xs-1"></th>
+                            </tr>
+                            <tr ng-repeat="book in adminctrl.books">
+                                <td class="col-xs-1">{{book.id+1}}</td>
+                                <td class="col-xs-9">{{book.title }}</td>
+                                <td class="col-xs-1"><button type="button" class="btn btn-success btn-xs"><i class="fa fa-pencil-square-o"></i></button></td>
+                                <td class="col-xs-1"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>

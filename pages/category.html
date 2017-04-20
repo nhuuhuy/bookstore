@@ -1,0 +1,72 @@
+<div ng-controller="CategoryController as categoryctrl">
+    <div class="container">
+        <div class="row">
+            <div class="">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#/">Home</a></li>
+                    <li class="breadcrumb-item active"><a href="#/category">category</a></li>
+                </ol>
+            </div>
+
+
+            <div class="col-sm-3 sidenav hidden-xs">
+                <div class="panel ">
+                    <div class="panel-heading">
+                        <h5>Category</h5>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="nav nav-pills nav-pills-danger nav-stacked">
+                            <li role="presentation" ng-repeat="category in categoryctrl.category"><a href="">{{category.name}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="wrap">
+                    <div class="heading  ">
+                        <h5>All</h5>
+                    </div>
+
+                    <div class="fillter">
+                        <label for="sort">Sort by:</label>
+                        <select name="sort" id="sort">
+	 			<option value="">Name</option>
+	 			<option value="">Price</option>
+	 			<option value="">Rate</option>
+	 		</select>
+                        <label for="">View: </label><button class="btn btn-default btn-sm" type="button"><i class="fa  fa-th-list"></i></button>
+                        <button class="btn btn-default btn-sm" type="button"><i class="fa fa-th-large"></i></button>
+                    </div>
+                    <div class="col-md-3 col-sm-6  box " ng-repeat="book in categoryctrl.books">
+                        <div class="item panel panel-default">
+                            <div class="panel-body">
+                                <div class="imagePanel">
+                                    <a href="#/item/{{$index}}"><img ng-src="{{book.cover}}" class="panelImage" alt=""></a>
+                                </div>
+
+                                <div class="description text-left">
+                                    <h6>Description</h6>
+                                    {{book.description|limitTo:90}}<a href="#/item/{{$index}}">...</a>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <h5>
+                                    <a href="#/item/{{$index}}" class="title">{{book.title | limitTo:20}}...</a>
+                                </h5>
+                                <p class="author">{{book.author}}</p>
+                                <p class="price">{{book.price}}$</p>
+
+                                <button class="btn btn-danger btn-xs shopCart"><i class="fa fa-shopping-cart"></i> </button>
+                                <button class="btn btn-default  btn-xs like "><i class="fa fa-heart" ></i></button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <ul uib-pagination total-items="categoryctrl.bigTotalItems" ng-model="categoryctrl.bigCurrentPage" max-size="categoryctrl.maxSize" class="pagination-sm pagination-danger" boundary-link-numbers="true"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
