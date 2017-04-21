@@ -1,5 +1,6 @@
 body {
-    min-width: 320px
+    min-width: 320px;
+    padding-top: 80px
 }
 
 a,
@@ -75,10 +76,8 @@ h5 {
 }
 
 .navbar-fixed-top {
-    height: 50px;
     padding-right: 5px;
     box-shadow: none;
-    border-bottom: solid #999999 1px
 }
 
 .navbar .navbar-nav>li>.dropdown-menu {
@@ -345,12 +344,12 @@ a.zoom img {
     .bookMenu.collapse {
         display: block!important
     }
-    .header {
-        margin-top: 50px!important;
-    }
     .navbar-nav>li.dropdown.cart,
     .navbar-nav>li.dropdown.user {
         float: right;
+    }
+    .navbar .navbar-nav>li>a {
+        padding: 15px 10px
     }
     .shopCart,
     .like {
@@ -419,18 +418,15 @@ a.zoom img {
 }
 
 @media screen and (max-width: 768px) {
-    .header {
-        margin-top: 0px!important;
-    }
     .navbar .navbar-brand {
         padding: 3px 15px;
+    }
+    .body-wrapper {
+        margin-top: 55px
     }
     .groupSearch {
         margin-top: 5px;
         padding: 0px;
-    }
-    .groupSearch .input-group {
-        margin-left: -15px;
     }
     .carousel-control {
         display: none;
@@ -459,9 +455,6 @@ a.zoom img {
     }
     .homeCarousel h1.ng-binding {
         font-size: 2.5em;
-    }
-    .top-head {
-        display: none;
     }
 }
 

@@ -278,20 +278,20 @@ app.controller('LoginController', function() {
 
 })
 app.directive('itemJs', function() {
-    var injectScript = function(element) {
-        var scriptTagJquery = angular.element(document.createElement('script'));
-        scriptTagJquery.attr('charset', 'utf-8');
-        scriptTagJquery.attr('src', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js');
-        element.append(scriptTag);
-        var scriptTag = angular.element(document.createElement('script'));
-        scriptTag.attr('charset', 'utf-8');
-        scriptTag.attr('src', 'js/item.js');
-        element.append(scriptTag);
-    };
+    // var injectScript = function(element) {
+    //     var scriptTagJquery = angular.element(document.createElement('script'));
+    //     scriptTagJquery.attr('charset', 'utf-8');
+    //     scriptTagJquery.attr('src', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js');
+    //     element.append(scriptTag);
+    //     var scriptTag = angular.element(document.createElement('script'));
+    //     scriptTag.attr('charset', 'utf-8');
+    //     scriptTag.attr('src', 'js/item.js');
+    //     element.append(scriptTag);
+    // };
 
-    return {
-        link: function(scope, element) {
-            injectScript(element);
-        }
-    };
+    // return {
+    //     link: function(scope, element) {
+    //         injectScript(element);
+    //     }
+    // };
 });
