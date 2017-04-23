@@ -117,7 +117,7 @@
                                 <li><a href="">My Wishlist  </a></li>
                                 <li><a href="">My Cart </a></li>
                                 <li><a href="">Checkout</a></li>
-                                <li><a href="#/login">Log In </a></li>
+                                <li><a class="" data-toggle="modal" data-target="#modalSigin">Log In </a></li>
                             </ul>
                         </li>
 
@@ -171,7 +171,7 @@
                             <li><a href="">My Wishlist  </a></li>
                             <li><a href="">My Cart </a></li>
                             <li><a href="">Checkout</a></li>
-                            <li><a href="#/login">Log In </a></li>
+                            <li><a class="" data-toggle="modal" data-target="#modalSigin">Log In </a></li>
                         </ul>
                     </li>
 
@@ -191,7 +191,81 @@
             </div>
         </div>
     </nav>
+    <div class="modal fade " id="modalSigin" role="dialog" ng-controller="LoginController as loginCtrl">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" ng-show="loginCtrl.isSelectedTab('login')">Signin</h4>
+                    <h4 class="modal-title" ng-show="loginCtrl.isSelectedTab('signup')">Register</h4>
+                </div>
 
+                <div class="modal-body">
+                    <div class="account-box" ng-show="loginCtrl.isSelectedTab('login')">
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Email" required autofocus />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password" required />
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" >
+                                    Keep me signed in
+                                </label>
+                            </div>
+
+                            <button class="btn btn-danger" type="submit">Sign in</button>
+                        </form>
+                        <a class="forgotLnk" href="">I can't access my account</a>
+                        <div class="or-box">
+                            <span class="or">OR</span>
+                            <div class="row">
+                                <div class="col-md-6 ">
+                                    <a href="" class="btn btn-info">Facebook</a>
+                                </div>
+                                <div class="col-md-6 ">
+                                    <a href="" class="btn btn-danger">Google</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 ">
+                                <a href="" class="btn btn-default btn-block" ng-click="loginCtrl.selectTab('signup')">Create New Account</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="signup" ng-show="loginCtrl.isSelectedTab('signup')">
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="First Name">
+                                <input type="text" class="form-control" placeholder="Last Name">
+                                <input type="email" class="form-control " placeholder="Email Address">
+                                <input type="text" class="form-control " placeholder="Mobile No.">
+                                <input type="password" class="form-control " placeholder="Password">
+                                <input type="password" class="form-control " placeholder="Confirm Password">
+                            </div>
+
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" >
+                                   I agree
+                                </label>
+                            </div>
+                            <p>
+                                By clicking <strong class="label label-success">Register</strong>, you agree to the <a href="#">Terms and Conditions</a> set out by this site, including our Cookie Use.
+                            </p>
+                            <button class="btn btn-success">Register</button>
+                            <a href="" class="btn btn-danger" ng-click="loginCtrl.selectTab('login')">Sign In</a>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <div class="body-wrapper" ng-view>
 
@@ -275,7 +349,8 @@
 
 <!--Custom js-->
 
-<script src="js/main.js"></script>
+
 <script src="js/custom.js"></script>
+<script src="js/main.js"></script>
 
 </html>
