@@ -129,7 +129,21 @@
 
                     <li class="dropdown cart"><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-shopping-cart fa-2x"></i><span >Your cart</span ><span class="qty">(2)</span><span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-cart" role="menu">
-                            <li>
+                            <li ng-repeat="a in booksctrl.cart track by $index">
+                                <span class="item">
+		                    <span class="item-left">
+		                        <img ng-src="{{a.cover}}" alt="" />
+		                        <span class="item-info">
+		                            <span>{{a.title}}</span>
+                                <span>{{a.price}}$</span>
+                                </span>
+                                </span>
+                                <span class="item-right">
+		                        <button class="btn btn-xs btn-danger btn-fab btn-fab-mini btn-round pull-right">x</button>
+		                    </span>
+                                </span>
+                            </li>
+                            <!--<li>
                                 <span class="item">
 		                    <span class="item-left">
 		                        <img src="images/1.jpg" alt="" />
@@ -142,21 +156,7 @@
 		                        <button class="btn btn-xs btn-danger btn-fab btn-fab-mini btn-round pull-right">x</button>
 		                    </span>
                                 </span>
-                            </li>
-                            <li>
-                                <span class="item">
-		                    <span class="item-left">
-		                        <img src="images/1.jpg" alt="" />
-		                        <span class="item-info">
-		                            <span>Item name</span>
-                                <span>23$</span>
-                                </span>
-                                </span>
-                                <span class="item-right">
-		                        <button class="btn btn-xs btn-danger btn-fab btn-fab-mini btn-round pull-right">x</button>
-		                    </span>
-                                </span>
-                            </li>
+                            </li>-->
                             <li class="divider"></li>
                             <li><a class="text-center" href="#/cart">View Cart</a></li>
                         </ul>

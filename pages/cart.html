@@ -1,10 +1,11 @@
-<div ng-controller="cartcontroller">
+<div ng-controller="cartcontroller as cartctrl">
     <div class="container">
-        <div class="row wrap ">
-            <div class=" heading">
-                <h5>Shopping Cart</h5>
-            </div>
-            <div class="">
+        <div class="row  ">
+
+            <div class="wrap">
+                <div class=" heading">
+                    <h5>Shopping Cart</h5>
+                </div>
                 <table class="table table-bordered table-hover text-center ">
                     <thead>
                         <tr>
@@ -17,19 +18,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr ng-repeat="item in booksctrl.cart track by $index">
                             <td class="hidden-xs">
-                                <div class="imgItem"><img src="images/1.jpg" alt="" class="img-responsive hidden-xs" /></div>
+                                <div class="imgItem"><img ng-src="{{item.cover}}" alt="" class="img-responsive hidden-xs" /></div>
                             </td>
                             <td class="">
-                                <h6>Sayings of the Century</h6>
+                                <h6>{{item.title}}</h6>
                             </td>
-                            <td class="price ">8.95$</td>
+                            <td class="price ">{{item.price}}</td>
                             <td class=""><input type="number" value="1" min="1" class="form-control"></td>
                             <td class="price ">8.95$</td>
                             <td class=""><button class="btn btn-default btn-xs"><i class="fa fa-trash-o"></i></button></td>
                         </tr>
-                        <tr>
+                        <!--<tr>
                             <td class=" hidden-xs">
                                 <div class="imgItem"><img src="images/1.jpg" alt="" class="img-responsive hidden-xs" /></div>
                             </td>
@@ -40,18 +41,23 @@
                             <td class=""><input type="number" value="1" min="1" class="form-control"></td>
                             <td class="price ">8.95$</td>
                             <td class=""><button class="btn btn-default btn-xs"><i class="fa fa-trash-o"></i></button></td>
-                        </tr>
+                        </tr>-->
                     </tbody>
                 </table>
             </div>
+        </div>
 
-            <div class="col-md-4 col-sm-6">
-                <div class="panel">
-                    <div class="panel-heading">
-                        <h5>DISCOUNT CODES</h5>
-                    </div>
-                    <div class="panel-body">
-                        <label>Enter your coupon code if you have one.</label >
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="wrap">
+                <div class="col-md-4 col-sm-6">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h5>DISCOUNT CODES</h5>
+                        </div>
+                        <div class="panel-body">
+                            <label>Enter your coupon code if you have one.</label >
                             <input type="text" class="form-control">
                               <button class="btn btn-danger btn-xs">Apply Coupon</button>
                         </div>
@@ -66,31 +72,32 @@
                         </div>
                         <div class="panel-body">
                             <label class="control-label" for="">City/Province</label>
-                        <select class="form-control" name="">
+                            <select class="form-control" name="">
 		               	        <option  value="" </option>
 		                    </select>
-                        <label class="control-label" for="">District</label>
-                        <select class="form-control" name="">
+                            <label class="control-label" for="">District</label>
+                            <select class="form-control" name="">
 		               	        <option  value="" </option>
 		                    </select>
-                    </div>
+                        </div>
 
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="panel">
-                    <div class="panel-heading">
-                        <h5>ORDER SUMMARY</h5>
-                    </div>
-                    <div class="panel-body">
-                        <h6>Grand total: <span class="price">17.9$</span></h6>
-                    </div>
-                    <div class="panel-footer">
-                        <button class="btn btn-danger btn-xs">Checkout</button>
                     </div>
                 </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h5>ORDER SUMMARY</h5>
+                        </div>
+                        <div class="panel-body">
+                            <h6>Grand total: <span class="price">17.9$</span></h6>
+                        </div>
+                        <div class="panel-footer">
+                            <button class="btn btn-danger btn-xs">Checkout</button>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 </div>
-<div polldaddy></div>

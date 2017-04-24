@@ -186,13 +186,15 @@ app.controller("BooksController", ['bookservice', function(bookservice) {
     var self = this;
     self.books = bookservice.books;
     self.category = bookservice.category;
-    self.author = [
-        { id: 1, name: "Kate Williams", image: "images/8.jpg" },
-        { id: 2, name: "Nigel Rees", image: "images/8.jpg" },
-        { id: 3, name: "Christian Louboutin", image: "images/8.jpg" },
-        { id: 4, name: "Hennie Aucamp", image: "images/8.jpg" },
-        { id: 5, name: "Jean Aue", image: "images/8.jpg" },
-    ]
+    self.cart = [];
+    self.addCart = function(index) {
+
+        self.cart.push({ title: index.title, cover: index.cover, price: index.price });
+        alert(self.cart)
+
+
+
+    }
 
 }])
 app.controller("carousel", function() {
@@ -222,6 +224,7 @@ app.controller("MultiCarousel", ['bookservice', function(bookservice) {
     this.slides = bookservice.books;
     this.myInterval = 4000;
     this.activeSlide = 1;
+
 }])
 app.controller('CategoryController', ['bookservice', function(bookservice) {
     var self = this;
@@ -231,7 +234,14 @@ app.controller('CategoryController', ['bookservice', function(bookservice) {
     self.bigTotalItems = self.books.length;
     self.currentPage = 4;
     self.itemsPerPage = self.viewby;
-    self.maxSize = 10
+    self.maxSize = 10;
+    self.view = "block";
+    self.setView = function(e) {
+        self.view = e;
+    };
+    self.isSelectedView = function(checkview) {
+        return self.view === checkview
+    };
 }])
 app.controller('AdminController', ['bookservice', function(bookservice) {
     var self = this;

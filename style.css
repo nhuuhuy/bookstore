@@ -84,10 +84,11 @@ h5 {
     margin-top: 0px;
 }
 
-li.category.dropdown:hover+.navbar .navbar-nav>li>.dropdown-menu,
+
+/*li.category.dropdown:hover+.navbar .navbar-nav>li>.dropdown-menu,
 {
     display: block;
-}
+}*/
 
 ul.dropdown-cart {
     min-width: 250px;
@@ -192,14 +193,15 @@ ul.dropdown-cart li .item-right button {
     width: 100%;
 }
 
-.description {
+.descriptionBlock {
     display: none;
     font-size: 12px
 }
 
-.titlePanel {
+
+/*.titlePanel {
     height: 9ex;
-}
+}*/
 
 .item .panel-footer {
     background-color: #fff;
@@ -311,6 +313,16 @@ a.zoom img {
 /*---*/
 
 
+/*----category*/
+
+.item .panel-body.list,
+.item .panel-footer.list {
+    display: inline-block;
+    border: none;
+    text-align: left;
+}
+
+
 /*---item--*/
 
 .glyphicon-star {
@@ -338,6 +350,31 @@ a.zoom img {
     left: 22px;
     border-top-color: #FFF;
     border-width: 15px;
+}
+
+.panel-body.list {
+    position: relative;
+}
+
+.descriptionList {
+    width: initial;
+    font-size: 12px
+}
+
+.item .panel-footer.list {
+    position: relative;
+    top: -75px;
+}
+
+@media screen and (max-width:992px) {
+    .descriptionList {
+        width: 200px;
+        font-size: 12px
+    }
+    .item .panel-footer.list {
+        position: relative;
+        top: 0px;
+    }
 }
 
 @media screen and (min-width:768px) {
@@ -371,8 +408,8 @@ a.zoom img {
     .item.panel.panel-default:focus .imagePanel {
         display: none;
     }
-    .item.panel.panel-default:hover .description,
-    .item.panel.panel-default:focus .description {
+    .item.panel.panel-default:hover .descriptionBlock,
+    .item.panel.panel-default:focus .descriptionBlock {
         display: block;
         background-color: white;
         animation: descriptionhover 0.5s ease forwards
@@ -415,6 +452,15 @@ a.zoom img {
             transform: translateY(0px)
         }
     }
+    /*----category*/
+    .item.panel.panel-default:hover .imagePanel.list,
+    .item.panel.panel-default:focus .imagePanel.list {
+        display: inline-block;
+    }
+    .descriptionList p {
+        margin: 0px
+    }
+    /*-----*/
 }
 
 @media screen and (max-width: 768px) {
@@ -439,6 +485,9 @@ a.zoom img {
         display: inline-block;
         border: none;
         text-align: center;
+    }
+    .descriptionList {
+        display: none
     }
     .homeCarousel {
         height: 200px;
