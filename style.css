@@ -409,7 +409,9 @@ a.zoom img {
         display: none;
     }
     .item.panel.panel-default:hover .descriptionBlock,
-    .item.panel.panel-default:focus .descriptionBlock {
+    .item.panel.panel-default:focus .descriptionBlock,
+    .item.panel.panel-default:hover .description,
+    .item.panel.panel-default:focus .description {
         display: block;
         background-color: white;
         animation: descriptionhover 0.5s ease forwards
@@ -486,7 +488,8 @@ a.zoom img {
         border: none;
         text-align: center;
     }
-    .descriptionList {
+    .descriptionList,
+    .description {
         display: none
     }
     .homeCarousel {

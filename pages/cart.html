@@ -26,22 +26,11 @@
                                 <h6>{{item.title}}</h6>
                             </td>
                             <td class="price ">{{item.price}}</td>
-                            <td class=""><input type="number" value="1" min="1" class="form-control"></td>
-                            <td class="price ">8.95$</td>
-                            <td class=""><button class="btn btn-default btn-xs"><i class="fa fa-trash-o"></i></button></td>
+                            <td class=""><input type="number" ng-model="item.qty" min="1" class="form-control"></td>
+                            <td class="price ">{{item.price*item.qty| number:2}}</td>
+                            <td class=""><button class="btn btn-default btn-xs" ng-click="cartctrl.removeCart(item)"><i class="fa fa-trash-o"></i></button></td>
                         </tr>
-                        <!--<tr>
-                            <td class=" hidden-xs">
-                                <div class="imgItem"><img src="images/1.jpg" alt="" class="img-responsive hidden-xs" /></div>
-                            </td>
-                            <td class="">
-                                <h6>Sayings of the Century</h6>
-                            </td>
-                            <td class="price">8.95$</td>
-                            <td class=""><input type="number" value="1" min="1" class="form-control"></td>
-                            <td class="price ">8.95$</td>
-                            <td class=""><button class="btn btn-default btn-xs"><i class="fa fa-trash-o"></i></button></td>
-                        </tr>-->
+
                     </tbody>
                 </table>
             </div>
@@ -89,7 +78,7 @@
                             <h5>ORDER SUMMARY</h5>
                         </div>
                         <div class="panel-body">
-                            <h6>Grand total: <span class="price">17.9$</span></h6>
+                            <h6>Grand total: <span class="price">{{cartctrl.sum| number:2| currency}}</span></h6>
                         </div>
                         <div class="panel-footer">
                             <button class="btn btn-danger btn-xs">Checkout</button>

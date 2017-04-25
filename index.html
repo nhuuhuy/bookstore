@@ -127,19 +127,19 @@
                 </div>
                 <ul class="nav navbar-nav navbar-right   hidden-xs col-md-3 ">
 
-                    <li class="dropdown cart"><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-shopping-cart fa-2x"></i><span >Your cart</span ><span class="qty">(2)</span><span class="caret"></span></a>
+                    <li class="dropdown cart"><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-shopping-cart fa-2x"></i><span >Your cart</span ><span class="qty">({{booksctrl.cart.length}})</span><span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-cart" role="menu">
-                            <li ng-repeat="a in booksctrl.cart track by $index">
+                            <li ng-repeat="item in booksctrl.cart track by $index">
                                 <span class="item">
 		                    <span class="item-left">
-		                        <img ng-src="{{a.cover}}" alt="" />
+		                        <img ng-src="{{item.cover}}" alt="" />
 		                        <span class="item-info">
-		                            <span>{{a.title}}</span>
-                                <span>{{a.price}}$</span>
+		                            <span>{{item.title}}</span>
+                                <span>{{item.price}}$</span>
                                 </span>
                                 </span>
                                 <span class="item-right">
-		                        <button class="btn btn-xs btn-danger btn-fab btn-fab-mini btn-round pull-right">x</button>
+		                        <button class="btn btn-xs btn-danger btn-fab btn-fab-mini btn-round pull-right" ng-click='booksctrl.removeCart(item)'>x</button>
 		                    </span>
                                 </span>
                             </li>

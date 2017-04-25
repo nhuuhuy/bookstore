@@ -178,7 +178,9 @@ app.service('bookservice', function() {
             bigCover: "images/4big.jpg",
             description: "In 1819, a girl was born to the fourth son of King George III. No one could have expected such an unassuming, overprotected girl to be an effective ruler—yet Queen Victoria would become one of the most powerful monarchs in history."
         }
-    ]
+    ];
+    this.cart = [];
+    this.checkout = 0;
 
 })
 app.controller("BooksController", ['bookservice', function(bookservice) {
@@ -186,16 +188,34 @@ app.controller("BooksController", ['bookservice', function(bookservice) {
     var self = this;
     self.books = bookservice.books;
     self.category = bookservice.category;
-    self.cart = [];
-    self.addCart = function(index) {
 
-        self.cart.push({ title: index.title, cover: index.cover, price: index.price });
-        alert(self.cart)
-
-
-
+    self.addCart = function(item) {
+        if (bookservice.cart.length > 0) {
+            for (var i = 0; i < bookservice.cart.length; i++) {
+                if (bookservice.cart[i].id === item.id) {
+                    self.addedItem = true;
+                    bookservice.cart[i].qty++;
+                }
+            }
+            if (self.addedItem) {
+                console.log(bookservice.cart);
+            } else {
+                bookservice.cart.push({ id: item.id, title: item.title, cover: item.cover, price: item.price, qty: 1 });
+            }
+        } else {
+            bookservice.cart.push({ id: item.id, title: item.title, cover: item.cover, price: item.price, qty: 1 });
+        }
+        self.total = 0;
+        for (var i = 0; i < bookservice.cart.length; i++) {
+            self.total += parseFloat(bookservice.cart[i].price) * parseFloat(bookservice.cart[i].qty);
+            console.log(self.total)
+        }
+        bookservice.cart.checkout = self.total;
     }
-
+    self.cart = bookservice.cart;
+    self.removeCart = function(item) {
+        bookservice.cart.splice(item, 1);
+    }
 }])
 app.controller("carousel", function() {
     this.slides = [{
@@ -273,6 +293,12 @@ app.controller('ItemController', ['bookservice', '$routeParams', function(bookse
     ]
 }])
 app.controller('cartcontroller', ['bookservice', function(bookservice) {
+    var self = this;
+    self.cart = bookservice.cart;
+    self.removeCart = function(item) {
+        bookservice.cart.splice(item, 1);
+    };
+    self.sum = bookservice.cart.checkout;
 
 }])
 app.controller('LoginController', function() {
