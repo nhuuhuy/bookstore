@@ -1,4 +1,4 @@
-jQuery(document).ready(function($) {
+$(document).ready(function() {
     // $(".nav li").each(function() {
     //     $(this).click(function() {
     //         $(".nav li").removeClass("active");
@@ -25,7 +25,8 @@ jQuery(document).ready(function($) {
     });
 
 
-    $("#img_01").elevateZoom({ gallery: 'gal1', cursor: 'pointer', galleryActiveClass: 'zoom', imageCrossfade: true, });
+
+    // $("#img_01").elevateZoom({ gallery: 'gal1', cursor: 'pointer', galleryActiveClass: 'zoom', imageCrossfade: true, });
     //pass the images to Fancybox
     // $("#img_01").on("click", function(e) {
     //     var ez = $('#img_01').data('elevateZoom');

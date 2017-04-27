@@ -20,8 +20,8 @@ var transparentDemo = true;
 var fixedTop = false;
 
 var navbar_initialized = false;
-$.noConflict();
-jQuery(document).ready(function($) {
+
+$(document).ready(function($) {
 
     // Init Material scripts for buttons ripples, inputs animations etc, more info on the next link https://github.com/FezVrasta/bootstrap-material-design#materialjs
     $.material.init();

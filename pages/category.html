@@ -16,7 +16,7 @@
                     </div>
                     <div class="panel-body">
                         <ul class="nav nav-pills nav-pills-danger nav-stacked">
-                            <li role="presentation" ng-repeat="category in categoryctrl.category"><a href="">{{category.name}}</a></li>
+                            <li role="presentation" ng-repeat="genre in categoryctrl.genres"><a href="">{{genre.name}}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -41,24 +41,29 @@
                         <div class="item panel panel-default">
                             <div ng-class="categoryctrl.isSelectedView('block')?'panel-body':'panel-body list'">
                                 <div ng-class="categoryctrl.isSelectedView('block')? 'imagePanel':' imagePanel list'">
-                                    <a href="#/item/{{$index}}"><img ng-src="{{book.cover}}" class="panelImage" alt=""></a>
+                                    <a href="#/item/{{$index}}"><img ng-src="{{book.images.main}}" class="panelImage" alt=""></a>
                                 </div>
 
                                 <div class="descriptionBlock" ng-show="categoryctrl.isSelectedView('block')">
                                     <h6>Description</h6>
-                                    {{book.description|limitTo:90}}<a href="#/item/{{$index}}">...</a>
+                                    {{book.shortDescription|limitTo:90|limitTo:90}}<a href="#/item/{{$index}}">...</a>
                                 </div>
                             </div>
                             <div ng-class="categoryctrl.isSelectedView('block')? 'panel-footer': 'panel-footer list'">
-                                <h5>
-                                    <a href="#/item/{{$index}}" class="title">{{book.title | limitTo:20}}...</a>
-                                </h5>
+
+                                <div ng-class="categoryctrl.isSelectedView('block')? 'titlePanel':''">
+                                    <h5>
+                                        <a href="#/item/{{$index}}" class="title">{{book.title | limitTo:25}}<span ng-show="book.title.length>25">...</span></a>
+                                    </h5>
+
+                                </div>
+
                                 <div class="descriptionList" ng-show="categoryctrl.isSelectedView('list')">
                                     <p>Description</p>
-                                    <p>{{book.description|limitTo:90}}<a href="#/item/{{$index}}">...</a></p>
+                                    <p>{{book.shortDescription|limitTo:80}}<a href="#/item/{{$index}}">...</a></p>
                                 </div>
                                 <p class="author visible-sm visible-xs">{{book.author}}</p>
-                                <p class="price">{{book.price}}$</p>
+                                <p class="price">{{book.sellingPrice|currency:"$":0}}</p>
 
                                 <button class="btn btn-danger btn-xs shopCart" ng-click="booksctrl.addCart(book)"><i class="fa fa-shopping-cart"></i> </button>
                                 <button class="btn btn-default  btn-xs like "><i class="fa fa-heart" ></i></button>
@@ -66,7 +71,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="">
+                    <div class="col-sm-12">
                         <ul uib-pagination total-items="categoryctrl.bigTotalItems" ng-model="categoryctrl.bigCurrentPage" max-size="categoryctrl.maxSize" class="pagination-sm pagination-danger" boundary-link-numbers="true"></ul>
                     </div>
                 </div>
