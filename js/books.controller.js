@@ -45,10 +45,11 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         return $scope.view === checkview
     };
     $scope.getBookId = function() {
-        $http.get(bookservice.getBook + $routeParams.itemId).success(function(response) {
-            $scope.book = response;
-        })
-    }
+            $http.get(bookservice.getBook + $routeParams.itemId).success(function(response) {
+                $scope.book = response;
+            })
+        }
+        /*-----rate ---*/
     $scope.rate = 0;
     $scope.max = 5;
     $scope.isReadonly = false;
@@ -58,13 +59,15 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     $scope.ratingStates = [
         { stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty' }
     ];
+    /*-----rate ---*/
     $scope.getGerneId = function() {
-        $http.get(bookservice.getBook + 'genre/' +
-            $routeParams.genreId).success(function(response) {
-            $scope.genreBook = response;
-            $scope.bigTotalItems = $scope.genreBook.length;
-        })
-    }
+            $http.get(bookservice.getBook + 'genre/' +
+                $routeParams.genreId).success(function(response) {
+                $scope.genreBook = response;
+                $scope.bigTotalItems = $scope.genreBook.length;
+            })
+        }
+        /*---date*----*/
     $scope.today = function() {
         $scope.dt = new Date();
     };
@@ -116,7 +119,18 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     $scope.popup1 = {
         opened: false
     };
+    /*---validate--*/
+    $scope.submitForm = function() {
 
+        }
+        /*-----Search---*/
+    $scope.textSearch = $routeParams.text;
+    $scope.search = function() {
+        $http.get('https://green-web-bookstore.herokuapp.com/api/search/' + $routeParams.text).success(function(response) {
+            $scope.searchBook = response;
+            $scope.bigTotalItems = $scope.searchBook.length;
+        })
+    }
 
     // $scope.addCart = function(item) {
     //     if (bookservice.cart.length > 0) {

@@ -376,6 +376,10 @@ span.ng-binding.text-info {
     color: white
 }
 
+.date .btn-sm {
+    padding: 5px 5px;
+}
+
 
 /*--------------*/
 

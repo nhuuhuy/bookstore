@@ -72,7 +72,7 @@
 
                     </ul>
 
-                    <ul class="nav navbar-nav navbar-right visible-xs   ">
+                    <ul class="nav navbar-nav navbar-right visible-xs ">
                         <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-shopping-cart fa-2x"></i><span >Your cart</span ><span class="qty">(2)</span><span class="caret"></span></a>
                             <ul class="dropdown-menu dropdown-cart" role="menu">
                                 <li>
@@ -167,7 +167,7 @@
                             <i class="fa fa-user fa-2x"></i><span>User</span>
                         </a>
                         <ul class=" dropdown-menu dropdown-menu-danger">
-                            <li class=" "><a href="#/admin">Admin</a></li>
+                            <li class=" "><a href="#/admin/addbook">Admin</a></li>
                             <li><a href="">My Account</a></li>
                             <li><a href="">My Wishlist  </a></li>
                             <li><a href="">My Cart </a></li>
@@ -182,9 +182,9 @@
                 <div class="col-sm-5 pull-right groupSearch ">
 
                     <div class="input-group">
-                        <input type="text" class="form-control search" placeholder="Search">
+                        <input type="text" class="form-control search" ng-model=" textSearch" placeholder="Search">
                         <div class="input-group-btn">
-                            <button class="btn btn-danger btnSearch" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            <a href="#/search/{{textSearch}}"> <button class="btn btn-danger btnSearch" type="submit"><i class="glyphicon glyphicon-search"></i></button></a>
                         </div>
                     </div>
 

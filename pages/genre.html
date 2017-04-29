@@ -17,7 +17,7 @@
                     </div>
                     <div class="panel-body">
                         <ul class="nav nav-pills nav-pills-danger nav-stacked" ng-init="getGenres()">
-                            <li role="presentation" ng-repeat="genre in genres"><a href="">{{genre.name}}</a></li>
+                            <li role="presentation" ng-repeat="genre in genres"><a href="#/category/{{genre._id}}">{{genre.name}}</a></li>
                         </ul>
                     </div>
                 </div>

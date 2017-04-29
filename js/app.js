@@ -12,8 +12,16 @@ app.config(function($routeProvider) {
         controller: 'BooksController'
     })
 
-    .when('/admin', {
-            templateUrl: 'pages/admin.html',
+    .when('/admin/addbook', {
+            templateUrl: 'pages/add.html',
+            controller: 'BooksController'
+        })
+        .when('/admin/listbook', {
+            templateUrl: 'pages/list.html',
+            controller: 'BooksController'
+        })
+        .when('/admin/editbook/:itemId', {
+            templateUrl: 'pages/edit.html',
             controller: 'BooksController'
         })
         .when('/item/:itemId', {
@@ -26,6 +34,10 @@ app.config(function($routeProvider) {
         })
         .when('/category/:genreId', {
             templateUrl: 'pages/genre.html',
+            controller: 'BooksController'
+        })
+        .when('/search/:text', {
+            templateUrl: 'pages/search.html',
             controller: 'BooksController'
         })
 

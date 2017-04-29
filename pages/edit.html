@@ -9,8 +9,8 @@
                     </h5>
                     <ul class="nav nav-pills nav-pills-danger nav-stacked">
                         <li><a href="#">Home</a></li>
-                        <li class=""><a href="" ng-click="adminctrl.selectTab('addbook')">Add</a></li>
-                        <li><a href="" ng-click="adminctrl.selectTab('list')">List</a></li>
+                        <li class=""><a href="#/admin/addbook">Add</a></li>
+                        <li><a href="#/admin/listbook">List</a></li>
                         <li><a href="">Search</a></li>
                     </ul>
                     <h5><i class="glyphicon glyphicon-user"></i>
@@ -26,59 +26,63 @@
                 <div class="card card-form ">
                     <div class="addBook">
                         <div class="card-title">Add New Book</div>
-                        <form name="postForm " ng-submit=" ">
-                            <div class="form-group label-floating">
+                        <form name="postForm " ng-submit=" " ng-init="getBookId()">
+                            <div class="form-group ">
                                 <label class="control-label" for="inputTitle">Title:</label>
-                                <input class="form-control" type="text" ng-model="books.title" id="inputTitle" />
+                                <input class="form-control" type="text" ng-model="book.title" id="inputTitle" />
                             </div>
-                            <div class="form-group label-floating">
+                            <div class="form-group ">
                                 <label class="control-label" for="inputAuthor">Author:</label>
-                                <input class="form-control" type="text" ng-model="books.author" id="inputAuthor" />
+                                <input class="form-control" type="text" ng-model="book.author" id="inputAuthor" />
                             </div>
-                            <div class="form-group label-floating">
+                            <div class="form-group ">
                                 <label class="control-label" for="inputPublisher">Publisher:</label>
-                                <input class="form-control" type="text" ng-model="books.author" id="inputPublisher" />
+                                <input class="form-control" type="text" ng-model="book.publisher" id="inputPublisher" />
                             </div>
-                            <div class="form-group label-floating">
+                            <div class="form-group ">
                                 <label class="control-label" for="inputPages">Pages:</label>
-                                <input class="form-control" type="text" ng-model="books.author" id="inputPages" />
+                                <input class="form-control" type="text" ng-model="book.pages" id="inputPages" />
                             </div>
-                            <div class="form-group label-floating">
+                            <div class="form-group ">
+                                <label class="control-label" for="inputWeight">Weight:</label>
+                                <input class="form-control" type="text" ng-model="book.weight" id="inputWeight" />
+                            </div>
+                            <div class="form-group ">
                                 <label class="control-label" for="inputWidth">Width:</label>
-                                <input class="form-control" type="text" ng-model="books.author" id="inputWidth" />
+                                <input class="form-control" type="text" ng-model="book.size.width" id="inputWidth" />
                             </div>
-                            <div class="form-group label-floating">
-                                <label class="control-label" for="inputHeight">Height:</label>
-                                <input class="form-control" type="text" ng-model="books.author" id="inputHeight" />
-                            </div>
-                            <div class="form-group label-floating">
+
+                            <div class="form-group ">
                                 <label class="control-label" for="inputDepth">Depth:</label>
-                                <input class="form-control" type="text" ng-model="books.author" id="inputDepth" />
+                                <input class="form-control" type="text" ng-model="book.size.depth" id="inputDepth" />
                             </div>
-                            <div class="form-group label-floating">
+                            <div class="form-group ">
                                 <label class="control-label" for="inputShortDescription">short description</label>
-                                <textarea class="form-control" ng-model="books.description" id="inputShortDescription"></textarea>
+                                <textarea class="form-control" ng-model="book.shortDescription" id="inputShortDescription" rows="5"></textarea>
                             </div>
-                            <div class="form-group label-floating">
+                            <div class="form-group ">
                                 <label class="control-label" for="inputDescription">Full description</label>
-                                <textarea class="form-control" ng-model="books.description" id="inputDescription"></textarea>
+                                <textarea class="form-control" ng-model="book.fullDescription" id="inputDescription" rows="10"></textarea>
                             </div>
-                            <div class="form-group label-floating">
+                            <div class="form-group ">
                                 <label class="control-label" for="inputPreviousPrice">Previous price:</label>
-                                <input class="form-control" type="text" ng-model="adminctrl.books.price" id="inputPreviousPrice" />
+                                <input class="form-control" type="text" ng-model="book.previousPrice" id="inputPreviousPrice" />
                             </div>
-                            <div class="form-group label-floating">
+                            <div class="form-group ">
                                 <label class="control-label" for="inputSellingPrice">Selling price:</label>
-                                <input class="form-control" type="text" ng-model="adminctrl.books.price" id="inputSellingPrice" />
+                                <input class="form-control" type="text" ng-model="book.sellingPrice" id="inputSellingPrice" />
                             </div>
-                            <div class="form-group label-floating">
+                            <div class="form-group ">
                                 <label class="control-label" for="createDate">Create date:</label>
-                                <p class="input-group">
-                                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
-                                    <span class="input-group-btn">
+                                <div class="col-md-6">
+                                    <p class="input-group date">
+                                        <input type="text" class="form-control " uib-datepicker-popup="{{book.createDate| date}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                        <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
           </span>
-                                </p>
+                                    </p>
+                                </div>
+
                             </div>
                             <div class="form-group col-sm-6">
                                 <label class="control-label" for="inputCover">Upload cover <i class="fa fa-camera "></i></label>
@@ -87,8 +91,8 @@
 
                             <div class="form-group col-sm-6">
                                 <label class="control-label" for="">Genre</label>
-                                <select class="form-control" name="categoryUpdate" ng-model="adminctrl.books.category">
-		               	<option ng-repeat="category in adminctrl.category" value="{{category.name}}" ng-model="adminctrl.books.category">{{category.name}}</option>
+                                <select class="form-control" name="categoryUpdate" ng-model="books.category">
+		               	<!--<option ng-repeat="category in category" value="{{category.name}}" ng-model="books.gerne">{{category.name}}</option>-->
 		               </select>
                             </div>
                             <input class="btn btn-danger" type="submit" value="Submit" />
