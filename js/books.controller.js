@@ -126,7 +126,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         /*-----Search---*/
     $scope.textSearch = $routeParams.text;
     $scope.search = function() {
-        $http.get('https://green-web-bookstore.herokuapp.com/api/search/' + $routeParams.text).success(function(response) {
+        $http.get(bookservice.getText + $scope.textSearch).success(function(response) {
             $scope.searchBook = response;
             $scope.bigTotalItems = $scope.searchBook.length;
         })
