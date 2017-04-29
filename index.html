@@ -27,7 +27,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
 </head>
 
-<body ng-app="BookApp" ng-controller="BooksController as booksctrl">
+<body ng-app="BookApp">
 
     <!--<script type="text/ng-template" id="pages/home.html">
         
@@ -59,14 +59,14 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-                    <a class="navbar-brand" href="#/" ng-click="booksctrl.open()"><img src="images/bookstoreLogo.png" alt=""></a>
+                    <a class="navbar-brand" href="#/" ng-click="open()"><img src="images/bookstoreLogo.png" alt=""></a>
                 </div>
                 <div class="bookMenu navbar-collapse collapse col-sm-3 ">
                     <ul class="nav navbar-nav ">
                         <li class="active "><a href="#/">Home</a></li>
                         <li class="category dropdown "><a href="#/category" class="dropdown-toggle" data-toggle="dropdown">DANH MỤC SÁCH<i class="fa  fa-caret-down "></i >	</a>
                             <ul class="cate dropdown-menu dropdown-menu-danger">
-                                <li ng-repeat="genre in booksctrl.genres"><a href="">{{genre.name}}</a></li>
+                                <li ng-repeat="genre in genres"><a href="">{{genre.name}}</a></li>
                             </ul>
                         </li>
 
@@ -128,9 +128,9 @@
                 </div>
                 <ul class="nav navbar-nav navbar-right   hidden-xs col-md-3 ">
 
-                    <li class="dropdown cart"><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-shopping-cart fa-2x"></i><span >Your cart</span ><span class="qty">({{booksctrl.cart.length}})</span><span class="caret"></span></a>
+                    <li class="dropdown cart"><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-shopping-cart fa-2x"></i><span >Your cart</span ><span class="qty">({{cart.length}})</span><span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-cart" role="menu">
-                            <li ng-repeat="item in booksctrl.cart track by $index">
+                            <li ng-repeat="item in cart track by $index">
                                 <span class="item">
 		                    <span class="item-left">
 		                        <img ng-src="{{item.cover}}" alt="" />
@@ -140,7 +140,7 @@
                                 </span>
                                 </span>
                                 <span class="item-right">
-		                        <button class="btn btn-xs btn-danger btn-fab btn-fab-mini btn-round pull-right" ng-click='booksctrl.removeCart(item)'>x</button>
+		                        <button class="btn btn-xs btn-danger btn-fab btn-fab-mini btn-round pull-right" ng-click='removeCart(item)'>x</button>
 		                    </span>
                                 </span>
                             </li>
@@ -351,15 +351,15 @@
 
 <script src="js/custom.js"></script>
 <script src="js/app.js"></script>
-<script src="js/genres.service.js"></script>
+
 <script src="js/books.service.js"></script>
-<script src="js/home.controller.js"></script>
+<script src="js/books.controller.js"></script>
 <script src="js/multicarousel.controller.js"></script>
 <script src="js/login.cotroller.js"></script>
-<script src="js/item.controller.js"></script>
+
 <script src="js/admin.controller.js"></script>
 <script src="js/cart.controller.js"></script>
-<script src="js/category.controller.js"></script>
+
 
 
 </html>

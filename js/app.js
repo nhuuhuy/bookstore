@@ -9,28 +9,27 @@ app.config(function($routeProvider) {
 
     .when('/category', {
         templateUrl: 'pages/category.html',
-        controller: 'CategoryController'
+        controller: 'BooksController'
     })
 
     .when('/admin', {
             templateUrl: 'pages/admin.html',
-            controller: 'AdminController'
+            controller: 'BooksController'
         })
         .when('/item/:itemId', {
             templateUrl: 'pages/item.html',
-            controller: 'ItemController',
-
-
+            controller: 'BooksController'
         })
         .when('/cart', {
             templateUrl: 'pages/cart.html',
             controller: 'cartcontroller'
         })
-        .when('/login', {
-            templateUrl: 'pages/login.html',
-            controller: 'LoginController'
+        .when('/category/:genreId', {
+            templateUrl: 'pages/genre.html',
+            controller: 'BooksController'
         })
-        .otherwise({ redirectTo: '/' });
+
+    .otherwise({ redirectTo: '/' });
 });
 
 

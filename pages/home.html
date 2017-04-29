@@ -1,4 +1,4 @@
-<div ng-controller="BooksController as booksctrl">
+<div>
     <div class="container">
         <div class="row">
             <div class="col-sm-3 sidenav hidden-xs ">
@@ -6,18 +6,18 @@
                     <div class="panel-heading">
                         <h5>Danh Mục Sách</h5>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body" ng-init="getGenres()">
                         <ul class="nav nav-pills nav-pills-danger nav-stacked">
-                            <li role="presentation" ng-repeat="genre in booksctrl.genres"><a href="">{{genre.name}}</a></li>
+                            <li role="presentation" ng-repeat="genre in genres"><a href="#/category/{{genre._id}}">{{genre.name}}</a></li>
                         </ul>
                     </div>
                 </div>
 
             </div>
-            <div class="col-sm-9">
-                <div ng-controller="carousel as carousel" class="homeCarousel">
-                    <div uib-carousel active="carousel.active" interval="carousel.myInterval" no-wrap="carousel.noWrapSlides">
-                        <div uib-slide ng-repeat="slide in carousel.slides" index="slide.id">
+            <div class="col-sm-9" ng-init="getBook()">
+                <div class="homeCarousel">
+                    <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+                        <div uib-slide ng-repeat="slide in slides" index="slide.id">
                             <img ng-src="{{slide.image}}">
                             <div class="carousel-caption">
                                 <h1>{{slide.caption}}</h1>
@@ -30,28 +30,28 @@
                         <h5>Sách Mới Phát Hành</h5>
                     </div>
 
-                    <div class="col-md-3 col-sm-6  box " ng-repeat="book in booksctrl.books| limitTo: 4">
+                    <div class="col-md-3 col-sm-6  box " ng-repeat="book in books| limitTo: 4">
                         <div class="item panel panel-default">
                             <div class="panel-body">
                                 <div class="imagePanel">
-                                    <a href="#/item/{{$index}}"><img ng-src="{{book.images.main}}" class="panelImage" alt=""></a>
+                                    <a href="#/item/{{book._id}}"><img ng-src="{{book.images.main}}" class="panelImage" alt=""></a>
                                 </div>
 
                                 <div class="description text-left">
                                     <h6>Description</h6>
-                                    {{book.shortDescription|limitTo:90}}<a href="#/item/{{$index}}">...</a>
+                                    {{book.shortDescription|limitTo:90}}<a href="#/item/{{book._id}}">...</a>
                                 </div>
                             </div>
                             <div class="panel-footer">
                                 <div class="titlePanel">
                                     <h5>
-                                        <a href="#/item/{{$index}}" class="title">{{book.title | limitTo:25}}<span ng-show="book.title.length>25">...</span></a>
+                                        <a href="#/item/{{book._id}}" class="title">{{book.title | limitTo:25}}<span ng-show="book.title.length>25">...</span></a>
                                     </h5>
 
                                 </div>
                                 <p class="price">{{book.sellingPrice| currency:"$":0}}</p>
                                 <div class="btnHover">
-                                    <button class="btn btn-danger btn-xs shopCart" ng-click="booksctrl.addCart(book)"><i class="fa fa-shopping-cart"></i> </button>
+                                    <button class="btn btn-danger btn-xs shopCart" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> </button>
                                     <button class="btn btn-default  btn-xs like"><i class="fa fa-heart" ></i></button>
                                 </div>
 
@@ -65,30 +65,30 @@
                     <div class="heading  ">
                         <h5>Sách Bán Chạy</h5>
                     </div>
-                    <div class="col-md-3 col-sm-6  box " ng-repeat="book in booksctrl.books| limitTo: 4">
+                    <div class="col-md-3 col-sm-6  box " ng-repeat="book in books| limitTo: 4">
                         <div class="item panel panel-default">
                             <div class="panel-body">
                                 <div class="imagePanel">
-                                    <a href="#/item/{{$index}}"><img ng-src="{{book.images.main}}" class="panelImage" alt=""></a>
+                                    <a href="#/item/{{book._id}}"><img ng-src="{{book.images.main}}" class="panelImage" alt=""></a>
                                 </div>
 
                                 <div class="description text-left">
                                     <h6>Description</h6>
-                                    {{book.shortDescription|limitTo:90}}<a href="#/item/{{$index}}">...</a>
+                                    {{book.shortDescription|limitTo:90}}<a href="#/item/{{book._id}}">...</a>
                                 </div>
                             </div>
 
                             <div class="panel-footer">
                                 <div class="titlePanel">
                                     <h5>
-                                        <a href="#/item/{{$index}}" class="title">{{book.title | limitTo:25}}<span ng-show="book.title.length>25">...</span></a>
+                                        <a href="#/item/{{book._id}}" class="title">{{book.title | limitTo:25}}<span ng-show="book.title.length>25">...</span></a>
                                     </h5>
 
                                 </div>
 
                                 <p class="price">{{book.sellingPrice|currency:"$":0}}</p>
 
-                                <button class="btn btn-danger btn-xs  shopCart " ng-click="booksctrl.addCart(book)"><i class="fa fa-shopping-cart"></i> </button>
+                                <button class="btn btn-danger btn-xs  shopCart " ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> </button>
                                 <button class="btn btn-default  btn-xs like"><i class="fa fa-heart" ></i></button>
 
                             </div>
@@ -103,23 +103,23 @@
 
                     <div ng-controller='MultiCarousel as multicarousel' class="multi-item-carousel hidden-xs ">
                         <div uib-carousel active="multicarousel.active" interval="multicarousel.myInterval">
-                            <div uib-slide ng-repeat="slide in multicarousel.slides" index="$index">
+                            <div uib-slide ng-repeat="slide in multicarousel.slides" index="book._id">
                                 <div class="col-xs-3 box">
                                     <div class="item panel panel-default">
                                         <div class="panel-body">
                                             <div class="imagePanel">
-                                                <a href="#/item/{{$index}}"><img ng-src="{{slide.images.main}}" class="panelImage" alt=""></a>
+                                                <a href="#/item/{{book._id}}"><img ng-src="{{slide.images.main}}" class="panelImage" alt=""></a>
                                             </div>
 
                                             <div class="description text-left">
                                                 <h6>Description</h6>
-                                                {{slide.shortDescription|limitTo:90}}<a href="#/item/{{$index}}">...</a>
+                                                {{slide.shortDescription|limitTo:90}}<a href="#/item/{{book._id}}">...</a>
                                             </div>
                                         </div>
                                         <div class="panel-footer">
                                             <div class="titlePanel">
                                                 <h5>
-                                                    <a href="#/item/{{$index}}" class="title">{{slide.title | limitTo:25}}<span ng-show="slide.title.length>25">...</span></a>
+                                                    <a href="#/item/{{book._id}}" class="title">{{slide.title | limitTo:25}}<span ng-show="slide.title.length>25">...</span></a>
 
                                                 </h5>
 
@@ -127,7 +127,7 @@
 
                                             <p class="price">{{slide.sellingPrice| number:0}}$</p>
 
-                                            <button class="btn btn-danger btn-xs shopCart" ng-click="booksctrl.addCart(book)"><i class="fa fa-shopping-cart"></i> </button>
+                                            <button class="btn btn-danger btn-xs shopCart" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> </button>
                                             <button class="btn btn-default btn-xs like "><i class="fa fa-heart" ></i></button>
 
                                         </div>

@@ -1,11 +1,11 @@
-<div ng-controller="ItemController as itemctrl" ng-model="itemctrl.books">
+<div>
     <div class="container">
         <div class="row">
             <div class="">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#/home">Home</a></li>
                     <li class="breadcrumb-item"><a href="#/category">Danh mục sách</a></li>
-                    <li class="breadcrumb-item active">{{itemctrl.books[itemctrl.whichItem].title}}</li>
+                    <li class="breadcrumb-item active">{{book.title}}</li>
                 </ol>
             </div>
             <div class="col-sm-3 sidenav hidden-xs">
@@ -13,24 +13,24 @@
                     <div class="panel-heading">
                         <h5>Danh Mục Sách</h5>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body" ng-init="getGenres()">
                         <ul class="nav nav-pills nav-pills-danger nav-stacked">
-                            <li role="presentation" ng-repeat="genre in itemctrl.genres"><a href="">{{genre.name}}</a></li>
+                            <li role="presentation" ng-repeat="genre in genres"><a href="">{{genre.name}}</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-9">
+            <div class="col-sm-9 " ng-init="getBookId()">
                 <div class="card">
 
                     <div class="col-md-5 clearfix ">
                         <div class="box-image ">
 
                             <div class="img-zoom">
-                                <img id="img_01" ng-src="{{itemctrl.books[itemctrl.whichItem].images.main}}" data-zoom-image="{{itemctrl.books[itemctrl.whichItem].bigCover}}" class="" />
+                                <img id="img_01" ng-src="{{book.images.main}}" data-zoom-image="{{book.bigCover}}" class="" />
                             </div>
 
-                            <div class=" clearfix " id="gal1">
+                            <!--<div class=" clearfix " id="gal1">
                                 <div class="col-xs-4 thumnail">
                                     <a href="" data-image="images/2.jpg" data-zoom-image="images/2big.jpg">
                                         <img id="img_02" src="images/2.jpg" class="img-responsive" />
@@ -47,22 +47,22 @@
                                         <img id="img_03" src="images/1.jpg" class="img-responsive" />
                                     </a>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
 
                     <div class="col-md-7">
                         <div class="">
-                            <h3> <strong>{{itemctrl.books[itemctrl.whichItem].title}}</strong></h3>
+                            <h3> <strong>{{book.title}}</strong></h3>
                             <span class=" glyphicon glyphicon-star"></span>
                             <span class=" glyphicon glyphicon-star"></span>
                             <span class=" glyphicon glyphicon-star"></span>
                             <span class=" glyphicon glyphicon-star"></span>
                             <span class=" glyphicon glyphicon-star-empty"></span>
-                            <p>Tác giả: <i>{{itemctrl.books[itemctrl.whichItem].author}}</i></p>
-                            <h5 class="price">{{itemctrl.books[itemctrl.whichItem].sellingPrice|currency:"$":0}}</h5>
+                            <p>Tác giả: <i>{{book.author}}</i></p>
+                            <h5 class="price">{{book.sellingPrice|currency:"$":0}}</h5>
                             <h5>Giới thiệu</h5>
-                            <p>{{itemctrl.books[itemctrl.whichItem].shortDescription}}</p>
+                            <p>{{book.shortDescription}}</p>
                             <div class="">
                                 <!--<div class="form-group col-sm-6">
                                     <label for="">
@@ -81,7 +81,7 @@
                                     <input class="form-control" type="number" min="1">
 
                                 </div>
-                                <button class="btn btn-danger" ng-click='booksctrl.addCart(book)'><i class="fa fa-shopping-cart"></i> Add to cart</button>
+                                <button class="btn btn-danger"><i class="fa fa-shopping-cart"></i> Add to cart</button>
                                 <!--<button class="btn btn-default btn-fab btn-fab-mini btn-round pull-right "><i class="fa fa-heart" ></i></button>-->
                             </div>
 
@@ -91,34 +91,34 @@
                 </div>
                 <div class=" card fullDescription">
                     <div class="card-title">Giới thiệu sách</div>
-                    {{itemctrl.books[itemctrl.whichItem].fullDescription}}
+                    {{book.fullDescription}}
                 </div>
                 <div class=" card information">
                     <div class="card-title">Thông tin chi tiết</div>
                     <table class="table table-striped table-responsive">
                         <tr>
                             <th class="col-xs-2">SKU</th>
-                            <td class="col-xs-10">{{itemctrl.books[itemctrl.whichItem].sku}}</td>
+                            <td class="col-xs-10">{{book.sku}}</td>
                         </tr>
                         <tr>
                             <th class="col-xs-2"> Nhà xuất bản</th>
-                            <td lass="col-xs-10">{{itemctrl.books[itemctrl.whichItem].publisher}}</td>
+                            <td lass="col-xs-10">{{book.publisher}}</td>
                         </tr>
                         <tr>
                             <th class="col-xs-2"> Trọng lượng </th>
-                            <td lass="col-xs-10"> {{itemctrl.books[itemctrl.whichItem].weight}} g</td>
+                            <td lass="col-xs-10"> {{book.weight}} <span ng-show="book.weight"> g</span> </td>
                         </tr>
                         <tr>
                             <th class="col-xs-2"> Kích thước</th>
-                            <td lass="col-xs-10"> {{itemctrl.books[itemctrl.whichItem].size.width}}X {{itemctrl.books[itemctrl.whichItem].size.depth}} </td>
+                            <td lass="col-xs-10"> {{book.size.width}}<span ng-show="book.size.width"> x </span> {{book.size.depth}} </td>
                         </tr>
                         <tr>
                             <th class="col-xs-2"> Số trang</th>
-                            <td lass="col-xs-10"> {{itemctrl.books[itemctrl.whichItem].pages}}</td>
+                            <td lass="col-xs-10"> {{book.pages}}</td>
                         </tr>
                         <tr>
                             <th class="col-xs-2"> Ngày xuất bản</th>
-                            <td lass="col-xs-10"> {{itemctrl.books[itemctrl.whichItem].createDate|date}}</td>
+                            <td lass="col-xs-10"> {{book.createDate|date}}</td>
                         </tr>
                     </table>
                 </div>
@@ -167,7 +167,7 @@
 
                 <div class=" card comment">
                     <label for="">Rate</label>
-                    <span uib-rating ng-model="itemctrl.rate" max="itemctrl.max" read-only="itemctrl.isReadonly" on-hover="itemctrl.hoveringOver(value)"></span>
+                    <span uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)"></span>
                     <div class="form-group">
                         <label for="">Comment:</label>
                         <textarea class="form-control" rows="3"></textarea>

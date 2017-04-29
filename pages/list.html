@@ -1,0 +1,54 @@
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+
+                <div class="card sidebar-nav">
+                    <h5><i class="glyphicon glyphicon-home"></i>
+                        <small><b>MANAGEMENT</b></small>
+                    </h5>
+                    <ul class="nav nav-pills nav-pills-danger nav-stacked">
+                        <li><a href="#">Home</a></li>
+                        <li class=""><a href="">Add</a></li>
+                        <li><a href="">List</a></li>
+                        <li><a href="">Search</a></li>
+                    </ul>
+                    <h5><i class="glyphicon glyphicon-user"></i>
+                        <small><b>USERS</b></small>
+                    </h5>
+                    <ul class="nav nav-pills nav-pills-danger nav-stacked">
+                        <li><a href="#">List</a></li>
+                        <li><a href="#">Manage</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-8 ">
+                <div class="card card-form ">
+
+                    <div class="list-books">
+                        <div class="card-title">Books</div>
+                        <table class="table table-bordered table-hover">
+                            <tr>
+                                <th class="col-xs-1">STT</th>
+                                <th class="col-xs-9">Title</th>
+                                <th class="col-xs-1"></th>
+                                <th class="col-xs-1"></th>
+                            </tr>
+                            <tr ng-repeat="book in adminctrl.books">
+                                <td class="col-xs-1">{{$index+1}}</td>
+                                <td class="col-xs-9">{{book.title }}</td>
+                                <td class="col-xs-1"><button type="button" class="btn btn-success btn-xs"><i class="fa fa-pencil-square-o"></i></button></td>
+                                <td class="col-xs-1"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>

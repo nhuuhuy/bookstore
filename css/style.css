@@ -369,6 +369,16 @@ a.zoom img {
     top: -75px;
 }
 
+
+/*-----Date----*/
+
+span.ng-binding.text-info {
+    color: white
+}
+
+
+/*--------------*/
+
 @media screen and (max-width:992px) {
     .descriptionList {
         width: 200px;

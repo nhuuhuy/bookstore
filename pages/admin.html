@@ -1,4 +1,4 @@
-<div ng-controller="AdminController as adminctrl">
+<div>
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
@@ -24,44 +24,44 @@
             </div>
             <div class="col-sm-8 ">
                 <div class="card card-form ">
-                    <div class="addBook" ng-show="adminctrl.isSelectedTab('addbook')">
+                    <div class="addBook">
                         <div class="card-title">Add New Book</div>
                         <form name="postForm " ng-submit=" ">
                             <div class="form-group label-floating">
                                 <label class="control-label" for="inputTitle">Title:</label>
-                                <input class="form-control" type="text" ng-model="adiminctrl.books.title" id="inputTitle" />
+                                <input class="form-control" type="text" ng-model="books.title" id="inputTitle" />
                             </div>
                             <div class="form-group label-floating">
                                 <label class="control-label" for="inputAuthor">Author:</label>
-                                <input class="form-control" type="text" ng-model="adiminctrl.books.author" id="inputAuthor" />
+                                <input class="form-control" type="text" ng-model="books.author" id="inputAuthor" />
                             </div>
                             <div class="form-group label-floating">
                                 <label class="control-label" for="inputPublisher">Publisher:</label>
-                                <input class="form-control" type="text" ng-model="adiminctrl.books.author" id="inputPublisher" />
+                                <input class="form-control" type="text" ng-model="books.author" id="inputPublisher" />
                             </div>
                             <div class="form-group label-floating">
                                 <label class="control-label" for="inputPages">Pages:</label>
-                                <input class="form-control" type="text" ng-model="adiminctrl.books.author" id="inputPages" />
+                                <input class="form-control" type="text" ng-model="books.author" id="inputPages" />
                             </div>
                             <div class="form-group label-floating">
                                 <label class="control-label" for="inputWidth">Width:</label>
-                                <input class="form-control" type="text" ng-model="adiminctrl.books.author" id="inputWidth" />
+                                <input class="form-control" type="text" ng-model="books.author" id="inputWidth" />
                             </div>
                             <div class="form-group label-floating">
                                 <label class="control-label" for="inputHeight">Height:</label>
-                                <input class="form-control" type="text" ng-model="adiminctrl.books.author" id="inputHeight" />
+                                <input class="form-control" type="text" ng-model="books.author" id="inputHeight" />
                             </div>
                             <div class="form-group label-floating">
                                 <label class="control-label" for="inputDepth">Depth:</label>
-                                <input class="form-control" type="text" ng-model="adiminctrl.books.author" id="inputDepth" />
+                                <input class="form-control" type="text" ng-model="books.author" id="inputDepth" />
                             </div>
                             <div class="form-group label-floating">
                                 <label class="control-label" for="inputShortDescription">short description</label>
-                                <textarea class="form-control" ng-model="adiminctrl.books.description" id="inputShortDescription"></textarea>
+                                <textarea class="form-control" ng-model="books.description" id="inputShortDescription"></textarea>
                             </div>
                             <div class="form-group label-floating">
                                 <label class="control-label" for="inputDescription">Full description</label>
-                                <textarea class="form-control" ng-model="adiminctrl.books.description" id="inputDescription"></textarea>
+                                <textarea class="form-control" ng-model="books.description" id="inputDescription"></textarea>
                             </div>
                             <div class="form-group label-floating">
                                 <label class="control-label" for="inputPreviousPrice">Previous price:</label>
@@ -73,11 +73,16 @@
                             </div>
                             <div class="form-group label-floating">
                                 <label class="control-label" for="createDate">Create date:</label>
-                                <input class="form-control" type="text" ng-model="adminctrl.books.date" id="createDate" />
+                                <p class="input-group">
+                                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                    <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+                                </p>
                             </div>
                             <div class="form-group col-sm-6">
                                 <label class="control-label" for="inputCover">Upload cover <i class="fa fa-camera "></i></label>
-                                <input type="file" id="uploadimg" ng-model="adiminctrl.books.cover" id="inputCover">
+                                <input type="file" id="uploadimg" ng-model="books.cover" id="inputCover">
                             </div>
 
                             <div class="form-group col-sm-6">
@@ -90,24 +95,6 @@
                         </form>
                     </div>
 
-                    <div class="list-books" ng-show="adminctrl.isSelectedTab('list')">
-                        <div class="card-title">Books</div>
-                        <table class="table table-bordered table-hover">
-                            <tr>
-                                <th class="col-xs-1">STT</th>
-                                <th class="col-xs-9">Title</th>
-                                <th class="col-xs-1"></th>
-                                <th class="col-xs-1"></th>
-                            </tr>
-                            <tr ng-repeat="book in adminctrl.books">
-                                <td class="col-xs-1">{{$index+1}}</td>
-                                <td class="col-xs-9">{{book.title }}</td>
-                                <td class="col-xs-1"><button type="button" class="btn btn-success btn-xs"><i class="fa fa-pencil-square-o"></i></button></td>
-                                <td class="col-xs-1"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></td>
-                            </tr>
-                        </table>
-
-                    </div>
                 </div>
 
             </div>

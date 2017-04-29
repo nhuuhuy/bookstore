@@ -1,8 +1,9 @@
-app.service('bookservice', ['$http', function($http) {
+app.service('bookservice', function($http) {
 
-    this.getBook = $http.get("https://green-web-bookstore.herokuapp.com/api/books")
+    this.getBook = 'https://green-web-bookstore.herokuapp.com/api/books/'
+    this.getGenres = 'https://green-web-bookstore.herokuapp.com/api/genres/'
 
     this.cart = [];
 
 
-}])
+})

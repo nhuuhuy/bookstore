@@ -1,10 +1,11 @@
 <div>
-    <div class="container">
+    <div class="container" ng-init="getGerneId()">
         <div class="row">
             <div class="">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#/">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="#/category">category</a></li>
+                    <li class="breadcrumb-item"><a href="#/category">category</a></li>
+                    <li class="breadcrumb-item active"><a href="#/category/genreBook[0].genre._id">{{genreBook[0].genre.name}}</a></li>
                 </ol>
             </div>
 
@@ -21,10 +22,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-9" ng-init="getBook()">
+            <div class="col-sm-9">
                 <div class="wrap">
                     <div class="heading  ">
-                        <h5>All</h5>
+                        <h5>{{genreBook[0].genre.name}}</h5>
                     </div>
 
                     <div class="fillter">
@@ -37,7 +38,7 @@
                         <label for="">View: </label><button class="btn btn-default btn-sm" ng-click="setView('list')" type="button"><i class="fa  fa-th-list"></i></button>
                         <button class="btn btn-default btn-sm" ng-click="setView('block')" type="button"><i class="fa fa-th-large"></i></button>
                     </div>
-                    <div ng-class="isSelectedView('block')?'col-md-3 col-sm-6': 'col-sm-12 '   " ng-repeat="book in books">
+                    <div ng-class="isSelectedView('block')?'col-md-3 col-sm-6': 'col-sm-12 '   " ng-repeat="book in genreBook">
                         <div class="item panel panel-default">
                             <div ng-class="isSelectedView('block')?'panel-body':'panel-body list'">
                                 <div ng-class="isSelectedView('block')? 'imagePanel':' imagePanel list'">
