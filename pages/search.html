@@ -25,7 +25,7 @@
             <div class="col-sm-9">
                 <div class="wrap">
                     <div class="heading  ">
-                        <h5>Kết Quả tìm kiếm</h5>
+                        <h5>Kết Quả tìm kiếm "{{textSearch}}"</h5>
                     </div>
 
                     <div class="fillter">
@@ -63,7 +63,7 @@
                                     <p>Description</p>
                                     <p>{{book.shortDescription|limitTo:80}}<a href="#/item/{{book._id}}">...</a></p>
                                 </div>
-                                <p class="author visible-sm visible-xs">{{book.author}}</p>
+                                <p class="author ">{{book.author}}</p>
                                 <p class="price">{{book.sellingPrice|currency:"$":0}}</p>
 
                                 <button class="btn btn-danger btn-xs shopCart" ng-click="booksctrl.addCart(book)"><i class="fa fa-shopping-cart"></i> </button>

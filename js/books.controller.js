@@ -50,7 +50,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             })
         }
         /*-----rate ---*/
-    $scope.rate = 0;
+  
     $scope.max = 5;
     $scope.isReadonly = false;
     $scope.hoveringOver = function(value) {
@@ -131,6 +131,18 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             $scope.bigTotalItems = $scope.searchBook.length;
         })
     }
+    /*---------comment----*/
+$scope.comment = {};
+ $scope.addComment = function(post) {
+      $scope.comment.createdOn = Date.now();
+      console.log($scope.comment)
+     post.comments.push($scope.comment);
+     console.log(post.comments)
+      $scope.comment = {};
+ }
+
+
+
 
     // $scope.addCart = function(item) {
     //     if (bookservice.cart.length > 0) {

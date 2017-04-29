@@ -60,7 +60,9 @@
                             <span class=" glyphicon glyphicon-star"></span>
                             <span class=" glyphicon glyphicon-star-empty"></span>
                             <p>Tác giả: <i>{{book.author}}</i></p>
+                            <h5 class="text-danger"><del>{{book.previousPrice|currency:"$":0}} </del> </h5>
                             <h5 class="price">{{book.sellingPrice|currency:"$":0}}</h5>
+                            <p> Tiết kiệm :{{book.previousPrice-book.sellingPrice|currency:"$":0}}</p> 
                             <h5>Giới thiệu</h5>
                             <p>{{book.shortDescription}}</p>
                             <div class="">
@@ -118,7 +120,7 @@
                         </tr>
                         <tr>
                             <th class="col-xs-2"> Ngày xuất bản</th>
-                            <td lass="col-xs-10"> {{book.createDate|date}}</td>
+                            <td lass="col-xs-10"> {{book.releaseDate|date}}</td>
                         </tr>
                     </table>
                 </div>
@@ -163,17 +165,38 @@
                         </div>
                     </div>
                 </div>
+                  <div class=" reviews card" ng-repeat="comment in book.comments">
+                    <div class="media">
+                        <div class="col-sm-2">
+                            <a href="#">
+                                <img class="" src="images/8.jpg" alt="...">
+                            </a>
+                            
+                            <p>{{comment.createdOn|date}}</p>
+                        </div>
+                        <div class="col-sm-10 text-left">
+                            <h4 class="media-heading">Kate Williams</h4>
+                            <span uib-rating ng-model="comment.rate" max="max" read-only="true" on-hover="hoveringOver(value)" ></span>
+                           
+                            <p>{{comment.body}}</p>
+                        </div>
+                    </div>
+                </div>
+                
 
 
                 <div class=" card comment">
-                    <label for="">Rate</label>
-                    <span uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)"></span>
+                    <form action="">
+ <label for="">Rate</label>
+                    <span uib-rating ng-model="comment.rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" ></span>
                     <div class="form-group">
                         <label for="">Comment:</label>
-                        <textarea class="form-control" rows="3"></textarea>
-                        <input class="btn btn-danger" type="submit" value="Submit" />
+                        <textarea class="form-control" rows="3" ng-model="comment.body"></textarea>
+                        <input class="btn btn-danger" type="submit" value="Submit" ng-click ="addComment(book)" />
                     </div>
 
+                    </form>
+                   
                 </div>
 
                 <!--<div class="wrap">

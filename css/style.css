@@ -40,6 +40,7 @@ th {
     color: #fff;
     margin: 0px;
     padding-top: 20px;
+    border-radius: 0px
 }
 
 .footer-copyright {
@@ -198,7 +199,7 @@ ul.dropdown-cart li .item-right button {
     width: 100%;
 }
 
-.descriptionBlock {
+.descriptionBlock{
     display: none;
     font-size: 12px
 }
@@ -416,7 +417,9 @@ span.ng-binding.text-info {
     }
     .imagePanel {
         width: 120px;
-        display: inline-block
+        display: inline-block;
+            margin-bottom: 50px;
+    max-width: 100px;
     }
     .item .panel-footer {
         padding: 0px 10px
