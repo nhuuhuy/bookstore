@@ -1,4 +1,4 @@
-app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routeParams', function($scope, bookservice, $http, $routeParams) {
+app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routeParams', '$location', function($scope, bookservice, $http, $routeParams, $location) {
 
     $scope.getBook = function() {
         $http.get(bookservice.getBook).success(function(response) {
@@ -50,7 +50,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             })
         }
         /*-----rate ---*/
-  
+
     $scope.max = 5;
     $scope.isReadonly = false;
     $scope.hoveringOver = function(value) {
@@ -131,15 +131,18 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             $scope.bigTotalItems = $scope.searchBook.length;
         })
     }
-    /*---------comment----*/
-$scope.comment = {};
- $scope.addComment = function(post) {
-      $scope.comment.createdOn = Date.now();
-      console.log($scope.comment)
-     post.comments.push($scope.comment);
-     console.log(post.comments)
-      $scope.comment = {};
- }
+    $scope.submitSearch = function() {
+            window.location.href = '#/search/' + $scope.textSearch;
+        }
+        /*---------comment----*/
+    $scope.comment = {};
+    $scope.addComment = function(post) {
+        $scope.comment.createdOn = Date.now();
+        console.log($scope.comment)
+        post.comments.push($scope.comment);
+        console.log(post.comments)
+        $scope.comment = {};
+    }
 
 
 
