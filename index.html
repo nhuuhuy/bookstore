@@ -182,7 +182,7 @@
                 </ul>
 
                 <div class="col-sm-5 pull-right groupSearch ">
-                    <form name="search" ng-submit="submitSearch()">
+                    <form name="search" ng-submit="textSearch.length>0?submitSearch():''">
                         <div class="input-group">
                             <input type="text" class="form-control search" ng-model="textSearch" placeholder="Search">
                             <div class="input-group-btn">

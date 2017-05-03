@@ -47,6 +47,12 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     $scope.getBookId = function() {
             $http.get(bookservice.getBook + $routeParams.itemId).success(function(response) {
                 $scope.book = response;
+                var rateTotal = 0;
+                $scope.book.comments.rate;
+                for (var i = 0; i < $scope.book.comments.length; i++) {
+                    rateTotal += $scope.book.comments[i].rate
+                }
+                $scope.rateAvr = rateTotal / $scope.book.comments.length
             })
         }
         /*-----rate ---*/
@@ -135,15 +141,41 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             window.location.href = '#/search/' + $scope.textSearch;
         }
         /*---------comment----*/
-    $scope.comment = {};
-    $scope.addComment = function(post) {
-        $scope.comment.createdOn = Date.now();
-        console.log($scope.comment)
-        post.comments.push($scope.comment);
-        console.log(post.comments)
-        $scope.comment = {};
+    $scope.user = {
+        '_id': 'user001',
+        'userName': 'Nguyen Huu Huy',
+        'userAvatarUrl': 'https://avatars0.githubusercontent.com/u/26504396?v=3&s=460'
     }
 
+
+    $scope.comment = {};
+    $scope.addComment = function(post) {
+        $scope.comment.date = Date.now();
+        $scope.comment.userName = $scope.user.userName;
+        $scope.comment.userAvatarUrl = $scope.user.userAvatarUrl;
+        post.comments.push($scope.comment);
+        var req = {
+            method: 'PUT',
+            url: bookservice.getBook + $routeParams.itemId,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: post
+        }
+        $http(req).then(function() {
+                console.log('success')
+            },
+
+            function() {
+                console.log('error')
+            });
+        // $http.put(bookservice.getBook + $routeParams.itemId, $scope.post).success(function(response) {
+        //     console.log('success')
+        // });
+
+        console.log(post);
+
+    }
 
 
 

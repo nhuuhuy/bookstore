@@ -54,15 +54,11 @@
                     <div class="col-md-7">
                         <div class="">
                             <h3> <strong>{{book.title}}</strong></h3>
-                            <span class=" glyphicon glyphicon-star"></span>
-                            <span class=" glyphicon glyphicon-star"></span>
-                            <span class=" glyphicon glyphicon-star"></span>
-                            <span class=" glyphicon glyphicon-star"></span>
-                            <span class=" glyphicon glyphicon-star-empty"></span>
+                            <span uib-rating ng-model="rateAvr" max="max" read-only="true" on-hover="hoveringOver(value)"></span>
                             <p>Tác giả: <i>{{book.author}}</i></p>
                             <h5 class="text-danger"><del>{{book.previousPrice|currency:"$":0}} </del> </h5>
                             <h5 class="price">{{book.sellingPrice|currency:"$":0}}</h5>
-                            <p> Tiết kiệm :{{book.previousPrice-book.sellingPrice|currency:"$":0}}</p> 
+                            <p> Tiết kiệm :{{book.previousPrice-book.sellingPrice|currency:"$":0}}</p>
                             <h5>Giới thiệu</h5>
                             <p>{{book.shortDescription}}</p>
                             <div class="">
@@ -124,79 +120,42 @@
                         </tr>
                     </table>
                 </div>
-                <div class=" reviews card">
+
+                <div class=" reviews card" ng-repeat="comment in book.comments|orderBy: 'createdOn' :true">
                     <div class="media">
-                        <div class="col-sm-2 text-center">
+                        <div class="col-sm-2">
                             <div class="avatar">
                                 <a href="#">
-                                    <img class="" src="images/8.jpg" alt="...">
+                                    <img class="img-responsive" ng-src="{{comment.userAvatarUrl}}" alt="...">
                                 </a>
                             </div>
 
-                            <p>January 29, 2016</p>
+
+
                         </div>
                         <div class="col-sm-10 text-left">
-                            <h4 class="media-heading">Kate Williams</h4>
-                            <span class=" glyphicon glyphicon-star"></span>
-                            <span class=" glyphicon glyphicon-star"></span>
-                            <span class=" glyphicon glyphicon-star"></span>
-                            <span class=" glyphicon glyphicon-star"></span>
-                            <span class=" glyphicon glyphicon-star-empty"></span>
-                            <p>Lorem ipsum dolor sit amet.</p>
+                            <h4 class="media-heading">{{comment.userName}}</h4>
+                            <span uib-rating ng-model="comment.rate" max="max" read-only="true"></span>
+                            <span>/ {{comment.date|date:'dd/ MM/ yyyy h:mma'}}</span>
+                            <p>{{comment.commentBody}}</p>
                         </div>
                     </div>
                 </div>
-                <div class=" reviews card">
-                    <div class="media">
-                        <div class="col-sm-2">
-                            <a href="#">
-                                <img class="" src="images/8.jpg" alt="...">
-                            </a>
-                            <p>January 29, 2016</p>
-                        </div>
-                        <div class="col-sm-10 text-left">
-                            <h4 class="media-heading">Kate Williams</h4>
-                            <span class=" glyphicon glyphicon-star"></span>
-                            <span class=" glyphicon glyphicon-star"></span>
-                            <span class=" glyphicon glyphicon-star"></span>
-                            <span class=" glyphicon glyphicon-star"></span>
-                            <span class=" glyphicon glyphicon-star-empty"></span>
-                            <p>Lorem ipsum dolor sit amet.</p>
-                        </div>
-                    </div>
-                </div>
-                  <div class=" reviews card" ng-repeat="comment in book.comments">
-                    <div class="media">
-                        <div class="col-sm-2">
-                            <a href="#">
-                                <img class="" src="images/8.jpg" alt="...">
-                            </a>
-                            
-                            <p>{{comment.createdOn|date}}</p>
-                        </div>
-                        <div class="col-sm-10 text-left">
-                            <h4 class="media-heading">Kate Williams</h4>
-                            <span uib-rating ng-model="comment.rate" max="max" read-only="true" on-hover="hoveringOver(value)" ></span>
-                           
-                            <p>{{comment.body}}</p>
-                        </div>
-                    </div>
-                </div>
-                
+
 
 
                 <div class=" card comment">
-                    <form action="">
- <label for="">Rate</label>
-                    <span uib-rating ng-model="comment.rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" ></span>
+
+                    <label for="">Rate</label>
+                    <span uib-rating ng-model="comment.rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)"></span>
                     <div class="form-group">
                         <label for="">Comment:</label>
-                        <textarea class="form-control" rows="3" ng-model="comment.body"></textarea>
-                        <input class="btn btn-danger" type="submit" value="Submit" ng-click ="addComment(book)" />
+                        <textarea class="form-control" rows="3" ng-model="comment.commentBody"></textarea>
+                        <button class="btn btn-danger" type="button" ng-click="comment.commentBody.length>0&&comment.rate>0?addComment(book):''">Submit</button>
                     </div>
 
-                    </form>
-                   
+
+
                 </div>
 
                 <!--<div class="wrap">
