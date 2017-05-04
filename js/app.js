@@ -40,6 +40,14 @@ app.config(function($routeProvider) {
             templateUrl: 'pages/search.html',
             controller: 'BooksController'
         })
+        .when('/login', {
+            templateUrl: 'pages/login.html',
+            controller: 'BooksController'
+        })
+        .when('/register', {
+            templateUrl: 'pages/register.html',
+            controller: 'BooksController'
+        })
 
     .otherwise({ redirectTo: '/' });
 });

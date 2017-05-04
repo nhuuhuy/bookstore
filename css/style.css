@@ -9,6 +9,13 @@ a:focus {
     text-decoration: none;
 }
 
+.form-control:focus {
+    border: none;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
 footer ul>li {
     display: block;
     padding: 0px;
@@ -153,15 +160,29 @@ ul.dropdown-cart li .item-right button {
     position: relative;
     left: 10px;
     height: 41px;
-    border: 1px solid white;
+    border: none;
     background-color: white!important;
     margin-bottom: 0px;
 }
 
 .btnSearch {
     position: relative;
-    top: -7px;
-    border-radius: 0px 3px 3px 0px
+    border-radius: 0px 3px 3px 0px;
+    top: -5px;
+    left: -8px;
+    z-index: 4;
+}
+
+.input-group-btn>.form-group {
+    display: inline-block;
+}
+
+select.form-control.search.select-search {
+    position: relative;
+    left: -6px;
+    border-radius: 0px!important;
+    border: none;
+    width: 90px;
 }
 
 
@@ -326,6 +347,14 @@ a.zoom img {
     text-align: left;
 }
 
+.block {
+    transition: all linear 0.6s
+}
+
+.list {
+    transition: all linear 0.6s
+}
+
 
 /*---item--*/
 
@@ -379,6 +408,25 @@ span.ng-binding.text-info {
 
 .date .btn-sm {
     padding: 5px 5px;
+}
+
+.date .uib-day>.btn-sm {
+    background-color: transparent;
+    color: #333;
+    border-radius: 50%;
+    margin: 2px;
+}
+
+.date .uib-day>.btn-sm.active {
+    background-color: #f44336;
+}
+
+span.ng-binding.text-info {
+    color: #333;
+}
+
+.date .uib-day>.btn-sm.active>span {
+    color: #fff;
 }
 
 .avatar {

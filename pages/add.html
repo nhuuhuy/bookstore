@@ -27,14 +27,14 @@
                     <div class="addBook">
                         <div class="card-title">Add New Book</div>
                         <form name="postForm " ng-submit="submitForm() " novalidate>
-                            <div class="form-group label-floating">
+                            <div class="form-group ">
                                 <label class="control-label">Title:</label>
-                                <input class="form-control" type="text" ng-model="books.title" ng-required="true" name="title" />
+                                <input class="form-control" type="text" ng-model="book.title" ng-required="true" name="title" />
                                 <p ng-show="postForm.title.$invalid && !postForm.title.$pristine" class="text-danger"> Title is required.</p>
                             </div>
-                            <div class="form-group label-floating">
+                            <div class="form-group ">
                                 <label class="control-label">Author:</label>
-                                <input class="form-control" type="text" ng-model="books.author" />
+                                <input class="form-control" type="text" ng-model="book.author" />
                             </div>
                             <div class="form-group" ng-init="getGenres()">
                                 <label>Genre</label>
@@ -68,27 +68,34 @@
                                 <p ng-show="postForm.depth.$error.number" class="text-danger"> Depth is number.</p>
 
                             </div>
+                            <div class="">
+                                <label class="control-label">Release Date:</label>
+                                <p class="input-group date">
+                                    <input type="text" class="form-control " uib-datepicker-popup="{{format}" ng-model="book.releaseDate" is-open="popup2.opened" datepicker-options="" close-text="Close" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                     </span>
+                                </p>
+                            </div>
                             <div class="form-group ">
-                                <label class="control-label">SKU:</label>
+                                <label class="control-label">Short Description</label>
+                                <textarea class="form-control" ng-model="book.shortDescription" rows="3"></textarea>
+                            </div>
+                            <div class="form-group ">
+                                <label class="control-label">Full Description</label>
+                                <textarea class="form-control" ng-model="book.fullDescription" rows="5"></textarea>
+                            </div>
+                            <div class="form-group ">
+                                <label class="control-label">Main Image</label>
+                                <input type="url" class="form-control " ng-model="book.images.main">
+                            </div>
+                            <div class="form-group ">
+                                <label class="control-label">Sku:</label>
                                 <input class="form-control" type="text" ng-model="book.sku" name="sku" />
-
-
-                            </div>
-                            <div class="form-group ">
-                                <label class="control-label">short description</label>
-                                <textarea class="form-control" ng-model="book.shortDescription" rows="5"></textarea>
-                            </div>
-                            <div class="form-group ">
-                                <label class="control-label">Full description</label>
-                                <textarea class="form-control" ng-model="book.fullDescription" rows="10"></textarea>
-                            </div>
-                            <div class="form-group ">
-                                <label class="control-label">SKU:</label>
-                                <input class="form-control" type="text" ng-model="book.size.width" />
                             </div>
                             <div class="form-group ">
                                 <label class="control-label">Previous price:</label>
-                                <input class="form-control" type="number" ng-model="book.reviousPrice" name="reviousPrice" />
+                                <input class="form-control" type="number" ng-model="book.previousPrice" name="reviousPrice" />
                                 <p ng-show="postForm.reviousPrice.$error.number" class="text-danger"> Price is number.</p>
 
                             </div>
@@ -97,12 +104,12 @@
                                 <input class="form-control" type="number" ng-model="book.sellingPrice" name="sellingPrice" />
                                 <p ng-show="postForm.sellingPrice.$error.number" class="text-danger"> Price is number.</p>
                             </div>
-                            <div class="form-group ">
+                            <div ng-class="form-group ">
 
                                 <div class="">
                                     <label class="control-label">Create date:</label>
                                     <p class="input-group date">
-                                        <input type="text" class="form-control " uib-datepicker-popup="{{book.createDate}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                        <input type="text" class="form-control " uib-datepicker-popup="dd/MM/yyyy" ng-model="book.createDate" is-open="popup1.opened" datepicker-options="" close-text="Close" />
                                         <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
           </span>
@@ -110,10 +117,7 @@
                                 </div>
 
                             </div>
-                            <div class="form-group ">
-                                <label class="control-label">Upload cover <i class="fa fa-camera "></i></label>
-                                <input type="file" ng-model="books.cover">
-                            </div>
+
                             <input class="btn btn-danger" type="submit" value="Submit" ng-disabled="postForm.$invalid" />
                         </form>
                     </div>

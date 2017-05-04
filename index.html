@@ -146,20 +146,6 @@
 		                    </span>
                                 </span>
                             </li>
-                            <!--<li>
-                                <span class="item">
-		                    <span class="item-left">
-		                        <img src="images/1.jpg" alt="" />
-		                        <span class="item-info">
-		                            <span>Item name</span>
-                                <span>23$</span>
-                                </span>
-                                </span>
-                                <span class="item-right">
-		                        <button class="btn btn-xs btn-danger btn-fab btn-fab-mini btn-round pull-right">x</button>
-		                    </span>
-                                </span>
-                            </li>-->
                             <li class="divider"></li>
                             <li><a class="text-center" href="#/cart">View Cart</a></li>
                         </ul>
@@ -174,7 +160,8 @@
                             <li><a href="">My Wishlist  </a></li>
                             <li><a href="">My Cart </a></li>
                             <li><a href="">Checkout</a></li>
-                            <li><a class="" data-toggle="modal" data-target="#modalSigin">Log In </a></li>
+                            <li><a href="#/login">Log In </a></li>
+                            <li><a class="" data-toggle="modal" data-target="#modalSigin" ng-hide="true">Log Out</a></li>
                         </ul>
                     </li>
 
@@ -185,7 +172,15 @@
                     <form name="search" ng-submit="textSearch.length>0?submitSearch():''">
                         <div class="input-group">
                             <input type="text" class="form-control search" ng-model="textSearch" placeholder="Search">
+
                             <div class="input-group-btn">
+
+                                <select class="form-control  search select-search" ng-model="searchBy">
+	 		                	<option value="search">Tên sách</option>
+	 			                <option value="author">Tác giả</option>
+	 		                </select>
+
+
                                 <button class="btn btn-danger btnSearch" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                             </div>
 
@@ -195,7 +190,7 @@
                 </div>
             </div>
     </nav>
-    <div class="modal fade " id="modalSigin" role="dialog" ng-controller="LoginController as loginCtrl">
+    <!--<div class="modal fade " id="modalSigin" role="dialog" ng-controller="LoginController as loginCtrl">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
@@ -269,7 +264,7 @@
 
             </div>
         </div>
-    </div>
+    </div>-->
 
     <div class="body-wrapper" ng-view>
 

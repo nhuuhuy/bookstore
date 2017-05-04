@@ -8,14 +8,15 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             $scope.currentPage = 4;
             $scope.itemsPerPage = $scope.viewby;
             $scope.maxSize = 10;
-
         })
     };
     $scope.getGenres = function() {
         $http.get(bookservice.getGenres).success(function(response) {
-            $scope.genres = response
+            $scope.genres = response;
+
         })
     };
+    /*-------carousel---------- */
     $scope.slides = [{
             id: 0,
             image: "images/5.jpg",
@@ -36,7 +37,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
     $scope.activeSlide = 0;
 
-
+    /*-------Block/list---------- */
     $scope.view = "block";
     $scope.setView = function(e) {
         $scope.view = e;
@@ -65,7 +66,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     $scope.ratingStates = [
         { stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty' }
     ];
-    /*-----rate ---*/
+    /*-----Gernebook ---*/
     $scope.getGerneId = function() {
             $http.get(bookservice.getBook + 'genre/' +
                 $routeParams.genreId).success(function(response) {
@@ -73,71 +74,43 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                 $scope.bigTotalItems = $scope.genreBook.length;
             })
         }
-        /*---date*----*/
+        /*---date----*/
     $scope.today = function() {
         $scope.dt = new Date();
     };
     $scope.today();
+    $scope.altInputFormats = ['M!/d!/yyyy'];
 
-    $scope.options = {
-        customClass: getDayClass,
-        minDate: null,
-        showWeeks: true
-    };
-    $scope.setDate = function(year, month, day) {
-        $scope.dt = new Date(year, month, day);
-    };
 
-    var tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    var afterTomorrow = new Date(tomorrow);
-    afterTomorrow.setDate(tomorrow.getDate() + 1);
-    $scope.events = [{
-            date: tomorrow,
-            status: 'full'
-        },
-        {
-            date: afterTomorrow,
-            status: 'partially'
-        }
-    ];
 
-    function getDayClass(data) {
-        var date = data.date,
-            mode = data.mode;
-        if (mode === 'day') {
-            var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
-
-            for (var i = 0; i < $scope.events.length; i++) {
-                var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
-
-                if (dayToCheck === currentDay) {
-                    return $scope.events[i].status;
-                }
-            }
-        }
-
-        return '';
-    }
     $scope.open1 = function() {
         $scope.popup1.opened = true;
     };
     $scope.popup1 = {
         opened: false
     };
+    $scope.open2 = function() {
+        $scope.popup2.opened = true;
+    };
+    $scope.popup2 = {
+        opened: false
+    };
+
     /*---validate--*/
     $scope.submitForm = function() {
 
         }
         /*-----Search---*/
     $scope.textSearch = $routeParams.text;
+    $scope.searchBy = 'search'
     $scope.search = function() {
-        $http.get(bookservice.getText + $scope.textSearch).success(function(response) {
+        $http.get(bookservice.getBook + $scope.searchBy + '/' + $scope.textSearch).success(function(response) {
             $scope.searchBook = response;
             $scope.bigTotalItems = $scope.searchBook.length;
         })
     }
     $scope.submitSearch = function() {
+            console.log(bookservice.getBook + $scope.searchBy + '/' + $scope.textSearch)
             window.location.href = '#/search/' + $scope.textSearch;
         }
         /*---------comment----*/

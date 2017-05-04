@@ -4,7 +4,7 @@
             <div class="">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#/">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="#/category">category</a></li>
+                    <li class="breadcrumb-item active"><a href="#/category">Danh mục</a></li>
                 </ol>
             </div>
 
@@ -12,7 +12,7 @@
             <div class="col-sm-3 sidenav hidden-xs">
                 <div class="panel ">
                     <div class="panel-heading">
-                        <h5>Category</h5>
+                        <h5>Danh mục sách</h5>
                     </div>
                     <div class="panel-body">
                         <ul class="nav nav-pills nav-pills-danger nav-stacked" ng-init="getGenres()">
@@ -37,7 +37,7 @@
                         <label for="">View: </label><button class="btn btn-default btn-sm" ng-click="setView('list')" type="button"><i class="fa  fa-th-list"></i></button>
                         <button class="btn btn-default btn-sm" ng-click="setView('block')" type="button"><i class="fa fa-th-large"></i></button>
                     </div>
-                    <div ng-class="isSelectedView('block')?'col-md-3 col-sm-6': 'col-sm-12 '   " ng-repeat="book in books">
+                    <div ng-class="isSelectedView('block')?'col-md-3 col-sm-6 block': 'col-sm-12 list '   " ng-repeat="book in books">
                         <div class="item panel panel-default">
                             <div ng-class="isSelectedView('block')?'panel-body':'panel-body list'">
                                 <div ng-class="isSelectedView('block')? 'imagePanel':' imagePanel list'">
@@ -45,7 +45,7 @@
                                 </div>
 
                                 <div class="descriptionBlock" ng-show="isSelectedView('block')">
-                                   
+
                                     {{book.shortDescription|limitTo:90|limitTo:90}}<a href="#/item/{{book._id}}">...</a>
                                 </div>
                             </div>
@@ -64,10 +64,10 @@
                                 </div>
                                 <p class="author visible-sm visible-xs">{{book.author}}</p>
                                 <p class="price">{{book.sellingPrice|currency:"$":0}}</p>
-
-                                <button class="btn btn-danger btn-xs shopCart" ng-click="booksctrl.addCart(book)"><i class="fa fa-shopping-cart"></i> </button>
-                                <button class="btn btn-default  btn-xs like "><i class="fa fa-heart" ></i></button>
-
+                                <div class="btnHover">
+                                    <button class="btn btn-danger btn-xs shopCart" ng-click="booksctrl.addCart(book)"><i class="fa fa-shopping-cart"></i> </button>
+                                    <button class="btn btn-default  btn-xs like "><i class="fa fa-heart" ></i></button>
+                                </div>
                             </div>
                         </div>
                     </div>
