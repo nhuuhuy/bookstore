@@ -8,7 +8,7 @@
                         <small><b>MANAGEMENT</b></small>
                     </h5>
                     <ul class="nav nav-pills nav-pills-danger nav-stacked">
-                        <li><a href="#">Home</a></li>
+                        <li><a href="#/">Home</a></li>
                         <li class=""><a href="#/admin/addbook">Add</a></li>
                         <li><a href="#/admin/listbook">List</a></li>
                         <li><a href="">Search</a></li>
@@ -26,7 +26,7 @@
                 <div class="card card-form ">
                     <div class="addBook">
                         <div class="card-title">Add New Book</div>
-                        <form name="postForm " ng-submit="submitForm() " novalidate>
+                        <form name="postForm " ng-submit="addBook() " novalidate>
                             <div class="form-group ">
                                 <label class="control-label">Title:</label>
                                 <input class="form-control" type="text" ng-model="book.title" ng-required="true" name="title" />
@@ -71,7 +71,7 @@
                             <div class="">
                                 <label class="control-label">Release Date:</label>
                                 <p class="input-group date">
-                                    <input type="text" class="form-control " uib-datepicker-popup="{{format}" ng-model="book.releaseDate" is-open="popup2.opened" datepicker-options="" close-text="Close" />
+                                    <input type="text" class="form-control "uib-datepicker-popup="dd/MM/yyyy"ng-model="book.releaseDate" is-open="popup2.opened" datepicker-options="" close-text="Close" />
                                     <span class="input-group-btn">
                                         <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
                                      </span>
@@ -95,7 +95,7 @@
                             </div>
                             <div class="form-group ">
                                 <label class="control-label">Previous price:</label>
-                                <input class="form-control" type="number" ng-model="book.previousPrice" name="reviousPrice" />
+                                <input class="form-control" type="number" ng-model="book.previousPrice" name="previousPrice" />
                                 <p ng-show="postForm.reviousPrice.$error.number" class="text-danger"> Price is number.</p>
 
                             </div>
@@ -109,7 +109,7 @@
                                 <div class="">
                                     <label class="control-label">Create date:</label>
                                     <p class="input-group date">
-                                        <input type="text" class="form-control " uib-datepicker-popup="dd/MM/yyyy" ng-model="book.createDate" is-open="popup1.opened" datepicker-options="" close-text="Close" />
+                                        <input type="text" class="form-control " uib-datepicker-popup="dd/MM/yyyy" ng-model="CreateDate" is-open="popup1.opened" datepicker-options="" close-text="Close" />
                                         <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
           </span>

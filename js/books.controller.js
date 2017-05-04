@@ -5,7 +5,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             $scope.books = response;
             $scope.viewby = 10;
             $scope.bigTotalItems = $scope.books.length;
-            $scope.currentPage = 4;
+            $scope.currentPage = 1;
             $scope.itemsPerPage = $scope.viewby;
             $scope.maxSize = 10;
         })
@@ -115,7 +115,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         }
         /*---------comment----*/
     $scope.user = {
-        '_id': 'user001',
+        
         'userName': 'Nguyen Huu Huy',
         'userAvatarUrl': 'https://avatars0.githubusercontent.com/u/26504396?v=3&s=460'
     }
@@ -149,34 +149,54 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         console.log(post);
 
     }
+    /*------------add book -------------*/
+    $scope.addBook = function() {
+        console.log($scope.book);
+         var reqBook = {
+            method: 'POST',
+            url: bookservice.getBook ,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: $scope.book
+        }
+         $http(reqBook).then(function() {
+                console.log('success')
+            })
+
+        // $http.post(root + '/api/books/', $scope.book).success(function(response) {
+        //     window.location.href = '#/books';
+        // });
+    }
 
 
 
-    // $scope.addCart = function(item) {
-    //     if (bookservice.cart.length > 0) {
-    //         for (var i = 0; i < bookservice.cart.length; i++) {
-    //             if (bookservice.cart[i].sku === item.sku) {
-    //                 $scope.addedItem = true;
-    //                 bookservice.cart[i].qty++;
-    //             }
-    //         }
-    //         if ($scope.addedItem) {
-    //             console.log(bookservice.cart);
-    //         } else {
-    //             bookservice.cart.push({ id: item.sku, title: item.title, cover: item.images.main, price: item.sellingPrice, qty: 1 });
-    //         }
-    //     } else {
-    //         bookservice.cart.push({ id: item.sku, title: item.title, cover: item.images.main, price: item.sellingPrice, qty: 1 });
-    //     }
-    //     $scope.total = 0;
-    //     for (var i = 0; i < bookservice.cart.length; i++) {
-    //         $scope.total += parseFloat(bookservice.cart[i].price) * parseFloat(bookservice.cart[i].qty);
-    //         console.log($scope.total)
-    //     }
-
-    // }
-    // $scope.cart = bookservice.cart;
-    // $scope.removeCart = function(item) {
-    //     bookservice.cart.splice(item, 1);
-    // }
+    $scope.addCart = function(item) {
+        if (bookservice.cart.length > 0) {
+            for (var i = 0; i < bookservice.cart.length; i++) {
+                if (bookservice.cart[i].item.sku === item.sku) {
+                    $scope.addedItem = true;
+                    bookservice.cart[i].qty++;
+                }
+            }
+            if ($scope.addedItem) {
+                console.log(bookservice.cart);
+            } else {
+                bookservice.cart.push({ item, qty: 1 });
+            }
+        } else {
+            bookservice.cart.push({ item, qty: 1 });
+        }
+        // $scope.total = 0;
+        // for (var i = 0; i < bookservice.cart.length; i++) {
+        //     $scope.total += parseFloat(bookservice.cart[i].price) * parseFloat(bookservice.cart[i].qty);
+        //     console.log($scope.total)
+        // }
+        console.log(bookservice.cart);
+         console.log(bookservice.cart)
+    }
+    $scope.cart = bookservice.cart;
+    $scope.removeCart = function(item) {
+        bookservice.cart.splice(item, 1);
+    }
 }])

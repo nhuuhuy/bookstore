@@ -1,4 +1,4 @@
-<div ng-controller="cartcontroller as cartctrl">
+
     <div class="container">
         <div class="row  ">
 
@@ -18,17 +18,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="item in booksctrl.cart track by $index">
+                        <tr ng-repeat="item in cart">
                             <td class="hidden-xs">
-                                <div class="imgItem"><img ng-src="{{item.cover}}" alt="" class="img-responsive hidden-xs" /></div>
+                                <div class="imgItem"><img ng-src="{{item.item.images.main}}" alt="" class="img-responsive hidden-xs" /></div>
                             </td>
                             <td class="">
-                                <h6>{{item.title}}</h6>
+                                <h6>{{item.item.title}}</h6>
                             </td>
-                            <td class="price ">{{item.price}}</td>
+                            <td class="price ">{{item.item.sellingPrice}}</td>
                             <td class=""><input type="number" ng-model="item.qty" min="1" class="form-control"></td>
-                            <td class="price ">{{item.price*item.qty| number:2}}</td>
-                            <td class=""><button class="btn btn-default btn-xs" ng-click="cartctrl.removeCart(item)"><i class="fa fa-trash-o"></i></button></td>
+                            <td class="price ">{{item.item.sellingPrice*item.qty| number:2}}</td>
+                            <td class=""><button class="btn btn-default btn-xs"ng-click='removeCart(item)'><i class="fa fa-trash-o"></i></button></td>
                         </tr>
 
                     </tbody>
@@ -89,4 +89,3 @@
 
         </div>
     </div>
-</div>

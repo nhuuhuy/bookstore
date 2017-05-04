@@ -33,7 +33,6 @@
         
     </script>-->
     <!--<script type="text/ng-template" id="pages/category.html">
-
      
     </script>-->
     <!--<script type="text/ng-template" id="pages/admin.html">
@@ -132,13 +131,13 @@
 
                     <li class="dropdown cart"><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-shopping-cart fa-2x"></i><span >Your cart</span ><span class="qty">({{cart.length}})</span><span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-cart" role="menu">
-                            <li ng-repeat="item in cart track by $index">
+                            <li ng-repeat="item in cart">
                                 <span class="item">
 		                    <span class="item-left">
-		                        <img ng-src="{{item.cover}}" alt="" />
+		                        <img ng-src="{{item.item.images.main}}" alt="" />
 		                        <span class="item-info">
-		                            <span>{{item.title}}</span>
-                                <span>{{item.price}}$</span>
+		                            <span>{{item.item.title}}</span>
+                                <span>{{item.item.sellingPrice}}$</span>
                                 </span>
                                 </span>
                                 <span class="item-right">
@@ -198,7 +197,6 @@
                     <h4 class="modal-title" ng-show="loginCtrl.isSelectedTab('login')">Signin</h4>
                     <h4 class="modal-title" ng-show="loginCtrl.isSelectedTab('signup')">Register</h4>
                 </div>
-
                 <div class="modal-body">
                     <div class="account-box" ng-show="loginCtrl.isSelectedTab('login')">
                         <form>
@@ -214,7 +212,6 @@
                                     Keep me signed in
                                 </label>
                             </div>
-
                             <button class="btn btn-danger" type="submit">Sign in</button>
                         </form>
                         <a class="forgotLnk" href="">I can't access my account</a>
@@ -245,7 +242,6 @@
                                 <input type="password" class="form-control " placeholder="Password">
                                 <input type="password" class="form-control " placeholder="Confirm Password">
                             </div>
-
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox" >
@@ -258,10 +254,8 @@
                             <button class="btn btn-success">Register</button>
                             <a href="" class="btn btn-danger" ng-click="loginCtrl.selectTab('login')">Sign In</a>
                         </form>
-
                     </div>
                 </div>
-
             </div>
         </div>
     </div>-->
