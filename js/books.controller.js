@@ -21,28 +21,39 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                     })
                 };
                 $scope.getGenres = function() {
+                   
                     $http.get(bookservice.getGenres).success(function(response) {
                         $scope.genres = response;
-
+                        
                     })
+                   
                 };
                 /*-------carousel---------- */
-                $scope.slides = [{
-                        id: 0,
-                        image: "images/5.jpg",
-                        caption: "Sale off 50%"
-                    },
-                    {
-                        id: 1,
-                        image: "images/6.jpg",
-                        caption: "Free Ship"
-                    },
-                    {
-                        id: 2,
-                        image: "images/7.jpg",
-                        caption: "New Books"
-                    }
-                ];
+                $scope.getSlide =function(){
+                      $http.get("http://green-web-bookstore.herokuapp.com/api/banners/").success(function(response){
+                          $scope.slides = response;
+                          console.log( $scope.slides );
+                         
+                      })
+                }
+
+
+                // $scope.slides = [{
+                //         id: 0,
+                //         image: "images/5.jpg",
+                //         caption: "Sale off 50%"
+                //     },
+                //     {
+                //         id: 1,
+                //         image: "images/6.jpg",
+                //         caption: "Free Ship"
+                //     },
+                //     {
+                //         id: 2,
+                //         image: "images/7.jpg",
+                //         caption: "New Books"
+                //     }
+                // ];
                 $scope.myInterval = 3000;
 
                 $scope.activeSlide = 0;
@@ -63,7 +74,12 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                             for (var i = 0; i < $scope.book.comments.length; i++) {
                                 rateTotal += $scope.book.comments[i].rate
                             }
-                            $scope.rateAvr = rateTotal / $scope.book.comments.length
+                           
+                            if(rateTotal==0){
+                                 $scope.rateAvr =4
+                            }else{
+                                 $scope.rateAvr = rateTotal / $scope.book.comments.length;
+                            }
                         })
                     }
                     /*-----rate ---*/
@@ -81,7 +97,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                         $http.get(bookservice.getBook + 'genre/' +
                             $routeParams.genreId).success(function(response) {
                             $scope.genreBook = response;
-                            $scope.bigTotalItems = $scope.genreBook.length;
+                    
                         })
                     }
                     /*---date----*/
@@ -235,29 +251,42 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                         $scope.removeCart = function(item) {
                             bookservice.cart.splice(item, 1);
                         }
+                        $scope.total = function(){
+                            for(var i=0; i< $scope.cart.length;i++){
+
+                            }
+                        } 
                         /*-----like------*/
                         $scope.like = function(item) {
 
                             if (bookservice.user.like.length > 0) {
                                 for (var i = 0; i < bookservice.user.like.length; i++) {
                                     if (bookservice.user.like[i].sku === item.sku) {
+                                            $scope.btnId =0;
                                         bookservice.user.like.splice(bookservice.user.like[i], 1);
                                         console.log(bookservice.user.like);
+                                         
                                         bookservice.liked = false;
                                     }
                                 }
                                 if (bookservice.liked) {
                                     bookservice.user.like.push(item);
                                     bookservice.liked = true;
+                                    $scope.btnId =item.sku;
                                 }
 
                             } else {
                                 bookservice.user.like.push(item);
                                 bookservice.liked = true;
                                 console.log(bookservice.user.like)
+                                 $scope.btnId =item.sku;
                             }
-
-                        }
+                     
+                            
+                                           
+                 }
                         $scope.user = bookservice.user;
+            // Slide
 
+                          
                     }])
