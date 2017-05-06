@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row ">
+        <div class="col-sm-3">
+            <div class="profile-sidebar wrap">
+
+                <div class="sidenav hidden-xs ">
+                    <div class="panel profile">
+                        <div class="panel-heading text-center">
+                            <div class="profile-userpic">
+                                <img ng-src="{{user.userAvatarUrl}}" class="img-circle img-raised img-responsive user-image" alt="">
+                            </div>
+                            <h5>{{user.userName}}</h5>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="nav nav-pills nav-pills-danger nav-stacked">
+                                <li role="presentation"><a href="#/user">Quản Lý Tài Khoản</a></li>
+                                <li role="presentation"><a href="#/user/bill">Đơn Đặt Hàng</a></li>
+                                <li role="presentation"><a href="#/user/like">Danh Sách Yêu Thích</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class=" wrap">
+                <div class="heading  ">
+                    <h5>Thông Tin Tài Khoản</h5>
+                </div>
+                <form class="profile-content" action="#">
+
+                    <div class="form-group">
+                        <input type="text" name="" class="form-control" placeholder="Tên">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control " placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control " placeholder="Số điện thoại">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control " placeholder="Địa chỉ">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control " placeholder="Password">
+                    </div>
+
+
+                    <div class="col-xs-12 col-md-6"><input type="submit" value="Thay đổi" class="btn btn-success"></div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

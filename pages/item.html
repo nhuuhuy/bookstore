@@ -55,7 +55,7 @@
                         <div class="">
                             <h3> <strong>{{book.title}}</strong></h3>
                             <span uib-rating ng-model="rateAvr" max="max" read-only="true" on-hover="hoveringOver(value)"></span>
-                            <p>Tác giả: <i>{{book.author}}</i></p>
+                            <p>Tác giả: <a href="#/search/{{book.author}}"><i>{{book.author}}</i></a></p>
                             <h5 class="text-danger"><del>{{book.previousPrice|currency:"$":0}} </del> </h5>
                             <h5 class="price">{{book.sellingPrice|currency:"$":0}}</h5>
                             <p> Tiết kiệm :{{book.previousPrice-book.sellingPrice|currency:"$":0}}</p>

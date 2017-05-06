@@ -1,52 +1,51 @@
+<div class="container">
+    <div class="row  ">
 
-    <div class="container">
-        <div class="row  ">
-
-            <div class="wrap">
-                <div class=" heading">
-                    <h5>Shopping Cart</h5>
-                </div>
-                <table class="table table-bordered table-hover text-center ">
-                    <thead>
-                        <tr>
-                            <th class="hidden-xs"></th>
-                            <th class=" ">Product Name</th>
-                            <th class="">Unit Price</th>
-                            <th class="">Quantity</th>
-                            <th class="">Subtotal</th>
-                            <th class=""></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="item in cart">
-                            <td class="hidden-xs">
-                                <div class="imgItem"><img ng-src="{{item.item.images.main}}" alt="" class="img-responsive hidden-xs" /></div>
-                            </td>
-                            <td class="">
-                                <h6>{{item.item.title}}</h6>
-                            </td>
-                            <td class="price ">{{item.item.sellingPrice}}</td>
-                            <td class=""><input type="number" ng-model="item.qty" min="1" class="form-control"></td>
-                            <td class="price ">{{item.item.sellingPrice*item.qty| number:2}}</td>
-                            <td class=""><button class="btn btn-default btn-xs"ng-click='removeCart(item)'><i class="fa fa-trash-o"></i></button></td>
-                        </tr>
-
-                    </tbody>
-                </table>
+        <div class="wrap">
+            <div class=" heading">
+                <h5>Shopping Cart</h5>
             </div>
-        </div>
+            <table class="table table-bordered table-hover text-center ">
+                <thead>
+                    <tr>
+                        <th class="hidden-xs"></th>
+                        <th class=" ">Tên sản phẩm</th>
+                        <th class="">Đơn giá</th>
+                        <th class="">Số lượng</th>
+                        <th class="">Thành tiền</th>
+                        <th class=""></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in cart">
+                        <td class="hidden-xs">
+                            <div class="imgItem"><img ng-src="{{item.item.images.main}}" alt="" class="img-responsive hidden-xs" /></div>
+                        </td>
+                        <td class="">
+                            <h6>{{item.item.title}}</h6>
+                        </td>
+                        <td class="price ">{{item.item.sellingPrice}}</td>
+                        <td class=""><input type="number" ng-model="item.qty" min="1" class="form-control"></td>
+                        <td class="price ">{{item.item.sellingPrice*item.qty| number:2}}</td>
+                        <td class=""><button class="btn btn-default btn-xs" ng-click='removeCart(item)'><i class="fa fa-trash-o"></i></button></td>
+                    </tr>
 
+                </tbody>
+            </table>
+        </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="wrap">
-                <div class="col-md-4 col-sm-6">
-                    <div class="panel">
-                        <div class="panel-heading">
-                            <h5>DISCOUNT CODES</h5>
-                        </div>
-                        <div class="panel-body">
-                            <label>Enter your coupon code if you have one.</label >
+
+</div>
+<div class="container">
+    <div class="row">
+        <div class="wrap">
+            <div class="col-md-4 col-sm-6">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h5>DISCOUNT CODES</h5>
+                    </div>
+                    <div class="panel-body">
+                        <label>Enter your coupon code if you have one.</label >
                             <input type="text" class="form-control">
                               <button class="btn btn-danger btn-xs">Apply Coupon</button>
                         </div>
@@ -61,31 +60,31 @@
                         </div>
                         <div class="panel-body">
                             <label class="control-label" for="">City/Province</label>
-                            <select class="form-control" name="">
+                        <select class="form-control" name="">
 		               	        <option  value="" </option>
 		                    </select>
-                            <label class="control-label" for="">District</label>
-                            <select class="form-control" name="">
+                        <label class="control-label" for="">District</label>
+                        <select class="form-control" name="">
 		               	        <option  value="" </option>
 		                    </select>
-                        </div>
-
                     </div>
+
                 </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="panel">
-                        <div class="panel-heading">
-                            <h5>ORDER SUMMARY</h5>
-                        </div>
-                        <div class="panel-body">
-                            <h6>Grand total: <span class="price">{{cartctrl.sum| number:2| currency}}</span></h6>
-                        </div>
-                        <div class="panel-footer">
-                            <button class="btn btn-danger btn-xs">Checkout</button>
-                        </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h5>ORDER SUMMARY</h5>
+                    </div>
+                    <div class="panel-body">
+                        <h6>Grand total: <span class="price">{{cartctrl.sum| number:2| currency}}</span></h6>
+                    </div>
+                    <div class="panel-footer">
+                        <button class="btn btn-danger btn-xs">Checkout</button>
                     </div>
                 </div>
             </div>
-
         </div>
+
     </div>
+</div>

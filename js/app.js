@@ -40,7 +40,8 @@ app.config(function($routeProvider) {
             templateUrl: 'pages/search.html',
             controller: 'BooksController'
         })
-        .when('/login', {
+
+    .when('/login', {
             templateUrl: 'pages/login.html',
             controller: 'BooksController'
         })
@@ -48,9 +49,21 @@ app.config(function($routeProvider) {
             templateUrl: 'pages/register.html',
             controller: 'BooksController'
         })
+        .when('/user', {
+            templateUrl: 'pages/user.html',
+            controller: 'BooksController'
+        })
+        .when('/user/bill', {
+            templateUrl: 'pages/bill.html',
+            controller: 'BooksController'
+        })
+        .when('/user/like', {
+            templateUrl: 'pages/like.html',
+            controller: 'BooksController'
+        })
 
     .otherwise({ redirectTo: '/' });
-     
+
 });
 
 

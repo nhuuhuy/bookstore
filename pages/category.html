@@ -24,7 +24,7 @@
             <div class="col-sm-9" ng-init="getBook()">
                 <div class="wrap">
                     <div class="heading  ">
-                        <h5>All</h5>
+                        <h5>Tất Cả Sách</h5>
                     </div>
 
                     <div class="fillter">
@@ -37,7 +37,7 @@
                         <label for="">View: </label><button class="btn btn-default btn-sm" ng-click="setView('list')" type="button"><i class="fa  fa-th-list"></i></button>
                         <button class="btn btn-default btn-sm" ng-click="setView('block')" type="button"><i class="fa fa-th-large"></i></button>
                     </div>
-                    <div ng-class="isSelectedView('block')?'col-md-3 col-sm-6 block': 'col-sm-12 list '   " ng-repeat="book in books| limitTo:currentPage*itemsPerPage:(currentPage-1)*itemsPerPage ">
+                    <div ng-class="isSelectedView('block')?'col-md-3 col-sm-6 block': 'col-sm-12 list '   " ng-repeat="book in filteredBooks ">
                         <div class="item panel panel-default">
                             <div ng-class="isSelectedView('block')?'panel-body':'panel-body list'">
                                 <div ng-class="isSelectedView('block')? 'imagePanel':' imagePanel list'">
@@ -72,7 +72,7 @@
                         </div>
                     </div>
                     <div class="col-sm-12">
-                       <ul uib-pagination total-items="bigTotalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm pagination-danger" boundary-link-numbers="true"></ul>
+                        <ul uib-pagination total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" max-size="maxSize" class="pagination-sm pagination-danger" boundary-link-numbers="true"></ul>
                     </div>
                 </div>
             </div>

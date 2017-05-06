@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="row ">
+        <div class="col-sm-3">
+            <div class="profile-sidebar wrap">
+
+                <div class="sidenav hidden-xs ">
+                    <div class="panel profile">
+                        <div class="panel-heading text-center">
+                            <div class="profile-userpic">
+                                <img ng-src="{{user.userAvatarUrl}}" class="img-circle img-raised img-responsive user-image" alt="">
+                            </div>
+                            <h5>{{user.userName}}</h5>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="nav nav-pills nav-pills-danger nav-stacked">
+                                <li role="presentation"><a href="#/user">Quản Lý Tài Khoản</a></li>
+                                <li role="presentation"><a href="#/user/bill">Đơn Đặt Hàng</a></li>
+                                <li role="presentation"><a href="#/user.like">Danh Sách Yêu Thích</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class=" wrap">
+                <div class="heading  ">
+                    <h5>Sách Yêu Thích</h5>
+                </div>
+
+                <div class="fillter">
+                    <label for="sort">Sort by:</label>
+                    <select name="sort" id="sort">
+	 			<option value="">Name</option>
+	 			<option value="">Price</option>
+	 			<option value="">Rate</option>
+	 		</select>
+                    <label for="">View: </label><button class="btn btn-default btn-sm" ng-click="setView('list')" type="button"><i class="fa  fa-th-list"></i></button>
+                    <button class="btn btn-default btn-sm" ng-click="setView('block')" type="button"><i class="fa fa-th-large"></i></button>
+                </div>
+                <div ng-class="isSelectedView('block')?'col-md-3 col-sm-6 block': 'col-sm-12 list '   " ng-repeat="book in user.like">
+                    <div class="item panel panel-default">
+                        <div ng-class="isSelectedView('block')?'panel-body':'panel-body list'">
+                            <div ng-class="isSelectedView('block')? 'imagePanel':' imagePanel list'">
+                                <a href="#/item/{{book._id}}"><img ng-src="{{book.images.main}}" class="panelImage" alt=""></a>
+                            </div>
+
+                            <div class="descriptionBlock" ng-show="isSelectedView('block')">
+
+                                {{book.shortDescription|limitTo:90|limitTo:90}}<a href="#/item/{{book._id}}">...</a>
+                            </div>
+                        </div>
+                        <div ng-class="isSelectedView('block')? 'panel-footer': 'panel-footer list'">
+
+                            <div ng-class="isSelectedView('block')? 'titlePanel':''">
+                                <h5>
+                                    <a href="#/item/{{book._id}}" class="title">{{book.title | limitTo:25}}<span ng-show="book.title.length>25">...</span></a>
+                                </h5>
+
+                            </div>
+
+                            <div class="descriptionList" ng-show="isSelectedView('list')">
+                                <p>Description</p>
+                                <p>{{book.shortDescription|limitTo:80}}<a href="#/item/{{book._id}}">...</a></p>
+                            </div>
+                            <p class="author visible-sm visible-xs">{{book.author}}</p>
+                            <p class="price">{{book.sellingPrice|currency:"$":0}}</p>
+                            <div class="btnHover">
+                                <button class="btn btn-danger btn-xs shopCart" ng-click="booksctrl.addCart(book)"><i class="fa fa-shopping-cart"></i> </button>
+                                <button class="btn btn-default  btn-xs like "><i class="fa fa-heart" ></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="col-sm-12">
+                    <ul uib-pagination total-items="bigTotalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm pagination-danger" boundary-link-numbers="true"></ul>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>
