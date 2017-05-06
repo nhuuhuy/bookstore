@@ -198,10 +198,10 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                     /*---------Remove book--------*/
                 $scope.removeBook = function(id) {
                     console.log(bookservice.getBook + id);
-                    $http.delete(bookservice.getBook + id).success(function(response) {
+                    $http.delete(bookservice.getBook + id).success(function() {
                             console.log('success')
-                        }
-
+                        })
+                }
 
                         /*--------Cart ---------*/
 
