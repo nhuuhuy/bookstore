@@ -30,7 +30,7 @@ app.config(function($routeProvider) {
         })
         .when('/cart', {
             templateUrl: 'pages/cart.html',
-            controller: 'cartcontroller'
+            controller: 'BooksController'
         })
         .when('/category/:genreId', {
             templateUrl: 'pages/genre.html',

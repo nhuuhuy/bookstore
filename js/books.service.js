@@ -9,4 +9,5 @@ app.service('bookservice', function() {
         'userAvatarUrl': 'https://avatars0.githubusercontent.com/u/26504396?v=3&s=460',
         'like': []
     }
+
 })

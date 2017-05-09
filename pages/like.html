@@ -38,7 +38,7 @@
                     <label for="">View: </label><button class="btn btn-default btn-sm" ng-click="setView('list')" type="button"><i class="fa  fa-th-list"></i></button>
                     <button class="btn btn-default btn-sm" ng-click="setView('block')" type="button"><i class="fa fa-th-large"></i></button>
                 </div>
-                <div ng-class="isSelectedView('block')?'col-md-3 col-sm-6 block': 'col-sm-12 list '   " ng-repeat="book in user.like">
+                <div ng-class="isSelectedView('block')?'col-md-3 col-sm-6 block': 'col-sm-12 list '   " ng-repeat="book in user.like track by $index">
                     <div class="item panel panel-default">
                         <div ng-class="isSelectedView('block')?'panel-body':'panel-body list'">
                             <div ng-class="isSelectedView('block')? 'imagePanel':' imagePanel list'">
@@ -66,8 +66,8 @@
                             <p class="author visible-sm visible-xs">{{book.author}}</p>
                             <p class="price">{{book.sellingPrice|currency:"$":0}}</p>
                             <div class="btnHover">
-                                <button class="btn btn-danger btn-xs shopCart" ng-click="booksctrl.addCart(book)"><i class="fa fa-shopping-cart"></i> </button>
-                                <button class="btn btn-default  btn-xs like "><i class="fa fa-heart" ></i></button>
+                                <a href="#/item/{{book._id}}" class="btn btn-danger btn-xs shopCart" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> </a>
+                                <button ng-class="checkLike(book)? 'btn btn-danger  btn-xs like':'btn btn-default  btn-xs like'" ng-click="like(book)"><i class="fa fa-heart" ></i></button>
                             </div>
                         </div>
                     </div>

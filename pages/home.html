@@ -2,11 +2,11 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3 sidenav hidden-xs ">
-                <div class="panel ">
+                <div class="panel  wrap">
                     <div class="panel-heading">
                         <h5>Danh Mục Sách</h5>
                     </div>
-                    <div class="panel-body" ng-init="getGenres()">
+                    <div class="panel-body">
                         <ul class="nav nav-pills nav-pills-danger nav-stacked">
                             <li role="presentation" ng-repeat="genre in genres"><a href="#/category/{{genre._id}}">{{genre.name}}</a></li>
                         </ul>
@@ -25,6 +25,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="wrap">
                     <div class="heading  ">
                         <h5>Sách Mới Phát Hành</h5>
@@ -51,8 +52,8 @@
                                 </div>
                                 <p class="price">{{book.sellingPrice| currency:"$":0}}</p>
                                 <div class="btnHover">
-                                    <button class="btn btn-danger btn-xs shopCart" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> </button>
-                                    <button ng-class="book.sku==btnId? 'btn btn-danger  btn-xs like':'btn btn-default  btn-xs like'" ng-click="like(book)"><i class="fa fa-heart" ></i></button>
+                                    <a href="#/item/{{book._id}}" class="btn btn-danger btn-xs shopCart" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> </a>
+                                    <button ng-class="checkLike(book)? 'btn btn-danger  btn-xs like':'btn btn-default  btn-xs like'" ng-click="like(book)"><i class="fa fa-heart" ></i></button>
                                 </div>
 
                             </div>
@@ -88,8 +89,8 @@
 
                                 <p class="price">{{book.sellingPrice|currency:"$":0}}</p>
                                 <div class="btnHover">
-                                 <button class="btn btn-danger btn-xs shopCart" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> </button>
-                                    <button class="btn btn-default  btn-xs like" ng-click="like(book)"><i class="fa fa-heart" ></i></button>
+                                    <a href="#/item/{{book._id}}" class="btn btn-danger btn-xs shopCart" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> </a>
+                                    <button ng-class="checkLike(book)? 'btn btn-danger  btn-xs like':'btn btn-default  btn-xs like'" ng-click="like(book)"><i class="fa fa-heart" ></i></button>
                                 </div>
                             </div>
                         </div>

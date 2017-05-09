@@ -350,11 +350,11 @@ a.zoom img {
 
 
 /*.block {
-    transition: all linear 0.6s
+    transition: all linear 0.2s
 }
 
 .list {
-    transition: all linear 0.6s
+    transition: all linear 0.2s
 }*/
 
 
@@ -524,7 +524,7 @@ span.ng-binding.text-info {
     .item.panel.panel-default:focus .shopCart,
     .item.panel.panel-default:focus .like,
     .item.panel.panel-default:hover .like {
-        animation: btnhover 4s ease forwards;
+        animation: btnhover 3s ease forwards;
     }
     @keyframes btnhover {
         0% {
@@ -533,7 +533,7 @@ span.ng-binding.text-info {
         }
         25% {
             opacity: 0.5;
-            transform: translateY(-20px)
+            transform: translateY(-10px)
         }
         50% {
             opacity: 1;

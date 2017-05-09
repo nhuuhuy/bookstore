@@ -3,19 +3,25 @@
         <div class="row">
             <div class="col-sm-4">
 
-                <div class="card sidebar-nav">
-                    <h5><i class="glyphicon glyphicon-home"></i>
-                        <small><b>MANAGEMENT</b></small>
-                    </h5>
+                <div class="wrap sidebar-nav">
+                    <div class="heading">
+                        <h5><i class="glyphicon glyphicon-home"></i> MANAGEMENT
+                        </h5>
+                    </div>
+
                     <ul class="nav nav-pills nav-pills-danger nav-stacked">
-                        <li><a href="#/">Home</a></li>
-                        <li class=""><a href="#/admin/addbook">Add</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li class="">
+                            <a href="#/admin/addbook">Add</a>
+                        </li>
                         <li><a href="#/admin/listbook">List</a></li>
                         <li><a href="">Search</a></li>
                     </ul>
-                    <h5><i class="glyphicon glyphicon-user"></i>
-                        <small><b>USERS</b></small>
-                    </h5>
+                    <div class="heading">
+                        <h5><i class="glyphicon glyphicon-user"></i> USERS
+                        </h5>
+                    </div>
+
                     <ul class="nav nav-pills nav-pills-danger nav-stacked">
                         <li><a href="#">List</a></li>
                         <li><a href="#">Manage</a></li>
@@ -32,7 +38,7 @@
                                 <input class="form-control" type="text" ng-model="book.title" ng-required="true" name="title" />
                                 <p ng-show="postForm.title.$invalid && !postForm.title.$pristine" class="text-danger"> Title is required.</p>
                             </div>
-                            <div class="  col-sm-12 form-group" ng-init="getGenres()">
+                            <div class="  col-sm-12 form-group">
                                 <label>Genre</label>
                                 <select ng-model="book.genre" name="genre" ng-required="true" class="form-control" ng-options="genre as genre.name for genre in genres">
                                   <p ng-show="postForm.genre.$invalid" class="text-danger"> Genre is required.</p>  

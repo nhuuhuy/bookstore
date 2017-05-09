@@ -4,19 +4,19 @@
             <div class="">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#/">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#/category">Danh mục</a></li>
+                    <li class="breadcrumb-item"><a href="#/category">Danh mục sách</a></li>
                     <li class="breadcrumb-item active"><a href="#/category/genreBook[0].genre._id">{{genreBook[0].genre.name}}</a></li>
                 </ol>
             </div>
 
 
             <div class="col-sm-3 sidenav hidden-xs">
-                <div class="panel ">
+                <div class="panel wrap">
                     <div class="panel-heading">
                         <h5>Danh mục sách</h5>
                     </div>
                     <div class="panel-body">
-                        <ul class="nav nav-pills nav-pills-danger nav-stacked" ng-init="getGenres()">
+                        <ul class="nav nav-pills nav-pills-danger nav-stacked">
                             <li role="presentation" ng-repeat="genre in genres"><a href="#/category/{{genre._id}}">{{genre.name}}</a></li>
                         </ul>
                     </div>
@@ -66,8 +66,8 @@
                                 <p class="author visible-sm visible-xs">{{book.author}}</p>
                                 <p class="price">{{book.sellingPrice|currency:"$":0}}</p>
                                 <div class="btnHover">
-                              <button class="btn btn-danger btn-xs shopCart" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> </button>
-                                    <button class="btn btn-default  btn-xs like" ng-click="like(book)"><i class="fa fa-heart" ></i></button>>
+                                    <a href="#/item/{{book._id}}" class="btn btn-danger btn-xs shopCart" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> </a>
+                                    <button ng-class="checkLike(book)? 'btn btn-danger  btn-xs like':'btn btn-default  btn-xs like'" ng-click="like(book)"><i class="fa fa-heart" ></i></button>
                                 </div>
                             </div>
                         </div>

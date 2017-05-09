@@ -4,16 +4,16 @@
             <div class="">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#/">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#/category">category</a></li>
-                    <li class="breadcrumb-item active"><a href="#/category/genreBook[0].genre._id">{{genreBook[0].genre.name}}</a></li>
+                    <li class="breadcrumb-item"><a href="#/category">Danh Mục Sách</a></li>
+                    <li class="breadcrumb-item active"><a href="#/category/genreBook[0].genre._id">{{text() }}</a></li>
                 </ol>
             </div>
 
 
             <div class="col-sm-3 sidenav hidden-xs">
-                <div class="panel ">
+                <div class="panel wrap ">
                     <div class="panel-heading">
-                        <h5>Category</h5>
+                        <h5>Danh Mục Sách</h5>
                     </div>
                     <div class="panel-body">
                         <ul class="nav nav-pills nav-pills-danger nav-stacked" ng-init="getGenres()">
@@ -25,7 +25,7 @@
             <div class="col-sm-9">
                 <div class="wrap">
                     <div class="heading  ">
-                        <h5>{{genreBook[0].genre.name}}</h5>
+                        <h5>{{text() }}</h5>
                     </div>
 
                     <div class="fillter">
@@ -66,8 +66,8 @@
                                 <p class="author visible-sm visible-xs">{{book.author}}</p>
                                 <p class="price">{{book.sellingPrice|currency:"$":0}}</p>
                                 <div class="btnHover">
-                                    <button class="btn btn-danger btn-xs shopCart" ng-click="booksctrl.addCart(book)"><i class="fa fa-shopping-cart"></i> </button>
-                                    <button class="btn btn-default  btn-xs like "><i class="fa fa-heart" ></i></button>
+                                    <a href="#/item/{{book._id}}" class="btn btn-danger btn-xs shopCart" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> </a>
+                                    <button ng-class="checkLike(book)? 'btn btn-danger  btn-xs like':'btn btn-default  btn-xs like'" ng-click="like(book)"><i class="fa fa-heart" ></i></button>
                                 </div>
                             </div>
                         </div>
