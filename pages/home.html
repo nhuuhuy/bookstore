@@ -15,13 +15,13 @@
 
             </div>
             <div class="col-sm-9" ng-init="getBook()">
-                <div class="homeCarousel" ng-init="getSlide()">
+                <div class="homeCarousel wrap" ng-init="getSlide()">
                     <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
                         <div uib-slide ng-repeat="slide in slides" index="$index">
                             <img ng-src="{{slide.imageUrl}}">
-                            <div class="carousel-caption">
+                            <!--<div class="carousel-caption">
                                 <h1>{{slide.title}}</h1>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>

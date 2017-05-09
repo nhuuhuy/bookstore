@@ -17,7 +17,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
                 $scope.filteredBooks = $scope.books.slice(begin, end);
             });
-
+            console.log( $scope.filteredBooks)
         })
     };
     $scope.getGenres = function() {
@@ -206,7 +206,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         }
         /*---------update book------*/
     $scope.updateBook = function() {
-            console.log($scope.book);
+           
             var reqBook = {
                 method: 'PUT',
                 url: bookservice.getBook + $routeParams.itemId,
@@ -216,6 +216,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                 data: $scope.book
             }
             $http(reqBook).then(function() {
+                 console.log($scope.book);
                 console.log('success')
             })
 
@@ -223,9 +224,9 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         /*---------Remove book--------*/
     $scope.removeBook = function(id) {
         console.log(bookservice.getBook + id);
-        $http.delete(bookservice.getBook + id).success(function() {
-            console.log('success')
-        })
+        // $http.delete(bookservice.getBook + id).success(function() {
+        //     console.log('success')
+        // })
     }
 
     /*--------Cart ---------*/
