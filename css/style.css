@@ -468,6 +468,21 @@ span.ng-binding.text-info {
 
 /*--------------*/
 
+@media screen and (min-width:1200px) {
+    .homeCarousel .ng-isolate-scope.carousel {
+        overflow: hidden;
+        height: 300px
+    }
+    .homeCarousel img.ng-scope {
+        max-width: 100%;
+        position: relative;
+        top: -165px;
+    }
+    .homeCarousel .carousel .carousel-caption {
+        padding-bottom: 200px;
+    }
+}
+
 @media screen and (max-width:992px) {
     .descriptionList {
         width: 200px;
@@ -604,14 +619,19 @@ span.ng-binding.text-info {
         display: none
     }
     .homeCarousel {
-        height: 200px;
+        height: 250px;
         overflow: hidden;
     }
+    .homeCarousel img.ng-scope {
+        max-width: 100%;
+        position: relative;
+    }
     .homeCarousel .carousel .carousel-indicators {
-        transform: rotateZ(90deg);
+        /*transform: rotateZ(90deg);
         bottom: 50%;
         margin-left: 24%;
-        width: initial;
+        width: initial;*/
+        display: none
     }
     .homeCarousel .carousel .carousel-caption {
         padding-bottom: 75px;
