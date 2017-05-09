@@ -30,7 +30,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     };
     /*-------carousel---------- */
     $scope.getSlide = function() {
-        $http.get("http://green-web-bookstore.herokuapp.com/api/banners/").success(function(response) {
+        $http.get("https://green-web-bookstore.herokuapp.com/api/banners/").success(function(response) {
             $scope.slides = response;
             console.log($scope.slides);
 
