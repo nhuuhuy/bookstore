@@ -116,10 +116,8 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     };
 
     /*---validate--*/
-    $scope.submitForm = function() {
 
-        }
-        /*-----Search---*/
+    /*-----Search---*/
     $scope.textSearch = $routeParams.text;
     $scope.searchBy = 'search'
     $scope.search = function() {
@@ -241,16 +239,39 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
 
     }
-    $scope.sum = bookservice.sum;
+    $scope.cart = bookservice.cart;
+
+    /*------------Bill--------------*/
+    $scope.total = 0;
+    $scope.sum = function() {
+        for (var i = 0; i < $scope.cart.length; i++) {
+            $scope.total += $scope.cart[i].item.sellingPrice * $scope.cart[i].qty;
+
+        }
+    }
+    $scope.sum();
+    $scope.bills = [];
+    $scope.bill = {};
+    $scope.checkout = function() {
+        if ($scope.cart.length > 0) {
+            $scope.bill.date = Date.now();
+            $scope.bill.item = $scope.cart;
+            $scope.bill.total = $scope.total;
+            $scope.bills.push($scope.bill);
+            console.log($scope.bills);
+            $scope.total = 0;
+            bookservice.cart.splice(0, bookservice.cart.length);
+
+        }
+    }
     $scope.cart = bookservice.cart;
 
     $scope.removeCart = function(item) {
-        console.log(item.qty)
-        bookservice.cart.splice(item, 1);
+            console.log(item.qty)
+            bookservice.cart.splice(item, 1);
 
-    }
-
-    /*-----like------*/
+        }
+        /*-----like------*/
 
     $scope.like = function(item) {
         bookservice.liked = true;

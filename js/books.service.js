@@ -10,5 +10,5 @@ app.service('bookservice', function() {
         'userEmail': 'nguyenhuuhuy02@gmail.com',
         'like': []
     }
-
+    this.bills = [];
 })
