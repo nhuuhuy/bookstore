@@ -17,7 +17,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
                 $scope.filteredBooks = $scope.books.slice(begin, end);
             });
-            console.log( $scope.filteredBooks)
+            console.log($scope.filteredBooks)
         })
     };
     $scope.getGenres = function() {
@@ -38,22 +38,6 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     }
 
 
-    // $scope.slides = [{
-    //         id: 0,
-    //         image: "images/5.jpg",
-    //         caption: "Sale off 50%"
-    //     },
-    //     {
-    //         id: 1,
-    //         image: "images/6.jpg",
-    //         caption: "Free Ship"
-    //     },
-    //     {
-    //         id: 2,
-    //         image: "images/7.jpg",
-    //         caption: "New Books"
-    //     }
-    // ];
     $scope.myInterval = 3000;
 
     $scope.activeSlide = 0;
@@ -206,8 +190,8 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         }
         /*---------update book------*/
     $scope.updateBook = function() {
-           
-            var reqBook = {
+
+            var reqUpdateBook = {
                 method: 'PUT',
                 url: bookservice.getBook + $routeParams.itemId,
                 headers: {
@@ -215,8 +199,8 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                 },
                 data: $scope.book
             }
-            $http(reqBook).then(function() {
-                 console.log($scope.book);
+            $http(reqUpdateBook).then(function() {
+                console.log($scope.book);
                 console.log('success')
             })
 
@@ -301,17 +285,22 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     }
     $scope.user = bookservice.user;
     $scope.checkLike = function(item) {
-        if (bookservice.user.like.length > 0) {
-            for (var i = 0; i < bookservice.user.like.length; i++) {
-                if (bookservice.user.like[i].sku === item.sku) {
-                    return true;
-                    console.log('true')
+            if (bookservice.user.like.length > 0) {
+                for (var i = 0; i < bookservice.user.like.length; i++) {
+                    if (bookservice.user.like[i].sku === item.sku) {
+                        return true;
 
+
+                    }
                 }
             }
-        }
 
-    }
+        }
+        /*-------WYSIWYG-------------*/
+    $scope.disabled = false;
+    /*------User-----------*/
+    $scope.editProfie = false;
+    $scope.editUser = {};
 
 
 }])

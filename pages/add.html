@@ -34,9 +34,9 @@
                         <div class="card-title">Add New Book</div>
                         <form name="postForm " ng-submit="addBook() " novalidate>
                             <div class=" col-sm-12 form-group ">
-                                <label class="control-label">Title:</label>
+                                <label class="control-label">Title:<span ng-show="postForm.title.$invalid && !postForm.title.$pristine" class="text-danger"> Title is required.</span></label>
                                 <input class="form-control" type="text" ng-model="book.title" ng-required="true" name="title" />
-                                <p ng-show="postForm.title.$invalid && !postForm.title.$pristine" class="text-danger"> Title is required.</p>
+
                             </div>
                             <div class="  col-sm-12 form-group">
                                 <label>Genre</label>
@@ -45,13 +45,15 @@
                         </select>
                             </div>
                             <div class="  col-sm-6  form-group  ">
-                                <label class="control-label">Author:</label>
-                                <input class="form-control" type="text" ng-model="book.author" />
+                                <label class="control-label">Author: <span ng-show="postForm.author.$invalid && !postForm.author.$pristine" class="text-danger"> Author is required.</span></label>
+                                <input class="form-control" ng-required="true" type="text" ng-model="book.author" name="author" />
+
                             </div>
 
                             <div class=" col-sm-6  form-group ">
-                                <label class="control-label">Publisher:</label>
-                                <input class="form-control" type="text" ng-model="book.publisher" />
+                                <label class="control-label">Publisher: <span ng-show="postForm.publisher.$invalid  && !postForm.publisher.$pristine" class="text-danger"> Publisher is required.</span></label>
+                                <input class="form-control" ng-required="true" type="text" ng-model="book.publisher" name="publisher" />
+
                             </div>
                             <div class=" col-sm-3  form-group ">
                                 <label class="control-label">Pages:</label>
@@ -78,11 +80,13 @@
 
                             <div class=" col-sm-12  form-group ">
                                 <label class="control-label">Short Description</label>
-                                <textarea class="form-control" ng-model="book.shortDescription" rows="2"></textarea>
+                                <!--<textarea class="form-control" ng-model="book.shortDescription" rows="2"></textarea>-->
+                                <div text-angular="text-angular" name="shortDescription" ng-model="book.shortDescription" ta-disabled='disabled' class="inputDescription"></div>
                             </div>
                             <div class="col-sm-12   form-group ">
                                 <label class="control-label">Full Description</label>
-                                <textarea class="form-control" ng-model="book.fullDescription" rows="3"></textarea>
+                                <!--<textarea class="form-control" ng-model="book.fullDescription" rows="3"></textarea>-->
+                                <div text-angular="text-angular" name="fullDescription" ng-model="book.fullDescription" ta-disabled='disabled' class="inputDescription"></div>
                             </div>
                             <div class=" col-sm-2  form-group ">
                                 <label class="control-label">Sku:</label>
@@ -126,8 +130,10 @@
 
 
                             </div>
+                            <div class="col-sm-12">
+                                <span ng-class="postForm.$invalid?'disable':''"><input type="submit" value="Submit" ng-disabled="postForm.$invalid" class="btn btn-danger" /> </span>
+                            </div>
 
-                            <input class="btn btn-danger" type="submit" value="Submit" ng-disabled="postForm.$invalid" />
                         </form>
                     </div>
 

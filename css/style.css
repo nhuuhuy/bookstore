@@ -335,6 +335,14 @@ a.zoom img {
     margin: 15px
 }
 
+.disable {
+    cursor: not-allowed
+}
+
+.modal-content .modal-footer button.pull-left {
+    padding: 12px
+}
+
 
 /*---*/
 
@@ -463,25 +471,40 @@ span.ng-binding.text-info {
 }
 
 
-/*---------*/
+/*----description-----*/
+
+.inputDescription>.ng-scope.ng-isolate-scope.ta-toolbar.btn-toolbar>.btn-group {
+    margin: 0px;
+}
+
+.inputDescription .btn:not(.btn-just-icon):not(.btn-fab) .fa,
+.navbar .navbar-nav>li>a.btn:not(.btn-just-icon):not(.btn-fab) .fa {
+    font-size: 12px
+}
+
+.inputDescription button.btn.btn-default.ng-scope {
+    padding: 6px 12px;
+    border-radius: 0px;
+}
+
+.btn-toolbar {
+    margin: 0px
+}
+
+.ta-editor.ta-html,
+.ta-scroll-window.form-control {
+    min-height: 150px;
+    height: 200px
+}
+
+.ta-scroll-window>.ta-bind {
+    height: auto;
+    min-height: 150px;
+    padding: 6px 12px;
+}
 
 
 /*--------------*/
-
-/*@media screen and (min-width:1200px) {
-    .homeCarousel .ng-isolate-scope.carousel {
-        overflow: hidden;
-        height: 300px
-    }
-    .homeCarousel img.ng-scope {
-        max-width: 100%;
-        position: relative;
-        top: -165px;
-    }
-    .homeCarousel .carousel .carousel-caption {
-        padding-bottom: 200px;
-    }
-}*/
 
 @media screen and (max-width:992px) {
     .descriptionList {
@@ -619,7 +642,6 @@ span.ng-binding.text-info {
         display: none
     }
     .homeCarousel {
-   
         overflow: hidden;
     }
     .homeCarousel img.ng-scope {
@@ -643,7 +665,6 @@ span.ng-binding.text-info {
 
 @media screen and (max-width: 470px) {
     .homeCarousel {
-
         overflow: hidden;
     }
     .homeCarousel .carousel .carousel-caption {
