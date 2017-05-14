@@ -38,7 +38,7 @@
                         <label for="">View: </label><button class="btn btn-default btn-sm" ng-click="setView('list')" type="button"><i class="fa  fa-th-list"></i></button>
                         <button class="btn btn-default btn-sm" ng-click="setView('block')" type="button"><i class="fa fa-th-large"></i></button>
                     </div>
-                    <div ng-class="isSelectedView('block')?'col-md-3 col-sm-6': 'col-sm-12 '   " ng-repeat="book in genreBook">
+                    <div ng-class="isSelectedView('block')?'col-md-3 col-sm-6': 'col-sm-12 '   " ng-repeat="book in books">
                         <div class="item panel panel-default">
                             <div ng-class="isSelectedView('block')?'panel-body':'panel-body list'">
                                 <div ng-class="isSelectedView('block')? 'imagePanel':' imagePanel list'">

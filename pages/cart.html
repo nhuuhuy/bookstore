@@ -6,6 +6,7 @@
                 <h5>Shopping Cart</h5>
             </div>
             <table class="table table-bordered table-hover text-center ">
+
                 <thead>
                     <tr>
                         <th class="hidden-xs"></th>
@@ -25,9 +26,9 @@
                             <h6>{{item.item.title}}</h6>
                         </td>
                         <td class="price ">{{item.item.sellingPrice|currency:"$":0}}</td>
-                        <td class=""><input type="number" ng-model="item.qty" min="1" class="form-control"></td>
+                        <td class=""><input type="number" ng-model="item.qty" min="1" class="form-control" ng-change="changeQty($index)"></td>
                         <td class="price ">{{item.item.sellingPrice*item.qty| currency:"$":0}}</td>
-                        <td class=""><button class="btn btn-default btn-xs" ng-click='removeCart(item)'><i class="fa fa-trash-o"></i></button></td>
+                        <td class=""><button class="btn btn-default btn-xs" ng-click='removeCart($index)'><i class="fa fa-trash-o"></i></button></td>
                     </tr>
 
                 </tbody>

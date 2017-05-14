@@ -35,6 +35,15 @@ th {
     padding: 5px;
 }
 
+.ta-editor {
+    min-height: 300px;
+    height: auto;
+    overflow: auto;
+    font-family: inherit;
+    font-size: 100%;
+    margin: 20px 0;
+}
+
 
 /*--- footer */
 
@@ -208,16 +217,18 @@ select.form-control.search.select-search {
     border-radius: 2px
 }
 
+.panelImage {
+    width: 100%;
+    max-width: 90px;
+    max-height: 120px
+}
+
 .fillter {
     margin: 10px;
 }
 
 .item {
     text-align: center;
-}
-
-.panelImage {
-    width: 100%;
 }
 
 .descriptionBlock {
@@ -340,7 +351,8 @@ a.zoom img {
 }
 
 .modal-content .modal-footer button.pull-left {
-    padding: 12px
+    padding-left: 16px;
+    padding-right: 16px
 }
 
 
@@ -351,9 +363,14 @@ a.zoom img {
 
 .item .panel-body.list,
 .item .panel-footer.list {
-    display: inline-block;
-    border: none;
+    display: inline-grid;
     text-align: left;
+}
+
+p.ng-pristine.ng-untouched.ng-valid.ta-bind>p {
+    overflow: hidden;
+    max-height: 150px;
+    text-overflow: ellipsis;
 }
 
 
@@ -404,10 +421,11 @@ a.zoom img {
     font-size: 12px
 }
 
-.item .panel-footer.list {
+
+/*.item .panel-footer.list {
     position: relative;
     top: -75px;
-}
+}*/
 
 
 /*-----Date----*/
@@ -507,14 +525,14 @@ span.ng-binding.text-info {
 /*--------------*/
 
 @media screen and (max-width:992px) {
-    .descriptionList {
+    /*.descriptionList {
         width: 200px;
         font-size: 12px
-    }
-    .item .panel-footer.list {
+    }*/
+    /*.item .panel-footer.list {
         position: relative;
         top: 0px;
-    }
+    }*/
 }
 
 @media screen and (min-width:768px) {
@@ -538,13 +556,15 @@ span.ng-binding.text-info {
         width: auto
     }
     .imagePanel {
-        width: 120px;
         display: inline-block;
-        margin-bottom: 50px;
-        max-width: 100px;
+        margin-bottom: 80px;
+        width: 100px;
     }
     .item .panel-footer {
         padding: 0px 10px
+    }
+    .item .panel-body.list {
+        padding: 15px 10px
     }
     .item.panel.panel-default:hover .imagePanel,
     .item.panel.panel-default:focus .imagePanel {
@@ -676,6 +696,6 @@ span.ng-binding.text-info {
     .table>thead>tr>td,
     .table>tbody>tr>td,
     .table>tfoot>tr>td {
-        padding: 0px
+        padding: 2px
     }
 }

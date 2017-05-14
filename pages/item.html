@@ -60,7 +60,10 @@
                             <h5 class="price">{{book.sellingPrice|currency:"$":0}}</h5>
                             <p> Tiết kiệm :{{book.previousPrice-book.sellingPrice|currency:"$":0}}</p>
                             <h5>Giới thiệu</h5>
-                            <p>{{book.shortDescription}}</p>
+
+                            <div ta-bind="text" ng-model="book.shortDescription" ta-readonly='disabled'>
+
+                            </div>
                             <div class="">
                                 <!--<div class="form-group col-sm-6">
                                     <label for="">
@@ -90,7 +93,10 @@
                 </div>
                 <div class=" card fullDescription">
                     <div class="card-title">Giới thiệu sách</div>
-                    {{book.fullDescription}}
+                    <div ta-bind="text" ng-model="book.fullDescription" ta-readonly='disabled'>
+
+                    </div>
+
                 </div>
                 <div class=" card information">
                     <div class="card-title">Thông tin chi tiết</div>

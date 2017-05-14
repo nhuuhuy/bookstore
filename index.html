@@ -129,7 +129,7 @@
                                 </span>
                                 </span>
                                 <span class="item-right">
-		                        <button class="btn btn-xs btn-danger btn-fab btn-fab-mini btn-round pull-right" ng-click='removeCart(item)'>x</button>
+		                        <button class="btn btn-xs btn-danger btn-fab btn-fab-mini btn-round pull-right" ng-click='removeCart($index)'>x</button>
 		                    </span>
                                 </span>
                             </li>
@@ -147,7 +147,8 @@
                             <li ng-click="run()"><a href="#/user/like">My Wishlist  </a></li>
                             <li><a href="">My Cart </a></li>
                             <li><a href="">Checkout</a></li>
-                            <li><a href="#/login">Log In </a></li>
+                            <!--<li><a href="#/login">Log In </a></li>-->
+                            <li><a class="" data-toggle="modal" data-target="#modalSigin">Log In</a></li>
                             <li><a class="" data-toggle="modal" data-target="#modalSigin" ng-hide="true">Log Out</a></li>
                         </ul>
                     </li>
@@ -177,7 +178,7 @@
                 </div>
             </div>
     </nav>
-    <!--<div class="modal fade " id="modalSigin" role="dialog" ng-controller="LoginController as loginCtrl">
+    <div class="modal fade " id="modalSigin" role="dialog" ng-controller="LoginController as loginCtrl">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
@@ -200,20 +201,12 @@
                                     Keep me signed in
                                 </label>
                             </div>
-                            <button class="btn btn-danger" type="submit">Sign in</button>
-                        </form>
-                        <a class="forgotLnk" href="">I can't access my account</a>
-                        <div class="or-box">
-                            <span class="or">OR</span>
-                            <div class="row">
-                                <div class="col-md-6 ">
-                                    <a href="" class="btn btn-info">Facebook</a>
-                                </div>
-                                <div class="col-md-6 ">
-                                    <a href="" class="btn btn-danger">Google</a>
-                                </div>
+                            <div class="text-center">
+                                <button class="btn btn-danger" type="submit">Sign in</button>
                             </div>
-                        </div>
+
+                        </form>
+
                         <div class="row">
                             <div class="col-md-12 ">
                                 <a href="" class="btn btn-default btn-block" ng-click="loginCtrl.selectTab('signup')">Create New Account</a>
@@ -246,7 +239,7 @@
                 </div>
             </div>
         </div>
-    </div>-->
+    </div>
 
     <div class="body-wrapper" ng-view>
 

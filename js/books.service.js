@@ -11,4 +11,5 @@ app.service('bookservice', function() {
         'like': []
     }
     this.bills = [];
+    this.item = [];
 })
