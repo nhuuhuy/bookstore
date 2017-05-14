@@ -3,6 +3,11 @@ body {
     padding-top: 80px
 }
 
+p {
+    font-size: 12px
+}
+
+;
 a,
 a:hover,
 a:focus {
@@ -233,7 +238,7 @@ select.form-control.search.select-search {
 
 .descriptionBlock {
     display: none;
-    font-size: 12px
+    /*font-size: 15px*/
 }
 
 .titlePanel {
@@ -319,6 +324,8 @@ select.form-control.search.select-search {
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
+
+/*
 #gallery_01 img {
     border: 2px solid white;
 }
@@ -336,6 +343,10 @@ select.form-control.search.select-search {
 a.zoom img {
     border: 2px solid #333 !important;
     padding: 5px;
+}*/
+
+.img-zoom {
+    max-width: 200px;
 }
 
 .box-image .card {

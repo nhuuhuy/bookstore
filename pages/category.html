@@ -39,7 +39,7 @@
                     </div>
                     <div ng-class="isSelectedView('block')?'col-md-3 col-sm-6 block': 'col-sm-12 list '   " ng-repeat="book in filteredBooks ">
                         <div class="item panel panel-default">
-                            <div ng-class="isSelectedView('block')?'panel-body':'panel-body list col-sm-5'">
+                            <div ng-class="isSelectedView('block')?'panel-body':'panel-body list col-sm-3'">
                                 <div ng-class="isSelectedView('block')? 'imagePanel':' imagePanel list'">
                                     <a href="#/item/{{book._id}}"><img ng-src="{{book.images.main}}" class="panelImage" alt=""></a>
                                 </div>
@@ -52,7 +52,7 @@
                                     <!--{{book.shortDescription|limitTo:90|limitTo:90}}<a href="#/item/{{book._id}}">...</a>-->
                                 </div>
                             </div>
-                            <div ng-class="isSelectedView('block')? 'panel-footer': 'panel-footer list col-sm-7'">
+                            <div ng-class="isSelectedView('block')? 'panel-footer': 'panel-footer list col-sm-9'">
 
                                 <div ng-class="isSelectedView('block')? 'titlePanel':''">
                                     <h5>
@@ -62,11 +62,12 @@
                                 </div>
 
                                 <div class="descriptionList" ng-show="isSelectedView('list')">
-                                    <p>Giới thiệu
-                                        <p ta-bind="text" ng-model="book.shortDescription" ta-readonly='disabled'>
+                                    Giới thiệu
+                                    <p ta-bind="text" ng-model="book.shortDescription" ta-readonly='disabled'>
 
-                                        </p>
-                                        <!--<p>{{book.shortDescription|limitTo:80}}<a href="#/item/{{book._id}}">...</a></p>-->
+                                    </p>
+                                    <a href="#/item/{{book._id}}" class="price">Xem thêm</a>
+                                    <!--<p>{{book.shortDescription|limitTo:80}}<a href="#/item/{{book._id}}">...</a></p>-->
                                 </div>
                                 <p class="author visible-sm visible-xs">{{book.author}}</p>
                                 <p class="price">{{book.sellingPrice|currency:"$":0}}</p>
