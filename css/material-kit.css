@@ -593,7 +593,7 @@ fieldset[disabled] .navbar .navbar-nav>li>a.btn.btn-info.active {
 .open>.navbar .navbar-nav>li>a.btn.btn-success.dropdown-toggle,
 .open>.navbar .navbar-nav>li>a.btn.btn-success.dropdown-toggle:focus,
 .open>.navbar .navbar-nav>li>a.btn.btn-success.dropdown-toggle:hover {
-    background-color: #4caf50;
+    background-color: #2BBBAD;
     color: #FFFFFF;
 }
 
@@ -1977,12 +1977,12 @@ fieldset[disabled] .form-group .form-control {
 }
 
 .form-group.is-focused .form-control .material-input:after {
-    background-color: #9c27b0;
+    background-color: #2BBBAD;
 }
 
 .form-group.is-focused label,
 .form-group.is-focused label.control-label {
-    color: #9c27b0;
+    color: #2BBBAD;
 }
 
 .form-group.is-focused.label-placeholder label,

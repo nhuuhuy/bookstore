@@ -1,5 +1,5 @@
 body {
-    min-width: 320px;
+    min-width: 310px;
     padding-top: 80px
 }
 
@@ -7,11 +7,10 @@ p {
     font-size: 12px
 }
 
-;
 a,
 a:hover,
 a:focus {
-    text-decoration: none;
+    text-decoration: none!important;
 }
 
 .form-control:focus {
@@ -38,6 +37,10 @@ footer ul>li {
 td,
 th {
     padding: 5px;
+}
+
+.btn-success {
+    background-color: #2BBBAD
 }
 
 .ta-editor {
@@ -109,6 +112,10 @@ h5 {
 
 .navbar .navbar-nav>li>.dropdown-menu {
     margin-top: 0px;
+}
+
+.nav-pills>li>a {
+    text-align: left;
 }
 
 
@@ -223,9 +230,7 @@ select.form-control.search.select-search {
 }
 
 .panelImage {
-    width: 100%;
-    max-width: 90px;
-    max-height: 120px
+    max-width: 100%;
 }
 
 .fillter {
@@ -234,6 +239,9 @@ select.form-control.search.select-search {
 
 .item {
     text-align: center;
+    -webkit-animation: fade-in-right 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) 0.5ms both;
+    -moz-animation: fade-in-right 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) 0.5ms both;
+    animation: fade-in-right 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) 0.5ms both;
 }
 
 .descriptionBlock {
@@ -251,6 +259,62 @@ select.form-control.search.select-search {
 
 .price {
     margin: 0px
+}
+
+@-webkit-keyframes fade-in-right {
+    0% {
+        -webkit-transform: translateX(50px);
+        transform: translateX(50px);
+        opacity: 0
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1
+    }
+}
+
+@keyframes fade-in-right {
+    0% {
+        -webkit-transform: translateX(50px);
+        transform: translateX(50px);
+        opacity: 0
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1
+    }
+}
+
+
+/*-----back to top---*/
+
+#back-to-top {
+    position: fixed;
+    bottom: 40px;
+    right: 10px;
+    z-index: 90;
+    background: #f44336;
+    color: #fff;
+    cursor: pointer;
+    border: 0;
+    text-decoration: none;
+    transition: opacity 0.2s ease-out;
+    opacity: 0;
+}
+
+#back-to-top .glyphicon-chevron-up {
+    top: 5px
+}
+
+
+/*#back-to-top:hover {
+    background: #e9ebec;
+}*/
+
+#back-to-top.show {
+    opacity: 1;
 }
 
 
@@ -346,7 +410,7 @@ a.zoom img {
 }*/
 
 .img-zoom {
-    max-width: 200px;
+    max-width: 250px;
 }
 
 .box-image .card {
@@ -392,6 +456,10 @@ p.ng-pristine.ng-untouched.ng-valid.ta-bind>p {
 .list {
     transition: all linear 0.2s
 }*/
+
+.login {
+    transition: all linear 0.8s;
+}
 
 
 /*---item--*/
@@ -512,7 +580,7 @@ span.ng-binding.text-info {
 }
 
 .inputDescription button.btn.btn-default.ng-scope {
-    padding: 6px 12px;
+    padding: 6px 6px;
     border-radius: 0px;
 }
 
@@ -533,18 +601,20 @@ span.ng-binding.text-info {
 }
 
 
-/*--------------*/
+/*----------------table----------------*/
 
-@media screen and (max-width:992px) {
-    /*.descriptionList {
-        width: 200px;
-        font-size: 12px
-    }*/
-    /*.item .panel-footer.list {
-        position: relative;
-        top: 0px;
-    }*/
+td:before {
+    content: attr(data-th)": ";
+    display: none;
+    font-weight: bold;
 }
+
+td {
+    display: block;
+}
+
+
+/*--------------*/
 
 @media screen and (min-width:768px) {
     .bookMenu.collapse {
@@ -694,6 +764,16 @@ span.ng-binding.text-info {
     }
 }
 
+@media (min-width: 470px) {
+    .rwd-table th,
+    .rwd-table td {
+        display: table-cell;
+    }
+    .removexs {
+        display: none;
+    }
+}
+
 @media screen and (max-width: 470px) {
     .homeCarousel {
         overflow: hidden;
@@ -707,6 +787,21 @@ span.ng-binding.text-info {
     .table>thead>tr>td,
     .table>tbody>tr>td,
     .table>tfoot>tr>td {
-        padding: 2px
+        padding: 10px;
+        border: none
+    }
+    .rwd-table th {
+        display: none;
+    }
+    td:before {
+        content: attr(data-th)": ";
+        display: inline-block;
+    }
+    .removecart {
+        display: none
+    }
+    .rowBook {
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
     }
 }

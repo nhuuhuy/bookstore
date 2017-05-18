@@ -5,7 +5,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#/">Home</a></li>
                     <li class="breadcrumb-item"><a href="#/category">Danh Mục Sách</a></li>
-                    <li class="breadcrumb-item active"><a href="#/category/genreBook[0].genre._id">{{text() }}</a></li>
+                    <li class="breadcrumb-item active"><a href="#/category/genreBook[0].genre._id">{{text }}</a></li>
                 </ol>
             </div>
 
@@ -25,7 +25,7 @@
             <div class="col-sm-9">
                 <div class="wrap">
                     <div class="heading  ">
-                        <h5>{{text() }}</h5>
+                        <h5>{{text}}</h5>
                     </div>
 
                     <div class="fillter">
@@ -38,19 +38,22 @@
                         <label for="">View: </label><button class="btn btn-default btn-sm" ng-click="setView('list')" type="button"><i class="fa  fa-th-list"></i></button>
                         <button class="btn btn-default btn-sm" ng-click="setView('block')" type="button"><i class="fa fa-th-large"></i></button>
                     </div>
-                    <div ng-class="isSelectedView('block')?'col-md-3 col-sm-6': 'col-sm-12 '   " ng-repeat="book in books">
+                    <div ng-class="isSelectedView('block')?'col-md-3 col-sm-6 block': 'col-sm-12 list '   " ng-repeat="book in filteredBooks ">
                         <div class="item panel panel-default">
-                            <div ng-class="isSelectedView('block')?'panel-body':'panel-body list'">
+                            <div ng-class="isSelectedView('block')?'panel-body':'panel-body list col-sm-3'">
                                 <div ng-class="isSelectedView('block')? 'imagePanel':' imagePanel list'">
                                     <a href="#/item/{{book._id}}"><img ng-src="{{book.images.main}}" class="panelImage" alt=""></a>
                                 </div>
 
-                                <div class="descriptionBlock" ng-show="isSelectedView('block')">
+                                <div class="descriptionBlock text-left" ng-show="isSelectedView('block')">
+                                    <p ta-bind="text" ng-model="book.shortDescription" ta-readonly='disabled'>
 
-                                    {{book.shortDescription|limitTo:90|limitTo:90}}<a href="#/item/{{book._id}}">...</a>
+                                    </p>
+                                    <a href="#/item/{{book._id}}" class="price">Xem thêm</a>
+                                    <!--{{book.shortDescription|limitTo:90|limitTo:90}}<a href="#/item/{{book._id}}">...</a>-->
                                 </div>
                             </div>
-                            <div ng-class="isSelectedView('block')? 'panel-footer': 'panel-footer list'">
+                            <div ng-class="isSelectedView('block')? 'panel-footer': 'panel-footer list col-sm-9'">
 
                                 <div ng-class="isSelectedView('block')? 'titlePanel':''">
                                     <h5>
@@ -60,8 +63,12 @@
                                 </div>
 
                                 <div class="descriptionList" ng-show="isSelectedView('list')">
-                                    <p>Description</p>
-                                    <p>{{book.shortDescription|limitTo:80}}<a href="#/item/{{book._id}}">...</a></p>
+                                    Giới thiệu
+                                    <p ta-bind="text" ng-model="book.shortDescription" ta-readonly='disabled'>
+
+                                    </p>
+                                    <a href="#/item/{{book._id}}" class="price">Xem thêm</a>
+                                    <!--<p>{{book.shortDescription|limitTo:80}}<a href="#/item/{{book._id}}">...</a></p>-->
                                 </div>
                                 <p class="author visible-sm visible-xs">{{book.author}}</p>
                                 <p class="price">{{book.sellingPrice|currency:"$":0}}</p>
@@ -73,7 +80,7 @@
                         </div>
                     </div>
                     <div class="col-sm-12">
-                        <ul uib-pagination total-items="bigTotalItems" ng-model="categoryctrl.bigCurrentPage" max-size="categoryctrl.maxSize" class="pagination-sm pagination-danger" boundary-link-numbers="true"></ul>
+                        <ul uib-pagination total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" max-size="maxSize" class="pagination-sm pagination-danger" boundary-link-numbers="true" next-text="Trang kế" previous-text="Trang trước" ng-click="changePage()></ul>
                     </div>
                 </div>
             </div>

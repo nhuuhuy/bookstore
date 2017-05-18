@@ -12,4 +12,5 @@ app.service('bookservice', function() {
     }
     this.bills = [];
     this.item = [];
+
 })

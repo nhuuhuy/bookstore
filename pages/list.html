@@ -1,78 +1,79 @@
 <div>
     <div class="container">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-md-4">
 
                 <div class="wrap sidebar-nav">
                     <div class="heading">
-                        <h5><i class="glyphicon glyphicon-home"></i> MANAGEMENT
+                        <h5><i class="glyphicon glyphicon-home"></i> Quản lý
                         </h5>
                     </div>
 
                     <ul class="nav nav-pills nav-pills-danger nav-stacked">
-                        <li><a href="#">Home</a></li>
+
                         <li class="">
-                            <a href="#/admin/addbook">Add</a>
+                            <a href="#/admin/addbook">Thêm sách</a>
                         </li>
-                        <li><a href="#/admin/listbook">List</a></li>
-                        <li><a href="">Search</a></li>
+                        <li><a href="#/admin/listbook">Danh mục sách</a></li>
+
                     </ul>
                     <div class="heading">
-                        <h5><i class="glyphicon glyphicon-user"></i> USERS
+                        <h5><i class="glyphicon glyphicon-user"></i> Người dùng
                         </h5>
                     </div>
 
                     <ul class="nav nav-pills nav-pills-danger nav-stacked">
-                        <li><a href="#">List</a></li>
-                        <li><a href="#">Manage</a></li>
+                        <li><a href="#">Danh sách người dùng</a></li>
+                        <li><a href="#">Đơn hàng</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="col-sm-8 ">
+            <div class="col-md-8 ">
                 <div class="card card-form ">
 
                     <div class="list-books" ng-init="getBook()">
                         <div class="card-title">Books</div>
-                        <table class="table table-bordered table-hover">
+                        <input type="text" name="" value="" ng-model="query" class="form-control" placeholder="search">
+                        <table class="table table-bordered table-hover  rwd-table">
+
+
+
+
+
                             <tr>
-                                <td colspan="5">
-                                    <input type="text" name="" value="" ng-model="query" class="form-control" placeholder="search">
-                                </td>
+                                <th class="">STT</th>
+                                <th class="">Tên sách</th>
+                                <th class="">SKU</th>
+                                <th class=""></th>
+                                <th class=""></th>
                             </tr>
-                            <tr>
-                                <th class="col-xs-1">STT</th>
-                                <th class="col-xs-8">Title</th>
-                                <th class="col-xs-1">SKU</th>
-                                <th class="col-xs-1"></th>
-                                <th class="col-xs-1"></th>
-                            </tr>
-                            <tr ng-repeat="book in books| filter: query">
-                                <td class="col-xs-1">{{$index+1}}</td>
-                                <td class="col-xs-8">{{book.title }}</td>
-                                <td class="col-xs-1">{{book.sku}}</td>
-                                <td class="col-xs-1"><a href="#/admin/editbook/{{book._id}}" type="button" class="btn btn-success btn-xs"><i class="fa fa-pencil-square-o"></i></a>
-                                    <div class="modal fade" role="dialog" id="{{book._id}}">
-                                        <div class="modal-dialog modal-sm">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                    <p class="modal-title">Bạn có muốn xoá:</p>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <h4>{{book.title }}</h4>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger btn-md pull-right" data-dismiss="modal">Huỷ</button>
-                                                    <button type="button" class="btn btn-success btn-md pull-left" data-dismiss="modal" ng-click="removeBook(book._id)">OK</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <tr ng-repeat="book in books| filter: query" class="rowBook">
+                                <td class="" data-th="STT">{{$index+1}}</td>
+                                <td class="" data-th="Tên sách">{{book.title }}</td>
+                                <td class="" data-th="SKU">{{book.sku}}</td>
+                                <td class="" data-th="Chỉnh sửa"><a href="#/admin/editbook/{{book._id}}" type="button" class="btn btn-success btn-xs"><i class="fa fa-pencil-square-o"></i></a>
+
                                 </td>
-                                <td class="col-xs-1"><button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#{{book._id}}"><i class="fa fa-trash-o"></i></button></td>
+                                <td class="" data-th="xoá"><button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#{{book._id}}"><i class="fa fa-trash-o"></i></button></td>
                             </tr>
                         </table>
-
+                        <div class="modal fade" ng-repeat="book in books| filter: query" role="dialog" id="{{book._id}}">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <p class="modal-title"><i class="fa fa-exclamation-triangle text-danger"></i> Bạn có muốn xoá:</p>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h4>{{book.title }}</h4>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default btn-md pull-right" data-dismiss="modal">Huỷ</button>
+                                        <button type="button" class="btn btn-danger btn-md pull-left" data-dismiss="modal" ng-click="removeBook(book._id)">OK</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

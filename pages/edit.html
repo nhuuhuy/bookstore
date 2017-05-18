@@ -1,34 +1,34 @@
 <div>
     <div class="container">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-md-4">
 
                 <div class="wrap sidebar-nav">
                     <div class="heading">
-                        <h5><i class="glyphicon glyphicon-home"></i> MANAGEMENT
+                        <h5><i class="glyphicon glyphicon-home"></i> Quản lý
                         </h5>
                     </div>
 
                     <ul class="nav nav-pills nav-pills-danger nav-stacked">
-                        <li><a href="#">Home</a></li>
+
                         <li class="">
-                            <a href="#/admin/addbook">Add</a>
+                            <a href="#/admin/addbook">Thêm sách</a>
                         </li>
-                        <li><a href="#/admin/listbook">List</a></li>
-                        <li><a href="">Search</a></li>
+                        <li><a href="#/admin/listbook">Danh mục sách</a></li>
+
                     </ul>
                     <div class="heading">
-                        <h5><i class="glyphicon glyphicon-user"></i> USERS
+                        <h5><i class="glyphicon glyphicon-user"></i> Người dùng
                         </h5>
                     </div>
 
                     <ul class="nav nav-pills nav-pills-danger nav-stacked">
-                        <li><a href="#">List</a></li>
-                        <li><a href="#">Manage</a></li>
+                        <li><a href="#">Danh sách người dùng</a></li>
+                        <li><a href="#">Đơn hàng</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="col-sm-8 ">
+            <div class="col-md-8 ">
                 <div class="card card-form ">
                     <div class="addBook">
                         <div class="card-title">Edit Book</div>
@@ -122,7 +122,7 @@
 
                                 <label class="control-label">Create date:</label>
                                 <p class="input-group date">
-                                    <input type="text" class="form-control " uib-datepicker-popup="MM/dd/yyyy" ng-model="CreateDate" is-open="popup1.opened" datepicker-options="" close-text="Close" />
+                                    <input type="text" class="form-control " uib-datepicker-popup="MM/dd/yyyy" ng-model="book.createDate" is-open="popup1.opened" datepicker-options="" close-text="Close" />
                                     <span class="input-group-btn">
                                         <button type="button" class="btn btn-default btn-md" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
                                     </span>

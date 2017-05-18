@@ -1,38 +1,46 @@
 <div class="container">
     <div class="row  ">
 
-        <div class="wrap">
+        <div class=" wrap">
             <div class=" heading">
                 <h5>Shopping Cart</h5>
             </div>
-            <table class="table table-bordered table-hover text-center ">
+            <div class="col-sm-12">
+                <table class="table table-bordered table-hover rwd-table  ">
 
-                <thead>
-                    <tr>
-                        <th class="hidden-xs"></th>
-                        <th class=" ">Tên sản phẩm</th>
-                        <th class="">Đơn giá</th>
-                        <th class="">Số lượng</th>
-                        <th class="">Thành tiền</th>
-                        <th class=""></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="item in cart">
-                        <td class="hidden-xs">
-                            <div class="imgItem"><img ng-src="{{item.item.images.main}}" alt="" class="img-responsive hidden-xs" /></div>
-                        </td>
-                        <td class="">
-                            <h6>{{item.item.title}}</h6>
-                        </td>
-                        <td class="price ">{{item.item.sellingPrice|currency:"$":0}}</td>
-                        <td class=""><input type="number" ng-model="item.qty" min="1" class="form-control" ng-change="changeQty($index)"></td>
-                        <td class="price ">{{item.item.sellingPrice*item.qty| currency:"$":0}}</td>
-                        <td class=""><button class="btn btn-default btn-xs" ng-click='removeCart($index)'><i class="fa fa-trash-o"></i></button></td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th class="hidden-xs"></th>
+                            <th class=" ">Tên sách</th>
+                            <th class="">Đơn giá</th>
+                            <th class="">Số lượng</th>
+                            <th class="">Thành tiền</th>
+                            <th class=""></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in cart">
+                            <td class="hidden-xs">
+                                <div class="imgItem"><img ng-src="{{item.item.images.main}}" alt="" class="img-responsive hidden-xs" /></div>
+                            </td>
+                            <td class="" data-th="Tên sách">
+                                <button class="btn btn-default btn-xs pull-right removexs" ng-click='removeCart($index)'><i class="fa fa-trash-o"></i></button>
+                                <h6>{{item.item.title}} </h6>
+                            </td>
+                            <td data-th="Đơn giá">
+                                <p class="price ">{{item.item.sellingPrice|currency:"$":0}}</p>
+                            </td>
+                            <td class="" data-th="Số lượng"><input type="number" ng-model="item.qty" min="1" class="form-control" ng-change="changeQty($index)"></td>
+                            <td data-th="Thành tiền">
+                                <p class="price ">{{item.item.sellingPrice*item.qty| currency:"$":0}}</p>
+                            </td>
+                            <td class="removecart"><button class="btn btn-default btn-xs" ng-click='removeCart($index)'><i class="fa fa-trash-o"></i></button></td>
+                        </tr>
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     </div>
 
@@ -40,7 +48,7 @@
 <div class="container">
     <div class="row">
         <div class="wrap">
-            <div class="col-md-4 col-sm-6">
+            <div class="col-sm-6">
                 <div class="panel">
                     <div class="panel-heading">
                         <h5>DISCOUNT CODES</h5>
@@ -54,7 +62,7 @@
                           
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6">
+                <!--<div class="col-sm-6">
                     <div class="panel">
                         <div class="panel-heading">
                             <h5>SHIPPING</h5>
@@ -71,8 +79,8 @@
                     </div>
 
                 </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
+            </div>-->
+            <div class="col-sm-6">
                 <div class="panel">
                     <div class="panel-heading">
                         <h5>ORDER SUMMARY</h5>

@@ -8,7 +8,7 @@
                     <li class="breadcrumb-item active">{{book.title}}</li>
                 </ol>
             </div>
-            <div class="col-sm-3 sidenav hidden-xs">
+            <div class="col-md-3 sidenav hidden-sm hidden-xs">
                 <div class="panel ">
                     <div class="panel-heading">
                         <h5>Danh Mục Sách</h5>
@@ -20,10 +20,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-9 " ng-init="getBookId()">
+            <div class="col-sm-12 col-md-9" ng-init="getBookId()">
                 <div class="card">
 
-                    <div class="col-md-5 clearfix ">
+                    <div class="col-sm-5 clearfix ">
                         <div class="box-image ">
 
                             <div class="img-zoom">
@@ -51,7 +51,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-7">
+                    <div class="col-sm-7">
                         <div class="">
                             <h3> <strong>{{book.title}}</strong></h3>
                             <span uib-rating ng-model="rateAvr" max="max" read-only="true" on-hover="hoveringOver(value)"></span>

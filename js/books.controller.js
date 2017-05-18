@@ -1,22 +1,22 @@
-app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routeParams', '$location', function($scope, bookservice, $http, $routeParams, $location) {
+app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routeParams', '$location', 'uibDateParser', 'taOptions', function($scope, bookservice, $http, $routeParams, $location, uibDateParser, taOptions) {
+    $scope.paging = function() {
 
+        $scope.totalItems = $scope.books.length;
+        $scope.currentPage = 1;
+        $scope.itemsPerPage = 4;
+        $scope.maxSize = 5;
+        $scope.changePage = function() {
+            var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
+                end = begin + $scope.itemsPerPage;
+
+            $scope.filteredBooks = $scope.books.slice(begin, end);
+        };
+        $scope.changePage();
+    }
     $scope.getBook = function() {
         $http.get(bookservice.getBook).success(function(response) {
             $scope.books = response;
-            $scope.viewby = 5;
-            $scope.totalItems = $scope.books.length;
-            $scope.currentPage = 1;
-            $scope.itemsPerPage = $scope.viewby;
-            $scope.maxSize = 10;
-            $scope.pageCount = function() {
-                return Math.ceil($scope.books.length / $scope.itemsPerPage);
-            };
-            $scope.$watch('currentPage + itemsPerPage', function() {
-                var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
-                    end = begin + $scope.itemsPerPage;
-
-                $scope.filteredBooks = $scope.books.slice(begin, end);
-            });
+            $scope.paging();
 
         })
     };
@@ -53,6 +53,8 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     $scope.getBookId = function() {
             $http.get(bookservice.getBook + $routeParams.itemId).success(function(response) {
                 $scope.book = response;
+                $scope.book.createDate = new Date($scope.book.createDate);
+                $scope.book.releaseDate = new Date($scope.book.releaseDate);
                 var rateTotal = 0;
                 $scope.book.comments.rate;
                 for (var i = 0; i < $scope.book.comments.length; i++) {
@@ -81,15 +83,15 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             $http.get(bookservice.getBook + 'genre/' +
                 $routeParams.genreId).success(function(response) {
                 $scope.books = response;
-                $scope.text = function() {
-                    for (var i = 0; i < $scope.genres.length; i++) {
-                        if ($scope.genres[i]._id === $routeParams.genreId) {
 
-                            return $scope.genres[i].name;
+                for (var i = 0; i < $scope.genres.length; i++) {
+                    if ($scope.genres[i]._id === $routeParams.genreId) {
 
-                        }
+                        $scope.text = $scope.genres[i].name;
+
                     }
                 }
+                $scope.paging();
 
             })
         }
@@ -130,13 +132,14 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                 $scope.found = false
                 $scope.result = "Không tìm thấy sách"
             }
+            $scope.paging();
 
             console.log($scope.books)
         })
     }
     $scope.submitSearch = function() {
             console.log(bookservice.getBook + $scope.searchBy + '/' + $scope.textSearch)
-            window.location.href = '#/search/' + $scope.textSearch;
+            $location.url('/search/' + $scope.textSearch);
         }
         /*---------comment----*/
     $scope.user = {
@@ -188,6 +191,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             }
             $http(reqBook).then(function() {
                 console.log('success')
+                $location.url('/admin/listbook');
             })
 
             // $http.post(root + '/api/books/', $scope.book).success(function(response) {
@@ -213,10 +217,12 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         }
         /*---------Remove book--------*/
     $scope.removeBook = function(id) {
+        $scope.books.splice(id, 1);
         console.log(bookservice.getBook + id);
         $http.delete(bookservice.getBook + id).success(function() {
             console.log('success')
         })
+
     }
 
     /*--------Cart ---------*/
@@ -302,9 +308,8 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
                 if (bookservice.user.like[i].sku === item.sku) {
 
-                    var index = bookservice.user.like.indexOf(bookservice.user.like[i])
 
-                    bookservice.user.like.splice(index, 1);
+                    bookservice.user.like.splice(i, 1);
 
                     console.log(bookservice.user.like);
                     bookservice.liked = false;
@@ -341,6 +346,10 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         }
         /*-------WYSIWYG-------------*/
     $scope.disabled = false;
+    taOptions.toolbar = [
+        ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote', 'bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo', 'clear', 'justifyLeft', 'justifyCenter', 'justifyRight', 'indent', 'outdent', 'html', 'insertImage', 'insertLink', 'insertVideo']
+
+    ];
     /*------User-----------*/
     $scope.editProfie = false;
     $scope.editUser = {};

@@ -6,9 +6,9 @@
                     <div class="panel-heading">
                         <h5>Danh Mục Sách</h5>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body text-left">
                         <ul class="nav nav-pills nav-pills-danger nav-stacked">
-                            <li role="presentation" ng-repeat="genre in genres"><a href="#/category/{{genre._id}}">{{genre.name}}</a></li>
+                            <li role="presentation" ng-repeat="genre in genres" ng-click="setCategory('genre')"><a href="#/category/{{genre._id}}">{{genre.name}}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -41,7 +41,10 @@
 
                                 <div class="description text-left">
 
-                                    {{book.shortDescription|limitTo:90}}<a href="#/item/{{book._id}}">...</a>
+                                    <p ta-bind="text" ng-model="book.shortDescription" ta-readonly='disabled'>
+
+                                    </p>
+                                    <a href="#/item/{{book._id}}" class="price">Xem thêm</a>
                                 </div>
                             </div>
                             <div class="panel-footer">
@@ -75,8 +78,10 @@
                                 </div>
 
                                 <div class="description text-left">
+                                    <p ta-bind="text" ng-model="book.shortDescription" ta-readonly='disabled'>
 
-                                    {{book.shortDescription|limitTo:90}}<a href="#/item/{{book._id}}">...</a>
+                                    </p>
+                                    <a href="#/item/{{book._id}}" class="price">Xem thêm</a>
                                 </div>
                             </div>
 
