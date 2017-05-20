@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" ng-init="viewProfile()">
     <div class="row ">
         <div class="col-sm-3">
             <div class="profile-sidebar wrap">
@@ -7,9 +7,9 @@
                     <div class="panel profile">
                         <div class="panel-heading text-center">
                             <div class="profile-userpic">
-                                <img ng-src="{{user.userAvatarUrl}}" class="img-circle img-raised img-responsive user-image" alt="">
+                                <img ng-src="{{user.avatarUrl}}" class="img-circle img-raised img-responsive user-image" alt="">
                             </div>
-                            <h5>{{user.userName}}</h5>
+                            <h5>{{user.name}}</h5>
                         </div>
                         <div class="panel-body">
                             <ul class="nav nav-pills nav-pills-danger nav-stacked">
@@ -28,14 +28,14 @@
                     <h5>Thông Tin Tài Khoản</h5>
                 </div>
                 <div class="profile-content" ng-show="!editProfie">
-                    <h4>{{user.userName}}</h4>
-                    <p>Email: {{user.userEmail}}</p>
+                    <h4>{{user.name}}</h4>
+                    <p>Email: {{user.email}}</p>
                     <p>Địa chỉ:202/17/ Lý Thường Kiệt Hồ Chí Minh, Quận 10, Phường 14 </p>
                     <p>Điện thoại: 01234555678</p>
                     <button class="btn btn-success" ng-click="editProfie=true"> Thay đổi</button>
                 </div>
 
-                <form class="profile-content" name="formProfile" action="post" ng-show="editProfie" novalidate>
+                <form class="profile-content" name="formProfile" ng-show="editProfie" novalidate>
 
                     <div class="form-group">
                         <input type="text" name="username" ng-model="editUser.userName" class="form-control" placeholder="Tên" ng-required="true" minlength="5">

@@ -45,10 +45,11 @@ $(document).ready(function() {
     //         dropdownMenu.parent().toggleClass("open");
     //     }
     // });
-    var bodyHeight = $(window).height() - ($('.top-head').height() + $('footer').height());
+    var bodyHeight = $(window).height() - $('footer').height() + -80;
 
     $('.body-wrapper').css('min-height', bodyHeight);
     console.log($('.body-wrapper').css('min-height'));
+    console.log(bodyHeight);
     if ($('#back-to-top').length) {
         var scrollTrigger = 100, // px
             backToTop = function() {

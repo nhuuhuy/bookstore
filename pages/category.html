@@ -28,16 +28,16 @@
                     </div>
 
                     <div class="fillter">
-                        <label for="sort">Sort by:</label>
-                        <select name="sort" id="sort">
-	 			<option value="">Name</option>
-	 			<option value="">Price</option>
-	 			<option value="">Rate</option>
+                        <label for="">Sort by:</label>
+                        <select name="sort" ng-model="sortby">
+	 			<option value="title">Tên</option>
+	 			<option value="sellingPrice">Giá </option>
+	 			<option value="author">Tác giả</option>
 	 		</select>
                         <label for="">View: </label><button class="btn btn-default btn-sm" ng-click="setView('list')" type="button"><i class="fa  fa-th-list"></i></button>
                         <button class="btn btn-default btn-sm" ng-click="setView('block')" type="button"><i class="fa fa-th-large"></i></button>
                     </div>
-                    <div ng-class="isSelectedView('block')?'col-md-3 col-sm-6 block': 'col-sm-12 list '   " ng-repeat="book in filteredBooks ">
+                    <div ng-class="isSelectedView('block')?'col-md-3 col-sm-6 block': 'col-sm-12 list '   " ng-repeat="book in filteredBooks| orderBy : sortby ">
                         <div class="item panel panel-default">
                             <div ng-class="isSelectedView('block')?'panel-body':'panel-body list col-sm-3'">
                                 <div ng-class="isSelectedView('block')? 'imagePanel':' imagePanel list'">

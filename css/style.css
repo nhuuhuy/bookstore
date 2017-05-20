@@ -4,7 +4,7 @@ body {
 }
 
 p {
-    font-size: 12px
+    font-size: 14px
 }
 
 a,
@@ -32,6 +32,10 @@ footer ul>li {
 .panel {
     box-shadow: none;
     border: 1px solid rgba(128, 128, 128, 0.24);
+}
+
+.modal-backdrop.in {
+    display: none
 }
 
 td,
@@ -84,12 +88,13 @@ h5 {
 
 .navbar-brand img {
     width: 50px;
-    margin-top: -10px;
+    margin-top: -5px;
 }
 
 .navbar {
     background-color: #243238;
     border-radius: 2px;
+    padding: 5px
 }
 
 .form-group {
@@ -100,10 +105,11 @@ h5 {
     padding: 8px
 }
 
-.navbar .navbar-nav>li>a {
+
+/*.navbar .navbar-nav>li>a {
     padding-top: 10px;
     padding-bottom: 10px
-}
+}*/
 
 .navbar-fixed-top {
     padding-right: 5px;
@@ -308,6 +314,10 @@ select.form-control.search.select-search {
     top: 5px
 }
 
+.glyphicon-chevron-left {
+    top: 8px;
+}
+
 
 /*#back-to-top:hover {
     background: #e9ebec;
@@ -474,7 +484,6 @@ p.ng-pristine.ng-untouched.ng-valid.ta-bind>p {
 
 .reviews.card {
     position: relative;
-    box-shadow: none
 }
 
 .reviews.card::after {
@@ -489,6 +498,7 @@ p.ng-pristine.ng-untouched.ng-valid.ta-bind>p {
     left: 22px;
     border-top-color: #FFF;
     border-width: 15px;
+    filter: drop-shadow(-1px 1px 0 rgba(0, 0, 0, 1.3));
 }
 
 .panel-body.list {
@@ -539,11 +549,17 @@ span.ng-binding.text-info {
 .avatar {
     width: 50px;
     height: 50px;
-    display: inline-block
 }
 
 
 /*----User-----*/
+
+.userAvatar {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    top: -10px
+}
 
 .profile-userpic {
     max-width: 100px;
@@ -603,13 +619,13 @@ span.ng-binding.text-info {
 
 /*----------------table----------------*/
 
-td:before {
+.rwd-table td:before {
     content: attr(data-th)": ";
     display: none;
     font-weight: bold;
 }
 
-td {
+.rwd-table td {
     display: block;
 }
 
@@ -624,8 +640,8 @@ td {
     .navbar-nav>li.dropdown.user {
         float: right;
     }
-    .navbar .navbar-nav>li>a {
-        padding: 15px 5px
+    .navbar .navbar-nav>li.user>a {
+        padding-bottom: 0px;
     }
     .shopCart,
     .like {
@@ -769,7 +785,7 @@ td {
     .rwd-table td {
         display: table-cell;
     }
-    .removexs {
+    .rwd-table .removexs {
         display: none;
     }
 }
@@ -793,12 +809,12 @@ td {
     .rwd-table th {
         display: none;
     }
-    td:before {
+    .rwd-table td:before {
         content: attr(data-th)": ";
         display: inline-block;
     }
-    .removecart {
-        display: none
+    td.removecart {
+        display: none!important;
     }
     .rowBook {
         border-top: 1px solid #ddd;

@@ -1,4 +1,12 @@
-app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routeParams', '$location', 'uibDateParser', 'taOptions', function($scope, bookservice, $http, $routeParams, $location, uibDateParser, taOptions) {
+app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routeParams', '$location', 'uibDateParser', 'taOptions', '$cookieStore', function($scope, bookservice, $http, $routeParams, $location, uibDateParser, taOptions, $cookieStore) {
+    var root = 'https://green-web-bookstore.herokuapp.com/';
+    var config = {
+        headers: {
+            'Accept': 'application/json;odata=verbose',
+            "x-access-token": $scope.token
+        }
+    }
+
     $scope.paging = function() {
 
         $scope.totalItems = $scope.books.length;
@@ -14,27 +22,36 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         $scope.changePage();
     }
     $scope.getBook = function() {
-        $http.get(bookservice.getBook).success(function(response) {
+        $http.get(root + 'api/books/').success(function(response) {
             $scope.books = response;
             $scope.paging();
 
-        })
+        }).error(function(data, status, headers, config) {
+            console.log(data, status, headers, config);
+        });
     };
-    $scope.getGenres = function() {
+    $scope.getInit = function() {
 
-        $http.get(bookservice.getGenres).success(function(response) {
+        $http.get(root + 'api/genres/').success(function(response) {
             $scope.genres = response;
 
-        })
+
+        }).error(function(data, status, headers, config) {
+            console.log(data, status, headers, config);
+        });;
+        $scope.user = $cookieStore.get('user');
+        $scope.token = $cookieStore.get('token');
 
     };
     /*-------carousel---------- */
     $scope.getSlide = function() {
-        $http.get("https://green-web-bookstore.herokuapp.com/api/banners/").success(function(response) {
+        $http.get(root + "api/banners/").success(function(response) {
             $scope.slides = response;
             console.log($scope.slides);
 
-        })
+        }).error(function(data, status, headers, config) {
+            console.log(data, status, headers, config);
+        });
     }
 
 
@@ -51,12 +68,12 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         return $scope.view === checkview
     };
     $scope.getBookId = function() {
-            $http.get(bookservice.getBook + $routeParams.itemId).success(function(response) {
+            $http.get(root + 'api/books/' + $routeParams.itemId).success(function(response) {
                 $scope.book = response;
                 $scope.book.createDate = new Date($scope.book.createDate);
                 $scope.book.releaseDate = new Date($scope.book.releaseDate);
                 var rateTotal = 0;
-                $scope.book.comments.rate;
+
                 for (var i = 0; i < $scope.book.comments.length; i++) {
                     rateTotal += $scope.book.comments[i].rate
                 }
@@ -66,7 +83,12 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                 } else {
                     $scope.rateAvr = rateTotal / $scope.book.comments.length;
                 }
-            })
+                $scope.save = Math.ceil($scope.book.previousPrice / $scope.book.sellingPrice) * 10;
+
+            }).error(function(data, status, headers, config) {
+                console.log(data, status, headers, config);
+            });
+
         }
         /*-----rate ---*/
 
@@ -80,7 +102,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     ];
     /*-----Gernebook ---*/
     $scope.getGerneId = function() {
-            $http.get(bookservice.getBook + 'genre/' +
+            $http.get(root + 'api/books/' + 'genre/' +
                 $routeParams.genreId).success(function(response) {
                 $scope.books = response;
 
@@ -93,13 +115,11 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                 }
                 $scope.paging();
 
-            })
+            }).error(function(data, status, headers, config) {
+                console.log(data, status, headers, config);
+            });
         }
         /*---date----*/
-        // $scope.today = function() {
-        //     $scope.dt = new Date();
-        // };
-        // $scope.today();
 
 
 
@@ -117,13 +137,13 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         opened: false
     };
 
-    /*---validate--*/
-
+    /*---sort--*/
+    $scope.sortby = "title";
     /*-----Search---*/
     $scope.textSearch = $routeParams.text;
     $scope.searchBy = 'search'
     $scope.search = function() {
-        $http.get(bookservice.getBook + $scope.searchBy + '/' + $scope.textSearch).success(function(response) {
+        $http.get(root + 'api/books/' + $scope.searchBy + '/' + $scope.textSearch).success(function(response) {
 
             $scope.books = response;
             if ($scope.books.length > 0) {
@@ -135,30 +155,32 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             $scope.paging();
 
             console.log($scope.books)
-        })
+        }).error(function(data, status, headers, config) {
+            console.log(data, status, headers, config);
+        });
     }
     $scope.submitSearch = function() {
-            console.log(bookservice.getBook + $scope.searchBy + '/' + $scope.textSearch)
+            console.log(root + 'api/books/' + $scope.searchBy + '/' + $scope.textSearch)
             $location.url('/search/' + $scope.textSearch);
         }
         /*---------comment----*/
-    $scope.user = {
+        // $scope.user = {
 
-        'userName': 'Nguyen Huu Huy',
-        'userAvatarUrl': 'https://avatars0.githubusercontent.com/u/26504396?v=3&s=460',
-        'like': []
-    }
+    //     'userName': 'Nguyen Huu Huy',
+    //     'userAvatarUrl': 'https://avatars0.githubusercontent.com/u/26504396?v=3&s=460',
+    //     'like': []
+    // }
 
 
     $scope.comment = {};
     $scope.addComment = function(post) {
             $scope.comment.date = Date.now();
-            $scope.comment.userName = $scope.user.userName;
-            $scope.comment.userAvatarUrl = $scope.user.userAvatarUrl;
+            $scope.comment.userName = $scope.user.name;
+            $scope.comment.userAvatarUrl = $scope.user.avatarUrl;
             post.comments.push($scope.comment);
             var req = {
                 method: 'PUT',
-                url: bookservice.getBook + $routeParams.itemId,
+                url: root + 'api/books/' + $routeParams.itemId,
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -179,47 +201,30 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
         }
         /*------------add book -------------*/
+
     $scope.addBook = function() {
             console.log($scope.book);
-            var reqBook = {
-                method: 'POST',
-                url: bookservice.getBook,
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                data: $scope.book
-            }
-            $http(reqBook).then(function() {
-                console.log('success')
-                $location.url('/admin/listbook');
-            })
-
-            // $http.post(root + '/api/books/', $scope.book).success(function(response) {
-            //     window.location.href = '#/books';
-            // });
+            $http.post(root + 'api/books/', $scope.book).success(function(response) {
+                console.log("success");
+            }).error(function(data, status, headers, config) {
+                console.log(data, status, headers, config);
+            });
         }
         /*---------update book------*/
     $scope.updateBook = function() {
 
-            var reqUpdateBook = {
-                method: 'PUT',
-                url: bookservice.getBook + $routeParams.itemId,
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                data: $scope.book
-            }
-            $http(reqUpdateBook).then(function() {
-                console.log($scope.book);
-                console.log('success')
-            })
 
+            $http.put(root + 'api/books/' + $routeParams.itemId, $scope.book).success(function(response) {
+                console.log('success')
+            }).error(function(data, status, headers, config) {
+                console.log(data, status, headers, config);
+            });
         }
         /*---------Remove book--------*/
     $scope.removeBook = function(id) {
         $scope.books.splice(id, 1);
-        console.log(bookservice.getBook + id);
-        $http.delete(bookservice.getBook + id).success(function() {
+        console.log(root + 'api/books/' + id);
+        $http.delete(root + 'api/books/' + id).success(function() {
             console.log('success')
         })
 
@@ -301,58 +306,140 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         }
         /*-----like------*/
 
-    $scope.like = function(item) {
-        bookservice.liked = true;
-        if (bookservice.user.like.length > 0) {
-            for (var i = 0; i < bookservice.user.like.length; i++) {
+    // $scope.like = function(item) {
+    //     bookservice.liked = true;
+    //     if (bookservice.user.like.length > 0) {
+    //         for (var i = 0; i < bookservice.user.like.length; i++) {
 
-                if (bookservice.user.like[i].sku === item.sku) {
-
-
-                    bookservice.user.like.splice(i, 1);
-
-                    console.log(bookservice.user.like);
-                    bookservice.liked = false;
-                }
-            }
-            if (bookservice.liked) {
-                bookservice.user.like.push(item);
-                bookservice.liked = true;
-
-            }
-
-        } else {
-            bookservice.user.like.push(item);
-            bookservice.liked = true;
-            console.log(bookservice.user.like)
-
-        }
+    //             if (bookservice.user.like[i].sku === item.sku) {
 
 
+    //                 bookservice.user.like.splice(i, 1);
 
-    }
-    $scope.user = bookservice.user;
-    $scope.checkLike = function(item) {
-            if (bookservice.user.like.length > 0) {
-                for (var i = 0; i < bookservice.user.like.length; i++) {
-                    if (bookservice.user.like[i].sku === item.sku) {
-                        return true;
+    //                 console.log(bookservice.user.like);
+    //                 bookservice.liked = false;
+    //             }
+    //         }
+    //         if (bookservice.liked) {
+    //             bookservice.user.like.push(item);
+    //             bookservice.liked = true;
+
+    //         }
+
+    //     } else {
+    //         bookservice.user.like.push(item);
+    //         bookservice.liked = true;
+    //         console.log(bookservice.user.like)
+
+    //     }
 
 
-                    }
-                }
-            }
 
-        }
-        /*-------WYSIWYG-------------*/
+    // }
+    // $scope.user = bookservice.user;
+    // $scope.checkLike = function(item) {
+    //         if (bookservice.user.like.length > 0) {
+    //             for (var i = 0; i < bookservice.user.like.length; i++) {
+    //                 if (bookservice.user.like[i].sku === item.sku) {
+    //                     return true;
+
+
+    //                 }
+    //             }
+    //         }
+
+    //     }
+    /*-------WYSIWYG-------------*/
     $scope.disabled = false;
     taOptions.toolbar = [
         ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote', 'bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo', 'clear', 'justifyLeft', 'justifyCenter', 'justifyRight', 'indent', 'outdent', 'html', 'insertImage', 'insertLink', 'insertVideo']
 
     ];
+    $scope.tab = 'login';
+    $scope.selectTab = function(setTab) {
+        $scope.tab = setTab;
+
+    };
+    $scope.isSelectedTab = function(checkTab) {
+        return $scope.tab === checkTab
+    };
+
     /*------User-----------*/
-    $scope.editProfie = false;
-    $scope.editUser = {};
+    $scope.loadLogin = function() {
+        var token = $cookieStore.get('token');
+        if (token !== undefined) {
+            $location.url("/")
+        }
+    }
+    $scope.logOut = function() {
+        $cookieStore.remove('token');
+        $cookieStore.remove('user');
+        $location.url("/")
+    }
 
+    $scope.viewProfile = function() {
+        var token = $cookieStore.get('token');
+        if (token === undefined) {
+            $location.url("/login")
+        }
+    }
+    $scope.summitSignup = function() {
+        $http.post(root + 'api/signup/', $scope.signUpUser).success(function(response) {
+            var isSuccess = response.success;
+            if (isSuccess) {
+                $cookieStore.put('token', response.token);
+                $cookieStore.put('user', response.user);
+                $scope.user = $cookieStore.get('user');
+                $scope.token = $cookieStore.get('token');
+                //Redirect here
+                $location.url("/")
+            } else {
+                //Raise Error
+                alert(response.message);
+            }
+        }).error(function(data, status, headers, config) {
+            console.log(data, status, headers, config);
+        });
+    }
+    $scope.summitLogin = function() {
+        $http.post(root + 'api/auth', $scope.loginUser).success(function(response) {
+            var isSuccess = response.success;
+            if (isSuccess) {
+                $cookieStore.put('token', response.token);
+                $cookieStore.put('user', response.user);
+                $scope.user = $cookieStore.get('user');
 
+                $scope.token = $cookieStore.get('token');
+                //Redirect here
+                $location.url("/#")
+                $scope.loginUser = {};
+                $scope.error = "";
+            } else {
+                //Raise Error
+                // alert(response.message);
+                $scope.error = "";
+                if (response.message === "Authentication failed. User not found.") {
+                    $scope.error = "Không tìm thấy người dùng";
+                } else if (response.message === "Authentication failed. Wrong password.") {
+                    $scope.error = "Sai password vui lòng nhập lại";
+                } else {
+                    $scope.error = "";
+                }
+
+            }
+        }).error(function(data, status, headers, config) {
+            console.log(data, status, headers, config);
+        });;
+    }
+    $scope.isLogged = function() {
+        return $cookieStore.get('token') != undefined;
+    }
+    $scope.viewLogin = function() {
+        var token = $cookieStore.get('token');
+        if (token !== undefined) {
+            $location.url("/")
+        }
+    }
+    console.log($scope.user)
+    $scope.show = false;
 }])

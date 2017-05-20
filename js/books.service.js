@@ -1,7 +1,6 @@
 app.service('bookservice', function() {
 
-    this.getBook = 'https://green-web-bookstore.herokuapp.com/api/books/'
-    this.getGenres = 'https://green-web-bookstore.herokuapp.com/api/genres/'
+
     this.cart = [];
     this.user = {
 

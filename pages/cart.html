@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" ng-show="cart.length>0">
     <div class="row  ">
 
         <div class=" wrap">
@@ -45,18 +45,18 @@
     </div>
 
 </div>
-<div class="container">
+<div class="container" ng-show="cart.length>0">
     <div class="row">
         <div class="wrap">
             <div class="col-sm-6">
                 <div class="panel">
                     <div class="panel-heading">
-                        <h5>DISCOUNT CODES</h5>
+                        <h5>Mã giảm giá</h5>
                     </div>
                     <div class="panel-body">
-                        <label>Enter your coupon code if you have one.</label >
+                        <label>Sử dụng mã giảm giá</label >
                             <input type="text" class="form-control">
-                              <button class="btn btn-danger btn-xs">Apply Coupon</button>
+                              <button class="btn btn-danger btn-xs">Dùng mã giảm giá/button>
                         </div>
             
                           
@@ -83,15 +83,29 @@
             <div class="col-sm-6">
                 <div class="panel">
                     <div class="panel-heading">
-                        <h5>ORDER SUMMARY</h5>
+                        <h5>Đơn hàng</h5>
                     </div>
                     <div class="panel-body">
-                        <h6>Grand total: <span class="price">{{total|currency:"$":0}}</span></h6>
+                        <h6>Tổng cộng: <span class="price">{{total|currency:"$":0}}</span></h6>
                     </div>
                     <div class="panel-footer">
                         <button class="btn btn-danger btn-xs" ng-click="checkout()">Checkout</button>
                     </div>
                 </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div class="container">
+    <div class="row" ng-hide="cart.length>0">
+        <div class="col-sm-12">
+            <div class="card text-center">
+                <h1>
+                    <i class="fa fa-frown-o"></i>Giỏ hàng hiện trống
+                </h1>
+                <a href="#/" class="btn btn-danger btn-fab btn-fab-mini btn-round  "><i class="glyphicon glyphicon-chevron-left"></i></a>
             </div>
         </div>
 
