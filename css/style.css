@@ -1,6 +1,7 @@
 body {
     min-width: 310px;
-    padding-top: 80px
+    padding-top: 80px;
+    overflow-y: scroll;
 }
 
 p {
@@ -32,6 +33,14 @@ footer ul>li {
 .panel {
     box-shadow: none;
     border: 1px solid rgba(128, 128, 128, 0.24);
+}
+
+body.ng-scope.modal-open {
+    overflow: auto;
+}
+
+div#modalSigin {
+    overflow-y: auto;
 }
 
 .modal-backdrop.in {

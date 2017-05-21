@@ -21,7 +21,28 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         };
         $scope.changePage();
     }
+
     $scope.getBook = function() {
+        // var url = $location.path();
+        // if (url == "/category/" + $routeParams.genreId) {
+        //     $http.get(root + 'api/books/' + 'genre/' +
+        //         $routeParams.genreId).success(function(response) {
+        //         $scope.books = response;
+
+        //         for (var i = 0; i < $scope.genres.length; i++) {
+        //             if ($scope.genres[i]._id === $routeParams.genreId) {
+
+        //                 $scope.text = $scope.genres[i].name;
+
+        //             }
+        //         }
+        //         $scope.paging();
+        //         console.log($location.path())
+
+        //     }).error(function(data, status, headers, config) {
+        //         console.log(data, status, headers, config);
+        //     });
+        // } else {
         $http.get(root + 'api/books/').success(function(response) {
             $scope.books = response;
             $scope.paging();
@@ -29,6 +50,8 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         }).error(function(data, status, headers, config) {
             console.log(data, status, headers, config);
         });
+
+
     };
     $scope.getInit = function() {
 
@@ -41,6 +64,12 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         });;
         $scope.user = $cookieStore.get('user');
         $scope.token = $cookieStore.get('token');
+        $scope.loadLogin = function() {
+            var token = $cookieStore.get('token');
+            if (token !== undefined) {
+                $location.url("/")
+            }
+        }
 
     };
     /*-------carousel---------- */
@@ -114,6 +143,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                     }
                 }
                 $scope.paging();
+                console.log($location.path())
 
             }).error(function(data, status, headers, config) {
                 console.log(data, status, headers, config);
@@ -365,12 +395,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     };
 
     /*------User-----------*/
-    $scope.loadLogin = function() {
-        var token = $cookieStore.get('token');
-        if (token !== undefined) {
-            $location.url("/")
-        }
-    }
+
     $scope.logOut = function() {
         $cookieStore.remove('token');
         $cookieStore.remove('user');

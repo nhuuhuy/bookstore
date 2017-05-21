@@ -42,7 +42,7 @@ app.config(function($routeProvider) {
         })
 
     .when('/login', {
-            templateUrl: 'pages/login.html',
+            templateUrl: 'pages/category.html',
             controller: 'BooksController'
         })
         .when('/register', {
