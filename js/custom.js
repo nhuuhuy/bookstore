@@ -1,5 +1,7 @@
 $.noConflict();
 var $ = jQuery;
+
+
 $(document).ready(function() {
     // $(".nav li").each(function() {
     //     $(this).click(function() {
@@ -45,11 +47,10 @@ $(document).ready(function() {
     //         dropdownMenu.parent().toggleClass("open");
     //     }
     // });
-    var bodyHeight = $(window).height() - $('footer').height() + -80;
+    var bodyHeight = $(window).height() - $('footer').height()
 
     $('.body-wrapper').css('min-height', bodyHeight);
     console.log($('.body-wrapper').css('min-height'));
-    console.log(bodyHeight);
     if ($('#back-to-top').length) {
         var scrollTrigger = 100, // px
             backToTop = function() {

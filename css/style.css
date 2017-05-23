@@ -133,11 +133,10 @@ h5 {
     text-align: left;
 }
 
-
-/*li.category.dropdown:hover+.navbar .navbar-nav>li>.dropdown-menu,
+li.category:hover .navbar .navbar-nav>li>.dropdown-menu,
 {
     display: block;
-}*/
+}
 
 ul.dropdown-cart {
     min-width: 250px;

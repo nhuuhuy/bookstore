@@ -27,7 +27,8 @@
                         <div class="box-image ">
 
                             <div class="img-zoom">
-                                <img id="img_01" ng-src="{{book.images.main}}" data-zoom-image="{{book.bigCover}}" class="img-responsive" />
+                                <zoom src="imageSrc" frame="example1" img="image1" zoomlvl="1.5"></zoom>
+                                <!--<img id="img_01" ng-src="{{book.images.main}}" data-zoom-image="{{book.bigCover}}" class="img-responsive" />-->
                             </div>
 
                             <!--<div class=" clearfix " id="gal1">
@@ -57,7 +58,7 @@
                             <span uib-rating ng-model="rateAvr" max="max" read-only="true" on-hover="hoveringOver(value)"></span>
                             <p>Tác giả: <a href="#/search/{{book.author}}"><i>{{book.author}}</i></a></p>
 
-                            <h5><span class="price">{{book.sellingPrice|currency:"$":0}}   </span> <sup><del>     {{book.previousPrice|currency:"$":0}} </del> </sup></h5>
+                            <h5><span class="price">{{book.sellingPrice|currency:" VNĐ":0}}   </span> <sup><del>     {{book.previousPrice|currency:"$":0}} </del> </sup></h5>
                             <p class="text-danger"> Tiết kiệm :{{save}}%</p>
                             <h5>Giới thiệu</h5>
 

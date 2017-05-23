@@ -106,44 +106,46 @@
                     </div>
                     <!--<div class="heading  hidden-xs">
                         <h5>Staff Pick </h5>
-                    </div>
-
-                    <div ng-controller='MultiCarousel as multicarousel' class="multi-item-carousel hidden-xs ">
-                        <div uib-carousel active="multicarousel.active" interval="multicarousel.myInterval">
-                            <div uib-slide ng-repeat="slide in multicarousel.slides" index="book._id">
-                                <div class="col-xs-3 box">
-                                    <div class="item panel panel-default">
-                                        <div class="panel-body">
-                                            <div class="imagePanel">
-                                                <a href="#/item/{{book._id}}"><img ng-src="{{slide.images.main}}" class="panelImage" alt=""></a>
-                                            </div>
-
-                                            <div class="description text-left">
-                                                <h6>Description</h6>
-                                                {{slide.shortDescription|limitTo:90}}<a href="#/item/{{book._id}}">...</a>
-                                            </div>
-                                        </div>
-                                        <div class="panel-footer">
-                                            <div class="titlePanel">
-                                                <h5>
-                                                    <a href="#/item/{{book._id}}" class="title">{{slide.title | limitTo:25}}<span ng-show="slide.title.length>25">...</span></a>
-
-                                                </h5>
-
-                                            </div>
-
-                                            <p class="price">{{slide.sellingPrice| number:0}}$</p>
-
-                                            <button class="btn btn-danger btn-xs shopCart" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> </button>
-                                            <button class="btn btn-default btn-xs like "><i class="fa fa-heart" ></i></button>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
                     </div>-->
+
+
+                    <!--<div ng-controller='MultiCarousel as multicarousel' class=" multi-item-carousel hidden-xs ">
+                        <div uib-carousel active="multicarousel.active " interval="multicarousel.myInterval ">
+                            <div uib-slide ng-repeat="slide in multicarousel.slides " index="book._id ">
+                                <div class="col-xs-3 box ">
+                                    <div class="item panel panel-default ">
+                                        <div class="panel-body ">
+                                            <div class="imagePanel ">
+                                                <a href="#/item/{{book._id}} "><img ng-src="{{slide.images.main}} " class="panelImage " alt=" "></a>
+                                            </div>
+
+                                            <div class="description text-left ">
+                                                <h6>Description</h6>
+                                                {{slide.shortDescription|limitTo:90}}<a href="#/item/{{book._id}} ">...</a>
+                                            </div>
+                                        </div>
+                                        <div class="panel-footer ">
+                                            <div class="titlePanel ">
+                                                <h5>
+                                                    <a href="#/item/{{book._id}} " class="title ">{{slide.title | limitTo:25}}<span ng-show="slide.title.length>25">...</span>
+                            </a>
+
+                            </h5>
+
+                        </div>
+
+                        <p class="price">{{slide.sellingPrice| number:0}}$</p>
+
+                        <button class="btn btn-danger btn-xs shopCart" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> </button>
+                        <button class="btn btn-default btn-xs like "><i class="fa fa-heart" ></i></button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>-->
 
                 </div>
             </div>

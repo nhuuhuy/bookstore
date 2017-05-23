@@ -1,4 +1,4 @@
-var app = angular.module('BookApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'textAngular', 'ngCookies']);
+var app = angular.module('BookApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'textAngular', 'ngCookies', 'zoomPanApp']);
 
 app.config(function($routeProvider) {
     $routeProvider
@@ -112,3 +112,12 @@ var compareTo = function() {
 };
 
 app.directive("compareTo", compareTo);
+app.directive('wrapOwlcarousel', function() {
+    return {
+        restrict: 'E',
+        link: function(scope, element, attrs) {
+            var options = scope.$eval($(element).attr('data-options'));
+            $(element).owlCarousel(options);
+        }
+    };
+});
