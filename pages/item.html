@@ -130,11 +130,11 @@
                 </div>
 
                 <div class=" reviews card" ng-repeat="comment in book.comments|orderBy: 'createdOn' :true">
-                    <div class="media">
+                    <div class="media" ng-init="">
                         <div class="col-sm-2">
                             <div class="avatar">
                                 <a href="#">
-                                    <img class="img-responsive img-circle img-raised " ng-src="{{comment.userAvatarUrl}}" alt="...">
+                                    <img class="img-responsive img-circle img-raised " ng-src="{{comment._user.avatarUrl}}" alt="...">
                                 </a>
                             </div>
 
@@ -142,9 +142,9 @@
 
                         </div>
                         <div class="col-sm-10 text-left">
-                            <h4 class="media-heading">{{comment.userName}}</h4>
+                            <h4 class="media-heading">{{comment._user.name}}</h4>
                             <span uib-rating ng-model="comment.rate" max="max" read-only="true"></span>
-                            <span>-<small> {{comment.date|date:'dd/ MM/ yyyy h:mma'}}</small></span>
+                            <span>-<small> {{comment.createdDate|date:'dd/ MM/ yyyy h:mma'}}</small></span>
                             <p>{{comment.commentBody}}</p>
                         </div>
                     </div>

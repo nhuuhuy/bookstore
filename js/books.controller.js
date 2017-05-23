@@ -202,14 +202,17 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     //     'like': []
     // }
 
+    $scope.getUser = function() {
 
+    }
     $scope.comment = {};
     $scope.addComment = function(post) {
             $scope.comment.createdDate = Date.now();
             $scope.comment.userId = $scope.user._id;
             $scope.comment.bookId = post._id;
             // $scope.comment.userAvatarUrl = $scope.user.avatarUrl;
-            post.comments.push($scope.comment);
+            // $scope.comment.userName = $scope.user.name;
+
             var req = {
                 method: 'POST',
                 url: root + 'api/books/comment',
@@ -218,8 +221,13 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                 },
                 data: $scope.comment
             }
-            $http(req).then(function() {
-                    console.log('success')
+            $http(req).success(function() {
+                    console.log('success');
+
+
+                    post.comments.push($scope.comment);
+                    $scope.commentBody = "";
+                    $scope.getBookId();
                 },
 
                 function() {
@@ -461,7 +469,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             }
         }).error(function(data, status, headers, config) {
             console.log(data, status, headers, config);
-        });;
+        });
     }
     $scope.isLogged = function() {
         return $cookieStore.get('token') != undefined;
