@@ -97,7 +97,7 @@ h5 {
 
 .navbar-brand img {
     width: 50px;
-    margin-top: -5px;
+    margin-top: -10px;
 }
 
 .navbar {
@@ -122,7 +122,6 @@ h5 {
 
 .navbar-fixed-top {
     padding-right: 5px;
-    box-shadow: none;
 }
 
 .navbar .navbar-nav>li>.dropdown-menu {
@@ -322,7 +321,7 @@ select.form-control.search.select-search {
     top: 5px
 }
 
-.glyphicon-chevron-left {
+.back {
     top: 8px;
 }
 
@@ -532,6 +531,10 @@ span.ng-binding.text-info {
     color: white
 }
 
+.col-xs-7.infor>div>h3 {
+    margin: 0px
+}
+
 .date .btn-sm {
     padding: 5px 5px;
 }
@@ -543,20 +546,42 @@ span.ng-binding.text-info {
     margin: 2px;
 }
 
-.date .uib-day>.btn-sm.active {
+.date .uib-day>.btn-sm.active,
+.date .uib-month>.btn-default.active,
+.date .uib-year>.btn-default.active {
     background-color: #f44336;
 }
 
 span.ng-binding.text-info {
-    color: #333;
+    color: #fff;
 }
 
-.date .uib-day>.btn-sm.active>span {
+.date .uib-day>.btn-sm.active>span,
+.date .uib-month>.btn-default.active>span,
+.date .uib-year>.btn-default.active>span {
     color: #fff;
+}
+
+.date .uib-month>.btn-default,
+.date .uib-year>.btn-default {
+    padding: 5px 5px;
+    margin: 2px;
+    text-transform: none;
 }
 
 .avatar {
     width: 50px;
+    height: 50px;
+    display: block
+}
+
+
+/*-------add book----*/
+
+.img-cover {
+    width: 75px;
+    height: 100px;
+    overflow: hidden
 }
 
 
@@ -736,6 +761,9 @@ span.ng-binding.text-info {
     .navbar .navbar-brand {
         padding: 3px 15px;
     }
+    .navbar-brand img {
+        margin-top: -2px;
+    }
     .body-wrapper {
         margin-top: 55px
     }
@@ -813,6 +841,19 @@ span.ng-binding.text-info {
     .table>tfoot>tr>td {
         padding: 10px;
         border: none
+    }
+    .product {
+        display: flex;
+        display: -webkit-flex;
+        flex-direction: column;
+    }
+    .cover {
+        display: block;
+        width: 100%;
+    }
+    .infor {
+        width: 100%;
+        display: block;
     }
     .rwd-table th {
         display: none;

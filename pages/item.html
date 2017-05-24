@@ -20,39 +20,22 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-9" ng-init="getBookId()">
-                <div class="card">
+            <div class="col-sm-12 col-md-9 " ng-init="getBookId()">
+                <div class="card product">
 
-                    <div class="col-sm-5 clearfix ">
+                    <div class="col-xs-5 cover ">
                         <div class="box-image ">
 
                             <div class="img-zoom">
                                 <zoom src="imageSrc" frame="example1" img="image1" zoomlvl="1.5"></zoom>
-                                <!--<img id="img_01" ng-src="{{book.images.main}}" data-zoom-image="{{book.bigCover}}" class="img-responsive" />-->
+
                             </div>
 
-                            <!--<div class=" clearfix " id="gal1">
-                                <div class="col-xs-4 thumnail">
-                                    <a href="" data-image="images/2.jpg" data-zoom-image="images/2big.jpg">
-                                        <img id="img_02" src="images/2.jpg" class="img-responsive" />
-                                    </a>
-                                </div>
-                                <div class="col-xs-4 thumnail">
 
-                                    <a href="" data-image="images/3.jpg" data-zoom-image="images/3big.jpg">
-                                        <img id="img_03" src="images/3.jpg" class="img-responsive" />
-                                    </a>
-                                </div>
-                                <div class="col-xs-4 thumnail">
-                                    <a href="" data-image="images/1.jpg" data-zoom-image="images/1big.jpg">
-                                        <img id="img_03" src="images/1.jpg" class="img-responsive" />
-                                    </a>
-                                </div>
-                            </div>-->
                         </div>
                     </div>
 
-                    <div class="col-sm-7">
+                    <div class="col-xs-7 infor">
                         <div class="">
                             <h3> <strong>{{book.title}}</strong></h3>
                             <span uib-rating ng-model="rateAvr" max="max" read-only="true" on-hover="hoveringOver(value)"></span>
@@ -60,11 +43,14 @@
 
                             <h5><span class="price" ng-show="book.sellingPrice>0">{{book.sellingPrice|number:0}} đ   </span> <sup ng-show="book.previousPrice>0"><del>     {{book.previousPrice|number:0}} đ</del> </sup></h5>
                             <p class="text-danger" ng-show="book.previousPrice>0"> Tiết kiệm :{{save}}%</p>
-                            <h5>Giới thiệu</h5>
+                            <div class="hidden-xs">
+                                <h5>Giới thiệu</h5>
 
-                            <div ta-bind="text" ng-model="book.shortDescription" ta-readonly='disabled'>
+                                <div ta-bind="text" ng-model="book.shortDescription" ta-readonly='disabled'>
 
+                                </div>
                             </div>
+
                             <div class="">
                                 <!--<div class="form-group col-sm-6">
                                     <label for="">
@@ -132,10 +118,10 @@
                 <div class=" reviews card " ng-repeat="comment in book.comments|orderBy: 'createdOn' :true ">
                     <div class="media " ng-init=" ">
                         <div class="col-sm-1 ">
-                            <div class="avatar ">
-                                <a href="# ">
-                                    <img class="img-responsive img-circle img-raised " ng-src="{{comment._user.avatarUrl}} " alt="... ">
-                                </a>
+                            <div class="">
+
+                                <img class=" img-circle img-raised avatar  " ng-src="{{comment._user.avatarUrl}} " alt=" ">
+
                             </div>
 
 

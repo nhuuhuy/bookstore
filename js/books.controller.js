@@ -152,7 +152,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         }
         /*---date----*/
 
-
+    $scope.dateOption = { date: 'date', mode: 'mode' };
 
 
     $scope.open1 = function() {
@@ -226,8 +226,8 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                     console.log('success');
 
 
-                    post.comments.push($scope.comment);
-                    $scope.commentBody = "";
+                    $scope.comment.commentBody = "";
+
                     $scope.getBookId();
                 },
 
@@ -242,6 +242,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
         }
         /*------------add book -------------*/
+
 
     $scope.addBook = function() {
             console.log($scope.book);
