@@ -39,8 +39,16 @@
 
 <body ng-app="BookApp" ng-controller="BooksController">
 
+    <div class="loading" ng-hide="loaded">
+        <div class="loader">
 
+        </div>
+
+    </div>
     <!-- Navbar  -->
+
+
+
     <nav class="navbar navbar-fixed-top top-head">
         <div class="container-fluid">
             <div class="row">
@@ -259,75 +267,75 @@
         </div>
     </div>
     <a href=".top-head " id="back-to-top" title="Back to top" class="btn btn-danger btn-fab btn-fab-mini btn-round pull-right "><i class="glyphicon glyphicon-chevron-up"></i></a>
+    <div class="loaded">
+        <div class="body-wrapper">
+            <div ng-view>
 
-    <div class="body-wrapper">
-        <div ng-view>
-
+            </div>
         </div>
-    </div>
-    <footer class="wrapper">
-        <div class="main main-raised">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-3 ">
-                        <H5>VỀ CÔNG TY</H5>
+        <footer class="wrapper">
+            <div class="main main-raised">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-3 ">
+                            <H5>VỀ CÔNG TY</H5>
 
-                        <ul>
-                            <li><a href="">Giới thiệu công ty</a></li>
-                            <li><a href="">Tuyển dụng</a></li>
-                            <li><a href="">Góc báo chí</a></li>
-                            <li><a href="">Chương trình đại lý</a></li>
-                            <li><a href="">Chính sách bảo mật</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-3">
-                        <h4>TRỢ GIÚP </h4>
-                        <ul>
-                            <li><a href="">Quy định sử dụng</a></li>
-                            <li><a href="">Hướng dẫn mua hàng</a></li>
-                            <li><a href="">Phương thức thanh toán</a></li>
-                            <li><a href="">Phương thức vận chuyển</a></li>
-                            <li><a href="">Các câu hỏi thường gặp</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-3 ">
-                        <h4>LIÊN HỆ</h4>
-                        <ul>
-                            <li>Địa chỉ: 292A Hòa Bình, Phường Hiệp Tân, Quận Tân Phú, Tp. Hồ Chí Minh</li>
-                            <li>Mail : support@bookstore.com</li>
-                            <li>Phone: +123 456 7890</li>
-                        </ul>
+                            <ul>
+                                <li><a href="">Giới thiệu công ty</a></li>
+                                <li><a href="">Tuyển dụng</a></li>
+                                <li><a href="">Góc báo chí</a></li>
+                                <li><a href="">Chương trình đại lý</a></li>
+                                <li><a href="">Chính sách bảo mật</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3">
+                            <h4>TRỢ GIÚP </h4>
+                            <ul>
+                                <li><a href="">Quy định sử dụng</a></li>
+                                <li><a href="">Hướng dẫn mua hàng</a></li>
+                                <li><a href="">Phương thức thanh toán</a></li>
+                                <li><a href="">Phương thức vận chuyển</a></li>
+                                <li><a href="">Các câu hỏi thường gặp</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3 ">
+                            <h4>LIÊN HỆ</h4>
+                            <ul>
+                                <li>Địa chỉ: 292A Hòa Bình, Phường Hiệp Tân, Quận Tân Phú, Tp. Hồ Chí Minh</li>
+                                <li>Mail : support@bookstore.com</li>
+                                <li>Phone: +123 456 7890</li>
+                            </ul>
 
-                    </div>
-                    <div class="col-sm-3">
-                        <h4>ĐĂNG KÝ NHẬN EMAIL</h4>
-                        <form action="">
-                            <input type="text" class="form-control" placeholder="Your email">
-                            <button class="btn btn-danger" type="button">Đăng ký</button>
-                        </form>
-                        <h4>FOLLOW US</h4>
-                        <button class="btn btn-default btn-just-icon">
+                        </div>
+                        <div class="col-sm-3">
+                            <h4>ĐĂNG KÝ NHẬN EMAIL</h4>
+                            <form action="">
+                                <input type="text" class="form-control" placeholder="Your email">
+                                <button class="btn btn-danger" type="button">Đăng ký</button>
+                            </form>
+                            <h4>FOLLOW US</h4>
+                            <button class="btn btn-default btn-just-icon">
 						<a href=""><i class="fa fa-twitter"></i></a>
 					</button>
-                        <button class="btn btn-default btn-just-icon">
+                            <button class="btn btn-default btn-just-icon">
 						<a href=""><i class="fa fa-facebook-square"></i></a>
 					</button>
-                        <button class="btn btn-default btn-just-icon">
+                            <button class="btn btn-default btn-just-icon">
 						<a href=""><i class="fa fa-instagram"></i></a>
 					</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-copyright text-center">
+                    <div class="container-fluid">
+                        © 2017 Copyright: <a href="#"> Bookstore.com </a>
+
                     </div>
                 </div>
             </div>
-
-            <div class="footer-copyright text-center">
-                <div class="container-fluid">
-                    © 2017 Copyright: <a href="#"> Bookstore.com </a>
-
-                </div>
-            </div>
-        </div>
-    </footer>
-
+        </footer>
+    </div>
 </body>
 
 <!--    JS Files   -->

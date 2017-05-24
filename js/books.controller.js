@@ -6,7 +6,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             "x-access-token": $scope.token
         }
     }
-
+    $scope.loaded = false;
     $scope.paging = function() {
 
         $scope.totalItems = $scope.books.length;
@@ -58,6 +58,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         $http.get(root + 'api/genres/').success(function(response) {
             $scope.genres = response;
 
+            $scope.loaded = true;
 
         }).error(function(data, status, headers, config) {
             console.log(data, status, headers, config);
@@ -458,7 +459,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
                 $scope.token = $cookieStore.get('token');
                 //Redirect here
-                $location.url("/#")
+                // $location.url("/#")
                 $scope.loginUser = {};
                 $scope.error = "";
             } else {
@@ -484,7 +485,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     $scope.viewLogin = function() {
         var token = $cookieStore.get('token');
         if (token !== undefined) {
-            $location.url("/")
+            // $location.url("/")
         }
     }
     console.log($scope.user)
