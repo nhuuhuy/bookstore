@@ -1,6 +1,7 @@
 body {
     min-width: 310px;
-    overflow-y: scroll;
+    overflow: hidden;
+    overflow-y: auto
 }
 
 p {
@@ -101,7 +102,7 @@ h5 {
     left: 0;
     bottom: 0;
     right: 0;
-    overflow: auto;
+    overflow: hidden;
     z-index: 2000;
     background: #ddd;
     display: flex;

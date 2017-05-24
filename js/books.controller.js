@@ -57,6 +57,13 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
         $http.get(root + 'api/genres/').success(function(response) {
             $scope.genres = response;
+            for (var i = 0; i < $scope.genres.length; i++) {
+                if ($scope.genres[i]._id === $routeParams.genreId) {
+
+                    $scope.text = $scope.genres[i].name;
+
+                }
+            }
 
             $scope.loaded = true;
 
@@ -153,7 +160,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         }
         /*---date----*/
 
-    $scope.dateOption = { date: 'date', mode: 'mode' };
+
 
 
     $scope.open1 = function() {
