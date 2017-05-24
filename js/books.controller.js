@@ -135,7 +135,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             $http.get(root + 'api/books/' + 'genre/' +
                 $routeParams.genreId).success(function(response) {
                 $scope.books = response;
-
+                $scope.paging();
                 for (var i = 0; i < $scope.genres.length; i++) {
                     if ($scope.genres[i]._id === $routeParams.genreId) {
 
@@ -143,7 +143,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
                     }
                 }
-                $scope.paging();
+
                 console.log($location.path())
 
             }).error(function(data, status, headers, config) {
@@ -177,13 +177,14 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         $http.get(root + 'api/books/' + $scope.searchBy + '/' + $scope.textSearch).success(function(response) {
 
             $scope.books = response;
+            $scope.paging();
             if ($scope.books.length > 0) {
                 $scope.found = true;
             } else {
                 $scope.found = false
                 $scope.result = "Không tìm thấy sách"
             }
-            $scope.paging();
+
 
             console.log($scope.books)
         }).error(function(data, status, headers, config) {
@@ -275,7 +276,18 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
 
     $scope.qty = 1;
+    $scope.total = 0;
 
+    $scope.sum = function() {
+        bookservice.total.totalQty = 0;
+        for (var i = 0; i < bookservice.cart.length; i++) {
+            $scope.total += bookservice.cart[i].item.sellingPrice * bookservice.cart[i].qty;
+            bookservice.total.totalQty += bookservice.cart[i].qty;
+        }
+        $scope.all = bookservice.total;
+        console.log($scope.totalQty)
+    }
+    $scope.sum();
     $scope.addCart = function(item) {
         if ($scope.qty > 0) {
 
@@ -302,21 +314,14 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             }
 
         }
-
+        $scope.sum();
 
 
     }
     $scope.cart = bookservice.cart;
 
     /*------------Bill--------------*/
-    $scope.total = 0;
-    $scope.sum = function() {
-        for (var i = 0; i < bookservice.cart.length; i++) {
-            $scope.total += bookservice.cart[i].item.sellingPrice * bookservice.cart[i].qty;
 
-        }
-    }
-    $scope.sum();
     $scope.bill = {};
 
     $scope.checkout = function() {
@@ -329,6 +334,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             bookservice.item = [];
             bookservice.cart.splice(0, bookservice.cart.length);
             $scope.total = 0;
+            $location.url("/")
 
 
         }

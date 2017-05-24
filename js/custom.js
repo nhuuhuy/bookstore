@@ -46,8 +46,12 @@ $(document).ready(function() {
     //     if (dropdownMenu.is(":visible")) {
     //         dropdownMenu.parent().toggleClass("open");
     //     }
-    // });
-    var bodyHeight = $(window).height() - $('footer').height()
+    // }); 
+    var bodyHeight = $(window).height() - 80;
+    if ($(window).height() > $('footer').height()) {
+        bodyHeight = $(window).height() - $('footer').height();
+    }
+
 
     $('.body-wrapper').css('min-height', bodyHeight);
     console.log($('.body-wrapper').css('min-height'));

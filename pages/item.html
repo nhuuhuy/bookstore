@@ -58,8 +58,8 @@
                             <span uib-rating ng-model="rateAvr" max="max" read-only="true" on-hover="hoveringOver(value)"></span>
                             <p>Tác giả: <a href="#/search/{{book.author}}"><i>{{book.author}}</i></a></p>
 
-                            <h5><span class="price">{{book.sellingPrice|currency:" VNĐ":0}}   </span> <sup><del>     {{book.previousPrice|currency:"$":0}} </del> </sup></h5>
-                            <p class="text-danger"> Tiết kiệm :{{save}}%</p>
+                            <h5><span class="price" ng-show="book.sellingPrice>0">{{book.sellingPrice|number:0}} đ   </span> <sup ng-show="book.previousPrice>0"><del>     {{book.previousPrice|number:0}} đ</del> </sup></h5>
+                            <p class="text-danger" ng-show="book.previousPrice>0"> Tiết kiệm :{{save}}%</p>
                             <h5>Giới thiệu</h5>
 
                             <div ta-bind="text" ng-model="book.shortDescription" ta-readonly='disabled'>
@@ -84,66 +84,66 @@
 
                                 </div>
 
-                                <button class="btn btn-danger" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> Add to cart</button>
-                                <!--<button class="btn btn-default btn-fab btn-fab-mini btn-round pull-right "><i class="fa fa-heart" ></i></button>-->
+                                <button class="btn btn-danger " ng-click="addCart(book) "><i class="fa fa-shopping-cart "></i> Add to cart</button>
+                                <!--<button class="btn btn-default btn-fab btn-fab-mini btn-round pull-right "><i class="fa fa-heart " ></i></button>-->
                             </div>
 
                         </div>
 
                     </div>
                 </div>
-                <div class=" card fullDescription">
-                    <div class="card-title">Giới thiệu sách</div>
-                    <div ta-bind="text" ng-model="book.fullDescription" ta-readonly='disabled'>
+                <div class=" card fullDescription ">
+                    <div class="card-title ">Giới thiệu sách</div>
+                    <div ta-bind="text " ng-model="book.fullDescription " ta-readonly='disabled'>
 
                     </div>
 
                 </div>
-                <div class=" card information">
-                    <div class="card-title">Thông tin chi tiết</div>
-                    <table class="table table-striped table-responsive">
+                <div class=" card information ">
+                    <div class="card-title ">Thông tin chi tiết</div>
+                    <table class="table table-striped table-responsive ">
                         <tr>
-                            <th class="col-xs-2">SKU</th>
-                            <td class="col-xs-10">{{book.sku}}</td>
+                            <th class="col-xs-2 ">SKU</th>
+                            <td class="col-xs-10 ">{{book.sku}}</td>
                         </tr>
                         <tr>
-                            <th class="col-xs-2"> Nhà xuất bản</th>
-                            <td lass="col-xs-10">{{book.publisher}}</td>
+                            <th class="col-xs-2 "> Nhà xuất bản</th>
+                            <td lass="col-xs-10 ">{{book.publisher}}</td>
                         </tr>
                         <tr>
-                            <th class="col-xs-2"> Trọng lượng </th>
-                            <td lass="col-xs-10"> {{book.weight}} <span ng-show="book.weight"> g</span> </td>
+                            <th class="col-xs-2 "> Trọng lượng </th>
+                            <td lass="col-xs-10 "> {{book.weight}} <span ng-show="book.weight "> g</span> </td>
                         </tr>
                         <tr>
-                            <th class="col-xs-2"> Kích thước</th>
-                            <td lass="col-xs-10"> {{book.size.width}}<span ng-show="book.size.width"> x </span> {{book.size.depth}} </td>
+                            <th class="col-xs-2 "> Kích thước</th>
+                            <td lass="col-xs-10 "> {{book.size.width}}<span ng-show="book.size.width "> x </span> {{book.size.depth}} </td>
                         </tr>
                         <tr>
-                            <th class="col-xs-2"> Số trang</th>
-                            <td lass="col-xs-10"> {{book.pages}}</td>
+                            <th class="col-xs-2 "> Số trang</th>
+                            <td lass="col-xs-10 "> {{book.pages}}</td>
                         </tr>
                         <tr>
-                            <th class="col-xs-2"> Ngày xuất bản</th>
-                            <td lass="col-xs-10"> {{book.releaseDate|date:"dd/MM/yyyy"}}</td>
+                            <th class="col-xs-2 "> Ngày xuất bản</th>
+                            <td lass="col-xs-10 "> {{book.releaseDate|date:"dd/MM/yyyy "}}</td>
                         </tr>
                     </table>
                 </div>
 
-                <div class=" reviews card" ng-repeat="comment in book.comments|orderBy: 'createdOn' :true">
-                    <div class="media" ng-init="">
-                        <div class="col-sm-2">
-                            <div class="avatar">
-                                <a href="#">
-                                    <img class="img-responsive img-circle img-raised " ng-src="{{comment._user.avatarUrl}}" alt="...">
+                <div class=" reviews card " ng-repeat="comment in book.comments|orderBy: 'createdOn' :true ">
+                    <div class="media " ng-init=" ">
+                        <div class="col-sm-1 ">
+                            <div class="avatar ">
+                                <a href="# ">
+                                    <img class="img-responsive img-circle img-raised " ng-src="{{comment._user.avatarUrl}} " alt="... ">
                                 </a>
                             </div>
 
 
 
                         </div>
-                        <div class="col-sm-10 text-left">
-                            <h4 class="media-heading">{{comment._user.name}}</h4>
-                            <span uib-rating ng-model="comment.rate" max="max" read-only="true"></span>
+                        <div class="col-sm-11 text-left ">
+                            <h4 class="media-heading ">{{comment._user.name}}</h4>
+                            <span uib-rating ng-model="comment.rate " max="max " read-only="true "></span>
                             <span>-<small> {{comment.createdDate|date:'dd/ MM/ yyyy h:mma'}}</small></span>
                             <p>{{comment.commentBody}}</p>
                         </div>
@@ -152,14 +152,14 @@
 
 
 
-                <div class=" card comment">
+                <div class=" card comment ">
 
-                    <label for="">Rate</label>
-                    <span uib-rating ng-model="comment.rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)"></span>
-                    <div class="form-group">
-                        <label for="">Comment:</label>
-                        <textarea class="form-control" rows="3" ng-model="comment.commentBody"></textarea>
-                        <button class="btn btn-danger" type="button" ng-click="comment.commentBody.length>0&&comment.rate>0?addComment(book):''">Submit</button>
+                    <label for=" ">Rate</label>
+                    <span uib-rating ng-model="comment.rate " max="max " read-only="isReadonly " on-hover="hoveringOver(value) "></span>
+                    <div class="form-group ">
+                        <label for=" ">Comment:</label>
+                        <textarea class="form-control " rows="3 " ng-model="comment.commentBody "></textarea>
+                        <button class="btn btn-danger " type="button " ng-click="isLogged()&&comment.commentBody.length>0&&comment.rate>0?addComment(book):''" data-toggle="modal" data-target="#modalSigin">Submit</button>
                     </div>
 
 
