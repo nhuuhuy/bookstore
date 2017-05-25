@@ -484,8 +484,14 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
     $scope.updateUser = function() {
 
-        $http.put(root + 'api/users', $scope.editProfile).success(function() {
-            console.log('success');
+        $http.put(root + 'api/users', $scope.editProfile).success(function(response) {
+            console.log(response);
+            $scope.user = response;
+
+            $cookieStore.put('user', response.user);
+            $scope.user = $cookieStore.get('user');
+
+            $location.url("/")
         }).error(function(data, status, headers, config) {
             console.log(data, status, headers, config);
         });
