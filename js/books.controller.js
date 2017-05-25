@@ -508,13 +508,13 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     }
     $scope.getUserOder = function() {
         console.log(root + 'api/orders/user/' + $scope.user._id)
-            //     $http.get(root + 'api/orders/user/' + $scope.user._id).success(function(response) {
-            //         $scope.orders = response;
-            //         console.log($scope.orders)
+        $http.get(root + 'api/orders/user/' + $scope.user._id).success(function(response) {
+            $scope.orders = response;
+            console.log($scope.orders)
 
-        //     }).error(function(data, status, headers, config) {
-        //         console.log(data, status, headers, config);
-        //     });
-        // }
+        }).error(function(data, status, headers, config) {
+            console.log(data, status, headers, config);
+        });
     }
+
 }])
