@@ -23,26 +23,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     }
 
     $scope.getBook = function() {
-        // var url = $location.path();
-        // if (url == "/category/" + $routeParams.genreId) {
-        //     $http.get(root + 'api/books/' + 'genre/' +
-        //         $routeParams.genreId).success(function(response) {
-        //         $scope.books = response;
 
-        //         for (var i = 0; i < $scope.genres.length; i++) {
-        //             if ($scope.genres[i]._id === $routeParams.genreId) {
-
-        //                 $scope.text = $scope.genres[i].name;
-
-        //             }
-        //         }
-        //         $scope.paging();
-        //         console.log($location.path())
-
-        //     }).error(function(data, status, headers, config) {
-        //         console.log(data, status, headers, config);
-        //     });
-        // } else {
         $http.get(root + 'api/books/').success(function(response) {
             $scope.books = response;
             $scope.paging();
@@ -121,7 +102,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                 } else {
                     $scope.rateAvr = rateTotal / $scope.book.comments.length;
                 }
-                $scope.save = Math.ceil($scope.book.previousPrice / $scope.book.sellingPrice) * 10;
+                $scope.save = Math.round((($scope.book.previousPrice - $scope.book.sellingPrice) / $scope.book.previousPrice) * 100);
 
             }).error(function(data, status, headers, config) {
                 console.log(data, status, headers, config);
@@ -296,7 +277,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
             if (bookservice.cart.length > 0) {
                 for (var i = 0; i < bookservice.cart.length; i++) {
-                    if (bookservice.cart[i].item.sku === item.sku) {
+                    if (bookservice.cart[i].item._id === item._id) {
                         $scope.addedItem = true;
                         bookservice.cart[i].qty += $scope.qty;
                         bookservice.item[i].quantity += $scope.qty;
@@ -325,7 +306,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     }
     $scope.cart = bookservice.cart;
 
-    /*------------Bill--------------*/
+    /*------------order--------------*/
     $scope.order = {};
     $scope.order.books = [];
     $scope.checkout = function() {
@@ -499,7 +480,16 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             // $location.url("/")
         }
     }
+    $scope.editProfile = $scope.user;
 
+    $scope.updateUser = function() {
+
+        $http.put(root + 'api/users', $scope.editProfile).success(function() {
+            console.log('success');
+        }).error(function(data, status, headers, config) {
+            console.log(data, status, headers, config);
+        });
+    }
     $scope.show = false;
     $scope.getOrder = function() {
         $http.get(root + 'api/orders').success(function(response) {
@@ -509,5 +499,16 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             console.log(data, status, headers, config);
         });
 
+    }
+    $scope.getUserOder = function() {
+        console.log(root + 'api/orders/user/' + $scope.user._id)
+            //     $http.get(root + 'api/orders/user/' + $scope.user._id).success(function(response) {
+            //         $scope.orders = response;
+            //         console.log($scope.orders)
+
+        //     }).error(function(data, status, headers, config) {
+        //         console.log(data, status, headers, config);
+        //     });
+        // }
     }
 }])

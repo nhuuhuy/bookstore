@@ -180,14 +180,14 @@
                     <li ng-repeat="item in cart">
                         <span class="item">
 		                    <span class="item-left">
-		                        <img ng-src="{{item.item.images.main}}" alt="" />
+		                        {{item.item.title}}
 		                        <span class="item-info">
 		                            <span>{{item.qty}}</span>
                         <span>{{item.item.sellingPrice}}$</span>
                         </span>
                         </span>
                         <span class="item-right">
-		                        <button class="btn btn-xs btn-danger btn-fab btn-fab-mini btn-round pull-right" ng-click='removeCart($index)'>x</button>
+		                        <p class="pull-right" ng-click='removeCart($index)'>&times;</p>
 		                    </span>
                         </span>
                     </li>
