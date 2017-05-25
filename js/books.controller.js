@@ -92,15 +92,19 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                 $scope.book.createDate = new Date($scope.book.createDate);
                 $scope.book.releaseDate = new Date($scope.book.releaseDate);
                 var rateTotal = 0;
-
+                var rateLength = 0;
                 for (var i = 0; i < $scope.book.comments.length; i++) {
-                    rateTotal += $scope.book.comments[i].rate
+                    if ($scope.book.comments[i].hasOwnProperty('rate')) {
+                        rateTotal += $scope.book.comments[i].rate
+                        rateLength += 1
+                    }
+
                 }
 
                 if (rateTotal == 0) {
                     $scope.rateAvr = 4
                 } else {
-                    $scope.rateAvr = rateTotal / $scope.book.comments.length;
+                    $scope.rateAvr = rateTotal / rateLength;
                 }
                 $scope.save = Math.round((($scope.book.previousPrice - $scope.book.sellingPrice) / $scope.book.previousPrice) * 100);
 
