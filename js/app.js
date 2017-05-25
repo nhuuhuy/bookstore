@@ -61,6 +61,10 @@ app.config(function($routeProvider) {
             templateUrl: 'pages/like.html',
             controller: 'BooksController'
         })
+        .when('/admin/order', {
+            templateUrl: 'pages/order.html',
+            controller: 'BooksController'
+        })
 
     .otherwise({ redirectTo: '/' });
 
@@ -69,29 +73,6 @@ app.config(function($routeProvider) {
 
 
 
-
-
-
-
-
-// app.directive('itemJs', function() {
-//     // var injectScript = function(element) {
-//     //     var scriptTagJquery = angular.element(document.createElement('script'));
-//     //     scriptTagJquery.attr('charset', 'utf-8');
-//     //     scriptTagJquery.attr('src', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js');
-//     //     element.append(scriptTag);
-//     //     var scriptTag = angular.element(document.createElement('script'));
-//     //     scriptTag.attr('charset', 'utf-8');
-//     //     scriptTag.attr('src', 'js/item.js');
-//     //     element.append(scriptTag);
-//     // };
-
-//     // return {
-//     //     link: function(scope, element) {
-//     //         injectScript(element);
-//     //     }
-//     // };
-// });
 var compareTo = function() {
     return {
         require: "ngModel",

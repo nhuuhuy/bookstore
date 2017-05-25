@@ -204,12 +204,6 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             $location.url('/search/' + $scope.textSearch);
         }
         /*---------comment----*/
-        // $scope.user = {
-
-    //     'userName': 'Nguyen Huu Huy',
-    //     'userAvatarUrl': 'https://avatars0.githubusercontent.com/u/26504396?v=3&s=460',
-    //     'like': []
-    // }
 
     $scope.getUser = function() {
 
@@ -219,8 +213,6 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             $scope.comment.createdDate = Date.now();
             $scope.comment.userId = $scope.user._id;
             $scope.comment.bookId = post._id;
-            // $scope.comment.userAvatarUrl = $scope.user.avatarUrl;
-            // $scope.comment.userName = $scope.user.name;
 
             var req = {
                 method: 'POST',
@@ -294,9 +286,11 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             bookservice.total.totalQty += bookservice.cart[i].qty;
         }
         $scope.all = bookservice.total;
-        console.log($scope.totalQty)
+
     }
     $scope.sum();
+
+
     $scope.addCart = function(item) {
         if ($scope.qty > 0) {
 
@@ -305,7 +299,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                     if (bookservice.cart[i].item.sku === item.sku) {
                         $scope.addedItem = true;
                         bookservice.cart[i].qty += $scope.qty;
-                        bookservice.item[i].qty += $scope.qty;
+                        bookservice.item[i].quantity += $scope.qty;
                     }
 
 
@@ -315,11 +309,13 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
                 } else {
                     bookservice.cart.push({ item, qty: 1 });
-                    bookservice.item.push({ item, qty: 1 });
+                    bookservice.item.push({ _book: item._id, price: item.sellingPrice, quantity: $scope.qty });
+                    console.log(item._id)
                 }
             } else {
                 bookservice.cart.push({ item, qty: $scope.qty });
-                bookservice.item.push({ item, qty: $scope.qty });
+                bookservice.item.push({ _book: item._id, price: item.sellingPrice, quantity: $scope.qty });
+                console.log(item._id)
             }
 
         }
@@ -330,24 +326,32 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     $scope.cart = bookservice.cart;
 
     /*------------Bill--------------*/
-
-    $scope.bill = {};
-
+    $scope.order = {};
+    $scope.order.books = [];
     $scope.checkout = function() {
         if ($scope.cart.length > 0) {
-            $scope.bill.items = bookservice.item;
-            $scope.bill.date = Date.now();
-            $scope.bill.total = $scope.total;
-            bookservice.bills.push($scope.bill);
-            console.log(bookservice.bills)
-            bookservice.item = [];
-            bookservice.cart.splice(0, bookservice.cart.length);
-            $scope.total = 0;
-            $location.url("/")
+
+            $scope.order._user = $scope.user._id;
+            $scope.order.books = bookservice.item;
+            $scope.order.total = $scope.total;
+            // bookservice.bills.push($scope.order);
+            console.log($scope.order)
+
+            $http.post(root + 'api/orders', $scope.order).success(function(response) {
+                console.log('success');
+                bookservice.item = [];
+                bookservice.cart.splice(0, bookservice.cart.length);
+                $scope.total = 0;
+                $location.url("/")
+            }).error(function(data, status, headers, config) {
+                console.log(data, status, headers, config);
+            });
+
 
 
         }
     }
+
     $scope.changeQty = function(index) {
         bookservice.item[index].qty = bookservice.cart[index].qty;
         $scope.total = 0;
@@ -439,7 +443,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         }
     }
     $scope.summitSignup = function() {
-        $http.post(root + 'api/signup/', $scope.signUpUser).success(function(response) {
+        $http.post(root + 'api/users/signup', $scope.signUpUser).success(function(response) {
             var isSuccess = response.success;
             if (isSuccess) {
                 $cookieStore.put('token', response.token);
@@ -457,7 +461,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         });
     }
     $scope.summitLogin = function() {
-        $http.post(root + 'api/auth', $scope.loginUser).success(function(response) {
+        $http.post(root + 'api/users/auth', $scope.loginUser).success(function(response) {
             var isSuccess = response.success;
             if (isSuccess) {
                 $cookieStore.put('token', response.token);
@@ -478,7 +482,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                 } else if (response.message === "Authentication failed. Wrong password.") {
                     $scope.error = "Sai password vui lòng nhập lại";
                 } else {
-                    $scope.error = "";
+                    $scope.error = "Vui lòng kiểm tra lại tên hoặc password";
                 }
 
             }
@@ -495,6 +499,15 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             // $location.url("/")
         }
     }
-    console.log($scope.user)
+
     $scope.show = false;
+    $scope.getOrder = function() {
+        $http.get(root + 'api/orders').success(function(response) {
+            $scope.orders = response;
+
+        }).error(function(data, status, headers, config) {
+            console.log(data, status, headers, config);
+        });
+
+    }
 }])

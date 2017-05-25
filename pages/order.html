@@ -1,0 +1,73 @@
+<div>
+    <div class="container " ng-init="getOrder()">
+        <div class="row">
+            <div class="col-md-4 hidden-sm hidden-xs">
+
+                <div class="wrap sidebar-nav">
+                    <div class="heading">
+                        <h5><i class="glyphicon glyphicon-home"></i> Quản lý
+                        </h5>
+                    </div>
+
+                    <ul class="nav nav-pills nav-pills-danger nav-stacked">
+
+                        <li class="">
+                            <a href="#/admin/addbook">Thêm sách</a>
+                        </li>
+                        <li><a href="#/admin/listbook">Danh mục sách</a></li>
+
+                    </ul>
+                    <div class="heading">
+                        <h5><i class="glyphicon glyphicon-user"></i> Người dùng
+                        </h5>
+                    </div>
+
+                    <ul class="nav nav-pills nav-pills-danger nav-stacked">
+                        <li><a href="#">Danh sách người dùng</a></li>
+                        <li><a href="#">Đơn hàng</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-8 ">
+                <div class="card card-form ">
+                    <div ng-repeat="order in orders">
+                        <table class="table table-bordered table-hover rwd-table">
+                            <caption>Khách hàng {{order._user.name}}</caption>
+                            <thead>
+                                <tr>
+
+                                    <th class=" ">Tên Sách</th>
+                                    <th class="">Đơn giá</th>
+                                    <th class="">Số lượng</th>
+                                    <th class="">Thành tiền</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in order.books" class="rowBook">
+
+                                    <td class="" data-th="Tên sách">
+                                        <h6>{{item._book.title}}</h6>
+                                    </td>
+                                    <td class="price " data-th="Đơn giá">{{item.price|currency:"$":0}}</td>
+                                    <td class="" data-th="Sớ lượng">{{item.quantity}}</td>
+                                    <td class="price " data-th="Thành tiền">{{item.price*item.quantity| currency:"$":0}}</td>
+
+                                </tr>
+                                <tr>
+                                    <th colspan="3">Tổng tiền</th>
+                                    <td colspan="2" data-th="Tổng tiền">{{order.total|currency:"$":0}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
