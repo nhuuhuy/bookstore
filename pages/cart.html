@@ -28,11 +28,11 @@
                                 <h6>{{item.title}} </h6>
                             </td>
                             <td data-th="Đơn giá">
-                                <p class="price ">{{item.price|currency:"$":0}}</p>
+                                <p class="price ">{{item.price|number:0}} đ</p>
                             </td>
                             <td class="" data-th="Số lượng"><input type="number" ng-model="item.quantity" min="1" class="form-control" ng-change="changeQty($index)"></td>
                             <td data-th="Thành tiền">
-                                <p class="price ">{{item.price*item.quantity| currency:"$":0}}</p>
+                                <p class="price ">{{item.price*item.quantity| number:0}} đ</p>
                             </td>
                             <td class="removecart"><button class="btn btn-default btn-xs" ng-click='removeCart($index)'><i class="fa fa-trash-o"></i></button></td>
                         </tr>
@@ -69,10 +69,10 @@
                         <h5>Đơn hàng</h5>
                     </div>
                     <div class="panel-body">
-                        <h6>Tổng cộng: <span class="price">{{ all.totalPrice| currency:"$":0}}</span></h6>
+                        <h6>Tổng cộng: <span class="price">{{ all.totalPrice| number:0}} đ</span></h6>
                     </div>
                     <div class="panel-footer">
-                        <button class="btn btn-danger btn-xs"  data-toggle="modal" data-target="#modalSigin" ng-click="isLogged()? checkout():''">Checkout</button>
+                        <button class="btn btn-danger btn-xs"  data-toggle="modal" data-target="#modalSigin" ng-click="isLogged()? checkout():''">Thanh toán</button>
                     </div>
                 </div>
             </div>

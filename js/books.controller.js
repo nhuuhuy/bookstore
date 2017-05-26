@@ -86,7 +86,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             $scope.all.totalQty = 0;
         };
 
-        console.log($scope.order);
+
         $scope.loadLogin = function() {
             var token = $cookieStore.get('token');
             if (token !== undefined) {
@@ -510,13 +510,11 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                 $scope.user = $cookieStore.get('user');
 
                 $scope.token = $cookieStore.get('token');
-                //Redirect here
-                // $location.url("/#")
+
                 $scope.loginUser = {};
                 $scope.error = "";
             } else {
-                //Raise Error
-                // alert(response.message);
+
                 $scope.error = "";
                 if (response.message === "Authentication failed. User not found.") {
                     $scope.error = "Không tìm thấy người dùng";
@@ -533,12 +531,6 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     }
     $scope.isLogged = function() {
         return $cookieStore.get('token') != undefined;
-    }
-    $scope.viewLogin = function() {
-        var token = $cookieStore.get('token');
-        if (token !== undefined) {
-            // $location.url("/")
-        }
     }
 
 
@@ -557,7 +549,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             console.log(data, status, headers, config);
         });
     }
-    $scope.show = false;
+
     $scope.getOrder = function() {
         $http.get(root + 'api/orders').success(function(response) {
             $scope.orders = response;

@@ -32,7 +32,7 @@
                         <h5>Sách Mới Phát Hành</h5>
                     </div>
 
-                    <div class="col-md-3 col-sm-6  box " ng-repeat="book in books| limitTo: 4">
+                    <div class="col-md-3 col-sm-6 col-xs-12 box " ng-repeat="book in books| limitTo: 4">
                         <div class="item panel panel-default">
                             <div class="panel-body">
                                 <div class="imagePanel">
@@ -54,7 +54,7 @@
                                     </h5>
 
                                 </div>
-                                <p class="price">{{book.sellingPrice| currency:"$":0}}</p>
+                                <p class="price">{{book.sellingPrice| number:0}} đ</p>
                                 <div class="btnHover">
                                     <a href="#/item/{{book._id}}" class="btn btn-danger btn-xs shopCart" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> </a>
                                     <button ng-class="checkLike(book)? 'btn btn-danger  btn-xs like':'btn btn-default  btn-xs like'" ng-click="like(book)"><i class="fa fa-heart" ></i></button>
@@ -94,7 +94,7 @@
 
                                 </div>
 
-                                <p class="price">{{book.sellingPrice|currency:"$":0}}</p>
+                                <p class="price">{{book.sellingPrice|number:0}} đ</p>
                                 <div class="btnHover">
                                     <a href="#/item/{{book._id}}" class="btn btn-danger btn-xs shopCart" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> </a>
                                     <button ng-class="checkLike(book)? 'btn btn-danger  btn-xs like':'btn btn-default  btn-xs like'" ng-click="like(book)"><i class="fa fa-heart" ></i></button>
@@ -105,48 +105,7 @@
                     <div class=" clearfix continue">
                         <a href="#/category" class="btn btn-danger btn-just-icon btn-round pull-right " type="button"><i class="fa fa-chevron-right" ></i></a>
                     </div>
-                    <!--<div class="heading  hidden-xs">
-                        <h5>Staff Pick </h5>
-                    </div>-->
 
-
-                    <!--<div ng-controller='MultiCarousel as multicarousel' class=" multi-item-carousel hidden-xs ">
-                        <div uib-carousel active="multicarousel.active " interval="multicarousel.myInterval ">
-                            <div uib-slide ng-repeat="slide in multicarousel.slides " index="book._id ">
-                                <div class="col-xs-3 box ">
-                                    <div class="item panel panel-default ">
-                                        <div class="panel-body ">
-                                            <div class="imagePanel ">
-                                                <a href="#/item/{{book._id}} "><img ng-src="{{slide.images.main}} " class="panelImage " alt=" "></a>
-                                            </div>
-
-                                            <div class="description text-left ">
-                                                <h6>Description</h6>
-                                                {{slide.shortDescription|limitTo:90}}<a href="#/item/{{book._id}} ">...</a>
-                                            </div>
-                                        </div>
-                                        <div class="panel-footer ">
-                                            <div class="titlePanel ">
-                                                <h5>
-                                                    <a href="#/item/{{book._id}} " class="title ">{{slide.title | limitTo:25}}<span ng-show="slide.title.length>25">...</span>
-                            </a>
-
-                            </h5>
-
-                        </div>
-
-                        <p class="price">{{slide.sellingPrice| number:0}}$</p>
-
-                        <button class="btn btn-danger btn-xs shopCart" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> </button>
-                        <button class="btn btn-default btn-xs like "><i class="fa fa-heart" ></i></button>
-
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-</div>-->
 
                 </div>
             </div>

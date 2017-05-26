@@ -42,10 +42,13 @@ $(document).ready(function() {
     }
     // off canvas menu
     $('.navbar-toggle').click(function() {
+        $(".off-canvas ").toggleClass("off");
+
         $(".off-canvas ").toggleClass("active");
 
     })
     $('.body-wrapper, footer').click(function() {
         $(".off-canvas ").removeClass("active");
+        $(".off-canvas ").addClass("off");
     })
 })
