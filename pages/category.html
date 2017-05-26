@@ -72,7 +72,7 @@
                                 <p class="author" ng-show="isSelectedView('list')">{{book.author}}</p>
                                 <p class="price" ng-show="book.sellingPrice>0">{{book.sellingPrice|number:0}} đ</p>
                                 <div class="btnHover">
-                                    <a href="#/item/{{book._id}}" class="btn btn-danger btn-xs shopCart" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> </a>
+                                    <a class="btn btn-danger btn-xs shopCart" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> </a>
                                     <button ng-class="checkLike(book)? 'btn btn-danger  btn-xs like':'btn btn-default  btn-xs like'" ng-click="like(book)"><i class="fa fa-heart" ></i></button>
                                 </div>
                             </div>

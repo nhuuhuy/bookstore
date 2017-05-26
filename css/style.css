@@ -597,7 +597,7 @@ select.form-control.search.select-search {
     cursor: pointer;
     border: 0;
     text-decoration: none;
-    transition: opacity 0.2s ease-out;
+    transition: opacity 0.5s ease-out;
     opacity: 0;
 }
 
@@ -611,7 +611,33 @@ select.form-control.search.select-search {
 }*/
 
 #back-to-top.show {
-    opacity: 1;
+    animation: scale-in-center 1s linear forwards;
+}
+
+@-webkit-keyframes scale-in-center {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 1
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+@keyframes scale-in-center {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 1
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1
+    }
 }
 
 
