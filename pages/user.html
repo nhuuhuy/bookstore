@@ -13,7 +13,7 @@
                         </div>
                         <div class="panel-body">
                             <ul class="nav nav-pills nav-pills-danger nav-stacked">
-                                <li role="presentation"><a href="#/user">Quản Lý Tài Khoản</a></li>
+                                <li role="presentation" class="active"><a href="#/user">Quản Lý Tài Khoản</a></li>
                                 <li role="presentation"><a href="#/user/bill">Đơn Đặt Hàng</a></li>
                                 <li role="presentation"><a href="#/user/like">Danh Sách Yêu Thích</a></li>
                             </ul>
@@ -45,20 +45,20 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="password" name="passwordcurrent" ng-model="editProfile.currentPassword" class="form-control " minlength="5" placeholder="Password" ng-required="true">
-                        <p ng-show="formProfile.password.$invalid && !formProfile.password.$pristine" class="text-danger"> Password không hợp lệ</p>
+                        <input type="password" name="passwordcurrent" ng-model="editProfile.currentPassword" class="form-control " placeholder="Password" ng-required="true">
+                        <p ng-show="formProfile.passwordcurrent.$invalid && !formProfile.passwordcurrent.$pristine" class="text-danger"> Password không hợp lệ</p>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" ng-model="editProfile.password" class="form-control " minlength="5" placeholder="Password mới" ng-required="true">
+                        <input type="password" name="password" ng-model="editProfile.password" class="form-control " placeholder="Password mới" ng-required="true">
                         <p ng-show="formProfile.password.$invalid && !formProfile.password.$pristine" class="text-danger"> Password không hợp lệ</p>
                     </div>
                     <div class="form-group">
                         <input type="password" name="passwordConfirm" ng-model="passwordConfirm" compare-to="editProfile.password" class="form-control " placeholder="Nhập lại password" ng-required="true">
-                        <p ng-show="formProfile.passwordConfirm.$invalid && !formProfile.passwordConfirm.$pristine" class="text-danger"> Password không trùng</p>
+                        <p ng-show="formProfile.passwordConfirm.$invalid&&!formProfile.passwordConfirm.$pristine" class="text-danger"> Password không trùng</p>
 
                     </div>
-                    <div class="col-xs-12 col-md-6"><input class="btn btn-danger " type="reset" ng-click="editProfie=false"></div>
-                    <div class="col-xs-12 col-md-6"><input type="submit" value="Thay đổi" class="btn btn-success pull-right"></div>
+                    <div class="col-xs-6 "><input class="btn btn-danger " type="reset" ng-click="editProfie=false"></div>
+                    <div class="col-xs-6 "><input type="submit" value="Thay đổi" class="btn btn-success pull-right"></div>
 
                 </form>
             </div>

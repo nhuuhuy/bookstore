@@ -1,4 +1,4 @@
-app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routeParams', '$location', 'uibDateParser', 'taOptions', '$cookieStore', function($scope, bookservice, $http, $routeParams, $location, uibDateParser, taOptions, $cookieStore) {
+app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routeParams', '$location', 'uibDateParser', 'taOptions', '$cookieStore', '$filter', function($scope, bookservice, $http, $routeParams, $location, uibDateParser, taOptions, $cookieStore, $filter) {
     var root = 'https://green-web-bookstore.herokuapp.com/';
     var config = {
         headers: {
@@ -9,17 +9,29 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     $scope.loaded = false;
     $scope.paging = function() {
 
-        $scope.totalItems = $scope.books.length;
+        $scope.total = $scope.books.length;
         $scope.currentPage = 1;
         $scope.itemsPerPage = 4;
         $scope.maxSize = 5;
+        $scope.sortby = "title";
+        $scope.$watch('sortby', function(val) {
+            $scope.books = $filter('orderBy')($scope.books, val);
+
+        });
         $scope.changePage = function() {
             var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
                 end = begin + $scope.itemsPerPage;
 
             $scope.filteredBooks = $scope.books.slice(begin, end);
+
         };
+
+
+
         $scope.changePage();
+        /*---sort--*/
+
+
     }
 
     $scope.getBook = function() {
@@ -54,6 +66,18 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         $scope.user = $cookieStore.get('user');
         $scope.editProfile = $cookieStore.get('user');
         $scope.token = $cookieStore.get('token');
+        bookservice.cart = $cookieStore.get('cart');
+        $scope.cart = bookservice.cart;
+        bookservice.item = $cookieStore.get('order');
+        if ($scope.order !== undefined && $scope.cart !== undefined) {
+            $scope.sum();
+        } else {
+            bookservice.cart = [];
+            $scope.cart = [];
+            bookservice.item = []
+        };
+
+        console.log($scope.order);
         $scope.loadLogin = function() {
             var token = $cookieStore.get('token');
             if (token !== undefined) {
@@ -66,7 +90,11 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     $scope.getSlide = function() {
         $http.get(root + "api/banners/").success(function(response) {
             $scope.slides = response;
-            console.log($scope.slides);
+
+            $scope.myInterval = 3000;
+
+            $scope.activeSlide = 0;
+
 
         }).error(function(data, status, headers, config) {
             console.log(data, status, headers, config);
@@ -74,9 +102,6 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     }
 
 
-    $scope.myInterval = 3000;
-
-    $scope.activeSlide = 0;
 
     /*-------Block/list---------- */
     $scope.view = "block";
@@ -138,7 +163,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                     }
                 }
 
-                console.log($location.path())
+
 
             }).error(function(data, status, headers, config) {
                 console.log(data, status, headers, config);
@@ -162,8 +187,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         opened: false
     };
 
-    /*---sort--*/
-    $scope.sortby = "title";
+
     /*-----Search---*/
     $scope.textSearch = $routeParams.text;
     $scope.searchBy = 'search'
@@ -259,18 +283,23 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
 
     $scope.qty = 1;
-    $scope.total = 0;
+    $scope.all = bookservice.total;
 
     $scope.sum = function() {
         bookservice.total.totalQty = 0;
-        for (var i = 0; i < bookservice.cart.length; i++) {
-            $scope.total += bookservice.cart[i].item.sellingPrice * bookservice.cart[i].qty;
-            bookservice.total.totalQty += bookservice.cart[i].qty;
+        bookservice.total.totalPrice = 0;
+        for (var i = 0; i < $scope.cart.length; i++) {
+
+            bookservice.total.totalPrice += $scope.cart[i].price * $scope.cart[i].quantity;
+            bookservice.total.totalQty += $scope.cart[i].quantity;
         }
-        $scope.all = bookservice.total;
+
+
+
+
 
     }
-    $scope.sum();
+
 
 
     $scope.addCart = function(item) {
@@ -278,10 +307,13 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
             if (bookservice.cart.length > 0) {
                 for (var i = 0; i < bookservice.cart.length; i++) {
-                    if (bookservice.cart[i].item._id === item._id) {
+                    if (bookservice.cart[i]._book === item._id) {
                         $scope.addedItem = true;
-                        bookservice.cart[i].qty += $scope.qty;
-                        bookservice.item[i].quantity += $scope.qty;
+                        bookservice.cart[i].quantity += $scope.qty;
+                        bookservice.item.quantity = bookservice.cart.quantity;
+                        $cookieStore.put('cart', bookservice.cart);
+                        $cookieStore.put('order', bookservice.item);
+                        $scope.cart = bookservice.cart;
                     }
 
 
@@ -290,40 +322,54 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                     $scope.addedItem = false;
 
                 } else {
-                    bookservice.cart.push({ item, qty: 1 });
+                    bookservice.cart.push({ _book: item._id, title: item.title, price: item.sellingPrice, image: item.images.main, quantity: $scope.qty });
                     bookservice.item.push({ _book: item._id, price: item.sellingPrice, quantity: $scope.qty });
                     console.log(item._id)
+                    $cookieStore.put('order', bookservice.item);
+                    $cookieStore.put('cart', bookservice.cart);
+                    $scope.cart = bookservice.cart;
+
                 }
             } else {
-                bookservice.cart.push({ item, qty: $scope.qty });
+                bookservice.cart.push({ _book: item._id, title: item.title, price: item.sellingPrice, image: item.images.main, quantity: $scope.qty });
                 bookservice.item.push({ _book: item._id, price: item.sellingPrice, quantity: $scope.qty });
-                console.log(item._id)
+                $cookieStore.put('order', bookservice.item);
+                $cookieStore.put('cart', bookservice.cart);
+                $scope.cart = bookservice.cart;
+
             }
 
         }
         $scope.sum();
 
-
     }
-    $scope.cart = bookservice.cart;
+
+
+
+
+
 
     /*------------order--------------*/
     $scope.order = {};
     $scope.order.books = [];
+
     $scope.checkout = function() {
-        if ($scope.cart.length > 0 && $scope.total > 0) {
+        if ($scope.cart.length > 0 && $scope.all.totalPrice > 0) {
 
             $scope.order._user = $scope.user._id;
             $scope.order.books = bookservice.item;
-            $scope.order.total = $scope.total;
-            // bookservice.bills.push($scope.order);
+            $scope.order.total = $scope.all.totalPrice;
+
             console.log($scope.order)
 
             $http.post(root + 'api/orders', $scope.order).success(function(response) {
                 console.log('success');
+                $cookieStore.remove('cart');
+                $cookieStore.remove('order');
                 bookservice.item = [];
                 bookservice.cart.splice(0, bookservice.cart.length);
-                $scope.total = 0;
+                $scope.all.totalPrice = 0;
+                $scope.all.totalQty = 0;
                 $location.url("/")
             }).error(function(data, status, headers, config) {
                 console.log(data, status, headers, config);
@@ -335,19 +381,22 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     }
 
     $scope.changeQty = function(index) {
-        bookservice.item[index].quantity = bookservice.cart[index].qty;
-        $scope.total = 0;
+        bookservice.item.quantity = bookservice.cart.quantity;
         $scope.sum();
+        $cookieStore.put('cart', bookservice.cart);
+        $cookieStore.put('order', bookservice.item);
     }
     $scope.bills = bookservice.bills;
 
     $scope.removeCart = function(item) {
-            console.log(item.qty)
+            console.log()
 
-            bookservice.cart.splice(item, 1);
+            $scope.cart.splice(item, 1);
             bookservice.item.splice(item, 1);
-            $scope.total = 0;
+            $scope.all.totalPrice = 0;
             $scope.sum();
+            $cookieStore.put('order', bookservice.item);
+            $cookieStore.put('cart', bookservice.cart);
 
         }
         /*-----like------*/
@@ -486,13 +535,14 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     $scope.updateUser = function() {
         console.log($scope.editProfile)
         $http.put(root + 'api/users', $scope.editProfile).success(function(response) {
+
             console.log(response);
+            $scope.editProfile = response.user;
             $scope.user = $scope.editProfile;
 
-            $cookieStore.put('user', response.user);
+            $cookieStore.put('user', $scope.editProfile);
             $scope.user = $cookieStore.get('user');
-
-            $location.url("/")
+            window.location.reload();
         }).error(function(data, status, headers, config) {
             console.log(data, status, headers, config);
         });
@@ -508,10 +558,10 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
     }
     $scope.getUserOder = function() {
-        console.log(root + 'api/orders/user/' + $scope.user._id)
+
         $http.get(root + 'api/orders/user/' + $scope.user._id).success(function(response) {
             $scope.orders = response;
-            console.log($scope.orders)
+
 
         }).error(function(data, status, headers, config) {
             console.log(data, status, headers, config);

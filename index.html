@@ -82,10 +82,10 @@
                             <li ng-repeat="item in cart">
                                 <span class="item">
 		                    <span class="item-left">
-		                        <img ng-src="{{item.item.images.main}}" alt="" />
+		                        <img ng-src="{{item.image}}" alt="" />
 		                        <span class="item-info">
-		                            <span>{{item.qty}}</span>
-                                <span>{{item.item.sellingPrice}}$</span>
+		                            <span>{{item.quantity}}</span>
+                                <span>{{item.price}}$</span>
                                 </span>
                                 </span>
                                 <span class="item-right">
@@ -180,14 +180,14 @@
                     <li ng-repeat="item in cart">
                         <span class="item">
 		                    <span class="item-left">
-		                        {{item.item.title}}
+		                        {{item.title}}
 		                        <span class="item-info">
-		                            <span>{{item.qty}}</span>
-                        <span>{{item.item.sellingPrice}}$</span>
+		                            <span>{{item.quantity}}</span>
+                        <span>{{item.price}}$</span>
                         </span>
                         </span>
                         <span class="item-right">
-		                        <p class="pull-right" ng-click='removeCart($index)'>&times;</p>
+		                        <p class="" ng-click='removeCart($index)'>&times;</p>
 		                    </span>
                         </span>
                     </li>

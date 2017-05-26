@@ -17,7 +17,7 @@ $(document).ready(function() {
         bodyHeight = $(window).height() - $('footer').height();
     }
     $('.body-wrapper').css('min-height', bodyHeight);
-    console.log($('.body-wrapper').css('min-height'));
+
     // back top
     if ($('#back-to-top').length) {
         var scrollTrigger = 100, // px
@@ -44,5 +44,8 @@ $(document).ready(function() {
     $('.navbar-toggle').click(function() {
         $(".off-canvas ").toggleClass("active");
 
+    })
+    $('.body-wrapper').click(function() {
+        $(".off-canvas ").removeClass("active");
     })
 })
