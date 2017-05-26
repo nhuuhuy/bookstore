@@ -223,37 +223,46 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             $location.url('/search/' + $scope.textSearch);
         }
         /*---------comment----*/
+
     $scope.comment = {};
+    $scope.errorComment = ''
     $scope.addComment = function(post) {
-            $scope.comment.createdDate = Date.now();
-            $scope.comment.userId = $scope.user._id;
-            $scope.comment.bookId = post._id;
+            if ($scope.comment.commentBody.length > 0 && $scope.comment.rate > 0) {
+                $scope.comment.createdDate = Date.now();
+                $scope.comment.userId = $scope.user._id;
+                $scope.comment.bookId = post._id;
 
-            var req = {
-                method: 'POST',
-                url: root + 'api/books/comment',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                data: $scope.comment
+                var req = {
+                    method: 'POST',
+                    url: root + 'api/books/comment',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    data: $scope.comment
+                }
+                $http(req).success(function() {
+                        console.log('success');
+
+
+                        $scope.comment.commentBody = "";
+
+                        $scope.getBookId();
+                        $scope.errorComment = ''
+                    },
+
+                    function() {
+                        console.log('error')
+                    });
+                // $http.put(bookservice.getBook + $routeParams.itemId, $scope.post).success(function(response) {
+                //     console.log('success')
+                // });
+
+                console.log(post.comments);
+
+            } else {
+                $scope.errorComment = "Vui lòng đánh giá và bình luận trước khi đăng"
             }
-            $http(req).success(function() {
-                    console.log('success');
 
-
-                    $scope.comment.commentBody = "";
-
-                    $scope.getBookId();
-                },
-
-                function() {
-                    console.log('error')
-                });
-            // $http.put(bookservice.getBook + $routeParams.itemId, $scope.post).success(function(response) {
-            //     console.log('success')
-            // });
-
-            console.log(post.comments);
 
         }
         /*------------add book -------------*/

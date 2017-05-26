@@ -131,13 +131,13 @@
 
 
                 <div class=" card comment ">
-
-                    <label for=" ">Rate</label>
+                    <h5 class="text-danger">{{errorComment}}</h5>
+                    <label for=" ">Đánh giá</label>
                     <span uib-rating ng-model="comment.rate " max="max " read-only="isReadonly " on-hover="hoveringOver(value) "></span>
                     <div class="form-group ">
-                        <label for=" ">Comment:</label>
+                        <label for=" ">Bình luận:</label>
                         <textarea class="form-control " rows="3 " ng-model="comment.commentBody "></textarea>
-                        <button class="btn btn-danger " type="button " ng-click="isLogged()&&comment.commentBody.length>0&&comment.rate>0?addComment(book):''" data-toggle="modal" data-target="#modalSigin">Submit</button>
+                        <button class="btn btn-danger " type="button " ng-click="isLogged()?addComment(book):''" data-toggle="modal" data-target="#modalSigin">Đăng</button>
                     </div>
 
 
