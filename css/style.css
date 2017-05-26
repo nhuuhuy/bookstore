@@ -605,11 +605,6 @@ select.form-control.search.select-search {
     top: 5px
 }
 
-
-/*#back-to-top:hover {
-    background: #e9ebec;
-}*/
-
 #back-to-top.show {
     animation: scale-in-center 1s linear forwards;
 }
@@ -638,6 +633,109 @@ select.form-control.search.select-search {
         transform: scale(1);
         opacity: 1
     }
+}
+
+
+/*nav-icon*/
+
+.nav-icon.open {
+    animation: nav-icon ease-in 0.5s forwards
+}
+
+@-webkit-keyframes nav-icon {
+    0% {
+        border-left: 1px solid #f44336
+    }
+    25% {
+        border-left: 1px solid #f44336;
+        border-bottom: 1px solid #f44336;
+    }
+    50% {
+        border-left: 1px solid #f44336;
+        border-bottom: 1px solid #f44336;
+        border-right: 1px solid #f44336;
+    }
+    100% {
+        border-left: 1px solid #f44336;
+        border-bottom: 1px solid #f44336;
+        border-right: 1px solid #f44336;
+        border-top: 1px solid #f44336;
+    }
+}
+
+@keyframes nav-icon {
+    0% {
+        border-left: 1px solid #f44336
+    }
+    25% {
+        border-left: 1px solid #f44336;
+        border-bottom: 1px solid #f44336;
+    }
+    50% {
+        border-left: 1px solid #f44336;
+        border-bottom: 1px solid #f44336;
+        border-right: 1px solid #f44336;
+    }
+    100% {
+        border-left: 1px solid #f44336;
+        border-bottom: 1px solid #f44336;
+        border-right: 1px solid #f44336;
+        border-top: 1px solid #f44336;
+    }
+}
+
+.icon-bar {
+    width: 22px;
+    transition: all 0.5s;
+    margin-left: 2px
+}
+
+.nav-icon.open span:nth-child(1) {
+    transform: rotate(45deg);
+    transform-origin: 10% 10%;
+}
+
+.nav-icon.open span:nth-child(2) {
+    animation: icon-bar 0.5s linear forwards
+}
+
+@-webkit-keyframes icon-bar {
+    0% {
+        color: #f44336;
+        transform: translateX(-5px)
+    }
+    25% {
+        color: #f44336;
+        transform: translateX(-10px);
+        opacity: 0.5;
+    }
+    100% {
+        color: #f44336;
+        transform: translateX(-10px);
+        opacity: 0;
+    }
+}
+
+@keyframes icon-bar {
+    0% {
+        color: #f44336;
+        transform: translateX(-5px)
+    }
+    25% {
+        color: #f44336;
+        transform: translateX(-10px);
+        opacity: 0.5;
+    }
+    100% {
+        color: #f44336;
+        transform: translateX(-10px);
+        opacity: 0;
+    }
+}
+
+.nav-icon.open span:nth-child(3) {
+    transform: rotate(-45deg);
+    transform-origin: 10% 90%;
 }
 
 

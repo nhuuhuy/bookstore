@@ -51,4 +51,7 @@ $(document).ready(function() {
         $(".off-canvas ").removeClass("active");
         $(".off-canvas ").addClass("off");
     })
+    $('.nav-icon').click(function() {
+        $(this).toggleClass('open');
+    });
 })
