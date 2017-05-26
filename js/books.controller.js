@@ -428,7 +428,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
 
                     bookservice.like.splice(i, 1);
-
+                    $scope.paging(bookservice.like)
 
                     liked = false;
                 }
@@ -445,6 +445,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
 
         }
+
 
 
     }
