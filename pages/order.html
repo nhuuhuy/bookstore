@@ -24,7 +24,7 @@
             <div class="col-md-8 ">
                 <div class="card card-form ">
                     <div class="card-title">Đơn hàng</div>
-                    <div ng-repeat="order in orders">
+                    <div ng-repeat="order in orders| orderBy:$index:true">
                         <table class="table table-bordered table-hover rwd-table">
                             <caption class="text-left"><strong>Khách hàng:</strong> {{order._user.name}}</caption>
                             <thead>

@@ -28,7 +28,7 @@
                     <h5>Thông Tin Đơn Hàng</h5>
                 </div>
                 <div class="profile-content">
-                    <div ng-repeat="order in orders">
+                    <div ng-repeat="order in orders |orderBy:$index:true">
                         <table class="table table-bordered table-hover rwd-table">
                             <caption class="text-left"><strong>Mã đơn hàng</strong> ĐH {{$index+1}}</caption>
                             <thead>
