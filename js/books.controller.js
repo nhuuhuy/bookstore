@@ -52,6 +52,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             console.log(data, status, headers, config);
         });;
         $scope.user = $cookieStore.get('user');
+        $scope.editProfile = $cookieStore.get('user');
         $scope.token = $cookieStore.get('token');
         $scope.loadLogin = function() {
             var token = $cookieStore.get('token');
@@ -189,10 +190,6 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             $location.url('/search/' + $scope.textSearch);
         }
         /*---------comment----*/
-
-    $scope.getUser = function() {
-
-    }
     $scope.comment = {};
     $scope.addComment = function(post) {
             $scope.comment.createdDate = Date.now();
@@ -314,7 +311,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     $scope.order = {};
     $scope.order.books = [];
     $scope.checkout = function() {
-        if ($scope.cart.length > 0) {
+        if ($scope.cart.length > 0 && $scope.total > 0) {
 
             $scope.order._user = $scope.user._id;
             $scope.order.books = bookservice.item;
@@ -338,7 +335,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     }
 
     $scope.changeQty = function(index) {
-        bookservice.item[index].qty = bookservice.cart[index].qty;
+        bookservice.item[index].quantity = bookservice.cart[index].qty;
         $scope.total = 0;
         $scope.sum();
     }
@@ -484,13 +481,13 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             // $location.url("/")
         }
     }
-    $scope.editProfile = $scope.user;
+
 
     $scope.updateUser = function() {
-
+        console.log($scope.editProfile)
         $http.put(root + 'api/users', $scope.editProfile).success(function(response) {
             console.log(response);
-            $scope.user = response;
+            $scope.user = $scope.editProfile;
 
             $cookieStore.put('user', response.user);
             $scope.user = $cookieStore.get('user');

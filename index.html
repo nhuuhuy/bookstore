@@ -49,22 +49,22 @@
 
 
 
-    <nav class="navbar navbar-fixed-top top-head">
+    <nav class="navbar navbar-fixed-top top-head" ng-init="getInit()">
         <div class="container-fluid">
             <div class="row">
 
                 <div class="navbar-header col-sm-1">
-                    <button class="navbar-toggle  pull-right visible-sm visible-xs">
+                    <button class="navbar-toggle  pull-right visible-xs">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
                     <a class="navbar-brand" href="#/"><img src="images/bookstoreLogo.png" alt=""></a>
                 </div>
-                <div class="bookMenu  col-sm-3 hidden-xs hidden-sm">
+                <div class="bookMenu  col-sm-3 hidden-xs ">
                     <ul class="nav navbar-nav text-left">
                         <li class="active " ng-click="testCookies()"><a href="#/">Home</a></li>
-                        <li class="category dropdown "><a href="#/category" class="dropdown-toggle" data-toggle="dropdown">DANH MỤC SÁCH<i class="fa  fa-caret-down " ng-init="getInit()"></i >	</a>
+                        <li class="category dropdown "><a href="#/category" class="dropdown-toggle" data-toggle="dropdown">Danh mục sách</a>
 
                             <ul class="cate dropdown-menu dropdown-menu-danger">
                                 <li role="presentation" ng-repeat="genre in genres"><a href="#/category/{{genre._id}}">{{genre.name}}</a></li>
@@ -75,7 +75,7 @@
                     </ul>
 
                 </div>
-                <ul class="nav navbar-nav navbar-right   hidden-xs  hidden-sm col-md-3 ">
+                <ul class="nav navbar-nav navbar-right   hidden-xs   col-sm-3 ">
 
                     <li class="dropdown cart"><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-shopping-cart fa-2x"></i><span class="qty" >({{all.totalQty}})</span><span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-cart" role="menu">
@@ -118,7 +118,7 @@
 
                 </ul>
 
-                <div class="col-sm-5 pull-right groupSearch hidden-sm hidden-xs ">
+                <div class="col-sm-5 pull-right groupSearch  hidden-xs ">
                     <form name="search" ng-submit="textSearch.length>0?submitSearch():''">
                         <div class="input-group">
                             <input type="text" class="form-control search" ng-model="textSearch" placeholder="Search">
@@ -140,7 +140,7 @@
                 </div>
             </div>
     </nav>
-    <div class="off-canvas text-center hidden-md hidden-lg">
+    <div class="off-canvas text-center hidden-sm hidden-md hidden-lg">
 
         <div class="profile" ng-show="isLogged()">
             <div class="profile-userpic ">

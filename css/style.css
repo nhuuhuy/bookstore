@@ -288,11 +288,10 @@ div.loaded {
     padding: 8px
 }
 
-
-/*.navbar .navbar-nav>li>a {
-    padding-top: 10px;
-    padding-bottom: 10px
-}*/
+.navbar .navbar-nav>li>a {
+    text-transform: none;
+    padding: 15px 10px
+}
 
 .navbar-fixed-top {
     padding-right: 5px;
