@@ -483,6 +483,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             $location.url("/#")
         }
     }
+
     $scope.summitSignup = function() {
         $http.post(root + 'api/users/signup', $scope.signUpUser).success(function(response) {
             var isSuccess = response.success;
@@ -491,11 +492,18 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                 $cookieStore.put('user', response.user);
                 $scope.user = $cookieStore.get('user');
                 $scope.token = $cookieStore.get('token');
+                $scope.editProfile = $cookieStore.get('user');
                 //Redirect here
                 $location.url("/")
             } else {
                 //Raise Error
                 alert(response.message);
+                $scope.errorSignup = "";
+                if (response.message === "That email is already taken") {
+                    $scope.errorSignup = "Email này đã được đăng ký";
+                } else {
+                    $scope.error = "Vui lòng kiểm tra lại form đăng ký";
+                }
             }
         }).error(function(data, status, headers, config) {
             console.log(data, status, headers, config);

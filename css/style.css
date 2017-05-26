@@ -125,6 +125,13 @@ div#modalSigin {
     z-index: 1700;
 }
 
+.signupImage {
+    height: 100px;
+    width: 100px;
+    overflow: hidden;
+    display: inline-block
+}
+
 .modal-backdrop.in {
     display: none
 }
@@ -404,7 +411,7 @@ div.loaded {
 }
 
 .navbar .navbar-nav>li>.dropdown-menu {
-    margin-top: 0px;
+    margin-top: 10px;
 }
 
 .nav-pills>li>a {
