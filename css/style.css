@@ -851,11 +851,11 @@ p.ng-pristine.ng-untouched.ng-valid.ta-bind>p {
 
 /*.block {
     transition: all linear 0.2s
-}
+}*/
 
 .list {
     transition: all linear 0.2s
-}*/
+}
 
 .login {
     transition: all linear 0.8s;
@@ -901,11 +901,11 @@ p.ng-pristine.ng-untouched.ng-valid.ta-bind>p {
     font-size: 12px;
 }
 
-
-/*.item .panel-footer.list {
-    position: relative;
-    top: -75px;
-}*/
+.btn-like {
+    position: absolute;
+    bottom: 70%;
+    left: 90%;
+}
 
 
 /*-----Date----*/
