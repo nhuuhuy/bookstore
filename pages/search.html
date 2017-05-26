@@ -41,7 +41,7 @@
                     <div ng-show="!found">
                         <h3>{{result}}</h3>
                     </div>
-                    <div ng-class="isSelectedView('block')?'col-md-3 col-sm-6 block': 'col-sm-12 list '   " ng-repeat="book in filteredBooks| orderBy : sortby ">
+                    <div ng-class="isSelectedView('block')?'col-md-3 col-sm-6 block': 'col-sm-12 list '   " ng-repeat="book in filteredBooks">
                         <div class="item panel panel-default">
                             <div ng-class="isSelectedView('block')?'panel-body':'panel-body list col-sm-3'">
                                 <div ng-class="isSelectedView('block')? 'imagePanel':' imagePanel list'">

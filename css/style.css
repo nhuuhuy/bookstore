@@ -188,6 +188,24 @@ h5 {
     box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
 }
 
+.category:hover .cate,
+.category:focus .cate,
+.cate:focus .cate {
+    display: block;
+}
+
+.cart:hover .dropdown-cart,
+.cart:focus .dropdown-cart,
+.dropdown-cart:focus .dropdown-cart {
+    display: block;
+}
+
+.user:hover .dropdown-user,
+.user:focus .dropdown-user,
+.dropdown-user:focus .dropdown-user {
+    display: block;
+}
+
 
 /*----------*/
 
@@ -819,8 +837,8 @@ span.ng-binding.text-info {
     .bookMenu.collapse {
         display: block!important
     }
-    .navbar-nav>li.dropdown.cart,
-    .navbar-nav>li.dropdown.user {
+    .navbar-nav>li.cart,
+    .navbar-nav>li.user {
         float: right;
     }
     .navbar .navbar-nav>li.user>a {
