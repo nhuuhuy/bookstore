@@ -105,7 +105,7 @@
 
                         </a>
 
-                        <ul class=" dropdown-menu dropdown-menu-danger dropdown-user">
+                        <ul class=" dropdown-menu dropdown-menu-danger dropdown-user" ng-show="user.admin===false">
                             <li ng-show="isLogged()"><a href="#/user">Thông tin tài khoản</a></li>
                             <li ng-show="isLogged()"><a href="#/user/like">Yêu thích  </a></li>
                             <li ng-show="isLogged()"><a href="#/user/bill">Đơn hàng</a></li>
@@ -113,6 +113,15 @@
                             <li ng-hide="isLogged()" ng-click="selectTab('signup')"><a class="" data-toggle="modal" data-target="#modalSigin">Tạo tài khoản</a></li>
                             <li ng-show="isLogged()" ng-click="logOut()"><a>Đăng xuất</a></li>
                         </ul>
+                        <ul class="admin dropdown-menu dropdown-menu-danger dropdown-user" ng-show="user.admin">
+                            <li>
+                                <a href="#/admin/addbook">Thêm sách</a>
+                            </li>
+                            <li><a href="#/admin/listbook">Danh mục sách</a></li>
+                            <li><a href="#/admin/order">Đơn hàng</a></li>
+                            <li ng-show="isLogged()" ng-click="logOut()"><a>Đăng xuất</a></li>
+                        </ul>
+
                     </li>
 
 
@@ -196,7 +205,7 @@
                 <a href="" class="" data-toggle="collapse" data-target=".user">
                     <i class="fa fa-user"></i> <span> Người dùng</span>
                 </a>
-                <ul class="user">
+                <ul class="user" ng-show="user.admin===false">
                     <li ng-show="isLogged()"><a href="#/user">Thông tin tài khoản</a></li>
                     <li ng-show="isLogged()"><a href="#/user/like">Yêu thích  </a></li>
                     <li ng-show="isLogged()"><a href="#/user/bill">Đơn hàng</a></li>
@@ -207,7 +216,7 @@
                 </ul>
 
             </li>
-            <li>
+            <li ng-show=" user.admin">
                 <a href="" class="" data-toggle="collapse" data-target=".admin">
                     <i class="fa fa-user"></i> <span>  Admin</span>
                 </a>
@@ -216,8 +225,8 @@
                         <a href="#/admin/addbook">Thêm sách</a>
                     </li>
                     <li><a href="#/admin/listbook">Danh mục sách</a></li>
-                    <li><a href="#">Danh sách người dùng</a></li>
                     <li><a href="#/admin/order">Đơn hàng</a></li>
+                    <li ng-show="isLogged()" ng-click="logOut()"><a>Đăng xuất</a></li>
                 </ul>
             </li>
 
