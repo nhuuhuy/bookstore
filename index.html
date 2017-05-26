@@ -168,7 +168,7 @@
         <ul class="nav nav-pills nav-stacked text-left ">
 
 
-            <li class="category "><a class=" " href="#/category" data-toggle="collapse" data-target=".cate">DANH MỤC SÁCH</a>
+            <li class="category-dropdown "><a class=" " href="#/category" data-toggle="collapse" data-target=".cate">DANH MỤC SÁCH</a>
 
                 <ul class="cate navbar-collapse collapse hidden-md hidden-lg ">
                     <li role="presentation" ng-repeat="genre in genres"><a href="#/category/{{genre._id}}">{{genre.name}}</a></li>
@@ -181,10 +181,7 @@
                         <span class="item">
 		                    <span class="item-left">
 		                        {{item.title}}
-		                        <span class="item-info">
-		                            <span>{{item.quantity}}</span>
-                        <span>{{item.price}}$</span>
-                        </span>
+		                        
                         </span>
                         <span class="item-right">
 		                        <p class="" ng-click='removeCart($index)'>&times;</p>
