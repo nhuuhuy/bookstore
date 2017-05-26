@@ -7,15 +7,15 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         }
     }
     $scope.loaded = false;
-    $scope.paging = function() {
+    $scope.paging = function(obj) {
 
-        $scope.totalItems = $scope.books.length;
+        $scope.totalItems = obj.length;
         $scope.currentPage = 1;
         $scope.itemsPerPage = 4;
         $scope.maxSize = 5;
         $scope.sortby = "title";
         $scope.$watch('sortby', function(val) {
-            $scope.books = $filter('orderBy')($scope.books, val);
+            obj = $filter('orderBy')(obj, val);
 
         });
 
@@ -29,7 +29,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
             $scope.$watch('sortby', function(val) {
                 $scope.filteredBooks = $filter('orderBy')($scope.filteredBooks, val);
-                $scope.filteredBooks = $scope.books.slice(begin, end);
+                $scope.filteredBooks = obj.slice(begin, end);
             });
         };
 
@@ -45,7 +45,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
         $http.get(root + 'api/books/').success(function(response) {
             $scope.books = response;
-            $scope.paging();
+            $scope.paging($scope.books);
 
         }).error(function(data, status, headers, config) {
             console.log(data, status, headers, config);
@@ -163,7 +163,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             $http.get(root + 'api/books/' + 'genre/' +
                 $routeParams.genreId).success(function(response) {
                 $scope.books = response;
-                $scope.paging();
+                $scope.paging($scope.books);
                 for (var i = 0; i < $scope.genres.length; i++) {
                     if ($scope.genres[i]._id === $routeParams.genreId) {
 
@@ -204,7 +204,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         $http.get(root + 'api/books/' + $scope.searchBy + '/' + $scope.textSearch).success(function(response) {
 
             $scope.books = response;
-            $scope.paging();
+            $scope.paging($scope.books);
             if ($scope.books.length > 0) {
                 $scope.found = true;
             } else {
@@ -409,52 +409,49 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
         }
         /*-----like------*/
+    $scope.likeBook = bookservice.like;
+    $scope.like = function(item) {
+        var liked = true;
+        if (bookservice.like.length > 0) {
+            for (var i = 0; i < bookservice.like.length; i++) {
 
-    // $scope.like = function(item) {
-    //     bookservice.liked = true;
-    //     if (bookservice.user.like.length > 0) {
-    //         for (var i = 0; i < bookservice.user.like.length; i++) {
-
-    //             if (bookservice.user.like[i].sku === item.sku) {
-
-
-    //                 bookservice.user.like.splice(i, 1);
-
-    //                 console.log(bookservice.user.like);
-    //                 bookservice.liked = false;
-    //             }
-    //         }
-    //         if (bookservice.liked) {
-    //             bookservice.user.like.push(item);
-    //             bookservice.liked = true;
-
-    //         }
-
-    //     } else {
-    //         bookservice.user.like.push(item);
-    //         bookservice.liked = true;
-    //         console.log(bookservice.user.like)
-
-    //     }
+                if (bookservice.like[i]._id === item._id) {
 
 
-
-    // }
-    // bookservice.user = $scope.user;
-    // $scope.user = bookservice.user;
-    // $scope.checkLike = function(item) {
-    //         if (bookservice.user.like.length > 0) {
-    //             for (var i = 0; i < bookservice.user.like.length; i++) {
-    //                 if (bookservice.user.like[i].sku === item.sku) {
-    //                     return true;
+                    bookservice.like.splice(i, 1);
 
 
-    //                 }
-    //             }
-    //         }
+                    liked = false;
+                }
+            }
+            if (liked) {
+                bookservice.like.push(item);
+                bookservice.liked = true;
 
-    //     }
-    /*-------WYSIWYG-------------*/
+            }
+
+        } else {
+            bookservice.like.push(item);
+            liked = true;
+
+
+        }
+
+
+    }
+
+
+    $scope.checkLike = function(item) {
+            if (bookservice.like.length > 0) {
+                for (var i = 0; i < bookservice.like.length; i++) {
+                    if (bookservice.like[i].sku === item.sku) {
+                        return true;
+                    }
+                }
+            }
+
+        }
+        /*-------WYSIWYG-------------*/
     $scope.disabled = false;
     taOptions.toolbar = [
         ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote', 'bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo', 'clear', 'justifyLeft', 'justifyCenter', 'justifyRight', 'indent', 'outdent', 'html', 'insertImage', 'insertLink', 'insertVideo']

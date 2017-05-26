@@ -5,4 +5,5 @@ app.service('bookservice', function() {
     this.user - [];
     this.item = [];
     this.total = [];
+    this.like = [];
 })

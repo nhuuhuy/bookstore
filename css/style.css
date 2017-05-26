@@ -411,7 +411,7 @@ div.loaded {
 }
 
 .navbar .navbar-nav>li>.dropdown-menu {
-    margin-top: 10px;
+    margin-top: 0px
 }
 
 .nav-pills>li>a {

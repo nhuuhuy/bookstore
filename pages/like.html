@@ -1,4 +1,4 @@
-<div class="container" ng-init="viewProfile()">
+<div class="container" ng-init="viewProfile();paging(likeBook)">
     <div class="row ">
         <div class="col-sm-3 hidden-xs">
             <div class="profile-sidebar wrap">
@@ -23,34 +23,37 @@
             </div>
         </div>
         <div class="col-sm-9">
-            <div class=" wrap">
+            <div class="wrap">
                 <div class="heading  ">
-                    <h5>Sách Yêu Thích</h5>
+                    <h5>Tất Cả Sách</h5>
                 </div>
 
                 <div class="fillter">
-                    <label for="sort">Sort by:</label>
-                    <select name="sort" id="sort">
-	 			<option value="">Name</option>
-	 			<option value="">Price</option>
-	 			<option value="">Rate</option>
+                    <label for="">Lọc theo:</label>
+                    <select name="sort" ng-model="sortby" ng-change="changePage()">
+	 			<option value="title">Tên</option>
+	 			<option value="sellingPrice">Giá </option>
+	 			<option value="author">Tác giả</option>
 	 		</select>
                     <label for="">View: </label><button class="btn btn-default btn-sm" ng-click="setView('list')" type="button"><i class="fa  fa-th-list"></i></button>
                     <button class="btn btn-default btn-sm" ng-click="setView('block')" type="button"><i class="fa fa-th-large"></i></button>
                 </div>
-                <div ng-class="isSelectedView('block')?'col-md-3 col-sm-6 block': 'col-sm-12 list '   " ng-repeat="book in user.like track by $index">
+                <div ng-class="isSelectedView('block')?'col-md-3 col-sm-6 block': 'col-sm-12 list '   " ng-repeat="book in filteredBooks ">
                     <div class="item panel panel-default">
-                        <div ng-class="isSelectedView('block')?'panel-body':'panel-body list'">
+                        <div ng-class="isSelectedView('block')?'panel-body':'panel-body list col-sm-3'">
                             <div ng-class="isSelectedView('block')? 'imagePanel':' imagePanel list'">
                                 <a href="#/item/{{book._id}}"><img ng-src="{{book.images.main}}" class="panelImage" alt=""></a>
                             </div>
 
-                            <div class="descriptionBlock" ng-show="isSelectedView('block')">
+                            <div class="descriptionBlock text-left" ng-show="isSelectedView('block')">
+                                <p ta-bind="text" ng-model="book.shortDescription" ta-readonly='disabled'>
 
-                                {{book.shortDescription|limitTo:90|limitTo:90}}<a href="#/item/{{book._id}}">...</a>
+                                </p>
+                                <a href="#/item/{{book._id}}" class="price">Xem thêm</a>
+
                             </div>
                         </div>
-                        <div ng-class="isSelectedView('block')? 'panel-footer': 'panel-footer list'">
+                        <div ng-class="isSelectedView('block')? 'panel-footer': 'panel-footer list col-sm-9'">
 
                             <div ng-class="isSelectedView('block')? 'titlePanel':''">
                                 <h5>
@@ -60,21 +63,25 @@
                             </div>
 
                             <div class="descriptionList" ng-show="isSelectedView('list')">
-                                <p>Description</p>
-                                <p>{{book.shortDescription|limitTo:80}}<a href="#/item/{{book._id}}">...</a></p>
+                                Giới thiệu
+                                <p ta-bind="text" ng-model="book.shortDescription" ta-readonly='disabled'>
+
+                                </p>
+                                <a href="#/item/{{book._id}}" class="price">Xem thêm</a>
+
                             </div>
-                            <p class="author visible-sm visible-xs">{{book.author}}</p>
-                            <p class="price">{{book.sellingPrice|currency:"$":0}}</p>
+                            <p class="author" ng-show="isSelectedView('list')">{{book.author}}</p>
+                            <p class="price" ng-show="book.sellingPrice>0">{{book.sellingPrice|number:0}} đ</p>
                             <div class="btnHover">
-                                <a href="#/item/{{book._id}}" class="btn btn-danger btn-xs shopCart" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> </a>
+                                <a class="btn btn-danger btn-xs shopCart" ng-click="addCart(book)"><i class="fa fa-shopping-cart"></i> </a>
                                 <button ng-class="checkLike(book)? 'btn btn-danger  btn-xs like':'btn btn-default  btn-xs like'" ng-click="like(book)"><i class="fa fa-heart" ></i></button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!--<div class="col-sm-12">
-                    <ul uib-pagination total-items="bigTotalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm pagination-danger" boundary-link-numbers="true"></ul>
-                </div>-->
+                <div class="col-sm-12">
+                    <ul uib-pagination total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" max-size="maxSize" class="pagination-sm pagination-danger" boundary-link-numbers="true" next-text="Trang kế" previous-text="Trang trước" ng-click="changePage()"></ul>
+                </div>
             </div>
         </div>
     </div>
