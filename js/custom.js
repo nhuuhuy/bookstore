@@ -47,11 +47,13 @@ $(document).ready(function() {
         $(".off-canvas ").toggleClass("active");
 
     })
-    $('.body-wrapper, footer').click(function() {
-        $(".off-canvas ").removeClass("active");
-        $(".off-canvas ").addClass("off");
-    })
     $('.nav-icon').click(function() {
         $(this).toggleClass('open');
     });
+    $('.body-wrapper, footer').click(function() {
+        $(".off-canvas ").removeClass("active");
+        $(".off-canvas ").addClass("off");
+        $('.nav-icon').removeClass('open');
+    })
+
 })
