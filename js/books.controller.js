@@ -80,8 +80,9 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             $scope.sum();
         } else {
             bookservice.cart = [];
-            $scope.cart = [];
+
             bookservice.item = [];
+            $scope.cart = bookservice.cart;
             $scope.all.totalQty = 0;
         };
 

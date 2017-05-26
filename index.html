@@ -180,11 +180,11 @@
                     <li ng-repeat="item in cart">
                         <span class="item">
 		                    <span class="item-left">
-		                        {{item.title}}
-		                        
+		                        {{item.title| limitTo:20}}...
+
                         </span>
-                        <span class="item-right">
-		                        <p class="" ng-click='removeCart($index)'>&times;</p>
+                        <span class="item-right" ng-click='removeCart($index)'>
+		                       &times;
 		                    </span>
                         </span>
                     </li>

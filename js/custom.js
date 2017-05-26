@@ -45,7 +45,7 @@ $(document).ready(function() {
         $(".off-canvas ").toggleClass("active");
 
     })
-    $('.body-wrapper').click(function() {
+    $('.body-wrapper, footer').click(function() {
         $(".off-canvas ").removeClass("active");
     })
 })
