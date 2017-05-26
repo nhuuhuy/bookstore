@@ -9,7 +9,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     $scope.loaded = false;
     $scope.paging = function() {
 
-        $scope.total = $scope.books.length;
+        $scope.totalItems = $scope.books.length;
         $scope.currentPage = 1;
         $scope.itemsPerPage = 4;
         $scope.maxSize = 5;
@@ -431,6 +431,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
 
     // }
+    // bookservice.user = $scope.user;
     // $scope.user = bookservice.user;
     // $scope.checkLike = function(item) {
     //         if (bookservice.user.like.length > 0) {
@@ -542,7 +543,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
             $cookieStore.put('user', $scope.editProfile);
             $scope.user = $cookieStore.get('user');
-            window.location.reload();
+            window.location.href = '/';
         }).error(function(data, status, headers, config) {
             console.log(data, status, headers, config);
         });
