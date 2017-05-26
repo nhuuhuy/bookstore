@@ -74,7 +74,8 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         } else {
             bookservice.cart = [];
             $scope.cart = [];
-            bookservice.item = []
+            bookservice.item = [];
+            $scope.all.totalQty = 0;
         };
 
         console.log($scope.order);
