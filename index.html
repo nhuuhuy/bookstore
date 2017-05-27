@@ -109,17 +109,14 @@
                             <li ng-show="isLogged()"><a href="#/user">Thông tin tài khoản</a></li>
                             <li ng-show="isLogged()"><a href="#/user/like">Yêu thích  </a></li>
                             <li ng-show="isLogged()"><a href="#/user/bill">Đơn hàng</a></li>
+                            <li ng-show="user.admin">
+                                <a href="#/admin/addbook">Thêm sách</a>
+                            </li ng-show="user.admin">
+                            <li ng-show="user.admin"><a href="#/admin/listbook">Danh mục sách</a></li>
+                            <li ng-show="user.admin"><a href="#/admin/order">Đơn hàng</a></li>
                             <li ng-hide="isLogged()" ng-click="selectTab('login')"><a class="" data-toggle="modal" data-target="#modalSigin">Đăng nhập</a></li>
                             <li ng-hide="isLogged()" ng-click="selectTab('signup')"><a class="" data-toggle="modal" data-target="#modalSigin">Tạo tài khoản</a></li>
                             <li ng-show="isLogged()" ng-click="logOut()"><a>Đăng xuất</a></li>
-                        </ul>
-                        <ul class="admin dropdown-menu dropdown-menu-danger dropdown-user" ng-show="user.admin">
-                            <li>
-                                <a href="#/admin/addbook">Thêm sách</a>
-                            </li>
-                            <li><a href="#/admin/listbook">Danh mục sách</a></li>
-                            <li><a href="#/admin/order">Đơn hàng</a></li>
-
                         </ul>
 
                     </li>
