@@ -18,27 +18,15 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             obj = $filter('orderBy')(obj, val);
 
         });
-
-
-
         $scope.changePage = function() {
             var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
                 end = begin + $scope.itemsPerPage;
-
-
-
             $scope.$watch('sortby', function(val) {
                 $scope.filteredBooks = $filter('orderBy')($scope.filteredBooks, val);
                 $scope.filteredBooks = obj.slice(begin, end);
             });
         };
-
-
-
         $scope.changePage();
-
-
-
     }
 
     $scope.getBook = function() {

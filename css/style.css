@@ -80,11 +80,11 @@ a:focus {
     text-decoration: none!important;
 }
 
-ul.cate.navbar-collapse.hidden-md.hidden-lg.collapse.in {
+ul.cate-sm.navbar-collapse.hidden-md.hidden-lg.collapse.in {
     overflow-y: visible
 }
 
-ul.cate.navbar-collapse.hidden-md.hidden-lg.collapse.in,
+ul.cate-sm.navbar-collapse.hidden-md.hidden-lg.collapse.in,
 ul.cart,
 ul.user,
 ul.admin {
@@ -283,6 +283,33 @@ h5 {
 .category:focus .cate,
 .cate:focus .cate {
     display: block;
+    animation: fade-in-bottom 0.3s linear;
+}
+
+@-webkit-keyframes fade-in-bottom {
+    0% {
+        -webkit-transform: translateY(50px);
+        transform: translateY(50px);
+        opacity: 0
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in-bottom {
+    0% {
+        -webkit-transform: translateY(50px);
+        transform: translateY(50px);
+        opacity: 0
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1
+    }
 }
 
 .category>.cate {
@@ -293,12 +320,14 @@ h5 {
 .cart:focus .dropdown-cart,
 .dropdown-cart:focus .dropdown-cart {
     display: block;
+    animation: fade-in-bottom 0.3s linear;
 }
 
 .user:hover .dropdown-user,
 .user:focus .dropdown-user,
 .dropdown-user:focus .dropdown-user {
     display: block;
+    animation: fade-in-bottom 0.3s linear;
 }
 
 
@@ -411,7 +440,7 @@ div.loaded {
 }
 
 .navbar .navbar-nav>li>.dropdown-menu {
-    margin-top: 0px
+    margin-top: 3px
 }
 
 .nav-pills>li>a {
@@ -838,7 +867,7 @@ select.form-control.search.select-search {
 
 .item .panel-body.list,
 .item .panel-footer.list {
-    display: inline-grid;
+    display: inline-block;
     text-align: left;
 }
 
@@ -1058,7 +1087,7 @@ span.ng-binding.text-info {
     .navbar-nav>li.user {
         float: right;
     }
-    .navbar .navbar-nav>li.user>a {
+    .navbar .navbar-nav>li.user-login>a {
         padding-bottom: 0px;
     }
     .shopCart,
@@ -1167,11 +1196,11 @@ span.ng-binding.text-info {
     }
     .imagePanel {
         width: 120px;
-        display: inline-grid
+        display: inline-block
     }
     .item .panel-body,
     .item .panel-footer {
-        display: inline-grid;
+        display: inline-block;
         border: none;
         text-align: center;
     }

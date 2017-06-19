@@ -38,17 +38,11 @@
 </head>
 
 <body ng-app="BookApp" ng-controller="BooksController">
-
     <div class="loading" ng-hide="loaded">
         <div class="loader">
-
         </div>
-
     </div>
     <!-- Navbar  -->
-
-
-
     <nav class="navbar navbar-fixed-top top-head" ng-init="getInit()">
         <div class="container-fluid">
             <div class="row">
@@ -65,7 +59,6 @@
                     <ul class="nav navbar-nav text-left">
                         <li class="active " ng-click="testCookies()"><a href="#/">Home</a></li>
                         <li class="category "><a href="#/category">Danh mục sách</a>
-
                             <ul class="cate dropdown-menu">
                                 <li role="presentation" ng-repeat="genre in genres"><a href="#/category/{{genre._id}}">{{genre.name}}</a></li>
                             </ul>
@@ -97,14 +90,12 @@
                             <li><a class="text-center" href="#/cart">Xem giỏ hàng</a></li>
                         </ul>
                     </li>
-                    <li class="user ">
+                    <li ng-class="isLogged()? 'user user-login':'user' ">
                         <a href="">
                             <img ng-src="{{user.avatarUrl}}" class="userAvatar img-circle img-raised" ng-show="isLogged()" alt="">
 
                             <i class="fa fa-user fa-2x" ng-hide="isLogged()"></i><span ng-hide="isLogged()"> User</span>
-
                         </a>
-
                         <ul class=" dropdown-menu dropdown-menu-danger dropdown-user">
                             <li ng-show="isLogged()"><a href="#/user">Thông tin tài khoản</a></li>
                             <li ng-show="isLogged()"><a href="#/user/like">Yêu thích  </a></li>
@@ -118,31 +109,21 @@
                             <li ng-hide="isLogged()" ng-click="selectTab('signup')"><a class="" data-toggle="modal" data-target="#modalSigin">Tạo tài khoản</a></li>
                             <li ng-show="isLogged()" ng-click="logOut()"><a>Đăng xuất</a></li>
                         </ul>
-
                     </li>
-
-
                 </ul>
-
                 <div class="col-sm-5 pull-right groupSearch  hidden-xs ">
                     <form name="search" ng-submit="textSearch.length>0?submitSearch():''">
                         <div class="input-group">
                             <input type="text" class="form-control search" ng-model="textSearch" placeholder="Search">
-
                             <div class="input-group-btn">
-
                                 <select class="form-control  search select-search" ng-model="searchBy">
 	 		                	<option value="search">Tên sách</option>
 	 			                <option value="author">Tác giả</option>
 	 		                </select>
-
-
                                 <button class="btn btn-danger btnSearch" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                             </div>
-
                         </div>
                     </form>
-
                 </div>
             </div>
     </nav>
@@ -169,18 +150,8 @@
                 </div>
             </form>
         </div>
-
-
         <ul class="nav nav-pills nav-stacked text-left ">
 
-
-            <li class="category-dropdown "><a class=" " href="#/category" data-toggle="collapse" data-target=".cate">DANH MỤC SÁCH</a>
-
-                <ul class="cate navbar-collapse collapse hidden-md hidden-lg ">
-                    <li role="presentation" ng-repeat="genre in genres"><a href="#/category/{{genre._id}}">{{genre.name}}</a></li>
-                </ul>
-
-            </li>
             <li class=""><a href="" class="" data-toggle="collapse" data-target=".cart "><i class="fa fa-shopping-cart"></i>  <span ng-class="all.totalQty>0? 'qty label label-success':'qty label label-danger'" >{{all.totalQty}}</span></a>
                 <ul class="cart " role="menu">
                     <li ng-repeat="item in cart|filter:$index | limitTo:4 | orderBy:$index:true">
@@ -227,7 +198,14 @@
 
                 </ul>
             </li>
+            <li class="category-dropdown "><a class=" " data-toggle="collapse" data-target=".cate-sm">DANH MỤC SÁCH</a>
 
+                <ul class="cate-sm navbar-collapse collapse hidden-md hidden-lg ">
+                    <li><a href="#/category">Tất Cả Sách </a></li>
+                    <li role="presentation" ng-repeat="genre in genres"><a href="#/category/{{genre._id}}">{{genre.name}}</a></li>
+                </ul>
+
+            </li>
         </ul>
     </div>
     <!--Login form-->
@@ -265,9 +243,9 @@
                     </div>
                     <div class="signup" ng-show="isSelectedTab('signup')">
                         <div class="text-center">
-                            <div class="signupImage">
+                            <div class="signupImage img-circle">
                                 <img src="https://www.safeocs.gov/sppe/resources/app/images/av1_1.png " class="img-responsive img-circle" alt="" ng-hide="signUpUser.avatarUrl.length >0">
-                                <img ng-src="{{signUpUser.avatarUrl}} " class="img-responsive img-circle " alt=" ">
+                                <img ng-src="{{signUpUser.avatarUrl}} " class="img-responsive  " alt=" ">
                             </div>
                             <h5 class="text-danger " ng-hide="signUpUser.name==='' ">{{errorSignup}}</h5>
 
@@ -324,21 +302,21 @@
                         <div class="col-sm-3 ">
                             <h4>VỀ CÔNG TY</h4>
                             <ul>
-                                <li><a href=" ">Giới thiệu công ty</a></li>
-                                <li><a href=" ">Tuyển dụng</a></li>
-                                <li><a href=" ">Góc báo chí</a></li>
-                                <li><a href=" ">Chương trình đại lý</a></li>
-                                <li><a href=" ">Chính sách bảo mật</a></li>
+                                <li><a href="#">Giới thiệu công ty</a></li>
+                                <li><a href="#">Tuyển dụng</a></li>
+                                <li><a href="#">Góc báo chí</a></li>
+                                <li><a href="#">Chương trình đại lý</a></li>
+                                <li><a href="#">Chính sách bảo mật</a></li>
                             </ul>
                         </div>
                         <div class="col-sm-3 ">
                             <h4>TRỢ GIÚP </h4>
                             <ul>
-                                <li><a href=" ">Quy định sử dụng</a></li>
-                                <li><a href=" ">Hướng dẫn mua hàng</a></li>
-                                <li><a href=" ">Phương thức thanh toán</a></li>
-                                <li><a href=" ">Phương thức vận chuyển</a></li>
-                                <li><a href=" ">Các câu hỏi thường gặp</a></li>
+                                <li><a href="#">Quy định sử dụng</a></li>
+                                <li><a href="#">Hướng dẫn mua hàng</a></li>
+                                <li><a href="#">Phương thức thanh toán</a></li>
+                                <li><a href="#">Phương thức vận chuyển</a></li>
+                                <li><a href="#">Các câu hỏi thường gặp</a></li>
                             </ul>
                         </div>
                         <div class="col-sm-3 ">
@@ -348,7 +326,6 @@
                                 <li>Mail : support@bookstore.com</li>
                                 <li>Phone: +123 456 7890</li>
                             </ul>
-
                         </div>
                         <div class="col-sm-3 ">
                             <h4>ĐĂNG KÝ NHẬN EMAIL</h4>
@@ -358,13 +335,13 @@
                             </form>
                             <h4>FOLLOW US</h4>
                             <button class="btn btn-default btn-just-icon ">
-						<a href=" "><i class="fa fa-twitter "></i></a>
+						<a href="#"><i class="fa fa-twitter "></i></a>
 					</button>
                             <button class="btn btn-default btn-just-icon ">
-						<a href=" "><i class="fa fa-facebook-square "></i></a>
+						<a href="#"><i class="fa fa-facebook-square "></i></a>
 					</button>
                             <button class="btn btn-default btn-just-icon ">
-						<a href=" "><i class="fa fa-instagram "></i></a>
+						<a href="#"><i class="fa fa-instagram "></i></a>
 					</button>
                         </div>
                     </div>
@@ -373,7 +350,6 @@
                 <div class="footer-copyright text-center ">
                     <div class="container-fluid ">
                         © 2017 Copyright: <a href="# "> Bookstore.com </a>
-
                     </div>
                 </div>
             </div>
@@ -390,8 +366,6 @@
 <script src="plugin/zoomPan.js "></script>
 
 <!--Custom js-->
-
-
 <script src="js/custom.js "></script>
 <script src="js/app.js "></script>
 
