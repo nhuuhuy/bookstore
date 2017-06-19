@@ -349,12 +349,11 @@ h5 {
 
 .loader {
     border: 16px solid #f3f3f3;
+    border-top: 16px solid #f44336;
     border-radius: 50%;
-    border-top: 16px solid #243238;
-    border-right: 16px solid #2BBBAD;
-    border-left: 16px solid #f44336;
     width: 120px;
     height: 120px;
+    transition: all 2s linear;
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
 }
