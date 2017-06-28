@@ -11,7 +11,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         $scope.totalItems = obj.length;
         $scope.currentPage = 1;
         $scope.itemsPerPage = 4;
-        $scope.maxSize = 5;
+        $scope.maxSize = 3;
         $scope.sortby = "title";
         $scope.$watch('sortby', function(val) {
             obj = $filter('orderBy')(obj, val);
@@ -30,6 +30,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         $http.get(root + 'api/books/').success(function(response) {
             $scope.books = response;
             $scope.paging($scope.books);
+
         }).error(function(data, status, headers, config) {
             console.log(data, status, headers, config);
         });
@@ -128,6 +129,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                 $routeParams.genreId).success(function(response) {
                 $scope.books = response;
                 $scope.paging($scope.books);
+                $scope.notFound = 'Sách Chưa cập nhật';
                 for (var i = 0; i < $scope.genres.length; i++) {
                     if ($scope.genres[i]._id === $routeParams.genreId) {
 
