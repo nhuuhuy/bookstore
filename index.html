@@ -5,38 +5,37 @@
     <meta charset="utf-8" />
     <link rel="icon" href="images/bookstoreLogo.png" type="image/png" sizes="16x16">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
     <title>Book Store</title>
-
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-
     <!--     Fonts and icons     -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-
     <!-- CSS Files -->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/textAngular.css" type="text/css">
     <link href="css/material-kit.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/zoomPan.css">
     <link rel="stylesheet" href="css/style.css">
-
     <!-- Angular Js-->
-
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 </head>
 
-<body ng-app="BookApp" ng-controller="BooksController">
+<body ng-app="BookApp" ng-controller="BooksController" ng-class="!loaded?'overflow':''">
     <div class="loading" ng-hide="loaded">
         <div class="loader">
+            <div class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </div>
     </div>
     <!-- Navbar  -->
     <nav class="navbar navbar-fixed-top top-head" ng-init="getInit()">
         <div class="container-fluid">
             <div class="row">
-
                 <div class="navbar-header col-sm-1">
                     <button class="navbar-toggle  pull-right visible-xs nav-icon">
 					<span class="icon-bar"></span>
@@ -52,14 +51,10 @@
                             <ul class="cate dropdown-menu">
                                 <li role="presentation" ng-repeat="genre in genres"><a href="#/category/{{genre._id}}">{{genre.name}}</a></li>
                             </ul>
-
                         </li>
-
                     </ul>
-
                 </div>
-                <ul class="nav navbar-nav navbar-right   hidden-xs   col-sm-3 ">
-
+                <ul class="nav navbar-nav navbar-right hidden-xs col-sm-3 ">
                     <li class=" cart"><a href=""><i class="fa fa-shopping-cart fa-3x"></i><span ng-class="all.totalQty>0? 'qty label label-success':'qty label label-danger'" >{{all.totalQty}}</span></a>
                         <ul class="dropdown-menu dropdown-cart" role="menu">
                             <li ng-repeat="item in cart |filter:$index | limitTo:4 | orderBy:$index:true">
@@ -118,37 +113,29 @@
             </div>
     </nav>
     <div class="off-canvas off text-center hidden-sm hidden-md hidden-lg">
-
         <div class="profile" ng-show="isLogged()">
             <div class="profile-userpic ">
                 <img ng-src="{{user.avatarUrl}}" class="img-circle img-raised user-image" alt="">
             </div>
             <h5>{{user.name}}</h5>
         </div>
-
         <div class="groupSearch">
             <form name="search" ng-submit="textSearch.length>0?submitSearch():''">
                 <div class="input-group">
                     <input type="text" class="form-control search" ng-model="textSearch" placeholder="Search">
-
                     <div class="input-group-btn">
-
-
                         <button class="btn btn-danger btnSearch" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                     </div>
-
                 </div>
             </form>
         </div>
         <ul class="nav nav-pills nav-stacked text-left ">
-
             <li class=""><a href="" class="" data-toggle="collapse" data-target=".cart "><i class="fa fa-shopping-cart"></i>  <span ng-class="all.totalQty>0? 'qty label label-success':'qty label label-danger'" >{{all.totalQty}}</span></a>
                 <ul class="cart " role="menu">
                     <li ng-repeat="item in cart|filter:$index | limitTo:4 | orderBy:$index:true">
                         <span class="item">
 		                    <span class="item-left">
 		                        {{item.title| limitTo:20}}...
-
                         </span>
                         <span class="item-right" ng-click='removeCart($index)'>
 		                       &times;
@@ -171,9 +158,7 @@
                     <li ng-hide="isLogged()" ng-click="selectTab('login')"><a class="" data-toggle="modal" data-target="#modalSigin">Đăng nhập</a></li>
                     <li ng-hide="isLogged()" ng-click="selectTab('signup')"><a class="" data-toggle="modal" data-target="#modalSigin">Tạo tài khoản</a></li>
                     <li ng-show="isLogged()" ng-click="logOut()"><a>Đăng xuất</a></li>
-
                 </ul>
-
             </li>
             <li ng-show=" user.admin">
                 <a href="" class="" data-toggle="collapse" data-target=".admin">
@@ -185,16 +170,13 @@
                     </li>
                     <li><a href="#/admin/listbook">Danh mục sách</a></li>
                     <li><a href="#/admin/order">Đơn hàng</a></li>
-
                 </ul>
             </li>
             <li class="category-dropdown "><a class=" " data-toggle="collapse" data-target=".cate-sm">DANH MỤC SÁCH</a>
-
                 <ul class="cate-sm navbar-collapse collapse hidden-md hidden-lg ">
                     <li><a href="#/category">Tất Cả Sách </a></li>
                     <li role="presentation" ng-repeat="genre in genres"><a href="#/category/{{genre._id}}">{{genre.name}}</a></li>
                 </ul>
-
             </li>
         </ul>
     </div>
@@ -217,12 +199,9 @@
                             </div>
                             <div class="form-group">
                                 <input type="password" ng-model="loginUser.password" class="form-control" placeholder="Password" name="password" ng-required="true " />
-
                             </div>
-
                             <div class="text-center">
                                 <button class="btn btn-danger" type="submit">Đăng nhập</button>
-
                             </div>
                         </form>
                         <div class="row">
@@ -238,9 +217,7 @@
                                 <img ng-src="{{signUpUser.avatarUrl}} " class="img-responsive  " alt=" ">
                             </div>
                             <h5 class="text-danger " ng-hide="signUpUser.name==='' ">{{errorSignup}}</h5>
-
                         </div>
-
                         <form method="post" ng-submit="summitSignup() " name="signup " novalidate>
                             <div class="form-group ">
                                 <input type="text " class="form-control " placeholder="Tên đăng nhập " ng-required="true " name="username " ng-model="signUpUser.name  ">
@@ -263,11 +240,9 @@
 
                                 <input ng-model="signUpUser.avatarUrl " type="text " class="form-control " name="avatarUrl " placeholder="Avatar Url ">
                             </div>
-
                             <p>
                                 Khi bạn nhấn Đăng ký, bạn đã đồng ý thực hiện mọi giao dịch mua bán theo <a href=" ">điều kiện sử dụng và chính sách</a> của Bookstore.
                             </p>
-
                             <a href="" class="btn btn-danger " ng-click="selectTab( 'login') ">Quay lại</a>
                             <button class="btn btn-success ">Đăng ký</button>
                         </form>
@@ -276,9 +251,7 @@
             </div>
         </div>
     </div>
-
-
-    <div class="loaded ">
+    <div class="loaded">
         <a href=".top-head" id="back-to-top" class="btn btn-danger btn-fab btn-fab-mini btn-round pull-right "><i class="fa fa-chevron-up "></i></a>
         <div class="body-wrapper ">
             <div ng-view>
@@ -346,7 +319,6 @@
         </footer>
     </div>
 </body>
-
 <!--    JS Files   -->
 <script src="https:////ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>

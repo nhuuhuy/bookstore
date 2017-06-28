@@ -8,7 +8,6 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     }
     $scope.loaded = false;
     $scope.paging = function(obj) {
-
         $scope.totalItems = obj.length;
         $scope.currentPage = 1;
         $scope.itemsPerPage = 4;
@@ -16,7 +15,6 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         $scope.sortby = "title";
         $scope.$watch('sortby', function(val) {
             obj = $filter('orderBy')(obj, val);
-
         });
         $scope.changePage = function() {
             var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
@@ -28,21 +26,15 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         };
         $scope.changePage();
     }
-
     $scope.getBook = function() {
-
         $http.get(root + 'api/books/').success(function(response) {
             $scope.books = response;
             $scope.paging($scope.books);
-
         }).error(function(data, status, headers, config) {
             console.log(data, status, headers, config);
         });
-
-
     };
     $scope.getInit = function() {
-
         $http.get(root + 'api/genres/').success(function(response) {
             $scope.genres = response;
             for (var i = 0; i < $scope.genres.length; i++) {
@@ -52,9 +44,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
 
                 }
             }
-
             $scope.loaded = true;
-
         }).error(function(data, status, headers, config) {
             console.log(data, status, headers, config);
         });;
@@ -73,34 +63,24 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             $scope.cart = bookservice.cart;
             $scope.all.totalQty = 0;
         };
-
-
         $scope.loadLogin = function() {
             var token = $cookieStore.get('token');
             if (token !== undefined) {
                 $location.url("/")
             }
         }
-
     };
     /*-------carousel---------- */
     $scope.getSlide = function() {
-        $http.get(root + "api/banners/").success(function(response) {
-            $scope.slides = response;
-
-            $scope.myInterval = 3000;
-
-            $scope.activeSlide = 0;
-
-
-        }).error(function(data, status, headers, config) {
-            console.log(data, status, headers, config);
-        });
-    }
-
-
-
-    /*-------Block/list---------- */
+            $http.get(root + "api/banners/").success(function(response) {
+                $scope.slides = response;
+                $scope.myInterval = 3000;
+                $scope.activeSlide = 0;
+            }).error(function(data, status, headers, config) {
+                console.log(data, status, headers, config);
+            });
+        }
+        /*-------Block/list---------- */
     $scope.view = "block";
     $scope.setView = function(e) {
         $scope.view = e;
@@ -121,9 +101,7 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                         rateTotal += $scope.book.comments[i].rate
                         rateLength += 1
                     }
-
                 }
-
                 if (rateTotal == 0) {
                     $scope.rateAvr = 4
                 } else {
@@ -134,10 +112,8 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             }).error(function(data, status, headers, config) {
                 console.log(data, status, headers, config);
             });
-
         }
         /*-----rate ---*/
-
     $scope.max = 5;
     $scope.isReadonly = false;
     $scope.hoveringOver = function(value) {
@@ -176,8 +152,6 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     $scope.popup2 = {
         opened: false
     };
-
-
     /*-----Search---*/
     $scope.textSearch = $routeParams.text;
     $scope.searchBy = 'search'
@@ -192,8 +166,6 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                 $scope.found = false
                 $scope.result = "Không tìm thấy sách"
             }
-
-
             console.log($scope.books)
         }).error(function(data, status, headers, config) {
             console.log(data, status, headers, config);
@@ -204,7 +176,6 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             $location.url('/search/' + $scope.textSearch);
         }
         /*---------comment----*/
-
     $scope.comment = {};
     $scope.errorComment = ''
     $scope.addComment = function(post) {
@@ -212,7 +183,6 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                 $scope.comment.createdDate = Date.now();
                 $scope.comment.userId = $scope.user._id;
                 $scope.comment.bookId = post._id;
-
                 var req = {
                     method: 'POST',
                     url: root + 'api/books/comment',
@@ -223,14 +193,10 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                 }
                 $http(req).success(function() {
                         console.log('success');
-
-
                         $scope.comment.commentBody = "";
-
                         $scope.getBookId();
                         $scope.errorComment = ''
                     },
-
                     function() {
                         console.log('error')
                     });
@@ -239,12 +205,8 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             } else {
                 $scope.errorComment = "Vui lòng đánh giá và bình luận trước khi đăng"
             }
-
-
         }
         /*------------add book -------------*/
-
-
     $scope.addBook = function() {
             console.log($scope.book);
             $http.post(root + 'api/books/', $scope.book).success(function(response) {
@@ -255,8 +217,6 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         }
         /*---------update book------*/
     $scope.updateBook = function() {
-
-
             $http.put(root + 'api/books/' + $routeParams.itemId, $scope.book).success(function(response) {
                 $location.url("/")
             }).error(function(data, status, headers, config) {
@@ -265,31 +225,25 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         }
         /*---------Remove book--------*/
     $scope.removeBook = function(id) {
-        $scope.books.splice(id, 1);
-        console.log(root + 'api/books/' + id);
-        $http.delete(root + 'api/books/' + id).success(function() {
-            console.log('success')
-        })
-
-    }
-
-    /*--------Cart ---------*/
-
+            $scope.books.splice(id, 1);
+            console.log(root + 'api/books/' + id);
+            $http.delete(root + 'api/books/' + id).success(function() {
+                console.log('success')
+            })
+        }
+        /*--------Cart ---------*/
     $scope.qty = 1;
     $scope.all = bookservice.total;
-
     $scope.sum = function() {
         bookservice.total.totalQty = 0;
         bookservice.total.totalPrice = 0;
         for (var i = 0; i < $scope.cart.length; i++) {
-
             bookservice.total.totalPrice += $scope.cart[i].price * $scope.cart[i].quantity;
             bookservice.total.totalQty += $scope.cart[i].quantity;
         }
     }
     $scope.addCart = function(item) {
             if ($scope.qty > 0) {
-
                 if (bookservice.cart.length > 0) {
                     for (var i = 0; i < bookservice.cart.length; i++) {
                         if (bookservice.cart[i]._book === item._id) {
@@ -303,7 +257,6 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                     }
                     if ($scope.addedItem) {
                         $scope.addedItem = false;
-
                     } else {
                         bookservice.cart.push({ _book: item._id, title: item.title, price: item.sellingPrice, image: item.images.main, quantity: $scope.qty });
                         bookservice.item.push({ _book: item._id, price: item.sellingPrice, quantity: $scope.qty });
@@ -311,7 +264,6 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                         $cookieStore.put('order', bookservice.item);
                         $cookieStore.put('cart', bookservice.cart);
                         $scope.cart = bookservice.cart;
-
                     }
                 } else {
                     bookservice.cart.push({ _book: item._id, title: item.title, price: item.sellingPrice, image: item.images.main, quantity: $scope.qty });
@@ -319,26 +271,18 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                     $cookieStore.put('order', bookservice.item);
                     $cookieStore.put('cart', bookservice.cart);
                     $scope.cart = bookservice.cart;
-
                 }
-
             }
             $scope.sum();
-
         }
         /*------------order--------------*/
     $scope.order = {};
     $scope.order.books = [];
-
     $scope.checkout = function() {
         if ($scope.cart.length > 0 && $scope.all.totalPrice > 0) {
-
             $scope.order._user = $scope.user._id;
             $scope.order.books = bookservice.item;
             $scope.order.total = $scope.all.totalPrice;
-
-            console.log($scope.order)
-
             $http.post(root + 'api/orders', $scope.order).success(function(response) {
                 console.log('success');
                 $cookieStore.remove('cart');
@@ -353,7 +297,6 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             });
         }
     }
-
     $scope.changeQty = function(index) {
         bookservice.item.quantity = bookservice.cart.quantity;
         $scope.sum();
@@ -361,17 +304,14 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         $cookieStore.put('order', bookservice.item);
     }
     $scope.bills = bookservice.bills;
-
     $scope.removeCart = function(item) {
             console.log()
-
             $scope.cart.splice(item, 1);
             bookservice.item.splice(item, 1);
             $scope.all.totalPrice = 0;
             $scope.sum();
             $cookieStore.put('order', bookservice.item);
             $cookieStore.put('cart', bookservice.cart);
-
         }
         /*-----like------*/
     $scope.likeBook = bookservice.like;
@@ -379,31 +319,20 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
         var liked = true;
         if (bookservice.like.length > 0) {
             for (var i = 0; i < bookservice.like.length; i++) {
-
                 if (bookservice.like[i]._id === item._id) {
-
-
                     bookservice.like.splice(i, 1);
                     $scope.paging(bookservice.like)
-
                     liked = false;
                 }
             }
             if (liked) {
                 bookservice.like.push(item);
                 bookservice.liked = true;
-
             }
-
         } else {
             bookservice.like.push(item);
             liked = true;
-
-
         }
-
-
-
     }
     $scope.checkLike = function(item) {
             var like = false;
@@ -418,38 +347,31 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                 }
                 return like;
             }
-
         }
         /*-------WYSIWYG-------------*/
     $scope.disabled = false;
     taOptions.toolbar = [
         ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote', 'bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo', 'clear', 'justifyLeft', 'justifyCenter', 'justifyRight', 'indent', 'outdent', 'html', 'insertImage', 'insertLink', 'insertVideo']
-
     ];
     $scope.tab = 'login';
     $scope.selectTab = function(setTab) {
         $scope.tab = setTab;
-
     };
     $scope.isSelectedTab = function(checkTab) {
         return $scope.tab === checkTab
     };
-
     /*------User-----------*/
-
     $scope.logOut = function() {
         $cookieStore.remove('token');
         $cookieStore.remove('user');
         $location.url("/")
     }
-
     $scope.viewProfile = function() {
         var token = $cookieStore.get('token');
         if (token === undefined) {
             $location.url("/#")
         }
     }
-
     $scope.summitSignup = function() {
         $http.post(root + 'api/users/signup', $scope.signUpUser).success(function(response) {
             var isSuccess = response.success;
@@ -482,13 +404,10 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                 $cookieStore.put('token', response.token);
                 $cookieStore.put('user', response.user);
                 $scope.user = $cookieStore.get('user');
-
                 $scope.token = $cookieStore.get('token');
-
                 $scope.loginUser = {};
                 $scope.error = "";
             } else {
-
                 $scope.error = "";
                 if (response.message === "Authentication failed. User not found.") {
                     $scope.error = "Không tìm thấy người dùng";
@@ -497,7 +416,6 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
                 } else {
                     $scope.error = "Vui lòng kiểm tra lại tên hoặc password";
                 }
-
             }
         }).error(function(data, status, headers, config) {
             console.log(data, status, headers, config);
@@ -506,16 +424,10 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
     $scope.isLogged = function() {
         return $cookieStore.get('token') != undefined;
     }
-
-
     $scope.updateUser = function() {
-        console.log($scope.editProfile)
         $http.put(root + 'api/users', $scope.editProfile).success(function(response) {
-
-            console.log(response);
             $scope.editProfile = response.user;
             $scope.user = $scope.editProfile;
-
             $cookieStore.put('user', $scope.editProfile);
             $scope.user = $cookieStore.get('user');
             window.location.href = '/';
@@ -523,27 +435,18 @@ app.controller("BooksController", ['$scope', 'bookservice', '$http', '$routePara
             console.log(data, status, headers, config);
         });
     }
-
     $scope.getOrder = function() {
         $http.get(root + 'api/orders').success(function(response) {
             $scope.orders = response;
-
-
         }).error(function(data, status, headers, config) {
             console.log(data, status, headers, config);
         });
-
     }
     $scope.getUserOder = function() {
-
         $http.get(root + 'api/orders/user/' + $scope.user._id).success(function(response) {
             $scope.orders = response;
-
-
         }).error(function(data, status, headers, config) {
             console.log(data, status, headers, config);
         });
     }
-
-
 }])

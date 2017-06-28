@@ -6,14 +6,16 @@ app.config(function($routeProvider) {
             templateUrl: 'pages/home.html',
             controller: 'BooksController'
         })
-
-    .when('/category', {
-        templateUrl: 'pages/category.html',
-        controller: 'BooksController'
-    })
-
-    .when('/admin/addbook', {
+        .when('/category', {
+            templateUrl: 'pages/category.html',
+            controller: 'BooksController'
+        })
+        .when('/admin/addbook', {
             templateUrl: 'pages/add.html',
+            controller: 'BooksController'
+        })
+        .when('/admin', {
+            templateUrl: 'pages/list.html',
             controller: 'BooksController'
         })
         .when('/admin/listbook', {
@@ -56,14 +58,8 @@ app.config(function($routeProvider) {
             templateUrl: 'pages/order.html',
             controller: 'BooksController'
         })
-
-    .otherwise({ redirectTo: '/' });
-
+        .otherwise({ redirectTo: '/' });
 });
-
-
-
-
 var compareTo = function() {
     return {
         require: "ngModel",
