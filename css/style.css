@@ -65,7 +65,8 @@ ol ol {
 }
 
 .nav-pills>li {
-    cursor: pointer
+    cursor: pointer;
+    transition: none!important
 }
 
 .nav-pills>li.active>a {
@@ -904,6 +905,10 @@ p.ng-pristine.ng-untouched.ng-valid.ta-bind>p {
 
 .login {
     transition: all linear 0.8s;
+}
+
+.result {
+    padding: 20px
 }
 
 

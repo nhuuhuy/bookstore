@@ -38,7 +38,11 @@
                         <label for="">View: </label><button class="btn btn-default btn-sm" ng-click="setView('list')" type="button"><i class="fa  fa-th-list"></i></button>
                         <button class="btn btn-default btn-sm" ng-click="setView('block')" type="button"><i class="fa fa-th-large"></i></button>
                     </div>
+                    <div ng-show="!filteredBooks.length" class="result">
+                        <h3> Sách Chưa cập nhật</h3>
+                    </div>
                     <div ng-class="isSelectedView('block')?'col-md-3 col-sm-6 block': 'col-sm-12 list '   " ng-repeat="book in filteredBooks">
+
                         <div class="item panel panel-default">
                             <div ng-class="isSelectedView('block')?'panel-body':'panel-body list col-sm-3'">
                                 <div ng-class="isSelectedView('block')? 'imagePanel':' imagePanel list'">
@@ -65,7 +69,6 @@
                                 <div class="descriptionList" ng-show="isSelectedView('list')">
                                     Giới thiệu
                                     <p ta-bind="text" ng-model="book.shortDescription" ta-readonly='disabled'>
-
                                     </p>
                                     <a href="#/item/{{book._id}}" class="price">Xem thêm</a>
                                     <!--<p>{{book.shortDescription|limitTo:80}}<a href="#/item/{{book._id}}">...</a></p>-->
